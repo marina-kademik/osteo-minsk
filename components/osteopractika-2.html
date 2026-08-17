@@ -1,0 +1,2162 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Остеопрактика: семестр 2</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+        --primary: #0d9488;
+        --primary-light: #f0fdfa;
+        --primary-border: #ccfbf1;
+        --primary-text: #115e59;
+        --accent: #10b981;
+        --slate-900: #0f172a;
+        --slate-850: #1e293b;
+        --slate-600: #475569;
+        --slate-400: #94a3b8;
+        --slate-100: #f1f5f9;
+        --bg-main: #f8fafc;
+        --bg-card: #ffffff;
+        --border-color: #f1f5f9;
+        --card-border: #e2e8f0;
+    }
+
+    html {
+        scroll-behavior: smooth;
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        background-color: var(--bg-main);
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        color: var(--slate-850);
+        line-height: 1.4;
+        font-size: 1rem;
+    }
+
+    *, :after, :before {
+        box-sizing: border-box;
+        border: 0 solid #e5e7eb;
+    }
+
+    a, a:visited {
+        color: var(--primary-text);
+    }
+
+    a:hover {
+        color: var(--primary);
+    }
+
+    header.app-header {
+        background: white;
+        border-bottom: 1px solid var(--slate-100);
+        padding: 24px 40px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    header.app-header .logo {
+        background: var(--primary);
+        color: white;
+        border-radius: 12px;
+        padding: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+    }
+
+    header.app-header h1 {
+        margin: 0;
+        font-size: 1.35rem;
+        font-weight: 800;
+        color: var(--slate-900);
+        letter-spacing: -0.02em;
+    }
+
+    header.app-header p {
+        margin: 4px 0 0;
+        font-size: 0.65rem;
+        color: var(--slate-400);
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        font-weight: 700;
+    }
+
+    .layout-container {
+        display: flex;
+        max-width: 1440px;
+        margin: 0 auto;
+        gap: 32px;
+        padding: 30px 40px;
+    }
+
+    .sidebar {
+        width: 320px;
+        flex-shrink: 0;
+        position: sticky;
+        top: 30px;
+        height: calc(100vh - 120px);
+        overflow-y: auto;
+        background: white;
+        border: 1px solid var(--border-color);
+        border-radius: 24px;
+        padding: 24px 20px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+    }
+
+    .sidebar-top-line {
+        margin-bottom: 16px;
+        border-bottom: 2px solid var(--slate-100);
+        padding-bottom: 10px;
+    }
+
+    .sidebar h2 {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--slate-400);
+        margin: 0 0 20px;
+    }
+
+    .sidebar ul.nav-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .sidebar ul.nav-list li {
+        margin-bottom: 14px;
+    }
+
+    .sidebar ul.nav-list a.nav-section-header {
+        display: block;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--slate-900);
+        text-decoration: none;
+        margin-bottom: 8px;
+        padding: 4px 6px;
+    }
+
+    .sidebar ul.nav-list a.nav-section-header:hover {
+        color: var(--primary);
+    }
+
+    .sidebar a.active {
+        color: var(--primary-text) !important;
+        background-color: var(--primary-light);
+        border: 1px solid var(--primary-border);
+        font-weight: 600;
+    }
+
+    .sidebar .nav-section-header.active {
+        color: var(--primary);
+        background-color: var(--primary-light);
+        border-radius: 10px;
+    }
+
+    .sidebar .sub-index {
+        list-style: none;
+        margin-left: 6px;
+        border-left: 1px solid var(--slate-100);
+        padding-left: 6px;
+    }
+
+    .sidebar .sub-index li {
+        margin-bottom: 6px;
+    }
+
+    .sidebar .sub-index a {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 4px;
+        font-size: 11.5px;
+        font-weight: 500;
+        color: var(--slate-600);
+        text-decoration: none;
+        padding: 4px 8px;
+        border-radius: 8px;
+        transition: all 0.15s ease;
+        border: 1px solid transparent;
+    }
+
+    .sidebar .sub-index a:hover {
+        color: var(--primary-text);
+        background-color: var(--primary-light);
+    }
+
+    .sidebar .tc-mini {
+        font-size: 0.6rem;
+        color: var(--slate-600);
+        background: var(--slate-100);
+        font-family: inherit;
+        padding: 2px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--card-border);
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+        margin-left: auto;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .main-content {
+        flex-grow: 1;
+        min-width: 0;
+    }
+
+    .category-divider {
+        margin-top: 40px;
+        margin-bottom: 24px;
+        border-bottom: 1px solid var(--card-border);
+        padding-bottom: 12px;
+    }
+
+    .category-divider:first-of-type {
+        margin-top: 0;
+    }
+
+    .category-divider h2 {
+        font-size: 1.6rem;
+        font-weight: 800;
+        color: var(--slate-900);
+        margin: 0;
+        letter-spacing: -0.02em;
+    }
+
+    .category-description {
+        color: var(--slate-600);
+        margin-top: 8px;
+        line-height: 1.5;
+    }
+
+    blockquote {
+        border-left: 4px solid #f59e0b;
+        background: #fef3c7;
+        padding: 16px 20px;
+        margin: 16px 0;
+        border-radius: 0 16px 16px 0;
+        color: #78350f;
+        line-height: 1.5;
+    }
+
+    .test-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 24px;
+        padding: 30px;
+        margin-bottom: 24px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.01), 0 2px 4px -2px rgba(0, 0, 0, 0.01);
+        transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .test-card:hover {
+        box-shadow: 0 12px 20px -8px rgba(0, 0, 0, 0.03), 0 4px 8px -4px rgba(0, 0, 0, 0.03);
+    }
+
+    .test-card h3 {
+        margin-top: 0;
+        color: var(--slate-900);
+        font-size: 1.15rem;
+        font-weight: 700;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 14px;
+    }
+
+    .timestamp {
+        font-size: 0.75rem;
+        color: var(--slate-600);
+        background: var(--slate-100);
+        font-family: inherit;
+        padding: 4px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--card-border);
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+    }
+
+    .timestamp-sub {
+        font-size: 9px;
+        color: var(--slate-600);
+        background: var(--slate-100);
+        border: 1px solid var(--card-border);
+        padding: 1px 4px;
+        border-radius: 4px;
+        font-family: inherit;
+        margin-right: 4px;
+        font-weight: 600;
+        display: inline-block;
+        white-space: nowrap;
+    }
+
+    .hand-position {
+        background-color: var(--primary-light);
+        border: 1px solid var(--primary-border);
+        color: var(--primary-text);
+        border-radius: 14px;
+        padding: 16px 20px;
+        margin: 16px 0;
+        font-weight: 500;
+        line-height: 1.5;
+    }
+
+    .warning {
+        background-color: #fef2f2;
+        border-left: 4px solid #ef4444;
+        color: #7f1d1d;
+        border-radius: 0 14px 14px 0;
+        padding: 16px 20px;
+        margin: 16px 0;
+        line-height: 1.5;
+    }
+
+    .note {
+        background-color: #fffbeb;
+        border-left: 4px solid #f59e0b;
+        color: #78350f;
+        border-radius: 0 14px 14px 0;
+        padding: 16px 20px;
+        margin: 16px 0;
+        line-height: 1.5;
+    }
+
+    .tip {
+        background-color: #f0fdfa;
+        border-left: 4px solid #0d9488;
+        color: #115e59;
+        border-radius: 0 14px 14px 0;
+        padding: 16px 20px;
+        margin: 16px 0;
+        line-height: 1.5;
+    }
+
+    .key-term {
+        background-color: var(--slate-100);
+        padding: 2px 6px;
+        border-radius: 6px;
+    }
+
+    .split-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        margin-top: 16px;
+    }
+
+    .border-green {
+        border-color: #fecaca;
+    }
+
+    .border-green {
+        border-color: #0d9488;
+    }
+
+    ul.content-list,
+    ul.content-list ul {
+        padding-left: 18px;
+        margin: 12px 0;
+    }
+
+    ul.content-list li {
+        margin-bottom: 8px;
+        color: #334155;
+    }
+
+    ol {
+        padding-left: 18px;
+        margin: 12px 0;
+    }
+
+    ol li {
+        margin-bottom: 8px;
+        line-height: 1.6;
+        color: #334155;
+        font-weight: 500;
+    }
+
+    ol li::marker {
+        color: var(--primary);
+        font-weight: 700;
+    }
+
+    .breath-rhythm-grid {
+        margin-top: 18px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+    }
+
+    .breath-phase {
+        display: grid;
+        gap: 8px;
+        border-radius: 16px;
+        padding: 16px;
+        line-height: 1.5;
+    }
+
+    .breath-in {
+        background-color: #ecfdf5;
+        border: 1px solid #a7f3d0;
+        color: #065f46;
+    }
+
+    .breath-out {
+        background-color: #ecfeff;
+        border: 1px solid #a5f3fc;
+        color: #075985;
+    }
+
+    .phase-title {
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        display: block;
+        margin-bottom: 6px;
+    }
+
+    .scroll-top-btn {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background-color: var(--primary);
+        color: white;
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        box-shadow: 0 10px 15px -3px rgba(13, 148, 136, 0.3), 0 4px 6px -4px rgba(13, 148, 136, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        transition: transform 0.22s ease, background-color 0.22s ease;
+        z-index: 1201;
+        font-size: 1.25rem;
+    }
+
+    .scroll-top-btn:hover {
+        background-color: #0f766e;
+        transform: scale(1.05);
+    }
+
+    .scroll-top-btn:visited {
+        color: white;
+    }
+
+    footer.global-footer {
+        text-align: center;
+        color: var(--slate-400);
+        font-size: 0.75rem;
+        padding: 40px 20px;
+        border-top: 1px solid var(--border-color);
+        background: white;
+        margin-top: 60px;
+    }
+
+    .data-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .data-table th, .data-table td {
+        padding: 5px;
+        border: 1px solid var(--border-color);
+    }
+
+    .menu-toggle-btn {
+        position: fixed;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 46px;
+        height: 46px;
+        background-color: var(--primary);
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 10px 15px -3px rgba(13, 148, 136, 0.3), 0 4px 6px -4px rgba(13, 148, 136, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        transition: all 0.25s ease;
+        backdrop-filter: blur(0px);
+        color: white;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .menu-toggle-btn:hover {
+        background: var(--primary-text);
+        transform: translateY(-50%) scale(1.03);
+    }
+
+    .menu-toggle-btn:active {
+        transform: translateY(-50%) scale(0.96);
+    }
+
+    .hamburger-icon {
+        width: 24px;
+        height: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        pointer-events: none;
+    }
+
+    .hamburger-icon span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background: white;
+        border-radius: 4px;
+        transition: all 0.2s;
+    }
+
+    .close-sidebar-btn {
+        background: #eef3f7;
+        border: none;
+        width: 36px;
+        height: 36px;
+        border-radius: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s;
+        color: var(--primary-text);
+        font-size: 1.6rem;
+        font-weight: 400;
+        line-height: 1;
+    }
+
+    .close-sidebar-btn:hover {
+        background: #e0eaf0;
+        transform: rotate(90deg);
+        color: var(--primary);;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    @media (min-width: 1025px) {
+        .menu-toggle-btn,
+        .close-sidebar-btn {
+            display: none;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .layout-container {
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .sidebar-top-line {
+            display: flex;
+            gap: 16px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 400px;
+            max-width: 90vw;
+            height: 100vh;
+            box-shadow: 8px 0 30px rgba(0, 0, 0, 0.12);
+            z-index: 1100;
+            transform: translateX(-100%);
+            transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            overflow-y: auto;
+            background: var(--bg-card);
+            border-right: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.01), 0 2px 4px -2px rgba(0, 0, 0, 0.01);
+        }
+
+        .sidebar.open {
+            transform: translateX(0);
+        }
+
+        .split-grid, .breath-rhythm-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(2px);
+            z-index: 1050;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.25s ease, visibility 0.25s;
+            pointer-events: none;
+        }
+
+        .sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        body.menu-open {
+            overflow: hidden;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<div aria-label="Открыть меню навигации" class="menu-toggle-btn" id="menuToggleBtn">
+<div class="hamburger-icon">
+<span></span>
+<span></span>
+<span></span>
+</div>
+</div>
+<header class="app-header" id="header">
+    <div class="logo">🎓</div>
+    <div>
+        <h1>Остеопрактика. Уровень 2</h1>
+        <p>Семинар Минск. Велицкая Л.Ф. 8 поток, май 2026</p>
+        <p><a href="https://osteopract.net/?p=3644" target="_blank">Видео семинара на osteopract.net</a></p>
+    </div>
+</header>
+<div class="layout-container">
+<aside class="sidebar">
+<h2>Навигация по разделам</h2>
+<ul class="nav-list">
+<li>
+<a class="nav-section-header" href="#operator-foundation">I. Алгоритмы ... и Нейтральность</a>
+<ul class="sub-index">
+<li><a href="#sensor-methodology">Датчики, слои и правило 3 секунд<span class="tc-mini">day_1: 00:41:00</span></a></li>
+<li><a href="#vector-terminology">Терминология направлений<span class="tc-mini">day_1: 01:25:01</span></a></li>
+<li><a href="#session-structure">Структура сеанса<span class="tc-mini">day_1: 01:34:10</span></a></li>
+<li><a href="#operator-attention">Распределение внимания<span class="tc-mini">day_1: 02:49:02</span></a></li>
+</ul>
+</li>
+<li>
+<a class="nav-section-header" href="#pdm-listening">II. Прослушивание Ритмов (ПДМ)</a>
+<ul class="sub-index">
+<li><a href="#pdm-nature">Природа КСР<span class="tc-mini">day_1: 01:41:09, day_3: 02:18:27</span></a></li>
+<li><a href="#listening-stations">Станции прослушивания КСР<span class="tc-mini">day_1: 03:19:03</span></a></li>
+<li><a href="#sbs-dysfunctions">Дисфункции СБС<span class="tc-mini">day_1: 04:57:29, day_3: 02:29:00</span></a></li>
+</ul>
+</li>
+<li>
+<a class="nav-section-header" href="#skull-anatomy">III. Анатомия и Ориентиры Черепа</a>
+<ul class="sub-index">
+<li><a href="#skull-composition">Состав и функции черепа<span class="tc-mini">day_1: 06:36:00, day_1: 07:35:00</span></a></li>
+<li><a href="#cranial-fossae">Черепные ямки и отверстия<span class="tc-mini">day_1: 07:05:00, day_1: 07:57:13</span></a></li>
+<li><a href="#skull-bones-detail">Кости черепа детально<span class="tc-mini">day_1: 06:36:00</span></a></li>
+<li><a href="#skull-sutures-landmarks">Швы и антропометрические точки<span class="tc-mini">day_1: 08:26:18</span></a></li>
+</ul>
+</li>
+<li>
+<a class="nav-section-header" href="#diagnostics-somatic">IV. Остеопатическая Диагностика</a>
+<ul class="sub-index">
+<li><a href="#flexion-tests">Флексионные тесты<span class="tc-mini">day_2: 00:00:00</span></a></li>
+<li><a href="#psoas-diagnostics">Диагностика L5 и ВНЧС<span class="tc-mini">day_2: 00:04:01, day_2: 00:33:00</span></a></li>
+<li><a href="#foot-influence">Влияние стоп на соматику<span class="tc-mini">day_2: 00:14:01</span></a></li>
+<li><a href="#sequential-exclusion">Метод последовательного исключения<span class="tc-mini">day_2: 00:09:03</span></a></li>
+<li><a href="#radial-testing">Тест лучевого продвижения<span class="tc-mini">day_1: 00:00:04, day_1: 08:38:01, day_2: 02:35:01, day_2: 04:15:01</span></a></li>
+<li><a href="#pelvic-structural-battery">Структурные тесты таза<span class="tc-mini">day_2: 00:38:02, day_2: 02:00:22</span></a></li>
+<li><a href="#pelvic-provocation-battery">Провокации таза<span class="tc-mini">day_2: 00:50:01, day_2: 02:24:00</span></a></li>
+<li><a href="#shoulder-neck-hyoid-tests">Тесты плечевого пояса и шеи<span class="tc-mini">day_2: 04:52:01, day_2: 06:46:00</span></a></li>
+<li><a href="#upper-quadrant-radial-testing">Радиальный тест верхнего квадранта<span class="tc-mini">day_2: 06:12:00, day_2: 07:12:00</span></a></li>
+<li><a href="#specialized-cranial-tests">Специализированные краниальные тесты<span class="tc-mini">day_2: 06:55:00</span></a></li>
+</ul>
+</li>
+<li>
+<a class="nav-section-header" href="#visceral-biomechanics">V. Висцеральная Биомеханика</a>
+<ul class="sub-index">
+<li><a href="#psoas-release">Релиз поясничной мышцы<span class="tc-mini">day_2: 03:25:01</span></a></li>
+<li><a href="#abdominal-maneuver">Пальпация живота и большой маневр<span class="tc-mini">day_2: 03:32:11</span></a></li>
+<li><a href="#visceral-triggers">Висцеральные триггеры<span class="tc-mini">day_2: 03:51:01</span></a></li>
+<li><a href="#provocations-food">Пищевые и эмоциональные тесты<span class="tc-mini">day_1: 00:04:04, day_2: 04:07:00</span></a></li>
+<li><a href="#chest-biomechanics">Биомеханика грудной клетки и диафрагма<span class="tc-mini">day_2: 05:11:07, day_2: 05:32:05</span></a></li>
+</ul>
+</li>
+<li>
+<a class="nav-section-header" href="#cranial-nerves">VI. Черепные Нервы и Выходы</a>
+<ul class="sub-index">
+<li><a href="#nerves-diagnostics">Диагностика 1-12 пар<span class="tc-mini">day_4: 01:38:22</span></a></li>
+<li><a href="#nerves-testing-listening">Линии симметрии, мембраны<span class="tc-mini">day_4: 06:12:10</span></a></li>
+<li><a href="#nerves-release">Освобождение каналов выходов<span class="tc-mini">day_4: 03:47:00</span></a></li>
+</ul>
+</li>
+<li>
+<a class="nav-section-header" href="#venous-sinuses">VII. Дренаж Венозных Синусов и ТМО</a>
+<ul class="sub-index">
+<li><a href="#arnold-nerve-technique">Релиз нерва Арнольда<span class="tc-mini">day_3: 01:10:00</span></a></li>
+<li><a href="#venous-anatomy">Анатомия оттока ликвора<span class="tc-mini">day_3: 00:00:00</span></a></li>
+<li><a href="#cervical-differential-diagnosis">Диагностика фиксации С2-С3<span class="tc-mini">day_3: 04:15:00</span></a></li>
+<li><a href="#sacrococcygeal-ligament-release">Релиз связок крестца и копчика<span class="tc-mini">day_3: 04:34:00</span></a></li>
+<li><a href="#sinuses-steps">Пошаговый венозный протокол<span class="tc-mini">day_3: 05:00:08, day_3: 05:45:02</span></a></li>
+<li><a href="#orbit-differential-test">Тест глазницы<span class="tc-mini">day_3: 05:09:13</span></a></li>
+</ul>
+</li>
+<li>
+<a class="nav-section-header" href="#intraosseous-techniques">VIII. Внутрикостные Дисфункции</a>
+<ul class="sub-index">
+<li><a href="#intraosseous-types">Надкостница, балки, помпаж<span class="tc-mini">day_3: 08:35:04, day_4: 00:00:00</span></a></li>
+<li><a href="#fracture-correction">Коррекция переломов<span class="tc-mini">day_4: 00:14:01</span></a></li>
+<li><a href="#chest-intraosseous">Грудина, рёбра, ключица<span class="tc-mini">day_4: 00:42:17</span></a></li>
+<li><a href="#limbs-pelvis-sacrum">Конечности, таз и крестец<span class="tc-mini">day_3: 08:56:13, day_4: 00:04:10</span></a></li>
+<li><a href="#vertebra-intraosseous">Внутрикостная проработка позвонка<span class="tc-mini">day_4: 01:09:01</span></a></li>
+<li><a href="#skull-intraosseous">Внутрикостная коррекция черепа<span class="tc-mini">day_4: 04:00:00</span></a></li>
+<li><a href="#pyramid-gruber-orbital-fissure">Пирамида, связка Грубера, глазничная щель<span class="tc-mini">day_4: 04:52:02</span></a></li>
+<li><a href="#ethmoid-palatine-orbit-intraosseous">«Колокол», крыло-нёбный узел, глазница<span class="tc-mini">day_4: 05:32:23</span></a></li>
+</ul>
+</li>
+<li>
+<a class="nav-section-header" href="#cranial-protocols">IX. Большой Краниальный Протокол</a>
+<ul class="sub-index">
+<li><a href="#membrane-symmetry-lines">Тестирование симметрии мембран<span class="tc-mini">day_4: 06:12:10</span></a></li>
+<li><a href="#platibasia-hold">Платибазия по Беккеру<span class="tc-mini">day_1: 05:44:19, day_4: 04:25:00, day_4: 06:25:01</span></a></li>
+<li><a href="#lifts-frontal-parietal">Лифты лобной и теменной<span class="tc-mini">day_1: 04:19:01, day_4: 06:31:02</span></a></li>
+<li><a href="#suture-decompression">Декомпрессия швов и косточек<span class="tc-mini">day_4: 06:41:00</span></a></li>
+<li><a href="#orbit-maxilla-zygomatic-listening">Прослушивание глазницы, челюсти, скулы<span class="tc-mini">day_1: 05:21:00</span></a></li>
+<li><a href="#big-cranial-protocol-sutures">Систематическая декомпрессия швов<span class="tc-mini">day_4: 07:19:15</span></a></li>
+<li><a href="#closing-protocol-techniques">«Кошачьи лапки» и техника Дядюшки Тома<span class="tc-mini">day_4: 07:56:00</span></a></li>
+</ul>
+</li>
+<li>
+<a class="nav-section-header" href="#stillpoint-cv4">X. Техники Наведенного Стилпоинта</a>
+<ul class="sub-index">
+<li><a href="#cv4-technique">Компрессия IV желудочка (CV-4)<span class="tc-mini">day_1: 01:05:00, day_4: 03:28:00</span></a></li>
+<li><a href="#ev4-expansion">Экспансия IV желудочка (EB-4)<span class="tc-mini">day_1: 01:08:01, day_4: 03:36:03</span></a></li>
+</ul>
+</li>
+<li>
+<a class="nav-section-header" href="#additional-materials">XI. Дополнительные материалы</a>
+<ul class="sub-index">
+<li><a href="#cranial-protocol-additional-techniques">Доп. техники декомпрессии черепа</a></li>
+<li><a href="#chest-shoulder-additional-tests">Доп. тесты плечевого пояса и рёбер</a></li>
+<li><a href="#stillpoint-preparation-theory">Стилл Поинт: теория и подготовка</a></li>
+<li><a href="#listening-additional-stations">Доп. станции прослушивания КСР</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-section-header" href="#clinical-notes-additional">XII. Доп. клинические заметки</a>
+<ul class="sub-index">
+<li><a href="#csf-and-frontal-bone-notes">Ликвор и лобная кость (психика)</a></li>
+<li><a href="#sbs-before-venous-and-cavernous-risk">СБС→синусы; риск тромбоза кав. синуса</a></li>
+<li><a href="#temporal-bp-and-jugular-children">Височная кость и АД; дети</a></li>
+<li><a href="#pelvis-abdomen-diagnostic-notes">Ошибки тестов; купол диафрагмы; шпора</a></li>
+<li><a href="#scope-of-practice-notes">Границы компетенции; красные флаги</a></li>
+</ul>
+</li>
+</ul>
+</aside>
+<main class="main-content">
+<blockquote>
+            «Остеопатическая пальпация требует от специалиста не механического давления, а тонкой перцептивной сонастройки. Руки оператора должны стать одновременно думающими, чувствующими и видящими, воспринимая плотность, ритм и натяжение тканей в объеме физического и флюидического тела пациента.»
+        </blockquote>
+<!-- SECTION I -->
+<div class="category-divider" id="operator-foundation">
+<h2>I. Алгоритмы Оператора и Нейтральность</h2>
+<p class="category-description">Фундаментальные основы биодинамического центрирования, управления вниманием и выстраивания эргономики терапевтического процесса.</p>
+</div>
+<div class="test-card" id="sensor-methodology">
+<h3>Датчики тканей, слои пальпации и правило трёх секунд <span class="timestamp">day_1: 00:41:00 - 00:59:00</span></h3>
+<p>Диагностика строится на последовательном погружении внимания оператора через слои тела, каждый из которых воспринимается как отдельный «этаж» перцепции: кожа, подкожная клетчатка, поверхностная фасция, поверхностная мышца, глубокая фасция, надкостница, кость (для висцеральных структур — соответствующие оболочки органа). Оператору не нужно «открывать» все слои сразу — как ящик кухонного шкафчика, к нему обращаются только тогда, когда нужно что-то оттуда взять.</p>
+<div class="hand-position">
+<strong>Поиск «недышащего участка»:</strong> Здоровая ткань под рукой обладает микроколебаниями (ритмом). Зона симпатического поражения («зона ритмической непроходимости») ощущается как тишина: фасция не смещается ни в одном из направлений. Найдя такой участок, оператор через ингибицию определяет, какой из нескольких кандидатов является наиболее актуальным (наименее «дышащим»), и работает именно с ним — не с местом боли или наиболее выраженного напряжения.
+            </div>
+<p><strong>Принцип цепочки и приоритета дисфункций:</strong> Актуальная дисфункция не всегда совпадает с зоной жалобы. Пример из практики: при головной боли и напряжении в шее актуальная дисфункция может находиться в кончике большого пальца стопы (защемление нерва и сосуда), тогда как более выраженное напряжение подъёма стопы или пятки будет вторичным (компенсаторным) и отвлекающим. Кисти и стопы как начальные/конечные звенья сгибательных и разгибательных цепей несут наибольшую нагрузку и чаще всего являются источником восходящих проблем (артриты, артрозы отдалённых суставов).</p>
+<div class="note">
+<strong>«Датчики» и их перезагрузка:</strong> Каждый участок ткани содержит рецепторы («датчики»), реагирующие на травму фиксацией и уплотнением (фиброзом). Работа оператора — «перезагрузить» датчик: показать телу через ритмичное сопровождение (методика трёх Т — погружение, растяжение, скручивание, «настоянный релиз») эталонный ритм, вернуть ткань к нормальной микроподвижности. При этом разрушаются патологические связи фиксации, уходит отёк, нормализуется тонус симпатической/парасимпатической иннервации данной зоны. Внутрикостные датчики считаются наиболее значимыми, так как перезагружают саму костную структуру (кость — часть кроветворной системы).
+            </div>
+<p><strong>Правило трёх секунд:</strong> Диагностическое прикосновение должно быть быстрым — 1, 2, 3 — и доверять нужно первому ощущению. Более длительное удержание руки на структуре запускает процесс коррекции прямо во время диагностики (ткань начинает отвечать на резонанс присутствия оператора), из-за чего повторная пальпация даёт уже искажённую, «подправленную» информацию. Диагностику рекомендуется перепроверять несколькими независимыми способами (например, вторым тестом или через другую структуру), а не полагаться на единственный результат.</p>
+<div class="tip">
+<strong>Приём «визуализации» асимметрии:</strong> Закрыв глаза после расслабления мышцы или выхода на кость, можно мысленно «увидеть» структуру — скрученность, разность размеров половин (например, двух ног или двух половин черепа) указывает на внутрикостную дисфункцию. Рекомендуется доверять этому ощущению, не додумывая его, а также «спрашивать» орган или структуру напрямую (вена, артерия, лимфа) и ждать ответной реакции тканей.
+            </div>
+</div>
+<div class="test-card" id="vector-terminology">
+<h3>Терминология направлений воздействия (векторы) <span class="timestamp">day_1: 01:25:01 - 01:30:10</span></h3>
+<p>Для точной постановки задачи руке оператор использует стандартные анатомические направления. Направление определяется не тем, где стоит оператор, а тем, куда «смотрит» вектор относительно тела пациента:</p>
+<ul class="content-list">
+<li><strong>Краниальное:</strong> направление к голове.</li>
+<li><strong>Каудальное:</strong> направление к хвосту / копчику / ногам.</li>
+<li><strong>Вентральное:</strong> направление кпереди (к передней поверхности тела).</li>
+<li><strong>Дорзальное:</strong> направление кзади, к спине/позвоночнику.</li>
+<li><strong>Латеральное:</strong> направление наружу.</li>
+<li><strong>Медиальное:</strong> направление внутрь, к срединной линии.</li>
+<li><strong>Дистальное:</strong> направление от центра к периферии (конечности).</li>
+<li><strong>Проксимальное:</strong> направление от периферии к центру.</li>
+<li><strong>Сагиттальное:</strong> плоскость «в профиль».</li>
+<li><strong>Фронтальное:</strong> плоскость «анфас».</li>
+</ul>
+<div class="note">«Краниальная рука» — это не рука, привязанная к конкретной руке оператора, а та рука, которая в данный момент расположена ближе к голове пациента; при смене стороны, с которой стоит оператор, краниальной становится другая рука. Направление вектора не означает физическое вытягивание структуры — оператор задаёт намерение («ладонь смотрит туда»), и ткань отвечает сама. В школе также принято обозначать пальцы оператора по номерам (первый—пятый), а не названиями, для однозначности инструкций («первый палец на большое крыло клиновидной кости»).</div>
+</div>
+<div class="test-card" id="session-structure">
+<h3>Структура остеопатического сеанса и принцип ненавязывания <span class="timestamp">day_1: 01:34:10 - 01:38:08</span></h3>
+<blockquote>«Ваши пальцы должны быть думающими. Именно паузы между нотами создают симфонию» — Уильям Гарнер Сазерленд, основоположник краниальной концепции.</blockquote>
+<p>Сеанс остеопатической работы строится по принципу связного повествования и должен содержать три части: вводную (сбор информации, настройка на пациента), центральную (основная диагностика и коррекция) и заключительную (завершение, стабилизация состояния) — по аналогии с композицией текста или юридического договора («шапка» — предмет — заключение).</p>
+<div class="note">
+<strong>Принцип ненавязывания:</strong> Задача оператора — не навязать пациенту собственную программу знаний и собственное желание вылечить, а бережно выслушать тело и дать ему то, в чём оно нуждается. Чрезмерное форсирование известных оператору техник на каждом пациенте вне зависимости от его актуального состояния снижает эффективность работы и вызывает сопротивление тела.
+            </div>
+<p><strong>Ожидания пациента от сеанса:</strong> Пациент приходит с одним из трёх исходов — получил меньше, получил то, что хотел, или получил больше, чем ожидал. Задача оператора — работать с намерением, чтобы пациент получил больше ожидаемого, объясняя при этом, что хронические, годами копившиеся дисфункции не устраняются за один сеанс.</p>
+<div class="tip">
+<strong>Приём «белого экрана» при застревании релиза:</strong> Если эмоционально-тканевый релиз останавливается и не завершается сам собой, можно попросить пациента представить белый экран (или белый лист бумаги) и посмотреть, что на нём появляется — образ, цвет, форма — это помогает мозгу пациента символически завершить процесс отпускания и облегчает переход к разрешению зажима.
+            </div>
+<div class="note">
+<strong>Финальный ретест по окончании сеанса:</strong> После основной коррекции полезно повторно быстро пройтись по ключевым индикаторам, которые использовались в начале приёма (например, положение ключиц, сгибательный тест стоя, тест пятого поясничного позвонка при наклонах в стороны) — исчезновение исходной асимметрии подтверждает эффективность проведённой работы.
+            </div>
+</div>
+<div class="test-card" id="operator-attention">
+<h3>Алгоритм распределения внимания (Зоны А, B, C) <span class="timestamp">day_1: 02:49:02 - 03:18:02</span></h3>
+<p>Пальпаторная диагностика строится на распределении ресурсов внимания оператора по трем пространственным сферам:</p>
+<ul class="content-list">
+<li><span class="key-term">Зона А (Физическое тело):</span> Непосредственный физический контакт рук с кожей, фасциями или костными структурами пациента.</li>
+<li><span class="key-term">Зона B (Флюидическое тело):</span> Пространство на расстоянии 20–30 см вокруг тела пациента, отражающее его тонкие фасциальные натяжения и волновые ритмы.</li>
+<li><span class="key-term">Зона C (Пространство кабинета):</span> Границы комнаты, используемые для диссоциации от локального шума и удержания нейтральности.</li>
+</ul>
+<div class="hand-position">
+<strong>Практический алгоритм сонастройки:</strong> 
+                Опустите фокус внимания в нижний даньтянь (на два поперечных пальца ниже пупка). Удерживайте там 90% внимания. Направьте 10% внимания в зону А и B. Затем плавно распределите внимание: 50% удерживайте в даньтяне, 50% — в границах помещения (Зона С). Это снимает фоновый информационный шум и позволяет соприкасаться с тканями недеструктивно.
+            </div>
+<div class="hand-position">
+<strong>Развёрнутый протокол сонастройки по цепочке нервных сплетений (при 90% внимания в Зоне С):</strong>
+<ol>
+<li>Копчиковое нервное сплетение;</li>
+<li>Крестцово-подвздошное (тазовое) сплетение;</li>
+<li>Черепное сплетение;</li>
+<li>Кардиальное сплетение;</li>
+<li>Шейное сплетение (включая верхний шейный ганглий справа и слева);</li>
+<li>Таламус;</li>
+<li>Пространство над головой.</li>
+</ol>
+                На каждом пункте оператор удерживает 90% внимания в Зоне С и лишь 10% кратковременно направляет на соответствующее сплетение, затем возвращает внимание в зону С. После прохождения всей цепочки сплетения «узнают друг друга», формируя целостность собственного тела оператора, и только после этого 10% внимания переносится на зону пациента.
+            </div>
+<div class="tip">
+<strong>Проверка положения пациента перед сонастройкой:</strong> Оцените положение подбородка (не запрокинут ли он, нет ли скрутки), при необходимости подложите опору под крестец, чтобы избежать заваливания в экстензию черепа. Ось черепа и подбородок должны находиться на одной линии — пациенту предстоит лежать в этом положении длительное время.
+            </div>
+<p><strong>Практический приём для закрепления нейтральности вне сеанса:</strong> Повязать на запястье красную нить и носить её постоянно (снимая только на душ и сон) как напоминание о необходимости удерживать осознанность и нейтральность в течение дня.</p>
+</div>
+<!-- SECTION II -->
+<div class="category-divider" id="pdm-listening">
+<h2>II. Физиология и Прослушивание Первичного Дыхательного Механизма (ПДМ)</h2>
+<p class="category-description">Краниосакральный ритм, фазы движения костей и мембран взаимного натяжения, станции выслушивания и диагностика швов.</p>
+<div class="tip">
+<strong>Важное замечание по эргономике:</strong> Локти оператора при работе с черепом всегда должны иметь плотную опору на кушетку. Наклон корпуса вперед и провисание рук приводят к механическому давлению пальцев на ткани пациента, что блокирует тонкую перцепцию.
+            </div>
+</div>
+<div class="test-card" id="pdm-nature">
+<h3>Природа и параметры краниосакрального ритма <span class="timestamp">day_1: 01:41:09 - 02:48:00, day_3: 02:18:27 - 02:28:06</span></h3>
+<p>Первичный дыхательный механизм (ПДМ) — это непроизвольное микроколебательное движение, обусловленное циклической выработкой и обратным всасыванием ликвора в полузакрытой гидравлической системе ТМО. ПДМ имеет четыре ключевых параметра:</p>
+<ul class="content-list">
+<li><strong>Симметричность:</strong> Одинаковая амплитуда и направление движения парных костей или половин тела в фазах расширения и сжатия.</li>
+<li><strong>Качество:</strong> Плавность, текучесть и непрерывность движения. Прерывистость по типу «зубчатого колеса» указывает на фиксацию тканей.</li>
+<li><strong>Амплитуда:</strong> Глубина движения (в норме оценивается субъективно от 1 до 4 единиц).</li>
+<li><strong>Частота (интенсивность):</strong> В норме составляет от 6 до 12 циклов в минуту. Увеличение частоты свидетельствует о симпатикотонии, урежение — о снижении жизненного ресурса или глубоком расслаблении.</li>
+</ul>
+<div class="note">
+<h4>Пять элементов краниальной системы</h4>
+<p>Базовая модель, объясняющая работу ПДМ, включает пять взаимосвязанных элементов (перечисляются «изнутри наружу»):</p>
+<ol>
+<li>Ликвор (спинномозговая жидкость);</li>
+<li>Твёрдая мозговая оболочка (ТМО);</li>
+<li>Мембраны реципрокного (взаимного) натяжения — серп мозга и намёт мозжечка;</li>
+<li>Кости (черепа, крестца, всего скелета);</li>
+<li>Краниосакральное взаимоотношение — функциональная связь между черепом и крестцом.</li>
+</ol>
+</div>
+<div class="note">
+<strong>Пять мембран взаимного натяжения («пятикомнатная квартира»):</strong> Твёрдая мозговая оболочка в местах прикрепления к костям черепа образует раздвоение своих листков, формируя перегородки-мембраны: (1) большой серп мозга (falx cerebri) — разделяет полушария головного мозга, крепится от петушиного гребня (crista galli) до иниона; (2) малый серп мозжечка (falx cerebelli) — разделяет два полушария мозжечка; (3) намёт (палатка) мозжечка (tentorium cerebelli) — крепится по пирамидам височных костей; (4) диафрагма турецкого седла — окружает гипофизарную ямку (турецкое седло) в области СБС, гипофиз подвешен на «ножке» к этой мембране/серпу; (5) передняя дубликатура — дополнительная перегородка на уровне венечного (коронарного) шва, обеспечивающая правильное распределение ликвора. При хорошей ликвородинамике (полноценной флексии) мембраны расширяются синхронно с расширением костей свода. Тестирование состояния мембран выполняется разными видами захвата черепа (Сазерленда, Беккера, Мэгуна и др.), каждый из которых даёт свой ракурс оценки (вертикальное, медиальное, латеральное положение).
+            </div>
+<div class="warning">
+<strong>Клиническое значение смещения ножки гипофиза:</strong> Смещение клиновидной кости смещает гипофиз (через его подвешивающую «ножку» к диафрагме турецкого седла), нарушая центральную регуляцию всей эндокринной системы (щитовидная железа → тимус → надпочечники → поджелудочная железа → гонады) — тело в первую очередь «жертвует» нижним этажом этой цепи, что клинически может проявляться поликистозом яичников, ранним климаксом, нарушением фертильности, ранними простатитом/аднекситом. Нарушение мембран в целом также снижает венозный отток, ограничивает свободу выхода черепных нервов и нарушает артериальное кровообращение.
+            </div>
+<div class="note">
+<strong>Физиология ликвора:</strong> Вырабатывается сосудистыми (хориоидными) сплетениями желудочков головного мозга в объёме около 150 г (мл), проходит через систему желудочков (боковые → третий → водопровод мозга → четвёртый), поступает в субарахноидальное пространство и всасывается через пахионовы грануляции в венозные синусы. В норме продукция и реабсорбция ликвора создают непрерывное регулярное колебание давления внутри системы; нарушение этого баланса ведёт к дисфункциям, в первую очередь со стороны ЦНС, так как она заключена внутри краниальной системы. Искажение краниального ритма способно опосредованно влиять на артериальное давление и другие витальные ритмы организма, поскольку все ритмы тела взаимосвязаны.
+            </div>
+<div class="note">
+<strong>Три слоя ТМО и оболочки мозга:</strong> В работе с ТМО условно выделяют три слоя перцепции: первый слой опосредованно отражает состояние фасциальной и костной систем (при растяжении ТМО тело пациента «расплывается» на кушетке в релаксации); второй слой оператором не прорабатывается напрямую (его повреждение требует реанимационных мероприятий); третий слой позволяет через ТМО и спинномозговой канал определять фиксацию конкретных позвонков и связанных с ними органов (если при работе с органом фиксированный позвонок расслабляется — лечить нужно орган, а не позвонок). Отдельно от слоёв ТМО выделяют три оболочки головного мозга: твёрдая (ТМО, образует венозные синусы), паутинная (арахноидальная, участвует в циркуляции ликвора) и мягкая (содержит сосуды, питающие мозг вещество). Собственно с ликвородинамикой связаны в первую очередь ТМО и паутинная оболочка.
+            </div>
+<div class="hand-position">
+<strong>Прикрепления ТМО:</strong> Твёрдая мозговая оболочка фиксирована к швам свода черепа (через серп мозга и намёт мозжечка), вокруг большого затылочного отверстия, к зубовидному отростку С2 (аксис), к телам верхних шейных позвонков (условно С2–С3) и к копчику. Венозные синусы собирают около 95% венозного оттока от головы (оставшиеся 5% приходятся на прочие пути) и отводят кровь через ярёмные вены к сердцу — поэтому состояние ярёмной вены имеет ключевое значение, в том числе для эстетических эффектов работы с лицом.
+            </div>
+<div class="hand-position">
+<strong>Раскачивание дуральной трубы (диагностическое и лечебное значение):</strong> При тракции ТМО «на себя» от черепа к крестцу устраняются продольные фиксации оболочки в позвоночном канале; при тракции за крестец — поперечные фиксации. Если ликвор «прокручивается» через место сопротивления быстро — фиксация незначительна; если тяга проходит с трудом и медленно — за этим может стоять более глобальная проблема (плевра, позвонок, висцера), которую следует пометить для дальнейшего обследования. Регулярность, амплитуда и качество циркуляции ликвора — определяющий критерий эффективности всей краниальной работы.
+            </div>
+</div>
+<div class="test-card" id="listening-stations">
+<h3>Станции прослушивания КСР на теле пациента <span class="timestamp">day_1: 03:19:03 - 04:11:01</span></h3>
+<p>Прослушивание ритма на периферических и центральных станциях позволяет оценить проводимость краниосакрального импульса по телу:</p>
+<div class="hand-position">
+<strong>Станция 1: Пятки.</strong> Захватите пятки снизу плоскими ладонями. На вдохе ПДМ фасции совершают наружную ротацию, на выдохе — возвращаются во внутреннюю ротацию.
+            </div>
+<div class="hand-position">
+<strong>Станция 2: Голеностопные суставы.</strong> Руки обхватывают суставы с латеральной и медиальной сторон. На вдохе ткани смещаются краниально и ротируются наружу, на выдохе — каудально и вовнутрь.
+            </div>
+<div class="hand-position">
+<strong>Станция 3: Бедра.</strong> Ладони плоско укладываются на переднюю поверхность бедер. На вдохе оцениваем латеральное расширение и краниальный подъем.
+            </div>
+<div class="hand-position">
+<strong>Станция 4: Крестец.</strong> Одна рука оператора заводится под крестец (крестец лежит всей плоскостью на ладони). На вдохе (флексия) базис крестца смещается дорсально (назад/в кушетку), верхушка — вентрально (вперед), а копчик — каудально. Латеральные края кости расширяются.
+            </div>
+<div class="hand-position">
+<strong>Станция 5: Подвздошные кости.</strong> Тенары рук лежат на передне-верхних остях (SIPS). На вдохе крылья подвздошных костей расходятся латерально и смещаются краниально.
+            </div>
+<div class="hand-position">
+<strong>Станция 6: Грудобрюшная диафрагма.</strong> Ладони лежат на нижних реберных дугах по передне-боковым поверхностям. На вдохе ребра совершают наружную ротацию (расширение).
+            </div>
+<div class="hand-position">
+<strong>Станция 7: Грудная апертура.</strong> Захват «ожерелье» — первые пальцы сзади на Th1, вторые-пятые пальцы спереди на ключицах и первом ребре. На вдохе регистрируется краниальный подъем и латеральное расширение.
+            </div>
+<div class="hand-position">
+<strong>Станция 8: Затылочная кость.</strong> Ладони чашей под затылочной костью. Пальцы лежат строго на чешуе затылочной кости, не сжимая швы. На вдохе чешуя уходит дорсально-каудально (к кушетке) и расширяется латерально.
+            </div>
+<div class="breath-rhythm-grid">
+<div class="breath-phase breath-in">
+<span class="phase-title">ФАЗА ВДОХА (ФЛЕКСИЯ)</span>
+                    Сближение СБС, расширение поперечного размера черепа, уплощение свода, продольное укорочение, наружная ротация парных костей. Ликворная волна движется к крестцу.
+                </div>
+<div class="breath-phase breath-out">
+<span class="phase-title">ФАЗА ВЫДОХА (ЭКСТЕНЗИЯ)</span>
+                    Опущение СБС, сужение черепа по поперечной оси, удлинение продольного размера, внутренняя ротация парных костей. Ликвор возвращается в венозные синусы.
+                </div>
+</div>
+</div>
+<div class="test-card" id="sbs-dysfunctions">
+<h3>Дисфункции сфенобазилярного синхондроза (СБС) <span class="timestamp">day_1: 04:57:29 - 05:14:00, day_3: 02:29:00 - 03:04:00</span></h3>
+<p>СБС — главное сочленение основания черепа между телом клиновидной и базилярной частью затылочной кости. Выделяют два типа дисфункций:</p>
+<ul class="content-list">
+<li><span class="key-term">Физиологические дисфункции</span> (адаптивные, сохраняют ритм):
+                    <ul>
+<li><strong>Флексионная фиксация:</strong> СБС заблокирован в фазе вдоха (череп широкий, укороченный).</li>
+<li><strong>Экстензионная фиксация:</strong> СБС заблокирован в фазе выдоха (череп узкий, продольно вытянутый).</li>
+<li><strong>Торсия:</strong> Клиновидная и затылочная кости вращаются в противоположных направлениях вокруг продольной оси. Называется по стороне более высокого большого крыла клиновидной кости.</li>
+<li><strong>Боковой наклон с ротацией (Side-bending):</strong> Клин и затылок наклоняются в одну сторону и ротируются в противоположные. Вызывает асимметрию лица.</li>
+</ul>
+</li>
+<li><span class="key-term">Нефизиологические дисфункции</span> (травматические, блокируют КСР):
+                    <ul>
+<li><strong>Вертикальный стрейн (сдвиг):</strong> Клиновидная кость смещается вверх (высокий стрейн) или вниз (низкий стрейн) относительно затылочной кости.</li>
+<li><strong>Латеральный стрейн:</strong> Клиновидная кость смещается латерально (вправо или влево) относительно затылочной.</li>
+<li><strong>Компрессия СБС:</strong> Клин и затылок плотно сжаты друг с другом. КСР практически отсутствует, череп ощущается жестким монолитом.</li>
+</ul>
+</li>
+</ul>
+</div>
+<!-- SECTION III -->
+<div class="category-divider" id="skull-anatomy">
+<h2>III. Анатомия и Ориентиры Черепа</h2>
+<p class="category-description">Костный состав, деление на свод и основание, черепные ямки и отверстия, детальная анатомия отдельных костей, классификация швов и антропометрические точки.</p>
+</div>
+<div class="test-card" id="skull-composition">
+<h3>Состав, деление и функции черепа <span class="timestamp">day_1: 06:36:00 - 06:44:02, day_1: 07:35:00 - 07:46:05</span></h3>
+<p>Череп человека — костный каркас головы, выполняющий защитную функцию (вмещает и защищает от повреждений головной мозг и органы чувств) и опорную функцию (вместилище головного мозга, органов чувств, начальных отделов пищеварительной и дыхательной систем; подвижное сочленение с позвоночным столбом).</p>
+<ul class="content-list">
+<li><strong>Костный состав:</strong> 8 парных и 7 непарных костей мозгового и лицевого черепа, а также 3 пары слуховых косточек в полости среднего уха (молоточек, наковальня, стремя) и 32 зуба на верхней и нижней челюстях.</li>
+<li><strong>Лицевой отдел отдельно:</strong> 15 костей, из них 6 парных (верхняя челюсть, носовая, скуловая, слёзная, нёбная, нижняя носовая раковина) и 3 непарные (нижняя челюсть, сошник, подъязычная кость).</li>
+<li><strong>Функциональное деление:</strong> Мозговой череп (вмещает головной мозг: лобная, теменные, затылочная, височные, клиновидная, решётчатая кости) и лицевой череп (костная основа лица, начальные отделы пищеварительной и дыхательной трубок, вместилище органов чувств; изучается на третьем курсе).</li>
+<li><strong>Единственная подвижная кость черепа</strong> — нижняя челюсть, расположенная в зубных альвеолах и служащая для измельчения пищи.</li>
+<li><strong>Природа окостенения:</strong> Кости черепа бывают мембранозного, хрящевого или смешанного происхождения (например, затылочная кость: чешуя — мембранозного происхождения и формирует свод, нижняя часть — хрящевого происхождения и формирует основание).</li>
+<li><strong>Воздухоносные кости</strong> (содержат полости, выстланные слизистой оболочкой и заполненные воздухом): лобная, решётчатая, клиновидная, височная и верхняя челюсть.</li>
+</ul>
+<div class="hand-position">
+<strong>Строение свода черепа (диплоический слой):</strong> В костях свода различают наружную и внутреннюю компактные пластинки и расположенное между ними губчатое вещество (диплоя), пронизанное диплоическими венозными каналами. Наружная пластинка покрыта надкостницей, внутренняя — служит опорой для твёрдой мозговой оболочки.
+            </div>
+<div class="note">
+<strong>Мозговой череп разделён на две неравные части:</strong> свод (крыша черепа) и основание (внутреннее и наружное). Условная граница между сводом и основанием проходит от надглазничного края по скуловому отростку, над наружным слуховым отверстием, к затылочному выступу: всё, что лежит выше этой линии — свод, ниже — основание черепа.
+            </div>
+</div>
+<div class="test-card" id="cranial-fossae">
+<h3>Черепные ямки и отверстия основания черепа <span class="timestamp">day_1: 07:05:00 - 07:22:01, day_1: 07:57:13 - 07:57:13</span></h3>
+<p>Внутреннее основание черепа делится на переднюю, среднюю и заднюю черепные ямки.</p>
+<ul class="content-list">
+<li><strong>Передняя черепная ямка:</strong> область лобной и решётчатой костей. Через отверстия решётчатой пластинки сообщается с полостью носа (проводит обонятельные нити).</li>
+<li><strong>Средняя черепная ямка:</strong> залегает в области турецкого седла клиновидной кости (в котором расположен гипофиз) и по бокам от него. Через зрительный канал и верхнюю глазничную щель сообщается с полостью глазницы.</li>
+<li><strong>Задняя черепная ямка:</strong> область затылочной и височной костей. Сообщается с позвоночным каналом через большое затылочное отверстие.</li>
+</ul>
+<div class="hand-position">
+<strong>Верхняя глазничная щель</strong> (между малым и большим крылом клиновидной кости): через неё из полости черепа в орбиту проходят глазодвигательный нерв (III пара, иннервирует большинство наружных мышц глаза), блоковый нерв (IV пара, верхняя косая мышца), отводящий нерв (VI пара, латеральная прямая мышца), а также глазной нерв — первая (чувствительная) ветвь тройничного нерва (V пара, включает слёзный, лобный и носоресничный нервы и иннервирует, в числе прочего, слёзную железу), глазная вена и симпатические волокна. При поражении верхней ветви тройничного нерва возможны проблемы со слёзным каналом.
+            </div>
+<ul class="content-list">
+<li><strong>Круглое отверстие:</strong> верхнечелюстной нерв (II ветвь тройничного нерва).</li>
+<li><strong>Овальное отверстие:</strong> нижнечелюстной нерв (III ветвь тройничного нерва).</li>
+<li><strong>Сонный канал:</strong> внутренняя сонная артерия, восходящая к глазу и окружённая кавернозным синусом (отводит венозную кровь от глаза).</li>
+<li><strong>Рваное отверстие:</strong> между затылочной и клиновидной костями, закрыто хрящом; самостоятельного нейроваскулярного значения практически не имеет.</li>
+<li><strong>Ярёмное отверстие:</strong> выход языкоглоточного нерва (IX пара) — его нормальная функция важна для сосания и речи у детей; рядом также проходят структуры, связанные с яремной веной.</li>
+<li><strong>Канал подъязычного нерва:</strong> в базилярной части затылочной кости, рядом с глоточным бугорком; подъязычный нерв (XII пара) идёт далее к яремному отверстию.</li>
+<li><strong>Мыщелковый канал:</strong> в области затылочных мыщелков; фиксация в этой зоне приводит к поражению черепных нервов, выходящих из яремного отверстия — освобождение мыщелковой части (разведение затылочной и височной костей от сосцевидных отростков) — одна из базовых техник.</li>
+</ul>
+<div class="warning">
+<strong>Глоточный бугорок и фиксация пищевода:</strong> В этой зоне к затылочной кости прикрепляется глотка. Фиксация пищевода в этой области может проявляться нарушением осанки (прогибанием или наклоном), поскольку весь путь пищи — глотка → пищевод → желудок → ДПК → тонкий → толстый кишечник — сопровождается сфинктерами на каждой границе, и фиксация базилярной части затылочной кости отражается на работе всего пищеварительного тракта («живот сидит на затылке»).
+            </div>
+</div>
+<div class="test-card" id="skull-bones-detail">
+<h3>Анатомические особенности отдельных костей черепа <span class="timestamp">day_1: 06:36:00 - 08:25:06</span></h3>
+<div class="split-grid">
+<div>
+<h4>Затылочная кость</h4>
+<p>Непарная плоская симметричная кость смешанного (мембранозно-хрящевого) происхождения, состоит из чешуи, латеральных (мыщелковых) частей и базилярной части (тела). Соединяется с клиновидной (цефалически), теменными (вендрально/цефалически), височными (латерально) костями и с атлантом (каудально).</p>
+<ul class="content-list">
+<li>Ориентиры: борозда верхнего сагиттального синуса, внутренний затылочный выступ и гребень, большое затылочное отверстие, мыщелковый канал, борозда каменистого синуса, скат (базилярная часть), яремная вырезка и яремный бугорок (латеральная часть), затылочная ямка, борозда поперечного синуса, сток синусов (confluens sinuum).</li>
+</ul>
+<div class="warning">
+<strong>Клиническая связь с атлантом:</strong> При фиксации связок между затылочной костью и атлантом последний может смещаться под затылочную кость, вызывая смещение сосцевидного отростка. За боковыми массами атланта проходит петля позвоночной артерии (переходящей далее в базилярную артерию) — фиксация атланта способна нарушать сосудистое питание головного мозга. Рядом же в этой зоне (на уровне тройничного нерва) проходит большой затылочный нерв (нерв Арнольда) — при освобождении тройничного нерва рекомендуется дополнительно проверять и нерв Арнольда, так как между ними часто формируется взаимный «тормоз» (напряжение подзатылочных мышц, головные боли, скрученность черепа). Атлант сам по себе редко является первопричиной — прежде чем работать с ним напрямую, следует пропальпировать подзатылочные мышцы и оценить, действительно ли есть его смещение.
+                    </div>
+</div>
+<div>
+<h4>Височная кость</h4>
+<p>Состоит из трёх частей: чешуйчатой, барабанной и сосцевидной. Ориентиры: шиловидный отросток, наружное слуховое отверстие, сосцевидный отросток и вырезка, каменисто-чешуйчатая щель, барабанно-сосцевидная щель, нижнечелюстная (суставная) ямка, шилососцевидное отверстие (выход лицевого нерва, VII пара), яремное отверстие (под сосцевидным отростком).</p>
+</div>
+</div>
+<div class="split-grid">
+<div>
+<h4>Клиновидная кость</h4>
+<p>Форму сравнивают с летучей мышью или бабочкой. Соединяется практически со всеми костями черепа: затылочной, височными, теменными, лобной, решётчатой, нёбными, сошником (опосредованно) и скуловыми костями. С пирамидой височной кости соединяется через клиновидно-каменистую связку (связка Грубера) — грубую связку, сглаживающую движение ТМО между наклонёнными отростками клиновидной кости и каменистой частью височной кости, обеспечивающую мягкий ход СБС через связочный аппарат.</p>
+<div class="hand-position">
+<strong>Внутрикостная проработка тела клиновидной кости:</strong> После выхода на тело кости выполняется «помпаж» — попеременное жидкостное пропускание давления от одного большого крыла к другому; лёгкое прохождение говорит об отсутствии проблемы, застревание — о необходимости дальнейшей проработки до достижения однородного, ровного ощущения кости.
+                    </div>
+</div>
+<div>
+<h4>Лобная кость</h4>
+<p>Крупнейшая часть — лобная чешуя, в эмбриогенезе состоит из двух половин, соединённых метопическим швом (обычно зарастает к 5 годам; у части людей остаётся несросшимся на всю жизнь). Ориентиры: лобные бугры, надбровные дуги, глабелла («третья ванга» — площадка между надбровными дугами), носовая ость, надглазничный край и вырезка, ямка слёзной железы, борозда верхнего сагиттального синуса, скуловой отросток лобной кости (часто повреждается при травмах, особенно у детей).</p>
+</div>
+</div>
+<div class="split-grid">
+<div>
+<h4>Теменные кости</h4>
+<p>Парные несимметричные квадратные кости, часть свода черепа. Соединяются друг с другом сагиттальным швом, с затылочной костью — лямбдовидным швом, с височной — чешуйчатым швом, с лобной — коронарным (венечным) швом, с клиновидной — клиновидно-теменным швом.</p>
+</div>
+<div>
+<h4>Лицевые кости и сошник</h4>
+<p>Сошник образует основание перегородки носа, крепится сверху к решётчатой кости, снизу — к нёбу (стыкуется по принципу «шашлыка»: нёбо → сошник → решётка). При коррекции перегородки носа оператор работает двумя контактами, скручивая/раскручивая структуру в прямых и непрямых параметрах. Асимметрия сошника нередко визуально маскируется кажущейся кривизной лба — для объективной оценки нужно выставить центральную линию по лобным и теменным буграм.</p>
+</div>
+</div>
+</div>
+<div class="test-card" id="skull-sutures-landmarks">
+<h3>Швы черепа, стадии окостенения и антропометрические точки <span class="timestamp">day_1: 08:26:18 - 08:38:01</span></h3>
+<p>Каждый шов черепа функционально приближен к суставу: имеет капсулу (капсулярную оболочку), края костных пластин с надкостницей, эндокраниальные тяжи (шовные связки) и межшовную ткань, богатую сосудами, которая по функции сопоставима с синовиальной оболочкой (признаки истинного сустава по типу диартроза — суставные поверхности, суставная щель, суставная оболочка). Швы обеспечивают движение костей, амортизируют (пружинируют) удары и являются зонами наследственного костного роста.</p>
+<ul class="content-list">
+<li><strong>Основные швы:</strong> венечный (коронарный, между лобной и теменными костями), сагиттальный (между теменными костями), лямбдовидный (между теменными и затылочной костями), чешуйчатые швы (например, между чешуёй височной кости и теменной костью).</li>
+<li><strong>Синхондрозы основания черепа (три):</strong> сфенобазилярный (СБС, между клиновидной и затылочной костями), клиновидно-каменистый (sphenopetrosal) и каменисто-затылочный (petrooccipital).</li>
+<li><strong>Дополнительные швы:</strong> срединный нёбный шов, поперечный нёбный шов, клиновидно-чешуйчатый шов, скуло-верхнечелюстной шов, затылочно-сосцевидный, каменисто-ярёмный, теменно-сосцевидный, теменно-чешуйчатый швы.</li>
+</ul>
+<div class="note">
+<strong>Стадии развития швов (окостенения):</strong> синфиброз — от рождения до 6–7 лет (шов представлен соединительной тканью); синартроз — примерно с 6–7 до 70 лет (взрослая функциональная стадия, сохраняется подвижность); синостоз — после 70 лет (шов может частично срастаться, кроме СБС-синхондроза, который сохраняет хрящевую природу дольше остальных). Формирование костной ткани обеспечивают остеобласты (создание новой кости), остеокласты (резорбция) и остеоциты (поддержание жизнедеятельности зрелой кости); оссификация проходит через стадии развития костных пластинок, их встречи, шовного роста и шовной реорганизации.
+            </div>
+<div class="warning">
+<strong>Клиническое значение фиксации швов:</strong> Жёсткая фиксация двух костей друг с другом (потеря «пружинирования») повышает риск перелома при травме — удар не амортизируется швом. Фиксированный шов также блокирует полноценное движение мембран реципрокного натяжения, что может отражаться на всей краниосакральной системе, включая эндокринную ось (гипофиз, щитовидная железа, тимус, надпочечники, поджелудочная железа, гонады) через изменение положения намёта мозжечка и ножки гипофиза.
+            </div>
+<p><strong>Ключевые антропометрические точки (ориентиры) черепа:</strong></p>
+<ul class="content-list">
+<li><strong>Брегма (Bregma):</strong> точка встречи венечного и сагиттального швов.</li>
+<li><strong>Вертекс (Vertex):</strong> самая верхняя центральная точка свода черепа.</li>
+<li><strong>Лямбда (Lambda):</strong> точка встречи сагиттального и лямбдовидного швов.</li>
+<li><strong>Иньон (Inion):</strong> наружный затылочный выступ; ориентир для борозды поперечного синуса.</li>
+<li><strong>Назион (Nasion):</strong> точка стыка носовых косточек с лобной костью.</li>
+<li><strong>Глабелла (Glabella):</strong> гладкая площадка между надбровными дугами, чуть выше назиона.</li>
+<li><strong>Птерион (Pterion):</strong> точка встречи четырёх костей — лобной, теменной, клиновидной и височной; частая зона асимметрии при прослушивании краниального ритма.</li>
+<li><strong>Астерион (Asterion):</strong> точка встречи трёх костей — теменной, височной (сосцевидной части) и затылочной.</li>
+<li><strong>Гонион (Gonion):</strong> угол нижней челюсти.</li>
+<li><strong>Гнатион (Gnathion):</strong> нижняя точка подбородочной части нижней челюсти.</li>
+<li><strong>Простеон (Prosteon):</strong> верхняя точка альвеолярного края верхней челюсти.</li>
+</ul>
+<div class="tip">Для запоминания костей черепа в школе используется мнемоническая рифма: «Лоб, затылок, темя — два, клин, решётка, два виска, скулы, нос, сошник, нёбо, слёзы, подъязык, раковины — две, целый череп — голове».</div>
+</div>
+<!-- SECTION IV -->
+<div class="category-divider" id="diagnostics-somatic">
+<h2>IV. Остеопатическая Диагностика и Локальное Тестирование</h2>
+<p class="category-description">Методики выявления соматических дисфункций таза, поясничного отдела, шеи и черепа, тесты соосности и флексии.</p>
+</div>
+<div class="test-card" id="flexion-tests">
+<h3>Сгибательный (флексионный) тест стоя и сидя <span class="timestamp">day_2: 00:00:00 - 00:03:01</span></h3>
+<p>Тест предназначен для дифференциальной диагностики восходящих дисфункций (идущих от стоп и коленей) и нисходящих/тазовых фиксаций.</p>
+<div class="hand-position">
+<strong>Положение рук:</strong> Пальцы оператора жестко фиксируют задние верхние подвздошные ости (SIPS) пациента, предварительно взяв каудально-медиальный «кредит кожи».
+            </div>
+<ol>
+<li><strong>Тест стоя:</strong> Пациент медленно наклоняется вперед. Если одна из остей уходит краниально (вверх) раньше другой — тест положителен на стороне опережения, что указывает на блокировку крестцово-подвздошного сочленения (КПС) с этой стороны или на восходящую тягу от ноги.</li>
+<li><strong>Тест сидя:</strong> Пациент сидит на кушетке, согнув колени под углом 90 градусов (влияние ног исключено), и выполняет наклон вперед.
+                    <ul>
+<li>Если асимметрия остей исчезла — проблема носила <span class="key-term">восходящий характер</span> (первопричина в стопе, голени или колене).</li>
+<li>Если асимметрия сохранилась — дисфункция <span class="key-term">структуральная или висцеральная</span> на уровне таза/поясницы.</li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="test-card" id="psoas-diagnostics">
+<h3>Тестирование L5, ВНЧС и законы биомеханики <span class="timestamp">day_2: 00:04:01 - 00:07:01, day_2: 00:33:00 - 00:36:05</span></h3>
+<p>Исследование основано на законах Фриетта и сопряженности гравитационных позвонков C4 и L3 (концепция Литтлджона).</p>
+<div class="hand-position">
+<strong>Тест L5:</strong> Оператор фиксирует поперечные отростки L5. Пациент выполняет боковой наклон вправо. В норме левый поперечный отросток должен смещаться дорсально, а правый — уходить вентрально. Если отросток выталкивает палец оператора кзади, регистрируется блок ротации.
+            </div>
+<div class="hand-position">
+<strong>Тест сопряженности C4 и ВНЧС:</strong> Оператор фиксирует остистый отросток C4 одной рукой, а второй совершает пассивную латеральную трансляцию нижней челюсти пациента. Наличие жесткого ответа на уровне С4 указывает на сочетанный паттерн дисфункции ВНЧС.
+            </div>
+</div>
+<div class="test-card" id="foot-influence">
+<h3>Влияние стопы на таз и кости черепа <span class="timestamp">day_2: 00:14:01 - 00:23:00</span></h3>
+<p>Уплощение стопы and отек голеностопного сустава вызывают натяжение по спиральной или латеральной миофасциальной цепи, что приводит к наклону крестца и ротации подвздошной кости.</p>
+<div class="tip">
+<strong>Тест «выключения» стопы:</strong> Оператор проводит мягкий глубокий помпаж тыла стопы пациента, временно десенсибилизируя рецепторное поле. При этом оценивается положение ключиц и подвижность КПС во флексионном тесте. Если ключицы выравниваются, а тест флексии стоя становится отрицательным — стопа является первичной дисфункцией.
+            </div>
+</div>
+<div class="test-card" id="sequential-exclusion">
+<h3>Метод последовательного исключения зон и дифференциация «позвонок / висцера» <span class="timestamp">day_2: 00:09:03 - 00:32:01</span></h3>
+<p>При неоднозначной картине (несколько потенциальных источников дисфункции — например, обе стопы, колено и таз) применяется методичное сужение зоны поиска: поочерёдно временно «выключают» (десенсибилизируют лёгким глубоким помпажем) каждую подозреваемую зону — стопу, колено, тазобедренный сустав — и повторяют ключевой индикаторный тест (например, сгибательный тест или тест пятого поясничного позвонка). Регион, выключение которого нормализует индикаторный тест, признаётся первичным источником; остальные зоны считаются вторичными/компенсаторными.</p>
+<div class="note">
+<strong>Дифференциальный признак «позвонок vs. висцера»:</strong> Если положить пальцы на остистые отростки соседних позвонков и попросить пациента слегка наклониться вперёд, при истинной позвонковой фиксации пальцы остаются неподвижны относительно друг друга (единый жёсткий блок). Если же пальцы расходятся (позвонки продолжают отдаляться друг от друга при наклоне) — фиксация, скорее всего, имеет висцеральное происхождение, и причину следует искать в органе, связанном с этим уровнем позвоночника, а не в самом позвонке.
+            </div>
+<div class="hand-position">
+<strong>Тест влияния ВНЧС на подвздошные кости (через С1–С4):</strong> Оператор выходит на остистые отростки С1, С2, С3, С4 поочерёдно и одновременно пассивно поворачивает нижнюю челюсть пациента вправо-влево, оценивая, на каком из шейных позвонков появляется отчётливый ответ (тяга, сопротивление). Чаще всего связь замыкается через С4 («гравитационный» позвонок), который, в свою очередь, топографически соотносится с положением подвздошных костей — таким образом дисфункция ВНЧС может опосредованно влиять на таз, и наоборот.
+            </div>
+<div class="tip">
+<strong>Сила контакта при выходе на кость:</strong> Для полноценного внутрикостного контакта (в отличие от поверхностной, фасциальной или мышечной пальпации) требуется приложить ощутимое, но контролируемое давление — ориентировочно от 0,5 до 2 кг в зависимости от конкретной кости и её глубины залегания. Слишком поверхностный контакт даёт информацию о фасции и мышцах, а не о самой кости, и приводит к ложной диагностике.
+            </div>
+</div>
+<div class="test-card" id="radial-testing">
+<h3>Четырёхэтапный протокол регионарной диагностики (тест лучевого продвижения) <span class="timestamp">day_1: 00:00:04 - 00:01:11, day_1: 08:38:01 - 08:58:03, day_2: 02:35:01 - 02:37:02, day_2: 04:15:01 - 04:22:00</span></h3>
+<p>Универсальный алгоритм поиска актуальной дисфункции в любой анатомической области (таз, живот, грудная клетка, шея) состоит из четырёх последовательных этапов:</p>
+<ol>
+<li><strong>Двигательные пальпаторные тесты:</strong> Пациента просят мысленно (идеомоторно) представить движение исследуемой области — оператор оценивает симметричность и лёгкость ответа тканей на воображаемое движение.</li>
+<li><strong>Тесты провокации:</strong> Через вопросы, обращённые к пациенту, либо через цветовые/пищевые провокации выявляется эмоционально-значимая зона (см. карточку «Пищевые, эмоциональные и цветовые провокации»).</li>
+<li><strong>Тест лучевого продвижения (радиальный тест):</strong> Оператор поочерёдно устанавливает пальцы в несколько симметрично расположенных точек вокруг диагностируемой области (например, для таза — ости подвздошных костей, лобковый симфиз, седалищные бугры) и от каждой точки мысленно проводит «луч» вглубь тела по направлению максимального тканевого натяжения. Точка, где сходится наибольшее количество лучей от разных исходных точек, считается актуальным центром дисфункции.</li>
+<li><strong>Ингибиция (инактивация) найденной точки:</strong> Найденная точка мягко компрессируется/удерживается (ингибируется). Если после этого повторный радиальный тест из тех же точек больше не «стягивается» к этому месту, а расходится на новые точки — это может означать наличие более глубокой вторичной дисфункции, которую нужно найти повторением протокола. Когда истинный центр найден, к нему применяется соответствующая прямая или непрямая техника релиза.</li>
+</ol>
+<div class="tip">
+<strong>Приём «мысленного среза» (аналогия с МРТ):</strong> При работе с объёмными структурами (например, брюшной полостью) можно мысленно «просвечивать» область слоями, как будто просматривая срезы МРТ этаж за этажом, отмечая, на каком уровне ощущение сопротивления или дискомфорта максимально — это помогает точнее локализовать актуальную дисфункцию в глубине тела, а не только на поверхности.
+            </div>
+<div class="note">
+<strong>Эталонная цепочка ориентиров для таза:</strong> крестец–подвздошная кость, крестец–большой вертел, крестец–лонное сочленение, крестец–паховая связка, крестец–седалищный бугор, крестцово-бугорная связка, сам крестец, копчик, L5, обе половины урогенитальной диафрагмы, сухожильное (центральное) ядро промежности. Опрос каждой точки на предмет направления тяги позволяет построить карту зон и найти точку схождения.
+            </div>
+<div class="note">
+<strong>Эталонная цепочка ориентиров для грудного отдела/живота:</strong> грудина (рукоятка, тело, мечевидный отросток), нижние рёбра (справа/слева), передне-боковая поверхность живота, грудные и поясничные позвонки, эпигастрий, рёберные дуги, подвздошные кости, паховые связки, лонное сочленение, каждый поясничный позвонок, крестец. Аналогичным образом строится цепочка для верхнего квадранта (см. карточку «Радиальный тест верхнего квадранта»).
+            </div>
+<div class="note">
+<strong>Доверие интуитивному ощущению:</strong> Преподаватель подчёркивает необходимость доверять первому непосредственному тканевому ощущению, даже если оно противоречит клинической картине или ожиданиям — уточняющая диагностика (в том числе инструментальная, по показаниям) не отменяет ценности пальпаторного вывода, а дополняет его.
+            </div>
+</div>
+<div class="test-card" id="pelvic-structural-battery">
+<h3>Комплексный протокол структурных тестов таза <span class="timestamp">day_2: 00:38:02 - 01:19:57, day_2: 02:00:22 - 02:23:04</span></h3>
+<p>Полная батарея ортопедических тестов таза, выполняемая последовательно (пациент лёжа на спине, если не указано иное):</p>
+<ul class="content-list">
+<li><strong>Тест длины ног:</strong> Сравнение по лодыжкам (более информативно) и пяткам лёжа; при сомнении — повтор в положении сидя. Если асимметрия в положении сидя исчезает, укорочение, скорее всего, не структурное (мышечное, фасциальное), а не истинное анатомическое.</li>
+<li><strong>Тест отведения бедра (Патрика/FABER):</strong> Фиксация одной подвздошной кости, сгибание и отведение ноги с той же стороны с опорой стопы на противоположное колено; сравнение с другой стороной.</li>
+<li><strong>Тест лонного сочленения (тест ходьбы):</strong> Пальцы фиксируют лонный симфиз; пациент имитирует стопами шаги ходьбы. Появление движения под пальцами на симфизе указывает на его нестабильность/дисфункцию.</li>
+<li><strong>Тест пружинирования нижних конечностей:</strong> Быстрое ритмичное пружинящее давление от стопы к бедру; оценивается прохождение волны и точка, где она «застревает».</li>
+<li><strong>Тест паховых связок:</strong> Захват связки, смещение в кранио-каудальном направлении; напряжённая связка не смещается.</li>
+<li><strong>Тест крестцово-бугорных связок:</strong> Пальпация связки между седалищным бугром и крестцом с обеих сторон, сравнение степени напряжения.</li>
+<li><strong>Тест подвижности КПС (пружинирование):</strong> Одна рука под крестцом, другая пружинирует на подвздошной кости с обеих сторон (выполнимо также в положении на животе, тогда обе руки — на крестце и на подвздошной кости).</li>
+<li><strong>Тест урогенитальной диафрагмы:</strong> Колени согнуты и сведены вместе, стопы соединены; пальпация с обеих сторон промежности между седалищными ветвями на предмет симметричного/асимметричного сопротивления.</li>
+<li><strong>Тест ротации таза (подвздошных костей):</strong> Захват обеих подвздошных костей, синхронная ротация в противоположных направлениях, оценка симметрии ответа.</li>
+<li><strong>Позиция копчика и позиция крестца (тракционный тест):</strong> Рука под крестцом, лёгкая тракция — оценивается направление, в которое «утягивает» крестец.</li>
+<li><strong>Тест сухожильного (центрального) ядра промежности:</strong> Пациент самостоятельно закрывает вход во влагалище/подтягивает половые органы; оценивается направление тяги от этой структуры.</li>
+<li><strong>Большой висцеральный маневр малого таза:</strong> Оператор глубоко захватывает фасциальный пакет органов малого таза двумя руками и попеременно скручивает его в одну и другую сторону, каждый раз переставляя руки в направлении, куда его «уводит», пока направление не начнёт возвращаться в противоположную сторону — точка схождения векторов маркирует зону дисфункции (висцеральный аналог теста лучевого продвижения).</li>
+</ul>
+<div class="tip">
+<strong>Тест ротации через нижнечелюстной сустав как маркер таза:</strong> Может выполняться сидя рядом с пациентом: краниальная рука под крестцом, каудальная — на лоне и чуть выше лона; выйти на ощущение всех тканей таза целиком, включая глубокие структуры, перед переходом к провокационному блоку.
+            </div>
+</div>
+<div class="test-card" id="pelvic-provocation-battery">
+<h3>Провокационный протокол таза (двигательные, физиологические, цветовые провокации) <span class="timestamp">day_2: 00:50:01 - 01:08:00, day_2: 02:24:00 - 02:34:02</span></h3>
+<p>Руки оператора: краниальная — под крестцом, каудальная — на лоне/чуть выше лона. Пациента последовательно просят ярко, во всех подробностях, мысленно представить (не выполнять физически) следующие категории событий, отслеживая направление и появление тканевой тяги после каждого пункта:</p>
+<ul class="content-list">
+<li><strong>Физиологические движения:</strong> сгибание, разгибание, наклоны в стороны, прыжки на месте, бег, поднятие тяжестей, характерная поза обострения (индивидуальная для пациента), махи ногами (левой/правой).</li>
+<li><strong>Физиологические акты:</strong> мочеиспускание (частое/редкое, разной интенсивности), половой акт, у женщин — овуляция, менструация, беременность, роды; у мужчин — состояние предстательной железы и других органов малого таза.</li>
+<li><strong>Травматические/болезненные эпизоды:</strong> боль в крестце, копчике (в т.ч. травмы копчика), тазобедренных суставах, пояснице; перенесённые заболевания — цистит, простатит, нефрит, патология почек, непроходимость труб, сальпингит, оофорит (аднексит), патология яичников, геморрой.</li>
+<li><strong>Психоэмоциональные и травматические ситуации:</strong> сексуальные травматические эпизоды, эпизоды насилия (прямого или опосредованного), предательство, болезненные разрывы отношений, отношения с матерью, отношения с отцом.</li>
+<li><strong>Цветовые провокации:</strong> красный (угроза жизни), оранжевый (угроза сексуальной сферы), жёлтый (угроза личности/эго), зелёный (угроза сфере любви), голубой (угроза самовыражению), синий (угроза картине мира), фиолетовый (угроза духовной сфере).</li>
+</ul>
+<p>После каждого блока фиксируется («помечается» маркером на теле или на диагностическом листе), в какую зону приходит тканевая тяга. По завершении всего протокола зоны, отмеченные многократно из разных категорий, группируются и подвергаются радиальному тестированию (см. карточку «Тест лучевого продвижения») для нахождения точной точки дисфункции внутри найденного региона.</p>
+<div class="note">
+<strong>Диагностическая ценность:</strong> Метод особенно полезен, когда прямой сбор анамнеза затруднён (пациент не может или не хочет вербализовать проблему) — тело «показывает» зону вовлечения раньше, чем пациент успевает её осознать или сформулировать.
+            </div>
+</div>
+<div class="test-card" id="shoulder-neck-hyoid-tests">
+<h3>Структурные тесты плечевого пояса, шеи и подъязычного комплекса <span class="timestamp">day_2: 04:52:01 - 05:10:04, day_2: 06:46:00 - 06:53:00</span></h3>
+<ul class="content-list">
+<li><strong>Тест подъёма ключицы:</strong> Взять «кредит кожи», погрузиться пальцами вентрально под ключицу и приподнять её, сместить в разных направлениях. Оценивается подвижность грудино-ключичного и акромиально-ключичного суставов; отмечается, к какому концу ключицы (грудинному или акромиальному) уходит вектор жёсткости. Свободное скольжение ключицы важно для венозного оттока (близость сосудисто-нервного пучка).</li>
+<li><strong>Тест пружинирования первого ребра:</strong> Погрузиться пальцами под ключицу в проекции первого ребра (небольшой треугольник у грудино-ключичного сочленения), выполнить пружинирующее надавливание. Рядом проходят сосудисто-нервный пучок и звёздчатый (шейно-грудной) ганглий — требуется осторожность.</li>
+<li><strong>Трансляция висцеральной шеи:</strong> Оператор становится сбоку, охватывает шею целиком по объёму (включая позвонки, глотку, трахею, сосудисто-нервные структуры, не сдавливая дыхание) и смещает вправо-влево, вверх-вниз, отмечая сторону лёгкого смещения (дисфункция).</li>
+<li><strong>Тест соосности структур шеи:</strong> Щипковым захватом (1–2 пальцы) последовательно сравнивается положение: ключицы и перстневидного хряща; ключицы и щитовидной железы; ключицы и подъязычной кости (ориентир — линия от уголков губ вниз); ключицы и нижней челюсти. Асимметрия и тяга между парами структур помечаются.</li>
+<li><strong>Тест подъёма подъязычной кости:</strong> Захват и лёгкий подъём подъязычной кости; сторона ограничения указывает на локальную фиксацию.</li>
+<li><strong>Тест натяжения мышц подъязычной кости:</strong> Оценивается тяга от подъязычной кости к грудине/ключице (грудино-подъязычная мышца), к лопатке (лопаточно-подъязычная мышца), к нижней челюсти, к височной кости (шиловидный и сосцевидный отростки).</li>
+<li><strong>Тест ротации С2:</strong> Палец устанавливается на остистый отросток С2, голова пациента пассивно поворачивается вправо и влево; сравнивается объём и качество движения.</li>
+</ul>
+</div>
+<div class="test-card" id="upper-quadrant-radial-testing">
+<h3>Радиальный тест верхнего квадранта (Т4/D4 и шейно-грудной переход) <span class="timestamp">day_2: 06:12:00 - 06:29:20, day_2: 07:12:00 - 07:25:00</span></h3>
+<div class="hand-position">
+<strong>Идентификация Т4 (D4):</strong> Два способа: (1) визуально — по уровню нижнего угла лопаток; (2) счётом остистых отростков от «выступающего позвонка» (vertebra prominens): выполняется сгибание шеи — позвонок, палец на котором «уходит вслед за шеей», является С7; следующий за ним книзу — Т1, и далее по счёту до Т4.
+            </div>
+<p>Одна рука фиксируется на Т4 (либо на шейно-грудном переходе, если тяга оттуда была выраженнее на предыдущем этапе), другая последовательно перемещается по цепочке ориентиров, отмечая направление тяги от каждой точки: ключицы, лопатки, плечевые суставы, рёбра (по зонам), рукоятка и тело грудины, мечевидный отросток, остальные позвонки грудного отдела, шейно-грудной переход, шейные позвонки и мышцы шеи (снизу вверх к черепу), височные кости, нижняя челюсть, подъязычная кость, щитовидная железа, боковые поверхности шеи, решётчатая кость (через основание носа), затылочная кость.</p>
+<p>Расширенная цепочка (от С2, С1, С3, С7 как альтернативных опорных точек): ключицы, лопатки, плечевые суставы, трахея, подъязычная кость, нижняя челюсть, щитовидная железа, височные кости, решётчатая кость, носовые косточки, затылочная кость, ВНЧС, скуловые кости, лобная кость, теменные кости, сошник/нёбо (через технику «шашлыка» — послойное прецепторное прохождение сошник→нёбо), сосцевидный и барабанный отделы височной кости.</p>
+<div class="note">
+<strong>Провокационный блок верхнего квадранта:</strong> Пациента просят представить физиологические движения грудного отдела и шеи (сгибание, разгибание, ротацию, наклоны), нагрузку на сердце, глубокое дыхание, кашель, пение, глотание; вспомнить болевые эпизоды (грудной отдел, шея, подлопаточная зона, плечевой сустав, рука, рёбра, простреливающие боли, головные боли всех локализаций, боль в глазах, зубную боль); перенесённые заболевания (бронхолёгочные — COVID, ОРВИ, ОРЗ, бронхит, пневмония, бронхиальная астма; ЛОР — ангина, фарингит, ларингит, гайморит, отит; стоматологические манипуляции; сердечно-сосудистые — аритмии, панические атаки, ишемическая болезнь, артериальная гипертензия, тахикардия); травмы шеи и черепа (хлыстовая травма, травма ныряльщика, удары по голове, сотрясения); интоксикации (недосып, похмелье, отравление угарным газом); психоэмоциональные факторы (нагрузка на сердце, лица близких/врагов); цветовые провокации по полному спектру.
+            </div>
+<div class="hand-position">
+<strong>Тест купола черепа (дополнительный ориентир головной боли):</strong> Одна рука подзатылочно в районе иньона (верхняя выйная линия), другая поперечно на лобной кости; пациента просят представить движения шеи, а также перечисленные выше провокации, отслеживая тягу к лобной, затылочной или височным костям.
+            </div>
+</div>
+<div class="test-card" id="specialized-cranial-tests">
+<h3>Специализированные краниальные тесты: С2, квадранты черепа, серп и намёт <span class="timestamp">day_2: 06:55:00 - 07:11:01</span></h3>
+<ul class="content-list">
+<li><strong>Тест «кив-закив» (ротация черепа):</strong> Захватить череп двумя руками, попросить пациента мысленно, без физической помощи, представить поворот черепа в одну и другую сторону (важно: ротация именно черепа, а не шеи). Сравнивается лёгкость движения в каждую сторону.</li>
+<li><strong>Подвижность ВНЧС (наблюдение открывания рта):</strong> Зафиксировать ВНЧС в области скулового отростка, попросить пациента медленно открывать рот, наблюдая за траекторией движения нижней челюсти — плавная дуга в норме, ступенчатое или смещающееся в конце движение указывает на дисфункцию сустава/менисков.</li>
+<li><strong>Тест СБС в классическом захвате Сазерленда:</strong> Точная постановка пальцев — вторые пальцы на больших крыльях клиновидной кости, третьи пальцы в наружном слуховом проходе (в ухе), четвёртые — позади (на сосцевидных отростках), пятые пальцы — на затылочной кости, первые пальцы — вдоль сагиттального шва. На вдохе (флексии) вторые и пятые пальцы сближаются, на выдохе (экстензии) — отдаляются.</li>
+<li><strong>Тест ротации височных костей (захват «бабочка»):</strong> Третий палец в наружном слуховом проходе, первый и второй пальцы захватывают скуловой отросток височной кости; оценивается независимая ротация каждой височной кости.</li>
+<li><strong>Боковой захват (вариант захвата Беккера):</strong> Одна рука под затылочной костью, другая на крыльях клиновидной кости — позволяет одновременно оценить и затылочную кость, и натяжение намёта мозжечка.</li>
+</ul>
+<div class="hand-position">
+<strong>Тест квадрантов черепа (дифференциация «тело vs. череп»):</strong> Руки последовательно устанавливаются на лобные, затем затылочные, затем височные квадранты черепа, и оценивается характер тяги:
+                <ul class="content-list">
+<li>Длинная, мягко растяжимая тяга — источник дисфункции находится в теле (для лобных квадрантов — чаще в грудной клетке или животе; для затылочных — чаще в спине).</li>
+<li>Короткая, жёсткая, плохо растяжимая тяга — дисфункция находится непосредственно в самом черепе (правило: чем ближе к истинной дисфункции, тем короче и жёстче ощущается тяга).</li>
+<li>Асимметричное (неровное) положение самих квадрантов относительно друг друга — дополнительно указывает на регион тела (грудная клетка/живот для лобных, спина для затылочных квадрантов).</li>
+<li>Височные кости в передней ротации — тяга из грудной клетки; в задней ротации — тяга из спины; одновременное смещение обеих височных костей к крестцу — вероятна дисфункция и спереди, и сзади одновременно.</li>
+</ul>
+</div>
+<div class="hand-position">
+<strong>Диагностика через С7 и С2 (уточнение уровня дисфункции):</strong> Пальцы устанавливаются на остистый отросток С7: если тяга уходит книзу (в сторону, вперёд к грудине) — источник ищут ниже С7 (грудной отдел); если тяга уходит кверху — палец переставляют на С2 и повторяют оценку: тяга от С2 книзу указывает на шейный уровень; тяга от С2 в сторону черепа — источник, вероятно, в самом черепе.
+            </div>
+<div class="hand-position">
+<strong>Пальпация серпа мозга и намёта мозжечка:</strong> От С2 пройти к прикреплению ТМО на гребне (crista galli) вдоль серпа мозга, отмечая зоны «залипания» (ограничения скольжения) по всей его длине; дополнительно пропальпировать большое затылочное отверстие на предмет плотности. Прикрепление намёта мозжечка исследуется в области пирамиды височной кости и верхней выйной линии (зона прохождения венозных синусов) — оценивается натяжение мембраны в этой зоне.
+            </div>
+<div class="note">
+<strong>Ключевая роль С2 в провокационном тестировании:</strong> С2 (аксис, зубовидный отросток) несёт около 70% объёма ротации шеи и служит одной из точек прикрепления ТМО, что делает его удобной опорной точкой для последующего провокационного блока (см. карточку «Радиальный тест верхнего квадранта»).
+            </div>
+</div>
+<!-- SECTION V -->
+<div class="category-divider" id="visceral-biomechanics">
+<h2>V. Висцеральная Биомеханика и Тестирование Брюшной Полости</h2>
+<p class="category-description">Методы пальпации внутренних органов, сфинктеров, брыжеек и диафрагм. Провокационные тесты.</p>
+</div>
+<div class="test-card" id="psoas-release">
+<h3>Пошаговый релиз пояснично-подвздошной мышцы (m. iliopsoas) <span class="timestamp">day_2: 03:25:01 - 03:31:00</span></h3>
+<p>Спазм пояснично-подвздошной мышцы фиксирует подвздошную кость в задней ротации, утягивает почечную фасцию и сдавливает мочеточник.</p>
+<ol>
+<li><strong>Поясничная часть:</strong> Оператор укладывает пальцы латерально от прямой мышцы живота, берет медиальный «кредит кожи» и глубоко погружается в направлении тел позвонков L1–L3. Выполняется мягкое растяжение ткани по оси до расслабления.</li>
+<li><strong>Подвздошная часть:</strong> Пальцы оператора устанавливаются в подвздошную ямку по внутренней костной стенке крыла подвздошной кости. Выполняется прижатие и каудально-латеральное растяжение мышцы.</li>
+<li><strong>Тракционный релиз с рычагом ноги:</strong> Оператор фиксирует брюшко поясничной мышцы в животе. Вторая рука выводит согнутую ногу пациента за край кушетки (вывешивание). Создавая мягкую тракцию за бедро, оператор следует за вектором тканевого скручивания до релиза.</li>
+</ol>
+</div>
+<div class="test-card" id="abdominal-maneuver">
+<h3>Протокол пальпации живота и большой висцеральный маневр <span class="timestamp">day_2: 03:32:11 - 03:50:00</span></h3>
+<p>Дисфункции пояснично-подвздошной мышцы могут отражать состояние слепой кишки, сигмовидной кишки, почек, мочеточников, маточных труб, яичников, матки, простаты и других тазовых/забрюшинных структур.</p>
+<div class="hand-position">
+<strong>Тест позиции пупка:</strong> Оператор мягко смещает пупок вверх, вниз, вправо, влево, оценивая направление, в котором ткани «стремятся» его увести. Тест не стопроцентно достоверен сам по себе, но добавляет диагностический балл к общей картине.
+            </div>
+<div class="hand-position">
+<strong>Общий протокол пальпации живота:</strong> Сначала — поверхностный слой (мышцы передней брюшной стенки, триггерные точки сфинктеров), затем более глубокое погружение с оценкой петель тонкого и толстого кишечника, нижнего края печени (пациента просят сделать вдох у рёберной дуги справа — выход печени за край рёбер на вдохе является неблагоприятным признаком), желчного и селезёночного триггеров. Найденные болезненные/жёсткие зоны помечаются для дальнейшей работы.
+            </div>
+<div class="hand-position">
+<strong>Большой висцеральный маневр живота (метод текучих векторов):</strong> Оператор глубоко погружается в брюшину (не на поверхности кожи/подкожной клетчатки, а именно в брюшину) двумя руками выше и ниже пупка (либо на всём протяжении живота, минуя органы малого таза) и попеременно скручивает ткань в одну и другую сторону. Направление, в которое уводит руки, показывает вектор натяжения; оператор переставляет руки в направлении уведения и повторяет скручивание. Процедура продолжается до тех пор, пока направление не начнёт возвращаться в противоположную сторону — это означает, что найдена точка схождения двух векторов (дисфункция), независимо от того, с какой стартовой точки было начато движение.
+            </div>
+<div class="note">
+<strong>Механика метода:</strong> В направлении, где локализуется дисфункция, ткань идёт «легко» (соответствует непрямым параметрам техники — движение в сторону наименьшего сопротивления вначале), поэтому оператора все начальные вращения как бы «уводит» в сторону проблемы; когда обе полудуги вращения (по и против часовой стрелки от разных стартовых точек) сходятся в одной области и начинают «отражаться» назад — это и есть искомая точка. При обнаружении двух зон-кандидатов их можно попеременно сжать друг к другу: та, что расслабляется — не актуальна; та, что остаётся жёсткой — прорабатывается дальше методом послойного погружения до нахождения точки максимальной «непроходимости».
+            </div>
+</div>
+<div class="test-card" id="visceral-triggers">
+<h3>Проекция и клиническое значение висцеральных триггеров <span class="timestamp">day_2: 03:51:01 - 04:06:08</span></h3>
+<p>Болезненность и уплотнение в проекционных зонах указывают на функциональные нарушения органов брюшной полости:</p>
+<ul class="content-list">
+<li><strong>Правая реберная дуга:</strong> Дисфункция печени, желчного пузыря, общего протока.</li>
+<li><strong>Левая реберная дуга:</strong> Дисфункция желудка, селезенки, хвоста поджелудочной железы.</li>
+<li><strong>Правая подключичная точка (Георгиевского-Мюсси):</strong> Капсула печени (френикус-симптом). 
+                    <div class="tip"><em>Дифференциация:</em> Если при боли в этой точке приподнять печень краниально и боль утихает — дисфункция висцеральная. Если боль не меняется — проблема в шее (шейное сплетение).</div>
+</li>
+<li><strong>Точка Кера (желчный пузырь):</strong> Пересечение правой среднеключичной линии с реберной дугой.</li>
+<li><strong>Пилорический триггер (привратник):</strong> Эпигастрий правее средней линии, под мечевидным отростком.</li>
+<li><strong>Сфинктер Одди:</strong> На границе верхней и средней трети линии от пупка к правой реберной дуге.</li>
+<li><strong>Дуоденоеюнальный переход:</strong> На 2-3 см выше пупка и слегка левее средней линии.</li>
+<li><strong>Илеоцекальный клапан (Баугиниева заслонка):</strong> Точка Мак-Бурнея (граница средней и наружной трети линии от пупка к передней ости правой подвздошной кости). 
+                    <div class="warning"><em>Клинический маркер:</em> Открытое состояние (несостоятельность) вызывает СИБР, метеоризм и интоксикацию. Закрытое состояние (спазм) — упорные запоры, ротацию подвздошной кости и боли в КПС.</div>
+</li>
+<li><strong>Клапан сигмовидной кишки:</strong> Симметрично слева между пупком и левой остью подвздошной кости.</li>
+<li><strong>Корень брыжейки:</strong> По косой линии от левого подреберья к правому КПС забрюшинно.</li>
+</ul>
+</div>
+<div class="test-card" id="provocations-food">
+<h3>Пищевые, эмоциональные и цветовые провокации <span class="timestamp">day_1: 00:04:04 - 00:40:00, day_2: 04:07:00 - 04:14:00</span></h3>
+<p>Для выявления латентных дисфункций оператор укладывает подсвечивающую руку под L3 или Th12-L1, а вторую руку плоско на живот пациента. Пациента просят мысленно представить:</p>
+<ul class="content-list">
+<li><strong>Употребление жирной пищи:</strong> Провокация печени и желчного пузыря.</li>
+<li><strong>Употребление острого, алкоголя, сладкого:</strong> Нагрузка на поджелудочную железу и ДПК.</li>
+<li><strong>Употребление кислого:</strong> Реакция желудка.</li>
+<li><strong>Употребление соленого:</strong> Нагрузка на почки и надпочечники.</li>
+<li><strong>Цветовые провокации (полный спектр — семь цветов):</strong> Представление цветов по очереди, отслеживая возникновение тканевого сжатия/тяги под рукой: Красный — угроза жизни; Оранжевый — угроза сексуальной сфере (тазовая область неприкосновенна, не только прямое насилие); Жёлтый — угроза свободе воли, личности, её подавление; Зелёный — угроза эмоциональной сфере, любви.</li>
+<li><strong>Голубой:</strong> Угроза самовыражению («ком в горле») — ребёнка заставили замолчать, не поверили ему, когда он хотел что-то сказать, не дали высказаться, либо ещё и оклеветали.</li>
+<li><strong>Синий:</strong> Угроза картине мира — ребёнок искренне во что-то верил, и кто-то это разрушил, сформировав глубокий разрыв шаблонов («мир — это ложь», угроза надеждам и мечтам). Такие люди часто внешне выглядят нормально, но глубоко замыкаются в себе — работать с этим слоем особенно тяжело, так как повреждение «зашито» глубоко.</li>
+<li><strong>Фиолетовый:</strong> Угроза духовной сфере личности. При воспоминании или представлении значимых для пациента поражений (в любой из семи категорий) в связанной зоне тела появляется тканевая тяга — это используется как диагностический маркер.</li>
+</ul>
+<div class="note">
+<strong>Клиническая расшифровка красной, оранжевой и жёлтой провокаций:</strong>
+<ul class="content-list">
+<li><strong>Красный (угроза жизни):</strong> Актуализируется через реальные или воображаемые ситуации прямой угрозы существованию — аварии, тяжёлые заболевания, насилие, потеря близких. Даёт наиболее выраженную и быструю тканевую реакцию.</li>
+<li><strong>Оранжевый (угроза сексуальности/личных границ):</strong> Актуализируется даже через субъективно «незначительные» на первый взгляд ситуации нарушения телесных границ (неуместное прикосновение, некорректный осмотр), не обязательно связанные с явным насилием.</li>
+<li><strong>Жёлтый (угроза личности/эго):</strong> Связан с подавлением воли и индивидуальности, чаще всего формируется в детстве через директивное, обесценивающее воспитание («будь как я сказал», подавление собственных желаний ребёнка родителями).</li>
+</ul>
+</div>
+<div class="tip">
+<strong>Биотипы (ознакомительно, подробно — на профильном модуле курса):</strong> Преподаватель обозначает связь характерного телесного паттерна с типом психологической защиты: «мужской» биотип (гиперконтроль, характерная асимметрия походки, дисфункция затылочной кости и перикарда), «женский»/«подавленный ребёнок» биотип (дисфункция в области солнечного сплетения), «детский» биотип (дисфункция в области таза). Эти паттерны рассматриваются как ориентировочные, требующие дальнейшего уточнения на последующих ступенях обучения.
+            </div>
+</div>
+<div class="test-card" id="chest-biomechanics">
+<h3>Биомеханика грудной клетки, диафрагма и тест связок перикарда <span class="timestamp">day_2: 05:11:07 - 05:31:00, day_2: 05:32:05 - 05:54:01</span></h3>
+<p>Отрицательное внутригрудное давление обеспечивает венозный возврат и лимфоотток. Спаечные процессы плевры после воспалений блокируют подвижность ребер.</p>
+<div class="hand-position">
+<strong>Тест растяжимости корней легких:</strong> Установите пальцы парастернально во 2-3 межреберьях с обеих сторон. Выполните глубокое погружение в средостение и разведите руки латерально. Ограничение движения указывает на спаечный процесс медиастинальной плевры.
+            </div>
+<div class="hand-position">
+<strong>Тест качания грудины (связки перикарда):</strong> Положите ладони одна на другую на тело грудины, погрузитесь до костного уровня. Выполняйте раскачивание грудины в трех плоскостях. Ограничение продольного скольжения указывает на натяжение стерно-перикардиальных связок, поперечного — на напряжение плевры.
+            </div>
+<div class="note">
+<strong>Физиология каскада давления в полостях тела:</strong> В грудной полости в норме отрицательное давление (около −5), необходимое для присасывающего эффекта на вдохе (раскрытие рёбер, работа диафрагмы, аналогия с банкой компота: при герметичной крышке ягоды всплывают, при разгерметизации давление меняется и они опускаются). Ниже, в брюшной полости, давление становится положительным и постепенно нарастает (порядка +5, затем к тазу — до +35 и глубже, в тазовой диафрагме, до +80). Нарушение этого градиента (недостаточное отрицательное давление в грудной клетке или превращение его в положительное) может приводить к опущению внутренних органов (висцероптозу).
+            </div>
+<div class="hand-position">
+<strong>Дифференциальный тест купола и ножек диафрагмы:</strong> Захватываются одновременно купол диафрагмы (со стороны рёберной дуги) и одна из ножек диафрагмы (глубоко паравертебрально), затем ткани мягко растягиваются друг относительно друга; сторона, где растяжение идёт хуже, указывает на дисфункцию. Дополнительно — в положении сидя пальцы устанавливаются паравертебрально на уровне L1–L2–L3, выполняется глубокое погружение до ножек диафрагмы, пациента просят сделать вдох и выдох: усиление плотности и болезненности на вдохе указывает на дисфункцию этой ножки. В положении лёжа/стоя оценивается симметричность подъёма купола на вдохе и его опускания на выдохе: отсутствие подъёма на вдохе чаще говорит о дисфункции грудной клетки; отсутствие опускания на выдохе — о дисфункции в шейном отделе (зона прикрепления купола диафрагмы к С7–Т1).
+            </div>
+<div class="warning">
+<strong>Дифференциация причин жёсткости ребра:</strong> Жёсткость/деформация ребра может быть обусловлена (1) травматическим смещением ребра из рёберно-позвоночного сустава с формированием внутрикостной дисфункции — хорошо поддаётся внутрикостной коррекции; (2) фиксацией межрёберных мышц в сочетании со спайкой париетальной плевры — более сложный случай, требующий техник «смежных цилиндров» (разделение двух не склеенных в норме фасциальных слоёв, например межрёберных мышц и париетальной плевры лёгкого, с последующим введением в непрямые параметры; кашель пациента во время техники помогает освобождению) и «вложенных цилиндров» (изучаются на четвёртом курсе).
+            </div>
+<div class="hand-position">
+<strong>Коррекция смещённого ребра дыханием:</strong> Руки устанавливаются в пронацию или супинацию в зависимости от того, «утоплено» ребро или «торчит»; утопленное ребро приподнимают на вдохе, торчащее — мягко вправляют на выдохе, следуя дыхательному циклу пациента.
+            </div>
+<div class="hand-position">
+<strong>Тест «заднего кармана» (сегментарная подвижность грудного отдела, сидя):</strong> Пациент сидит, оператор фиксирует его корпус подмышкой/предплечьем («задний карман») и выходит пальцами на остистые отростки поочерёдно, оценивая ротацию, сгибание, разгибание и боковые наклоны на каждом уровне:
+                <ul class="content-list">
+<li><strong>Верхнегрудной отдел (Т1–Т4):</strong> Руки пациента заведены за затылок, оператор обхватывает его через подмышечную область.</li>
+<li><strong>Среднегрудной отдел (Т5–Т8):</strong> Руки пациента скрещены на груди, оператор обхватывает его аналогичным образом ниже.</li>
+<li><strong>Нижнегрудной отдел (Т5/Т9–Т11):</strong> Фиксация через локтевой захват ниже, с опорой корпуса пациента на бедро оператора.</li>
+</ul>
+                На каждом уровне позвонок должен свободно «крутиться» во всех направлениях; фиксированные (не отвечающие на все виды движения) позвонки помечаются для дальнейшей проработки.
+            </div>
+</div>
+<!-- SECTION VI -->
+<div class="category-divider" id="cranial-nerves">
+<h2>VI. Черепные Нервы и Их Остеопатическая Коррекция</h2>
+<p class="category-description">Топография, ядра, диагностика и высвобождение 12 пар черепных нервов из костных каналов.</p>
+</div>
+<div class="test-card" id="nerves-diagnostics">
+<h3>Клиническая диагностика 12 пар черепных нервов <span class="timestamp">day_4: 01:38:22 - 03:27:04</span></h3>
+<p>Компрессия нервов в костных отверстиях основания черепа вызывает специфическую симптоматику:</p>
+<ul class="content-list">
+<li><strong>I. Обонятельный:</strong> Тестируем различение запахов. Зависит от подвижности решётчатой кости (на которую, в свою очередь, может влиять положение копчика).</li>
+<li><strong>II. Зрительный:</strong> Тестируем поля зрения (пациент смотрит прямо, предмет вводится в поле зрения с боков/сверху/снизу), симметрию зрения, растяжимость нерва (растягиваем глазное яблоко вентрально и латерально, наблюдая зону сетчатки), подвижность костей глазницы и растяжимость связки Цинна. Поражение вызывает сужение полей зрения. Нервы верхней глазничной щели (III, IV, V, VI) дополнительно тестируются растяжением глазного яблока вентро-каудально; отдельно оценивается подвижность между лобной костью с малыми крыльями клина и большими крыльями.</li>
+<li><strong>III. Глазодвигательный:</strong> Иннервирует мышцы глаза и зрачок, а также волокна аккомодации, цилиарного рефлекса, состояния зрачка. Поражение: птоз, расходящееся косоглазие, диплопия, мидриаз, нарушение прямой и содружественной реакции на свет (в норме при закрытии ладонью здорового глаза зрачок другого расширяется, при открытии — сужается), паралич аккомодации (ухудшение зрения вблизи) либо спазм аккомодации при раздражении нерва, паралич конвергенции (палец оператора приближается по средней линии между глаз — в норме глаза сводятся внутрь), экзофтальм.</li>
+<li><strong>IV. Блоковый:</strong> Верхняя косая мышца. Поражение: отклонение глазного яблока кверху и немного кнутри, двоение при взгляде вниз.</li>
+<li><strong>V. Тройничный:</strong> Смешанный нерв — чувствительность лица и зубов (передняя и средняя черепная ямка — головная боль при поражении), вегетативная функция (симпатика из верхнегрудного отдела — тонус сосудов лица; поражение даёт отёчность, истончение кожи, язвы, пигментацию), парасимпатические волокна лицевого нерва в составе крыло-нёбного ганглия (сухость во рту, кровоточивость дёсен, изъязвления при поражении), двигательная иннервация жевательной мускулатуры (смещение нижней челюсти, часто в сторону поражения из-за слабости крыловидной мышцы, тризм или отвисание челюсти, нарушение артикуляции). Тестируем: кожную чувствительность в симметричных зонах; три точки выхода нерва — надбровье, верхняя и нижняя челюсть (отёчность, плотность, болезненность); ВНЧС и напряжение жевательных мышц; височные кости в классическом захвате (ограничение подвижности на стороне поражения).</li>
+<li><strong>VI. Отводящий:</strong> Латеральная прямая мышца. Поражение: сходящееся косоглазие, диплопия с головокружением (исчезает при закрытии одного глаза).</li>
+<li><strong>VII. Лицевой:</strong> Двигательная иннервация мимических мышц; чувствительная иннервация передних 2/3 языка (кислое/сладкое/солёное); парасимпатика к слёзным и слюнным железам; мигательный и корнеальный рефлексы. Поражение: асимметрия лица (усиливается при мимических пробах), симптом Белла (глазная щель не закрывается, глаз заворачивается кверху, видна полоска склеры), невозможность изолированно прикрыть глаз, контрактура длительно обездвиженных мышц. Тестирование: мимические пробы (наморщить лоб, поднять брови, наморщить нос, улыбнуться, оскалиться, надуть щёки — на стороне поражения щека «парусит»); пальпация тонуса мимических мышц (гипотония либо фиброз при хроническом течении); тестирование шилососцевидного отверстия (скользим поверхностно, захватываем нерв под плотной оболочкой, растягиваем от височной кости и от лица, затем оцениваем внутрикостную плотность зоны); прослеживание хода нерва на лице.</li>
+<li><strong>VIII. Преддверно-улитковый:</strong> Слух и равновесие. Поражение: тугоухость (тестируем восприятие щелчка у ушной раковины, затем костную проводимость постукиванием по сосцевидному отростку), нистагм, нарушение равновесия — поза Ромберга (стопы вместе/одна за другой, руки вперёд или в стороны, глаза закрыты; падение только в одну сторону указывает на поражение мозжечка с этой стороны — компрессия затылочной кости, намёта, позвоночной артерии), обмороки с головокружением.</li>
+<li><strong>IX. Языкоглоточный:</strong> Движение глоточно-гортанных мышц, глоточный и нёбный рефлекс, вкус задней трети языка, чувствительность нёба/миндалин/евстахиевой трубы/барабанной полости, парасимпатика к околоушным железам, контроль сонного гломуса (анализатора мозгового кровотока и АД — при поражении скачки давления). Диагностируется вместе с блуждающим и добавочным нервом (нервы яремного отверстия). Поражение (вместе с блуждающим): дисфагия (ком в горле, срыгивание, поперхивание), дисфония, дизартрия.</li>
+<li><strong>X. Блуждающий:</strong> Двигательная иннервация мягкого нёба/глотки/гортани/пищевода; парасимпатика бронхов (спазм или дилатация), желудка и кишечника (активация перистальтики либо парез/запор), секреции желудка и поджелудочной железы; урежение пульса; чувствительность нижней части глотки/гортани, кожи за ухом, части наружного слухового канала, барабанной перепонки и ТМО задней черепной ямки (затылочные головные боли). Поражение: дискинезия, парез кишечника, бронхоспазмы, срыгивание, метеоризм, беспокойный сон.</li>
+<li><strong>XI. Добавочный:</strong> Иннервирует ГКСМ и трапециевидную мышцы, участвует в повороте головы, подъёме плеча/ключицы, приведении лопатки к позвоночнику. Одно ядро — в продолговатом мозге, второе — на уровне С1–С5 в шее; нерв поднимается через БЗО и выходит через яремное отверстие. Чутко реагирует на травмы шеи, в т.ч. родовые. Поражение: возможны как парез (слабость мышц), так и спастика (гипертонус); кривошея, крыловидная лопатка, слабость трапеции, невозможность пожать плечами. Тестируем: силу поворота головы в противоположную сторону, наклона, сгибания; фиксируем надплечья и просим пациента поднять плечи, оценивая слабость.</li>
+<li><strong>XII. Подъязычный:</strong> Иннервирует верхние подъязычные мышцы и мышцы языка. Выходит из канала в районе мыщелков затылочной кости (при поражении — расширяем БЗО). Поражение: при высовывании язык отклоняется в здоровую сторону (где мышцы остались сильными); у детей — нарушение речи, невыговаривание звуков. Дополнительно растягиваем язык в разные стороны, оценивая силу мышц дна полости рта.</li>
+</ul>
+<div class="hand-position">
+<strong>Исследование яремного отверстия (нервы IX, X, XI):</strong> Пальцы оператора устанавливаются между шиловидным и сосцевидным отростками и углом нижней челюсти, движемся вглубь тканей по направлению к яремному отверстию до встречи с плотной оболочкой нервов. Перцепторно захватываем нервы, продёргиваем их сначала из отверстия, затем из тела. Одна рука захватывает затылочную кость, другая — височную (классически либо через сосцевидный отросток), растягивая яремное отверстие.
+            </div>
+</div>
+<div class="test-card" id="nerves-testing-listening">
+<h3>Дополнительные ориентиры: линии симметрии и тестирование мембран мозга <span class="timestamp">day_4: 06:12:10 - 06:23:01</span></h3>
+<div class="hand-position">
+<strong>Бивестибулярная линия (мозговой череп):</strong> Вторые пальцы устанавливаются перпендикулярно черепу в ямки за ушными раковинами; продлеваем виртуальную ось между пальцами. Несовпадение линии указывает на вероятные проблемы мозгового черепа (височные кости в смещении/противоротации).
+            </div>
+<div class="hand-position">
+<strong>Скуловая линия (лицевой череп):</strong> Вторые пальцы устанавливаются в ямки под скуловыми костями по боковой поверхности; продлеваем линию. Несовпадение указывает на вероятные проблемы лицевого черепа.
+            </div>
+<div class="hand-position">
+<strong>Тестирование натяжения мембран мозга (серп, намёт):</strong> Вторые-пятые пальцы устанавливаются с двух сторон от иниона в проекции намёта мозжечка, первые пальцы — с двух сторон от сагиттального шва в проекции серпа мозга. Раскрываем намёт кнаружи, толкаем серп лобно-каудально, растягивая мембраны друг относительно друга. Появившиеся зоны напряжения указывают на дисфункцию. Ориентировочная связь: блокировка на уровне С2 — смотреть решётчатую кость; блокировка на уровне С3 — смотреть сошник.
+            </div>
+</div>
+<div class="test-card" id="nerves-release">
+<h3>Техники высвобождения нервных стволов из каналов <span class="timestamp">day_4: 03:47:00 - 05:22:00</span></h3>
+<div class="hand-position">
+<strong>Высвобождение тройничного нерва (три точки):</strong> Оператор находит точки выхода ветвей на лице (надглазничная вырезка, подглазничное отверстие, подбородочное отверстие). Пальцы устанавливаются вокруг отверстия, берется «кредит кожи», оператор погружается внутрикостно и концентрически растягивает ткани, освобождая костное устье.
+            </div>
+<div class="hand-position">
+<strong>Высвобождение шилососцевидного отверстия (Лицевой нерв):</strong> Второй и третий пальцы устанавливаются между сосцевидным и шиловидным отростками височной кости. Оператор погружается вглубь, разводит пальцы латерально, расширяя отверстие, и перцепторно продергивает нерв кнаружи.
+            </div>
+<div class="hand-position">
+<strong>Освобождение яремного отверстия (IX, X, XI пары):</strong> Одна рука фиксирует затылочную кость вблизи отверстия, вторая захватывает височную кость за сосцевидный отросток. Оператор латерально растягивает височную кость относительно затылочной, раскрывая яремное отверстие. Внимание направлено на продергивание плотных оболочек пучка нервов.
+            </div>
+</div>
+<!-- SECTION VII -->
+<div class="category-divider" id="venous-sinuses">
+<h2>VII. Протокол Коррекции Венозных Синусов и ТМО</h2>
+<p class="category-description">Методики дренажа ликвора и венозной крови из полости черепа. Анатомия синусов и пошаговый протокол.</p>
+</div>
+<div class="test-card" id="arnold-nerve-technique">
+<h3>Техника релиза большого затылочного нерва (нерва Арнольда) <span class="timestamp">day_3: 01:10:00 - 01:16:07</span></h3>
+<p>Большой затылочный нерв выходит примерно на уровне второго шейного позвонка, приблизительно в 1,5 см от средней линии, и часто анатомически тесно связан с ветвями тройничного нерва (в первую очередь верхней/глазной ветвью) в подкожной зоне затылка — их взаимное напряжение способно провоцировать головные боли в затылочной области, ощущение сжатия лобной кости и отёчность/напряжение вокруг глаз.</p>
+<div class="hand-position">
+<strong>Протокол пальпации и индукции:</strong>
+<ol>
+<li>Расслабить подзатылочные (шейные) мышцы послойно, погружаясь до кости.</li>
+<li>Найти точку выхода нерва (~1,5 см от средней линии на уровне С2) — в норме слегка болезненна при пальпации.</li>
+<li>Оценить подвижность нерва в трёх плоскостях (краниально-каудально, вправо-влево, и «в глубину»); сравнить с противоположной стороной.</li>
+<li>Выполнить мягкую индукцию: кончиком пальца слегка подтягивать нерв «на себя» и отпускать, повторяя ритмично («игра» с нервом), пока не появится ощущение уменьшения плотности тканей и снижения локального отёка.</li>
+<li>Проверить связь с верхней ветвью тройничного нерва через область верхней глазничной щели; при наличии связи — мягко продолжить вытяжение до ощущения расхождения структур и расслабления затылочной и теменных костей.</li>
+</ol>
+</div>
+<div class="tip">
+<strong>Косвенный диагностический признак:</strong> Смещение фасции шеи с одной стороны (при пассивном движении вверх-вниз, вправо-влево) может не поддаваться движению — это указывает на возможное вовлечение не только мышцы, но и связок, костной скрученности или нервного ствола в этой зоне.
+            </div>
+</div>
+<div class="test-card" id="venous-anatomy">
+<h3>Анатомия венозного оттока и ликвородинамики <span class="timestamp">day_3: 00:00:00 - 01:22:04</span></h3>
+<p>Около 95% венозной крови оттекает из полости черепа через венозные синусы ТМО, которые переходят во внутренние яремные вены на уровне яремных отверстий. Синусы не имеют клапанов и мышечной стенки; их просвет напрямую зависит от натяжения ТМО и свободы черепных швов.</p>
+<ul class="content-list">
+<li><strong>Confluens sinuum (Инион):</strong> Синусный сток, точка слияния верхнего сагиттального, поперечного, прямого и затылочного синусов.</li>
+<li><strong>Поперечные синусы:</strong> Проходят вдоль внутренней борозды чешуи затылочной кости по верхней выйной линии.</li>
+<li><strong>Сигмовидные синусы:</strong> Пересекают затылочно-сосцевидный шов и уходят в яремные отверстия.</li>
+<li><strong>Кавернозный (пещеристый) синус:</strong> Окружает турецкое седло. При его застое повышается внутриглазное давление, возникает отек век и ретробульбарная боль.</li>
+<li><strong>Крыловидное (венозное) сплетение:</strong> Глубокая венозная сеть лица между ветвью нижней челюсти и крыловидными мышцами; отток идёт по венам верхней челюсти. Напрямую сообщается с кавернозным синусом ТМО через височную кость.</li>
+</ul>
+<div class="warning">
+<strong>Важное правило безопасности:</strong> Дренаж венозных синусов всегда выполняется в направлении снизу вверх (оттока). Перед началом работы с синусами черепа необходимо обязательно раскрыть грудную апертуру и освободить большое затылочное отверстие! В противном случае застойная ликворная волна спровоцирует приступ острой головной боли. Из-за прямой связи крыловидного сплетения с кавернозным синусом гнойные процессы на лице (в частности, выдавливание прыщей в этой зоне) представляют реальную опасность восходящего распространения инфекции с риском воспаления твёрдой мозговой оболочки.
+            </div>
+<div class="note">
+<strong>Швы, требующие проверки/раскрытия перед протоколом дренажа:</strong> сагиттальный (несёт верхний сагиттальный синус — главный приоритет), метопический (при незаращении также содержит венозный канал), лямбдовидный, венечный, чешуйчатый, затылочно-сосцевидный, теменно-височный (зона птериона), а также швы вокруг клиновидной кости и тестирование орбиты (глазницы) — эти же точки многократно повторяются в разных протоколах («техника шашлыка»: носовая перегородка → сошник → решётка → СБС → затылочная кость).
+            </div>
+<div class="tip">
+<strong>Восходящие и нисходящие дисфункции (напоминание):</strong> Восходящая дисфункция — истинная причина расположена ниже (например, плоско-вальгусная стопа опосредованно влияет на положение решётчатой кости и натяжение серпа мозга через восходящую фасциальную/костную цепь: закон Литтлджона связывает Т4 и L3 с положением костей таза, коленей, стоп и ВНЧС). Нисходящая дисфункция — причина расположена выше и «спускается» вниз по телу. У взрослых актуальные (не компенсаторные) дисфункции чаще имеют восходящий характер.
+            </div>
+<div class="note">
+<strong>Правило 72 часов после любой остеопатической процедуры:</strong> В течение как минимум трёх суток после сеанса (любого, не только венозных синусов) не рекомендуются другие интенсивные телесные манипуляции (массаж, мануальная терапия и т.п.) — организм в этот период продолжает самостоятельно перерабатывать полученный импульс; вмешательство извне может «обнулить» эффект и вернуть тело к исходному состоянию. Расслабляющие, немануальные процедуры (тёплая ванна с солью и подобное) допустимы.
+            </div>
+</div>
+<div class="test-card" id="cervical-differential-diagnosis">
+<h3>Дифференциальная диагностика фиксации шейных позвонков (сравнение поперечных отростков) <span class="timestamp">day_3: 04:15:00 - 04:22:00</span></h3>
+<div class="hand-position">
+<strong>Метод:</strong> Установить средний палец одной руки на поперечный отросток исследуемого позвонка (например, С2), средний палец другой руки — на поперечный отросток соседнего позвонка (С3). Попросить пациента медленно разогнуть шею (прогнуться): если пальцы «выровнялись» относительно друг друга — верхний позвонок (С2) зафиксирован с нижним (С3) в экстензии. Затем попросить согнуть шею: если при сгибании пальцы, наоборот, расходятся ещё сильнее — это подтверждает фиксацию во флексии для другого позвонка пары. Сравнение ответа при сгибании и разгибании позволяет однозначно определить, какой из двух позвонков зафиксирован и в каком положении.
+            </div>
+<div class="note">
+<strong>Логика коррекции:</strong> Если пара застряла в экстензии — коррекция выполняется во флексии (и наоборот). Из двух позвонков один фиксируется рукой как опорный (например, средний палец на С2, без активных действий этой рукой), а второй (С3) выводится вектором в положение, противоположное фиксации, до появления самостоятельной раскрутки тканей (внутрикостный жидкостный эффект) — оператор лишь удерживает вектор и ждёт.
+            </div>
+<div class="tip">
+<strong>Дифференциация уровня диафрагмального напряжения через С7/С2:</strong> Установить палец на остистый отросток С7 и определить направление тяги: если тяга уходит книзу (к руке/грудной клетке) — фиксация ниже С7 (грудной уровень, связки купола плевры). Если тяга уходит кверху — палец переносится на С2: тяга от С2 книзу указывает на средние шейные позвонки (возможное вовлечение диафрагмального нерва); тяга от С2 кверху — источник, вероятно, в самом черепе.
+            </div>
+</div>
+<div class="test-card" id="sacrococcygeal-ligament-release">
+<h3>Релиз связок крестца и копчика (принцип саморазворачивания) <span class="timestamp">day_3: 04:34:00 - 04:57:04</span></h3>
+<p>У крестца и копчика выделяют три ключевые связки, определяющие его мобильность: крестцово-подвздошная, крестцово-остистая и крестцово-бугорная (с каждой стороны).</p>
+<div class="hand-position">
+<strong>Протокол:</strong>
+<ol>
+<li>Выполнить компрессию подвздошных костей с обеих сторон, оценить внутрикостное состояние крестца.</li>
+<li>Вывести крестец вектором краниально (к затылку), создавая натяжение крестцово-бугорных и крестцово-остистых связок; удерживать вектор без активных манипуляций.</li>
+<li>Дождаться, пока связки начнут раскручиваться самостоятельно — сначала с одной стороны, затем с другой; крестец может начать вращаться то по часовой, то против часовой стрелки в своей собственной последовательности, «выбирая», какая связка более жёсткая на данный момент, и освобождая их одну за другой.</li>
+<li>Дождаться полного завершения саморазворачивания (важно не форсировать и не прерывать процесс раньше времени) — после этого проверить и, при необходимости, доработать внутрикостно оставшиеся локальные фиксации (часто ощущаемые как отдельная плотная точка, «гвоздь», на теле крестца).</li>
+</ol>
+</div>
+<div class="note">
+<strong>Предварительное условие:</strong> Для полноценного раскрытия связок крестца важно заранее освободить тазовую диафрагму, урогенитальную диафрагму и центральное сухожильное ядро промежности — без этого связки могут не раскрыться до конца даже при правильном выполнении техники.
+            </div>
+</div>
+<div class="test-card" id="sinuses-steps">
+<h3>Пошаговый протокол дренажа венозных синусов (общий метод раскрытия швов + приоритетные структуры) <span class="timestamp">day_3: 05:00:08 - 05:08:02, day_3: 05:45:02 - 08:28:25</span></h3>
+<div class="note">
+<strong>Общая техника раскрытия любого шва (концентрический метод):</strong> Установить пальцы обеих рук по обе стороны от шва; сначала слегка соединить края шва между собой («стыковка»), затем мягко растянуть их в стороны концентрически, дождаться ощущения растяжения и подождать, пока шов «раскрутится» самостоятельно — обычно требуется порядка 10–20 небольших повторяющихся микродвижений. Тот же общий принцип применяется ко всем швам протокола: сагиттальному (крест-накрест первыми пальцами), лямбдовидному, венечному, чешуйчатому, клиновидно-лобному, клиновидно-височному, клиновидно-решётчатому, лобно-решётчатому, решётчато-верхнечелюстному, верхнечелюстно-носовому (техника «шашлыка»).</div>
+<ol>
+<li><strong>Первичная диагностика:</strong> Оценка внутриглазного давления — мягкое надавливание на глазные яблоки через веки (сравнение симметричности и пружинистости с двух сторон).</li>
+<li><strong>Раскрытие грудной апертуры:</strong> Одна ладонь под Th1-Th2, вторая — на ключицах и рукоятке грудины. Выполняется МФР и помпаж до ощущения тепла.</li>
+<li><strong>Раскрытие большого затылочного отверстия (БЗО):</strong> Пальцы устанавливаются с двух сторон от БЗО. Ткани просачиваются до кости, выполняется мягкое латеральное растяжение; внимание оператора дополнительно направляется на яремное отверстие кнаружи от БЗО — наблюдаем движение венозной крови по яремной вене.</li>
+<li><strong>Коррекция синусного стока (Инион):</strong> Пальцы обеих рук укладываются латеральнее иниона по выйной линии. Кость мягко растягивается кнаружи; внимание направлено на намёт мозжечка, синусный сток, поперечный, сигмовидный и затылочный синусы — наблюдаем в ритмах, как ток крови «пробивает» зоны ограничения.</li>
+<li><strong>Освобождение верхнего сагиттального синуса:</strong> Первые пальцы устанавливаются крест-накрест на сагиттальный шов. Выполняется три шага (выше лямбды, посередине, ниже брегмы), в каждой точке наблюдаем сагиттальный шов, серп мозга и сам синус. Техника обладает дополнительным противоаллергическим эффектом.</li>
+<li><strong>Коррекция метопического шва:</strong> 2–5 пальцы устанавливаются с двух сторон от шва, ткани растягиваются в стороны; наблюдаем лобную часть верхнего сагиттального синуса.</li>
+<li><strong>Освобождение поперечного и сигмовидного синусов:</strong> Одна рука фиксирует затылочную кость, вторая в классическом захвате отводит височную кость латерально-краниально, освобождая сосцевидную зону.</li>
+<li><strong>Коррекция кавернозного синуса (вокруг СБС и турецкого седла):</strong> Выполняется в несколько этапов: (А) повторная оценка внутриглазного давления; (Б) одна рука пальпирует глазное яблоко, другая последовательно — расширяет глазницу, затем щипковым захватом расширяет клиновидную кость и перцепторно выходит на кавернозный синус, затем классическим захватом височной кости прослеживает верхний и нижний каменистые синусы вдоль пирамиды (верхний вливается в поперечный, нижний — в сигмовидный; при дисфункции височная кость направляется в положение коррекции, наблюдаем, как ток крови «пробивает» ограничение); (В) одна рука на инионе, другая щипком удерживает клиновидную кость (кавернозный синус) — прослеживаем весь путь оттока от кавернозного синуса до поперечного и сигмовидного.</li>
+<li><strong>Завершающие техники:</strong> Повторное раскрытие иниона, большого затылочного отверстия и грудной апертуры — для закрепления свободного пути оттока по всей цепочке.</li>
+</ol>
+</div>
+<div class="test-card" id="orbit-differential-test">
+<h3>Тест глазницы: дифференциальная диагностика источника венозного застоя <span class="timestamp">day_3: 05:09:13 - 05:44:05</span></h3>
+<p>Отток крови от глаза идёт через кавернозный (пещеристый) синус далее в сигмовидный синус. Глазница образована семью костями и швами между ними, каждый из которых может стать причиной застоя. Последовательный тест позволяет точно определить виновную структуру.</p>
+<div class="hand-position">
+<strong>Шаг 1 — Тестирование глазного давления и мышц глаза:</strong> Пациент закрывает глаза и расслабляется; оператор мягко надавливает на оба глазных яблока одновременно, сравнивая пружинистость и плотность. Дополнительно пациента просят с закрытыми глазами последовательно посмотреть вверх, вниз, вправо, влево — оценивается симметричность амплитуды движения глазных яблок под веками (ограничение в одном направлении указывает на натяжение соответствующей глазной мышцы или окружающих структур).
+            </div>
+<div class="hand-position">
+<strong>Шаг 2 — Тестирование швов вокруг глазницы:</strong> Пальцы устанавливаются на кости глазницы концентрически (по обе стороны от каждого шва — например, скуловерхнечелюстного) и мягко разводятся в стороны; фиксированный (не расходящийся) шов помечается как вовлечённый в дисфункцию.</div>
+<div class="hand-position">
+<strong>Шаг 3 — Дифференциальный тест «глаз против кости» (последовательное исключение):</strong> Одна рука мягко удерживает/тестирует само глазное яблоко (вытягивая его слегка вперёд-вверх), другая рука поочерёдно берёт и растягивает одну из окружающих структур — сначала кости самой глазницы, затем большие крылья клиновидной кости, затем височную кость, затем скуловую кость, затем решётчатую кость (через технику «шашлыка»), и, наконец, ярёмное отверстие (в этом случае глаз тестируется вторым-третьим пальцем, а первая рука работает вблизи ярёмного отверстия) и ключицы.
+                <ul class="content-list">
+<li>Если при растяжении конкретной кости под пальцами на глазу ощущается «опустошение» (эффект прошедшего венозного оттока) — эта кость/шов является причиной застоя.</li>
+<li>Если растяжение кости не даёт эффекта на глазу — переходят к следующей структуре по списку, продолжая последовательное исключение.</li>
+<li>Если сама глазница декомпрессируется без эффекта — переходят к клиновидной кости (крылья), затем к височной кости (тестируется отток верхних и нижних каменистых синусов к сигмовидному и кавернозному синусу).</li>
+</ul>
+</div>
+<div class="note">
+<strong>Важный методологический принцип:</strong> На этапе диагностики выводы и диагнозы не формулируются — оператор только последовательно собирает информацию («слушает» тело), и лишь после завершения полного тестирования переходит к интерпретации и коррекции. Обнаруженная асимметрия глазных мышц или тканевое напряжение не расшифровывается сразу как конкретный диагноз (например, поражение конкретного нерва) — для точной интерпретации требуется дальнейшее прицельное тестирование (изучается на профильном модуле по глазному протоколу).
+            </div>
+</div>
+<!-- SECTION VIII -->
+<div class="category-divider" id="intraosseous-techniques">
+<h2>VIII. Внутрикостные Дисфункции и Техники Реформинга Костей</h2>
+<p class="category-description">Типы повреждений костной ткани, внутрикостный помпаж, жидкостные толчки (виспред) и протоколы коррекции конечностей и таза.</p>
+</div>
+<div class="test-card" id="intraosseous-types">
+<h3>Типы внутрикостных повреждений и ручные приемы <span class="timestamp">day_3: 08:35:04 - 08:47:05, day_4: 00:00:00 - 00:07:09</span></h3>
+<p>Кость является живой динамической системой (на 50% состоящей из жидких сред). Травматический ушиб или хроническое фасциальное натяжение вызывают застой микроциркуляции в костных балках. Различают три стадии повреждения:</p>
+<ul class="content-list">
+<li><span class="key-term">Отек и уплотнение надкостницы:</span> Пальпаторно ткань бугристая, болезненная. Мышцы в зоне прикрепления спазмированы. Корректируется <span class="key-term">«техникой утюжка»</span> (динамическое глубокое разглаживание и проминание надкостницы).</li>
+<li><span class="key-term">Внутрикостная плотность:</span> Отек и замедление метаболизма костных балок. Кость ощущается тяжелой и жесткой. Корректируется <span class="key-term">«внутрикостным помпажем»</span> (сжатие кости по оси до барьера с последующим ритмическим прокачиванием).</li>
+<li><span class="key-term">Балочная перестройка:</span> Каменистая плотность застарелой травмы. Корректируется <span class="key-term">«внутрикостным размешиванием»</span> (двойное кольцевое разминание по восьмерке в векторе максимальной нерастяжимости).</li>
+<li><span class="key-term">Жидкостный толчок (Виспред):</span> Одна рука устанавливается на зону ограничения (шва или кости) и набирает параметры натяжения. Вторая рука располагается диагонально противоположно и посылает быстрый жидкостный импульс через тело кости в сторону первой руки, вызывая мгновенную перестройку балок.</li>
+</ul>
+<div class="hand-position">
+<strong>Тест «замыкания сустава» (пружинный тест, универсален для любого сустава):</strong> Сустав пассивно доводится до конца физиологической амплитуды («замыкается»), затем выполняется короткое пружинящее надавливание вдоль оси. Здоровый сустав отвечает мягким, упругим отскоком («пружинка»); «заржавевший» (фиксированный, дисфункциональный) сустав ощущается сдавленным, без пружинящего ответа. Метод последовательно применяется к каждому суставу и каждой кости конечности по отдельности (например, отдельно к большеберцовой и малоберцовой костям голени, к каждой лодыжке) с указанием границ тестируемого сегмента (например, «от кисти до плеча», «от стопы до колена»).
+            </div>
+<div class="note">
+<strong>Физиология фибрина, отёка сустава и обоснование прицельного трения:</strong> При повреждении связок и хроническом трении тканей выделяется фибрин, который в норме способствует заживлению (склеивание свежего повреждения), но при застойных процессах и нарушении лимфооттока приводит к патологическому фиброзу (пример — фиброзно-кистозные изменения, мастопатия). Приёмы внутрикостного «размешивания» и утюжка намеренно провоцируют контролируемое трение и выделение фибрина для «склеивания» именно актуальной, свежей дисфункции. Отёк сустава указывает на нарушение его дренажа (сустав стоит неровно/скручен) и требует сначала дегидратации (помпаж в направлении эвакуации жидкости, по типу вакуума), а не сразу интенсивной проработки связок.
+            </div>
+</div>
+<div class="test-card" id="fracture-correction">
+<h3>Коррекция переломов: балансная техника и протокол острых травм <span class="timestamp">day_4: 00:14:01 - 00:18:06</span></h3>
+<div class="hand-position">
+<strong>Балансная техника (интеграция кости в схему тела, для заживших/старых переломов):</strong> Оператор захватывает руками суставы, смежные с зоной травмы (если сама зона — сустав, захватываются соседние с ним суставы). Наблюдаем волну краниального ритма, идущую по тканям, до ощущения синхронизации ритма. Постепенно перемещаем руки к месту травмы. Затем одна рука удерживает ткани в зоне травмы, другая устанавливается на туловище по оси тела — наблюдаем срединную линию конечности и тела в краниальном ритме до появления их ритмического единства (интеграции).
+            </div>
+<div class="warning">
+<strong>Протокол для острых свежих переломов:</strong> Требуется сначала снять шок с тканей и лишь затем восстанавливать интеграцию кости в схему тела.
+                <ol>
+<li>Захватить суставы, смежные с зоной травмы; направить ткани в точку нейтральности; прослушивать в ритмах до уравновешивания.</li>
+<li>Постепенно сближать руки, уравновешивая непосредственно место перелома.</li>
+<li>Одна рука захватывает зону перелома, другая — вышележащую центральную кость; просматривается срединная линия отломка конечности и всего тела; наблюдаем ритмы, ждём подстраивания костей и их ритмической интеграции.</li>
+<li>Одна рука устанавливается на позвоночник, другая — на кость конечности; наблюдаем интеграцию тела и конечности на ритмах.</li>
+</ol>
+</div>
+<div class="hand-position">
+<strong>Коррекция компрессионных переломов позвонков:</strong> Пациент лежит на животе; первый-второй пальцы обеих рук устанавливаются вблизи перехода остистого отростка в заднюю дугу, погружение выполняется до тела позвонка, ткани расширяются, тело позвонка декомпрессируется.
+            </div>
+<div class="warning">
+                После коррекции компрессионного перелома пациенту нельзя сидеть в течение 5–7 дней. При работе с грудиной после недавно перенесённой операции категорически нельзя выполнять технику «на разлом» — интенсивное внутрикостное размешивание, напротив, ускоряет сращивание грудины.
+            </div>
+</div>
+<div class="test-card" id="chest-intraosseous">
+<h3>Внутрикостная проработка грудины, рёбер и ключицы <span class="timestamp">day_4: 00:42:17 - 01:03:35</span></h3>
+<ul class="content-list">
+<li><strong>Грудина:</strong> Одна рука на рукоятке, другая на теле/мечевидном отростке. Выполняется жидкостной толчок на весь объём, затем помпаж, затем внутрикостная проработка плотных участков утюжком, начиная с надкостницы (сначала утюжок, затем помпаж). Между сегментами грудины (рукоятка–тело–мечевидный отросток) работают отдельно, так как в местах их соединения часто есть фиксации. Возможен также манёвр «на разлом» — аналогично технике крестца.</li>
+<li><strong>Рёбра (принцип «от группы к элементу»):</strong> Диагностика начинается с целой группы рёбер, затем из группы вычленяется конкретное жёсткое ребро (пружинирующее хуже остальных на спринг-тесте). Локальная проработка ребра ведётся от центра (тела ребра) к позвоночнику, а затем — к грудине. После локальной коррекции ребро интегрируется обратно в целостность грудной клетки (в том числе относительно D4/Т4).</li>
+<li><strong>Дифференциация межрёберной невралгии:</strong> На худшем ребре находят наименее болезненный (лучший) участок и прорабатывают его внутрикостно. Если после внутрикостной работы фасциально-мышечное напряжение ребра снято, а боль не ушла — вероятна вовлечённость межрёберного нерва (невралгия), а не только костно-фасциальный компонент.</li>
+<li><strong>Ключица:</strong> Погружение в среднюю треть ключицы, внутрикостное прохождение сначала к грудинному концу, затем к акромиальному. После проработки ключица приподнимается и мягко выводится в прямые параметры нормального положения, оператор ждёт самостоятельной постановки на место.</li>
+</ul>
+</div>
+<div class="test-card" id="limbs-pelvis-sacrum">
+<h3>Протокол коррекции нижней конечности, таза и крестца <span class="timestamp">day_3: 08:56:13 - 10:39:01, day_4: 00:04:10 - 00:36:04</span></h3>
+<ol>
+<li><strong>Надкостница голени:</strong> Пальпаторно выявляются плотные зоны по передне-латеральному краю большеберцовой кости. Проводится «утюжок» до исчезновения болезненности.</li>
+<li><strong>Внутрикостная прокачка ноги:</strong> Оператор фиксирует пятку, вторая рука укладывается на крыло подвздошной кости. Замыкаются суставы ноги, проводится продольный помпаж и жидкостное промывание по оси конечности.</li>
+<li><strong>Круговой протокол таза:</strong> Последовательно отрабатываются переходы: Крестец → Подвздошная кость → Седалищный бугор → Лонная кость. На каждом переходе выполняется помпаж и виспред.</li>
+<li><strong>Техника «разламывания» крестца:</strong>
+<ul>
+<li><em>На спине:</em> Оператор обхватывает таз, пальцы на крестце с двух сторон от средней линии. Выполняется вентральное приподнимание крестца с латеральным разведением половинок (как разламывание яблока).</li>
+<li><em>На животе:</em> Основания ладоней укладываются продольно на крестец по обе стороны от срединного гребня. Выполняется давление вниз с латеральным растяжением периферических краев.</li>
+</ul>
+</li>
+</ol>
+<div class="tip">
+<strong>Интеграция в схему тела:</strong> После устранения внутрикостных блоков положите одну руку на L3, вторую — на стопу пациента. Настройтесь на центральную ось тела и удерживайте внимание до момента синхронизации краниального ритма ноги и позвоночника в единую волну.
+            </div>
+<div class="warning">
+<strong>Правило безопасности рук оператора:</strong> При выполнении силовых техник (в т.ч. «разламывания» крестца) нельзя давить кончиками пальцев — это быстро травмирует суставы самого оператора. Давление должно передаваться через всю ладонную поверхность или основание ладони, при необходимости — с подключением веса собственного тела (переносом корпуса), а не локальным мышечным усилием пальцев.
+            </div>
+</div>
+<div class="test-card" id="vertebra-intraosseous">
+<h3>Внутрикостная проработка позвонка (последовательный протокол) <span class="timestamp">day_4: 01:09:01 - 01:21:01</span></h3>
+<p>Найдя худший позвонок (в том числе через ингибицию нескольких кандидатов), оператор охватывает его пальцами с двух сторон за остистый отросток и последовательно, послойно прорабатывает всю структуру позвонка, не заходя в зону дурального мешка и спинного мозга.</p>
+<div class="hand-position">
+<strong>Последовательность проработки:</strong>
+<ol>
+<li>Остистый отросток — вход в кость, внутрикостное перемешивание и жидкостной толчок в пределах задней дуги.</li>
+<li>Задняя (верхняя) дуга — прорабатывается по направлению от остистого отростка к телу позвонка, не заходя в позвоночный канал.</li>
+<li>Тело позвонка — проработка от задней дуги к передней (нижняя дуга, ближе к телу).</li>
+<li>Поперечные отростки — вход в кость с обеих сторон, дополнительно настройка на связки и мягкие ткани вокруг позвонка (к вышележащему и нижележащему сегментам), жидкостная проработка через поперечные отростки по ходу связочного аппарата.</li>
+</ol>
+                Помимо самого проблемного позвонка полезно дополнительно проработать соседние — вышележащий и нижележащий (по аналогии с приёмом «переадаптационного шарика» первого курса).
+            </div>
+<div class="tip">
+<strong>Диагностика через компрессию по оси:</strong> При осевой компрессии через цепочку позвонков (по аналогии со сборкой сустава) в месте фиксации «волна» компрессии не проходит дальше — оператор ищет именно эту точку остановки передачи импульса, а не место наибольшей выраженной боли.
+            </div>
+<div class="note">
+<strong>Стратегия минимизации пути:</strong> При множественных проблемных позвонках рекомендуется пробовать разные точки входа и объёмы (сначала более широкий объём — несколько позвонков через поперечные отростки, затем сужение до конкретного сегмента) и через практический опыт нарабатывать наиболее эффективную последовательность для конкретного случая, чтобы избегать избыточных манипуляций.
+            </div>
+</div>
+<div class="test-card" id="skull-intraosseous">
+<h3>Внутрикостная коррекция затылочной и височной костей <span class="timestamp">day_4: 04:00:00 - 04:47:08</span></h3>
+<div class="hand-position">
+<strong>Коррекция чешуйчато-мыщелковых суставов затылочной кости:</strong> 
+                Оператор продвигается пальцами по чешуе к мыщелкам (вблизи БЗО) до ощущения плотности (например, справа). Левая рука переносится на противоположный левый лобный бугор. Набираются параметры натяжения, и левой рукой посылается жидкостный толчок по диагонали в правый мыщелок до расслабления кости.
+            </div>
+<div class="hand-position">
+<strong>Вариант для мыщелко-базилярного сустава:</strong> Руки возвращаются на затылочную кость, продвигаются через мыщелки до мыщелко-базилярного внутрикостного сустава, упираются в плотность (например, слева). Левая рука остаётся на плотности и набирает параметры, правая переносится диагонально на правый теменной бугор и посылает жидкостный толчок.
+            </div>
+<div class="hand-position">
+<strong>Вариант через мыщелки в височную кость:</strong> Руки возвращаются на затылочную кость, погружаются до мыщелков, проходят внутрикостно через них в правую, затем в левую височную кость, находят плотность (например, справа). Правая рука остаётся на дисфункции, левая переносится на барабанную часть противоположной височной кости и посылает жидкостный толчок.
+            </div>
+<div class="warning">
+<strong>Косвенные признаки поражения яремного отверстия (IX, X, XI нервы):</strong> Ощущение кома в горле, нарушение глотания, осиплость, гнусавость, дизартрия, метеоризм, срыгивания, затылочная головная боль, поверхностный беспокойный сон, кривошея, диспозиция (крыловидность) лопатки.
+            </div>
+<div class="hand-position">
+<strong>Рассоединение височной кости (чешуя, барабанная и сосцевидная части):</strong> 
+                При внутрикостной плотности височной кости оператор одной рукой фиксирует чешую, второй — сосцевидный отросток, третьим пальцем упирается в барабанную часть. Проводится разнонаправленное перемешивание частей кости относительно друг друга до исчезновения каменистой плотности. Последовательность растяжения: сначала чешуя от барабанной части, затем барабанная от сосцевидной, затем чешуя от сосцевидной.
+            </div>
+</div>
+<div class="test-card" id="pyramid-gruber-orbital-fissure">
+<h3>Расширение пирамиды, связка Грубера и коррекция верхней глазничной щели <span class="timestamp">day_4: 04:52:02 - 05:45:00</span></h3>
+<div class="hand-position">
+<strong>Расширение пирамиды височной кости (освобождает слуховой нерв и Гассеров узел тройничного нерва):</strong> Одна рука щипком фиксирует клиновидную кость на месте (более безопасный вариант — не захватывать клиновидную кость, а выполнять простую противоопору на своде черепа), другая устанавливается вторым-третьим пальцем на барабанную часть, погружается сначала в барабанную часть, затем в пирамиду; пальцы раскрываются, расширяя пирамиду и вытягивая её кнаружи.
+            </div>
+<div class="hand-position">
+<strong>Клиновидно-височная коррекция (связка Грубера):</strong> Связка Грубера соединяет клиновидную кость с пирамидой височной и при напряжении блокирует тройничный и отводящий нервы. Одна рука щипковым захватом удерживает клиновидную кость на месте, другая классическим захватом отводит височную кость кнаружи, растягивая связку.
+            </div>
+<div class="hand-position">
+<strong>Расширение шилососцевидного отверстия:</strong> Второй-третий палец устанавливаются на шиловидный и сосцевидный отростки, оператор погружается внутрикостно, растягивает отверстие, затем перцепторно продёргивает лицевой нерв.
+            </div>
+<div class="hand-position">
+<strong>Коррекция лицевого нерва при хроническом парезе:</strong> Если парез нерва длится минимум месяц, окружающие мимические мышцы уплотняются и пережимают периферические ветви нерва. Оператор продёргивает нерв в районе шилососцевидного отверстия, определяет места компрессии, локально встаёт на них и растягивает мышцы от нерва.
+            </div>
+<div class="hand-position">
+<strong>Коррекция точек выхода тройничного нерва:</strong> Пальпируем нерв в точках выхода на лицо (надбровье, верхняя и нижняя челюсть), оцениваем плотность и болезненность. При блокировке оператор окружает точку выхода пальцами, погружается внутрикостно, растягивает и освобождает отверстие.
+            </div>
+<div class="hand-position">
+<strong>Тестирование глазодвигательных нервов (III, IV, V, VI пары через верхнюю глазничную щель):</strong> Пациент закрывает глаза; оператор через веки захватывает глазные яблоки, просит подвигать глазами, настраивается на восприятие глазодвигательных мышц и определяет напряжение. Затем настраивается на ТМО и растягивает глаза вместе с мышцами и нервами в вентро-латеральном направлении (вводя в напряжение зрительный нерв), а также в вентро-каудальном направлении (вводя в напряжение глазодвигательный, блоковый, тройничный, отводящий нервы).
+            </div>
+<div class="hand-position">
+<strong>Расширение верхней глазничной щели (коррекция больших и малых крыльев клиновидной кости):</strong> Одна рука щипком захватывает большие крылья клиновидной кости, другая щипком первого-второго пальца устанавливается на надбровье лобной кости и погружается через лобную кость до провала в малые крылья. Большие крылья удерживаются на месте, малые крылья приподнимаются вентро-краниально. Техника корректирует косоглазие, близорукость, дальнозоркость (нарушение аккомодации), нарушения питания глазницы и слезоотделения.
+            </div>
+<div class="warning">
+<strong>Внутрикостная коррекция тела клиновидной кости — выполнять с осторожностью (по возможности пропустить):</strong> Оператор у изголовья, модифицированный захват Сазерленда — второй и третий пальцы на больших крыльях клина. Погружаемся внутрикостно через большие крылья до контакта с телом клиновидной кости, расширяем пальцы, растягивая кость в стороны, наблюдаем в ритмах до расслабления.
+            </div>
+</div>
+<div class="test-card" id="ethmoid-palatine-orbit-intraosseous">
+<h3>Техника «Колокола» решётчатой кости, нёбно-клиновидное сочленение и глазница <span class="timestamp">day_4: 05:32:23 - 05:42:00</span></h3>
+<p>Техника «Колокола» позволяет освободить решётчатую, лобную и клиновидную кости, снять напряжение с глазницы и устранить компрессию обонятельного нерва. Выполняется в три этапа:</p>
+<ol>
+<li>Одна рука щипком первого-третьего пальца захватывает лобную кость (второй палец на глабелле), другая рука щипком первого-второго пальца захватывает решётчатую кость в проекции глабеллы-назиона (боковые массы решётчатой кости воспринимаются как стенки колокола, вертикальная пластинка — как язычок). Лобная кость направляется вентро-краниально, решётчатая — вентро-каудально.</li>
+<li>Одна рука колоколом захватывает решётчатую кость, другая щипком первого-третьего пальца захватывает верхнюю челюсть (второй палец на межрезцовом шве). Решётчатая кость направляется вентро-краниально, верхняя челюсть вместе с нёбом и сошником — вентро-каудально.</li>
+<li>Одна рука щипком захватывает клиновидную кость и удерживает её на месте, другая щипком колокола захватывает решётчатую кость и направляет её вентро-каудально.</li>
+</ol>
+<div class="hand-position">
+<strong>Коррекция нёбно-клиновидного сочленения (освобождает крыло-нёбный ганглий):</strong> Облегчает боль после стоматологических манипуляций, устраняет сухость во рту и явления стоматита, улучшает питание зубочелюстной системы, устраняет головную боль после посещения стоматолога. Одна рука щипком удерживает клиновидную кость на месте, другая первым-третьим пальцем захватывает верхнюю челюсть (второй палец на межрезцовом шве) и приподнимает её вентро-каудально, растягивая нёбную кость и отсоединяя её от клиновидной. Дополнительно можно выполнить латеральный наклон для усиления одностороннего разъединения.
+            </div>
+<div class="hand-position">
+<strong>Декомпрессия глазницы и связки Цинна:</strong> Оператор окружает глазницу пальцами, встаёт на лобную, верхнечелюстную и скуловую кости, погружается внутрикостно и растягивает кость в стороны, вводя в напряжение связку Цинна (кольцо, от которого начинаются глазодвигательные мышцы). Наблюдаем ритмы и ждём расслабления.
+            </div>
+<div class="hand-position">
+<strong>Продёргивание глазодвигательных и зрительного нерва:</strong> Оператор захватывает глазные яблоки и растягивает через них нервы, последовательно определяя зоны прохождения через верхнюю глазничную щель и канал зрительного нерва. Набираем параметры и ждём освобождения и расслабления.
+            </div>
+<div class="note">
+                Завершающие шаги протокола: тестирование внутрикостных повреждений в других костях черепа (локальное погружение и оценка структуры), уравновешивание гемисфер лица, уравновешивание СБС, укачивание младенца.
+            </div>
+</div>
+<!-- SECTION IX -->
+<div class="category-divider" id="cranial-protocols">
+<h2>IX. Большой Краниальный Протокол и Мембранные Коррекции</h2>
+<p class="category-description">Системный протокол восстановления подвижности мембран взаимного натяжения (серпа и намета), лифты костей и декомпрессия швов.</p>
+</div>
+<div class="test-card" id="membrane-symmetry-lines">
+<h3>Тестирование симметрии мембран по референсным линиям <span class="timestamp">day_4: 06:12:10 - 06:23:01</span></h3>
+<p>Перед протоколом мембранной коррекции (и после него — для контроля результата) выполняется быстрая оценка положения мембран через три референсные линии. Оператор выходит в захват Сазерленда, осознаёт основание черепа целиком и все его отверстия, затем последовательно проверяет:</p>
+<ul class="content-list">
+<li><strong>Биовестибулярная линия:</strong> Вторые пальцы устанавливаются в ямку за ушами (над поперечным отростком/чешуёй височной кости с обеих сторон); мысленно продлевается ось через оба пальца — в норме она ровная. Асимметрия указывает на нарушение положения мембран и общего состояния мозгового черепа.</li>
+<li><strong>Скуловая линия:</strong> Пальцы устанавливаются на скуловые кости с обеих сторон; оценивается их симметричность относительно лба и глазниц — эта линия отражает положение лицевого (а не мозгового) черепа.</li>
+<li><strong>Линия глабелла–иньон:</strong> Мысленная диагональ между глабеллой (лоб) и инионом (затылок); в норме — прямая сагиттальная линия. Отклонение указывает на смещение серпа мозга.</li>
+</ul>
+<div class="hand-position">
+<strong>Тест натяжения серпа и намёта (уточняющий):</strong> Вторые и пятые пальцы устанавливаются с двух сторон вокруг иниона (по верхней выйной линии) — на намёт мозжечка; первые пальцы — по обе стороны от сагиттального шва — на серп мозга. Одновременно намёт мягко растягивается латерально (кнаружи), а серп — вектором вентрально и каудально (оператор слегка выводит череп на себя относительно исходного положения). Прикосновение должно быть предельно лёгким — сила исходит не от напряжения пальцев, а от осознанного намерения и заземления через собственный нижний даньтянь. Возникающая при растяжении локальная плотность или напряжение (можно уточнить опросом по тягам) указывает на дисфункцию соответствующего шва или мембраны.
+            </div>
+<div class="tip">
+<strong>Принцип «не кормить» гиперреактивную зону:</strong> Если во время тестирования какая-то структура (шов, зона) начинает давать избыточный, «играющий» ответ под пальцами, стоит осознанно перенести внимание в другое место и понаблюдать со стороны — направленное внимание оператора само по себе может усиливать локальную реакцию ткани; при снятии прямого фокуса зона, как правило, самостоятельно успокаивается.
+            </div>
+</div>
+<div class="test-card" id="platibasia-hold">
+<h3>Освобождение основания черепа (Техника Платибазии по Беккеру) <span class="timestamp">day_1: 05:44:19, day_4: 04:25:00, day_4: 06:25:01 - 06:30:00</span></h3>
+<p>Универсальная техника, позволяющая освободить намет мозжечка, яремные отверстия, верхнешейный отдел, ТМО и декомпрессировать сфенобазилярный синхондроз.</p>
+<div class="hand-position">
+<strong>Модифицированный затылочно-клиновидный захват Беккера:</strong> 
+                Первые пальцы оператора устанавливаются на большие крылья клиновидной кости (у наружного угла глазницы). Вторые пальцы располагаются за ушами на сосцевидных отростках височных костей. Третьи-пятые пальцы охватывают затылочную кость снизу. Локти оператора опираются на кушетку.
+            </div>
+<p><strong>Пошаговое выполнение:</strong></p>
+<ol>
+<li>Направьте затылочную кость (3-5 пальцы) дорсально и в наружную ротацию, уплощая ее чешую и растягивая намет мозжечка.</li>
+<li>Направьте первые пальцы (клиновидная кость) вентрально (вперед/вверх), растягивая серп мозга и освобождая СБС.</li>
+<li>Направьте вторые пальцы (сосцевидные отростки) вентрально и слегка латерально, натягивая намет и раскрывая яремные отверстия.</li>
+<li>Наберите прямые параметры натяжения в зонах максимального сопротивления, удерживая их до момента тканевого расслабления и восстановления свободного краниального ритма.</li>
+</ol>
+<div class="note">
+<strong>Клинические эффекты и показания:</strong> Техника воздействует на декомпрессию СБС, раскрытие большого затылочного отверстия и гармонизацию серпа и намёта одновременно — считается одной из наиболее мощных и универсальных техник протокола. У детей эффективна при коррекции экстензионных дисфункций и удлинённой челюсти с нарушением прикуса. Поскольку техника способна «перебирать» напряжение по всему телу, реакции (покалывание, разрядка, спонтанные микродвижения) могут проявляться в самых разных, порой отдалённых зонах тела — руках, ногах, области промежности.
+            </div>
+<div class="tip">
+<strong>Критерий завершения:</strong> Процесс продолжается до тех пор, пока не придёт единый синхронный краниальный ритм и структуры под руками не «разойдутся» самостоятельно (руки как бы сами разводятся тканью). При большом количестве дисфункций техника может занимать продолжительное время — не нужно торопить процесс; в ходе удержания вектора могут последовательно прорабатываться разные, в том числе давние компенсаторные, дисфункции.
+            </div>
+</div>
+<div class="test-card" id="lifts-frontal-parietal">
+<h3>Лифты лобной и теменной костей <span class="timestamp">day_1: 04:19:01 - 04:46:05, day_4: 06:31:02 - 06:40:05</span></h3>
+<p>Техники направлены на освобождение венечного, сагиттального и лобного швов, а также передней дупликатуры ТМО.</p>
+<div class="hand-position">
+<strong>Лобный лифт (Вариант А — Домик):</strong> 
+                Основания ладоней устанавливаются на боковые поверхности лобной кости вблизи птериона, пальцы переплетены в замок над лбом пациента. Выполняется мягкое медиальное сжатие лобной кости для ее освобождения от височных и клиновидной костей, после чего кость плавно поднимается вентрально-краниально до релиза швов.
+            </div>
+<div class="hand-position">
+<strong>Теменной лифт (Техника парика):</strong> 
+                Вторые-пятые пальцы обеих рук устанавливаются на теменные кости вблизи чешуйчатых швов. Первые пальцы перекрещиваются над сагиттальным швом, не сдавливая его. Выполняется легкое сжатие теменных костей медиально (освобождение от височных), после чего пальцы смещают кости краниально (на себя), растягивая серп мозга до ощущения расширения сагиттального шва.
+            </div>
+</div>
+<div class="test-card" id="suture-decompression">
+<h3>Декомпрессия швов и костей лицевого черепа <span class="timestamp">day_4: 06:41:00 - 06:58:00</span></h3>
+<div class="hand-position">
+<strong>Декомпрессия ВНЧС:</strong> Основания ладоней лежат на височных костях, пальцы охватывают нижнюю челюсть под дугой ее тела. Выполняется компрессия челюсти по вертикальной оси ВНЧС до барьера, удерживается до появления выталкивающей силы, после чего челюсть сопровождается в декомпрессию (вниз/вперед) до полного расслабления.
+            </div>
+<div class="tip">
+<strong>Переучивание положения нижней челюсти (домашняя рекомендация):</strong> При привычном пережатии ВНЧС (зубы сжаты, губы напряжены) пациенту рекомендуется периодически держать во рту карандаш/палочку (не менее часа в вертикальном положении и отдельно лёжа) либо использовать мягкую гелевую капу (в том числе детскую — она меньше по размеру и подходит взрослым с небольшим ртом; в отличие от жёсткой стоматологической капы не создаёт нежелательного давления на всю костную систему) для переобучения свободного, ненапряжённого положения челюсти и губ.
+            </div>
+<div class="hand-position">
+<strong>Работа с круговой мышцей рта (модиолюс):</strong> Палец вводится в преддверие рта; сначала разминается модиолюс (место схождения мышц у угла рта) с обеих сторон, затем щипковым захватом прорабатывается сама круговая мышца рта (растяжение по всей окружности до ощущения полного, равномерного расслабления). Дополнительно можно мягко «накачать» ткань губ жидкостным давлением пальцев для восстановления объёма и тонуса.
+            </div>
+<div class="hand-position">
+<strong>Подъем верхней челюсти (Максилла):</strong> Вторые-четвертые пальцы устанавливаются на альвеолярный отросток верхней челюсти по обе стороны от срединного шва. Кость приподнимается вентрально и плавно уводится каудально для ее отделения от лобной кости и сошника, затем пальцы разводятся латерально для раскрытия межрезцового шва.
+            </div>
+<div class="hand-position">
+<strong>Расширение глазниц:</strong> Пальцы разводятся, захватывая все основные кости, формирующие глазницу, и концентрически растягивают их (аналогично технике, применяемой для других швов).
+            </div>
+<div class="hand-position">
+<strong>Техника «Шашлыка» (Срединные кости):</strong> Одна рука фиксирует лобную кость (щепотью за глабеллу), вторая рука захватывает верхнюю челюсть за межрезцовый шов. Руки совершают разнонаправленное растяжение: лобная кость идет вентро-краниально, верхняя челюсть — вентро-каудально. Выслушивается освобождение сошника, решетчатой и клиновидной костей. При наличии остаточных фиксаций каждую из вовлечённых костей (лобную, клиновидную, решётчатую, сошник, нёбо, верхнюю челюсть) можно дополнительно проработать по отдельности.
+            </div>
+<div class="hand-position">
+<strong>Лифт решётчатой кости:</strong> Щипковый захват клиновидной кости одной рукой, решётчатой — другой; смещение для освобождения клиновидной кости от решётчатой. Вторым этапом первый и третий пальцы остаются на лбу, второй палец — на глабелле, а другая рука щипковым захватом берёт верхнюю челюсть; срединные кости черепа растягиваются от верхней челюсти до лобной кости (аналогично технике «шашлыка»).
+            </div>
+<div class="hand-position">
+<strong>Декомпрессия височных костей (два варианта):</strong> (1) Классический захват — разведение височных костей через стандартный удерживающий захват («жабры»); (2) альтернативный вариант — пятые пальцы под затылочной костью, первые пальцы на сосцевидных отростках.
+            </div>
+</div>
+<div class="test-card" id="orbit-maxilla-zygomatic-listening">
+<h3>Прослушивание дыхания глазницы, верхней челюсти и скуловой кости <span class="timestamp">day_1: 05:21:00 - 05:42:21</span></h3>
+<p>Перед активной декомпрессией швов лицевого черепа выполняется диагностическое прослушивание — оператор выходит в зону С (90%) и последовательно «слушает» дыхание (расширение/сужение) нескольких ключевых структур, не форсируя движение руками.</p>
+<div class="hand-position">
+<strong>Прослушивание глазницы («колокольчики»):</strong> Все пять пальцев каждой руки складываются «колокольчиком» и мягко обхватывают орбиту, подушечками (не ногтями) касаясь костных краёв глазницы (не выходя за пределы скуловой кости). На вдохе в норме наблюдается симметричное концентрическое расширение глазницы, на выдохе — сужение. Асимметрия или отсутствие движения в конкретной зоне указывает на фиксацию соответствующего шва (особенно часто страдает шов между скуловой и лобной костью, а также зона между носовой косточкой и верхнечелюстным суставом). Диагностически значимо также глазное давление — его целесообразно оценить перед последующей работой с венозными синусами.
+            </div>
+<div class="hand-position">
+<strong>Прослушивание верхней челюсти («усики»):</strong> Пальцы устанавливаются по обеим сторонам шва верхней челюсти («усиками»), выполняется перцепторное погружение до кости. На вдохе в норме наблюдается наружная ротация с небольшим вентральным подъёмом, на выдохе — возврат. Поскольку верхняя челюсть — центральная часть лицевого черепа, её ритм способен резонансно выравнивать соседние структуры; техника требует терпеливого длительного прослушивания, но даёт выраженный терапевтический и эстетический эффект. Каждый альвеолярный отросток иннервируется ветвью тройничного нерва — стоматологические проблемы (брекеты, зубная боль без стоматологической причины) часто связаны с этим нервом.
+            </div>
+<div class="hand-position">
+<strong>Прослушивание скуловой кости:</strong> Три пальца устанавливаются вокруг скуловой кости (у неё сходятся четыре важных шва: со скуловым отростком височной кости, с клиновидной, лобной и верхнечелюстной костями). В норме на вдохе кость слегка «всплывает»; торможение движения в конкретном направлении указывает на локализацию фиксации соответствующего шва. Положение скуловой кости — одна из антропометрических (биометрических) точек лица и влияет на формирование прикуса.
+            </div>
+</div>
+<div class="test-card" id="big-cranial-protocol-sutures">
+<h3>Большой краниальный протокол: систематическая декомпрессия швов <span class="timestamp">day_4: 07:19:15 - 07:55:00</span></h3>
+<div class="hand-position">
+<strong>Уточнённое положение рук для CV-4/EV-4:</strong> Ладони складываются «лодочкой» так, чтобы под запястьями/основанием ладоней оставалось пространство БЗО и ствол мозга не пережимались; верхние пальцы (обычно 4–5) касаются проекции С2–С3, а первые пальцы выходят на затылочные бугры (проекция четвёртого желудочка). При широком черепе руки разводятся шире; у детей и при затруднённом доступе допустима альтернативная раскладка — пальцы подкладываются непосредственно под затылочные бугры для лёгкой компрессии. Фулькрумом (точкой опоры) для оператора в положении сидя часто служат собственные седалищные бугры.
+            </div>
+<div class="hand-position">
+<strong>Раскрытие БЗО у детей (щадящий вариант):</strong> Одна рука вторым-третьим пальцами обхватывает БЗО на затылочной кости, другая продольно ложится на лобную кость (вместо захвата клиновидной кости, чтобы не травмировать). Лобная кость уводится вентрально (раскрывая клиновидную кость и СБС опосредованно), затылочная — дорсально, пальцы на БЗО мягко разводятся.
+            </div>
+<p>Далее — принцип «встреча перед разведением» (общий для всех перечисленных ниже швов): прежде чем разводить (декомпрессировать) шов, его края сначала слегка сближают навстречу друг другу (аналог МФР — сначала «поприветствовать», затем мягко развести), избегая грубого растяжения склеенных структур.</p>
+<ul class="content-list">
+<li><strong>Лобно-клиновидный шов:</strong> Щипковый захват лобной кости одной рукой, клиновидной — другой; развести.</li>
+<li><strong>Лобно-скуловая коррекция:</strong> Последовательно — лоб, затем клиновидная кость, затем скуловая кость.</li>
+<li><strong>Носовая косточка:</strong> Мягкий щипковый захват (по размеру с два зёрнышка яблока), лобная кость фиксируется. В два этапа: сначала косточка ведётся вентрально (освобождение от верхнечелюстного шва), затем каудально (освобождение от лобной кости). Дождаться самостоятельной «прокрутки» кости в краниальный ритм.</li>
+<li><strong>Слёзная косточка:</strong> Двухэтапно, аналогично носовой, но глубже. Дополнительный вариант — мизинцем в уголке глаза выйти на слёзную косточку, набрать параметры (вверх-вниз, вправо-влево) в направлении лучшего раскручивания, отпустить и дождаться самостоятельного выравнивания.</li>
+<li><strong>Лобно-височное сочленение (птерион):</strong> Щипковый захват лобной кости одной рукой, классический захват височной кости — другой; развести с обеих сторон по очереди (в зоне, где сходятся четыре шва).</li>
+<li><strong>Лобно-теменная декомпрессия (венечный шов):</strong> Одностороння техника — одна рука на лобной кости у шва, другая на теменной; по очереди с каждой стороны.</li>
+<li><strong>Коррекция сагиттального шва:</strong> В трёх точках по протяжению шва.</li>
+<li><strong>Коррекция лямбдовидного шва:</strong> Односторонняя техника — пальцы одной руки на теменной кости, пальцы другой поверх первой — на затылочной.</li>
+<li><strong>Теменно-чешуйчатая декомпрессия:</strong> Одна рука на теменной кости вблизи чешуи височной, другая поверх захватывает височную кость (классический захват).</li>
+<li><strong>Теменно-сосцевидная декомпрессия:</strong> Одна рука на теменной кости вблизи сосцевидного отростка, другая — на самом сосцевидном отростке; развести.</li>
+<li><strong>Теменно-клиновидная декомпрессия (область большого родничка/птериона):</strong> Щипковый захват клиновидной кости одной рукой, пальцы другой — на теменной кости вблизи птериона.</li>
+<li><strong>Декомпрессия брегмы (место встречи венечного и сагиттального швов):</strong> Расширение; можно выполнять пальцами крест-накрест.</li>
+<li><strong>Декомпрессия лямбды (малый родничок):</strong> Первые пальцы крест-накрест с двух сторон от сагиттального шва вблизи лямбды толкают его на расширение; пятые пальцы вдоль средней линии на затылочной кости толкают её вниз.</li>
+<li><strong>Декомпрессия птериона:</strong> Первые пальцы на лобной кости, вторые — на клиновидной; концентрическое разведение шва (у четырёх сходящихся костей).</li>
+<li><strong>Декомпрессия астериона:</strong> Аналогично птериону, но задействуются три пальца/три кости.</li>
+<li><strong>Височно-затылочная декомпрессия (освобождение яремного отверстия):</strong> Одна рука на затылочной кости у сочленения с височной, другая — на сосцевидном отростке; затылочная кость фиксируется, сосцевидный отросток вытягивается.</li>
+<li><strong>Височно-скуловая декомпрессия:</strong> Классический захват височной кости одной рукой, щипковый захват скуловой кости — другой. Направление разведения ориентируют по ходу конкретного шва скуловой кости (у скуловой кости сходится четыре шва, один из них направлен в сторону ВНЧС).</li>
+</ul>
+<div class="tip">
+<strong>Альтернатива жидкостному толчку для скуловой кости («яблочко»):</strong> Вместо классического виспреда через точку сопротивления выполняется мягкое округлое («яблочком») жидкостное продавливание с намагниченными пальцами в найденную зону скуловой кости — вариант того же принципа импульсной перестройки, адаптированный под эту кость.
+            </div>
+<div class="hand-position">
+<strong>Коррекция слуховых косточек (уточнённый протокол):</strong> Два пальца вводятся в наружные слуховые проходы, перцепторно погружаются до барабанной перепонки, проходят через неё и контактируют со слуховыми косточками; косточки «намагничиваются» и мягко вытягиваются кнаружи без ожидания — тянуть следует сразу, не дожидаясь самостоятельного прекращения вращательного ощущения, так как именно тракция позволяет структуре довращаться и остановиться.
+            </div>
+</div>
+<div class="test-card" id="closing-protocol-techniques">
+<h3>Завершающие техники протокола: «кошачьи лапки» и техника Дядюшки Тома <span class="timestamp">day_4: 07:56:00 - 08:08:01</span></h3>
+<div class="hand-position">
+<strong>«Кошачьи лапки» (мягкая мобилизация затылочной кости):</strong> Первые пальцы поднимают/подвешивают сосцевидные отростки вверх (убирая их «с дороги»), вторые и пятые пальцы одновременно мягко играют с затылочной чешуёй — разминают, растягивают, слегка помпажируют, при необходимости подстраиваясь под краниальный ритм. Хорошо переносится детьми. При маленьком затылке допустимо перераспределение пальцев (например, вторым пальцем поднимать сосцевидные, третьим работать с затылком).
+            </div>
+<div class="warning">
+<strong>«Техника Дядюшки Тома» (форсированная перезагрузка ствола мозга):</strong> Позиция рук аналогична «кошачьим лапкам», но выполняется значительно более мощное механическое дорсально-медиальное сдавление сосцевидных отростков с одновременным переводом височных костей в фазу вдоха; удержание — около 5 секунд, повторяется 3–5 раз. Технику описывают как использующуюся в критических ситуациях, близких к клинической смерти, для мощной перезагрузки ствола мозга и четвёртого желудочка (сравнивают с исторической практикой прекардиального удара). Ввиду значительной механической силы техника требует отдельной, тщательной практической отработки под контролем и не предназначена для рутинного использования на обычном приёме.
+            </div>
+</div>
+<!-- SECTION X -->
+<div class="category-divider" id="stillpoint-cv4">
+<h2>X. Техники Наведенного Стилпоинта (CV-4, EV-4)</h2>
+<p class="category-description">Механизмы физиологической перезагрузки нервной и эндокринной систем. Техники компрессии и экспансии четвертого желудочка.</p>
+</div>
+<div class="test-card" id="cv4-technique">
+<h3>Компрессия четвертого желудочка (Техника CV-4) <span class="timestamp">day_1: 01:05:00 - 01:09:00, day_4: 03:28:00 - 03:46:00</span></h3>
+<p>Четвертый желудочек проецируется на уровне чешуи затылочной кости под мозжечком. Техника CV-4 вызывает временную остановку ритмов (Still Point), перераспределяет ликвор по субарахноидальному пространству, снижает тонус симпатической нервной системы и нормализует внутричерепное давление. Показана прежде всего для «зажатых», напряжённых пациентов (нормализует повышенный тонус симпатики).</p>
+<div class="note">
+<strong>Стилпоинт как универсальный принцип «перезагрузки»:</strong> Стилпоинт (временная остановка ритма с последующим самопроизвольным перезапуском, по аналогии с перезагрузкой «зависшего» компьютера) — это не исключительно краниальный феномен, а универсальный принцип, применимый к любому участку или органу тела (стопы, бёдра, таз, cisterna chyli и др.). Название CV-4 относится конкретно к остановке на уровне четвёртого желудочка; при неопределённости в клинической картине выполнение стилпоинта помогает снять избыточные компенсации и выявить истинную актуальную проблему.
+            </div>
+<div class="tip">
+<strong>Фаза дыхания и эффективность:</strong> Спонтанный стилпоинт чаще всего наступает на максимуме фазы вдоха, однако в лечебных целях эффективнее осуществлять его на фазе выдоха. Наведённый (индуцированный оператором) стилпоинт выполняется путём удержания структуры именно на фазе вдоха до момента остановки ритма.
+            </div>
+<div class="hand-position">
+<strong>Общая последовательность стилпоинта для всего тела (перезагрузка «сверху вниз»):</strong> При работе с ослабленными пациентами или пожилыми людьми полноценная перезагрузка выполняется последовательно: стопы → бёдра → крылья таза → диафрагма → грудная апертура → и уже затем непосредственно CV-4. На каждой структуре принцип тот же, что и при выслушивании краниального ритма: оператор мягко удерживает структуру именно в фазе выдоха (не позволяя уйти в фазу вдоха), дожидаясь остановки ритма и его последующего самопроизвольного перезапуска с улучшенным качеством и амплитудой. Такая полная последовательность сама по себе может составлять отдельный сеанс.
+            </div>
+<div class="warning">
+<strong>Осторожно с «перезагрузкой» в середине протокола:</strong> Стилпоинт можно проводить как в начале сеанса (снять фоновый «шум»), так и в конце (дать телу дополнительный ресурс), но важно понимать, что произвольное применение стилпоинта посреди уже выполненной прицельной коррекции способно частично «обнулить» достигнутый эффект — решение о том, когда уместна общая перезагрузка, а когда нужна точечная работа, должно быть осознанным.
+            </div> <div class="tip">
+<strong>Гибкость по времени и диагностическое применение:</strong> Технику можно выполнять от 1 секунды до 10–20 минут в зависимости от задачи — от быстрой пробы до полноценного ресурсного воздействия. Направление, в которое «потянуло» тело пациента во время выполнения CV-4 (например, в правую или левую ногу), используется как дополнительный диагностический критерий: оно указывает на сторону компенсации, что помогает разрешить сомнения, возникшие при первичном тестировании (например, при неоднозначном результате теста «какая нога хуже»).
+            </div>
+<div class="hand-position">
+<strong>Положение рук:</strong> Ладони складываются чашей (лодочкой), соприкасаясь кончиками первых пальцев. Теньеры раскрыты. Чешуя затылочной кости пациента укладывается на теньеры оператора. Важно: пальцы не должны перекрывать теменно-сосцевидный и лямбдовидный швы!
+            </div>
+<p><strong>Пошаговое выполнение:</strong></p>
+<ol>
+<li>Настройтесь на КСР затылочной кости. Сопровождайте движение кости на выдохе (экстензия/сжатие) — теньеры мягко сближаются.</li>
+<li>При переходе ритма к вдоху (флексия/расширение) окажите мягкое сопротивление, удерживая кость в параметрах выдоха. Не совершайте грубого давления!</li>
+<li>Повторяйте удержание на протяжении нескольких циклов до наступления полной остановки ритма (Still Point). Ткани под руками станут мягкими, теплыми и пластичными.</li>
+<li>Удерживайте точку покоя. В этот момент происходит распределение ликвора и накопление тканевого ресурса. Дождитесь мощного освобождающего вдоха («искра жизни»), который растолкнет ваши руки. Отпустите сопротивление и сопровождайте ритм во флексии 1-2 цикла.</li>
+</ol>
+<div class="split-grid">
+<div>
+<h4>Физиологические эффекты CV-4:</h4>
+<ul class="content-list">
+<li>Снижение температуры тела при гипертермии на 2°C за 20-30 минут;</li>
+<li>Нормализация артериального давления и венозного возврата;</li>
+<li>Снижение уровня глюкозы в крови (влияние на гипофиз);</li>
+<li>Выраженный противоболевой и миорелаксирующий эффекты;</li>
+<li>Устранение панических атак, бессонницы и тревожности;</li>
+<li>Улучшение питания клеток мозга, метаболизма и лимфотока, стимуляция ядер черепных нервов;</li>
+<li>Улучшение оссификации костей, повышение температуры «ядра» тела при выведении из шока;</li>
+<li>Нейтрализация вторичных (компенсаторных) поражений — актуальное первичное поражение становится отчётливо видимым для дальнейшей работы.</li>
+</ul>
+</div>
+<div class="border-red" style="border-left: 4px solid #ef4444; padding-left: 16px;">
+<h4>Противопоказания к технике CV-4:</h4>
+<ul class="content-list">
+<li>Беременность после 7-го месяца (может спровоцировать роды) — на более ранних сроках специально не оговаривается как абсолютное противопоказание;</li>
+<li>Острый период ЧМТ (особенно при переломах затылочной кости), свежее внутричерепное кровоизлияние;</li>
+<li>Эпилепсия и судорожная готовность — требует особой осторожности;</li>
+<li>Выраженная эссенциальная гипертензия в стадии криза;</li>
+<li>Тяжелое соматическое состояние пациента, выраженно ослабленные пожилые пациенты — у них перестройка тканей идёт очень медленно, и уже после 1–2 воздействий может наступить стойкий, незавершающийся стилпоинт (признак того, что тело больше не готово к дальнейшей работе — в этом случае лучше начинать с мягкой общей перезагрузки, а не с полной техники);</li>
+<li>Дети 3–5 лет — по состоянию организма до этого возраста рекомендуется выполнять только мягкое прослушивание на ритмах, без полной техники CV-4;</li>
+<li>Острый приступ бронхиальной астмы.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="test-card" id="ev4-expansion">
+<h3>Экспансия четвертого желудочка (Техника EB-4) <span class="timestamp">day_1: 01:08:01, day_4: 03:36:03</span></h3>
+<p>Ресурсная биодинамическая техника, показанная для ослабленных, пожилых и декомпенсированных пациентов, а также для замедленных (гипотоничных) пациентов — в противовес CV-4, которая показана напряжённым пациентам. Является мягкой альтернативой CV-4.</p>
+<div class="note">
+<strong>Дополнительные физиологические эффекты EV-4:</strong> Снижает уровень сахара в крови; в среднем снижает температуру тела на 1°C; запускает/нормализует функцию яичников; нормализует ликвородинамику.
+            </div>
+<div class="hand-position">
+<strong>Положение рук:</strong> Захват аналогичен технике «разламывания яблока» под затылочной костью. Пальцы просачиваются через кожу и фасции до надкостницы чешуи.
+            </div>
+<p><strong>Пошаговое выполнение:</strong></p>
+<ol>
+<li>Настройтесь на КСР затылочной кости, пройдите перцептивно сквозь ТМО и паренхиму мозга до мембраны четвертого желудочка.</li>
+<li>Сопровождайте ритм на вдохе (расширение/экспансия), мягко раскрывая пальцы латерально и помогая чешуе затылочной кости расшириться.</li>
+<li>При переходе на выдох зафиксируйте руки, не позволяя кости сжиматься. Удерживайте ее в фазе максимального вдоха.</li>
+<li>Дождитесь наступления стилпоинта на вдохе. После глубокой тканевой перестройки и появления ритмической волны плавно уберите руки на фазе расширения. EB-4 эффективно восполняет энергетический дефицит системы.</li>
+</ol>
+</div>
+<!-- SECTION XI (basic_data.txt only, без хронологии транскрипций) -->
+<div class="category-divider" id="additional-materials">
+<h2>XI. Дополнительные материалы (только в basic_data.txt)</h2>
+<p class="category-description">Темы и техники, присутствующие только в исходном справочном протоколе (<code>basic_data.txt</code>) и не прозвучавшие в устном виде на записанных семинарах — поэтому у них нет собственной хронологии/таймкодов. Раздел вынесен отдельным блоком в конец документа согласно правилу объединения источников; при необходимости преподаватель может вручную перенести отдельные пункты в соответствующие тематические разделы выше.</p>
+</div>
+
+<div class="test-card" id="cranial-protocol-additional-techniques">
+<h3>Дополнительные техники декомпрессии костей черепа</h3>
+<p>Ряд узкоспециализированных техник Большого краниального протокола, дополняющих уже описанные разделы по затылочной, лобной, теменной, клиновидной и височной костям.</p>
+
+<div class="hand-position">
+<strong>Декомпрессия мыщелков затылочного отверстия у маленьких детей:</strong> Второй и третий пальцы одной руки устанавливаются на затылочную кость с двух сторон от БЗО, другая рука — продольно на лобную кость. Лобная рука направляется вентрально, освобождая сочленение с клиновидной костью, затем с СБС. Затылочная кость направляется дорзально, затем краниально (освобождая атлант), после чего пальцы на затылочной кости раскрываются кнаружи, раскрывая БЗО и освобождая мыщелки. Техника эффективна именно у маленьких детей; у взрослых пациентов вместо неё лучше выполнять технику платибазии.
+</div>
+
+<div class="hand-position">
+<strong>Коррекция гипериона (односторонняя техника):</strong> Точка «гиперион» — зона встречи четырёх костей свода, расположенная рядом с птерионом. Второй палец устанавливается на лобную кость, первый — на теменную, третий — на клиновидную, четвёртый — на височную; все четыре пальца располагаются вблизи гипериона. Оператор концентрически разводит пальцы, вводя кости в напряжение и декомпрессируя зону.
+</div>
+
+<div class="hand-position">
+<strong>Клиновидно-скуловая декомпрессия:</strong> Одна рука классическим захватом удерживает клиновидную кость, другая — щипковым захватом скуловую кость. Развести кости относительно друг друга, наблюдая за расслаблением тканей.
+</div>
+
+<div class="hand-position">
+<strong>Клиновидно-нёбная декомпрессия через верхнюю челюсть:</strong> Выполняется опосредованно через верхнюю челюсть — одна рука щипковым захватом удерживает клиновидную кость, другая захватывает верхнюю челюсть (первый-третий пальцы, второй палец на межрезцовом шве), растягивая клиновидно-нёбное сочленение через тело верхней челюсти.
+</div>
+
+<div class="hand-position">
+<strong>Клиновидно-теменная декомпрессия (зона большого родничка):</strong> Одна рука выполняет щипковый захват клиновидной кости, пальцы другой руки устанавливаются на теменную кость вблизи птериона. Выполняется односторонняя декомпрессия, разводя кости относительно друг друга.
+</div>
+
+<div class="hand-position">
+<strong>Лобно-верхнечелюстная декомпрессия (односторонняя техника, снаружи и интраорально):</strong> Одна рука захватывает лобную кость первым и третьим пальцами, второй палец — на глабелле. Другая рука захватывает верхнюю челюсть первым и третьим пальцами, второй палец — на лобном отростке верхней челюсти вблизи глабеллы. Кости направляются в противоположные латеральные стороны.
+</div>
+
+<div class="hand-position">
+<strong>Лобно-носовая декомпрессия:</strong> Носовые кости захватываются первым и вторым пальцами одной руки, другая рука удерживает лобную кость. Носовые кости направляются вентро-каудально, в наружную ротацию, относительно лобной кости.
+</div>
+
+<div class="hand-position">
+<strong>Лобно-слёзная декомпрессия:</strong> Аналогична лобно-носовой технике, только контакт устанавливается глубже — непосредственно на слёзной кости. Помимо двухсторонней версии существует односторонний вариант, выполняемый мизинцем на слёзной кости.
+</div>
+</div>
+
+<div class="test-card" id="chest-shoulder-additional-tests">
+<h3>Дополнительные тесты плечевого пояса и рёбер</h3>
+<p>Тесты общей батареи региона грудной клетки, дополняющие уже описанный протокол структурных тестов плечевого пояса, шеи и подъязычного комплекса.</p>
+
+<div class="hand-position">
+<strong>Тест пружинирования плечевых суставов:</strong> Оператор надавливает на плечевые суставы пациента в передне-заднем направлении, оценивая плотность тканей и сопротивление движению.
+</div>
+
+<div class="hand-position">
+<strong>Тест отведения и встряхивания руки:</strong> Оператор отводит руку пациента и совершает встряхивающее движение. В норме степень отведения и свобода подвижности одинаковы с обеих сторон; дополнительно оценивается время затухания колебательного движения — быстрое затухание указывает на блок сустава.
+</div>
+
+<div class="hand-position">
+<strong>Общее тестирование плотности и дыхательной подвижности рёбер:</strong> Оператор последовательно пальпирует рёбра в различных зонах грудной клетки, оценивая их плотность и подвижность на дыхании (пружинирование).
+</div>
+</div>
+
+<div class="test-card" id="stillpoint-preparation-theory">
+<h3>Общий принцип Стилл Поинта и подготовка к работе с черепом</h3>
+<p>Теоретическая модель, объясняющая выбор фазы дыхания для наведённого Стилл Поинта, и подготовительные техники, которые рекомендуется выполнять перед началом мембранной коррекции черепа.</p>
+
+<div class="note">
+<strong>Стилл Поинт на вдохе и на выдохе — выбор в зависимости от состояния пациента:</strong>
+<ul class="content-list">
+<li>Стилл Поинт на вдохе (экспансия) — используется, когда у пациента мало ресурса, если нужно добавить жизненных сил.</li>
+<li>Стилл Поинт на выдохе (компрессия) — используется, когда ресурс есть, но имеется перевозбуждение системы и требуется «перезагрузка». Часто после такого Стилл Поинта наступает ещё более медленный, глубокий вдох.</li>
+<li>Спонтанный Стилл Поинт — когда тело само проводит остановку ритма, оно, как правило, делает это именно на вдохе.</li>
+<li>У младенцев Стилл Поинт выполняется двумя пальцами.</li>
+</ul>
+</div>
+
+<div class="hand-position">
+<strong>Подготовительные техники перед протоколом коррекции мембран черепа:</strong>
+<ol>
+<li>Уравновешивание крестца — классическая тазовая техника: одна рука охватывает крестец между ног пациента, другая — крылья подвздошных костей.</li>
+<li>Раскрытие грудной апертуры.</li>
+<li>Коррекция атланта по Сазерленду: второй-третий палец одной руки устанавливается сбоку от позвоночника на атлант, другая рука — продольно на лобную кость. Пациент представляет передний кив головой; лобная кость направляется каудально, создавая через свод черепа растяжение между затылочной костью и атлантом.</li>
+</ol>
+<p>Перед тем как приступать непосредственно к работе с черепом, рекомендуется проверить состояние таза и устранить актуальные дисфункции крестца.</p>
+</div>
+</div>
+
+<div class="test-card" id="listening-additional-stations">
+<h3>Дополнительные станции прослушивания краниального ритма</h3>
+<p>Отдельные позиции рук из полного протокола прослушивания краниоритма по структурам тела, дополняющие уже описанные станции (стопы, крестец, таз, грудная апертура, затылочная и теменные кости, захваты Сазерленда и Беккера).</p>
+
+<div class="hand-position">
+<strong>Прослушивание глазниц:</strong> Пальцы оператора обхватывают кости глазницы. На вдохе наблюдается расширение глазницы.
+</div>
+
+<div class="hand-position">
+<strong>Прослушивание верхней челюсти (наружный захват):</strong> Пальцы устанавливаются с двух сторон от средней линии на теле верхней челюсти. На вдохе кость совершает наружную ротацию.
+</div>
+
+<div class="hand-position">
+<strong>Прослушивание нижней челюсти:</strong> Основания ладоней располагаются на височных костях, второй-пятый пальцы — на теле нижней челюсти. На вдохе тело нижней челюсти совершает наружную ротацию и уплощается, в то время как височная часть в области суставных отростков слегка сжимается.
+</div>
+
+<div class="hand-position">
+<strong>Боковой захват Мэгуна для СБС:</strong> Оператор располагается сбоку от пациента. Краниальная рука — под затылочной костью, каудальная рука щипковым захватом первого и второго пальцев удерживает большие крылья клиновидной кости в наружном углу глаза. На вдохе кости сближаются — так называемый «механизм шестерёнки».
+</div>
+
+<div class="hand-position">
+<strong>Захват колокола решётчатой кости (для прослушивания):</strong> Оператор располагается сбоку. Краниальная рука щипковым захватом удерживает клиновидную кость, каудальная рука первым и вторым пальцами щипком захватывает решётчатую кость через спинку носа. На вдохе клиновидная кость движется каудально, а решётчатая — краниально, то есть кости движутся навстречу друг другу.
+</div>
+
+<div class="hand-position">
+<strong>Тестирование срединных костей черепа (принцип «шестерёнок»):</strong> Краниальная рука захватывает лобную (или клиновидную) кость, каудальная рука первым и третьим пальцами захватывает тело верхней челюсти, второй палец располагается посередине на межрезцовом шве. На вдохе наблюдается движение лобной кости краниально, клиновидной — каудально, решётчатой кости и сошника — краниально, верхней челюсти — в наружную ротацию и каудально, нёбной кости — каудально. Все срединные кости движутся по принципу сцепленных шестерёнок.
+</div>
+</div>
+
+<!-- SECTION XII (из транскрипций, важные клинические заметки, пропущенные при первой сборке конспекта) -->
+<div class="category-divider" id="clinical-notes-additional">
+<h2>XII. Дополнительные клинические заметки</h2>
+<p class="category-description">Значимые клинические факты, оговорки и предостережения, прозвучавшие в записях семинаров, но не попавшие в основные разделы конспекта при первой сборке. Найдены при повторной сверке конспекта с сырыми транскрипциями.</p>
+</div>
+
+<div class="test-card" id="csf-and-frontal-bone-notes">
+<h3>Ликвор и психоэмоциональные проявления дисфункции лобной кости <span class="timestamp">day_1: 02:03:08, day_1: 04:31:00 - 04:33:00</span></h3>
+<div class="note">
+<strong>Объём выработки ликвора:</strong> Сосудистые сплетения желудочков вырабатывают до 150 граммов ликвора. При застое циркуляции спинномозговой жидкости замедляется метаболизм, снижается количество циркулирующего ликвора, что проявляется вялостью и повышенной утомляемостью пациента — это лишь начальная стадия более серьёзных последствий.
+</div>
+<div class="note">
+<strong>Лобная симптоматика:</strong> При дисфункции лобной кости, помимо прочего, могут наблюдаться дурашливость и немотивированное хихиканье. Лобная кость топографически связана с долями головного мозга, поэтому её выраженная дисфункция может сопровождаться раздражительностью, нарушением социализации, в тяжёлых случаях — аутистическими чертами и даже шизофренией. На уровне коронарного шва расположена сенсомоторная кора; при её поражении нарушается чувствительность рук, и организм тратит значительные ресурсы на компенсацию этого нарушения.
+</div>
+</div>
+
+<div class="test-card" id="sbs-before-venous-and-cavernous-risk">
+<h3>Очерёдность работы с СБС и венозными синусами; риск тромбоза кавернозного синуса <span class="timestamp">day_1: 04:56:00, day_3: 01:51:01 - 01:52:06</span></h3>
+<div class="warning">
+<strong>Правило очерёдности:</strong> СБС необходимо «отремонтировать» (устранить актуальные дисфункции) до начала протокола коррекции венозных синусов — иначе процедура венозных синусов будет неэффективна.
+</div>
+<div class="warning">
+<strong>Риск тромбоза кавернозного синуса:</strong> Из-за уникального анатомического расположения и тесной связи с венами лица (не имеющими клапанов) кавернозный синус уязвим для распространения инфекции и сосудистых осложнений — например, из носогубного треугольника. Чаще всего каротидно-кавернозная фистула/тромбоз возникает как следствие черепно-мозговой травмы и проявляется пульсирующим экзофтальмом (выпячиванием глазного яблока) и шумом в голове — даже после лёгкого сотрясения. Именно поэтому важно диагностировать и пролечивать даже лёгкие ЧМТ.
+</div>
+</div>
+
+<div class="test-card" id="temporal-bp-and-jugular-children">
+<h3>Височная кость и артериальное давление; ярёмное отверстие у детей <span class="timestamp">day_1: 06:04:00, day_1: 07:52:06</span></h3>
+<div class="note">
+<strong>Височная кость и АД:</strong> В районе височной кости расположены датчики (барорецепторы), контролирующие состояние крупных сосудов; поэтому дисфункция височной кости может сопровождаться нарушением артериального давления.
+</div>
+<div class="note">
+<strong>Ярёмное отверстие у детей:</strong> Через ярёмное отверстие выходит группа нервов (блуждающий, языкоглоточный, добавочный). Их свобода особенно важна у детей — от этого зависит, насколько хорошо ребёнок разговаривает и может сосать грудь. Поэтому работа с затылочной костью у детей прорабатывается особенно тщательно.
+</div>
+</div>
+
+<div class="test-card" id="pelvis-abdomen-diagnostic-notes">
+<h3>Диагностические заметки: ошибка теста КПС, позиция купола диафрагмы, пример пяточной шпоры <span class="timestamp">day_2: 02:13:01, day_2: 03:17:05, day_2: 08:19:00</span></h3>
+<div class="warning">
+<strong>Типичная ошибка теста подвижности КПС:</strong> При оценке жёсткости крестцово-подвздошного сустава нужно мягко покачивать/пружинировать кость дорзально, как пружину — а не вдавливать её статичным надавливанием. Вдавливание — распространённая ошибка начинающих.
+</div>
+<div class="note">
+<strong>Диагностическое значение позиции купола диафрагмы:</strong> Если купол диафрагмы опущен вниз — тяга исходит от органов брюшной полости; если купол приподнят вверх — тяга исходит от органов грудной клетки (перикард, бронхи, плевра).
+</div>
+<div class="note">
+<strong>Пример внутрикостного повреждения — пяточная шпора:</strong> Иллюстрация того, как хроническое натяжение подошвенного апоневроза и отрыв костной ткани в области пятки приводят к формированию шпоры — наглядный пример внутрикостной перестройки в ответ на длительную механическую нагрузку.
+</div>
+</div>
+
+<div class="test-card" id="scope-of-practice-notes">
+<h3>Границы компетенции: направление к специалистам, красные флаги, эффект от стороннего вмешательства <span class="timestamp">day_3: 00:29:02, day_3: 00:45:01, day_4: 02:01:02 - 02:08:01</span></h3>
+<div class="warning">
+<strong>Сторонние вмешательства между сеансами:</strong> Если в течение нескольких дней после остеопатической процедуры (особенно венозного протокола) пациент получает стороннее воздействие, выполненное некорректно (например, обычный массаж не по протоколу) — эффект от вашей работы «обнуляется», и пациент возвращается к базовому состоянию, которое было до вашей процедуры, без какого-либо выигрыша.
+</div>
+<div class="note">
+<strong>Компенсаторная цепочка «снизу вверх»:</strong> Если долго не лечить боль в стопе, со временем обязательно разовьётся проблема в вышележащем суставе — колене, вплоть до его разрушения (пациент придёт с жалобой на «артроз»). Это аргумент в пользу устранения дисфункций начиная с нижних отделов тела.
+</div>
+<div class="warning">
+<strong>Направление к профильным специалистам и красные флаги:</strong> При сложной клинической ситуации, выходящей за рамки остеопатической компетенции (например, острая стоматологическая проблема), лучше направить пациента к специалисту, работающему в схожей парадигме («в одном поле»). Немедленного направления к врачу (неотложная помощь/невролог) требуют: указания на черепно-мозговую травму или инсульт в анамнезе, головные боли с заторможенностью и спутанностью сознания, нарушение дыхания, резкий подъём артериального давления, пульсация в голове.
+</div>
+</div>
+
+</main>
+</div>
+<footer class="global-footer">
+    Практическое руководство по остеопрактике • Системные протоколы и биодинамика • Все права защищены • На основе сертифицированных учебных материалов
+</footer>
+<a class="scroll-top-btn" href="#header" title="Наверх">↑</a>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const sidebar = document.querySelector('.sidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+        const menuBtn = document.getElementById('menuToggleBtn');
+        const closeBtn = document.getElementById('closeSidebarBtn');
+
+        function openMenu() {
+            sidebar.classList.add('open');
+            overlay.classList.add('active');
+            document.body.classList.add('menu-open');
+        }
+
+        function closeMenu() {
+            sidebar.classList.remove('open');
+            overlay.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
+
+        ['click', 'touchstart'].forEach(eventType => {
+            menuBtn?.addEventListener(eventType, (e) => {
+                e.preventDefault();
+                openMenu();
+            });
+        });
+        closeBtn?.addEventListener('click', closeMenu);
+
+        overlay?.addEventListener('click', closeMenu);
+
+        // Закрытие меню при клике по ссылке навигации
+        sidebar?.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 1024) {
+                    closeMenu();
+                }
+            });
+        });
+
+        // Закрытие по Esc
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeMenu();
+            }
+        });
+
+        // Set active menu link
+        const navLinks = [...sidebar.querySelectorAll('a[href^="#"]')];
+
+        function setActiveLink(id) {
+            navLinks.forEach(link => {
+                const isActive = link.getAttribute('href') === `#${id}`;
+                link.classList.toggle('active', isActive);
+            });
+        }
+
+        // Подсветка при клике по пункту меню
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                const id = link.getAttribute('href').slice(1);
+                setActiveLink(id);
+            });
+        });
+
+        // Подсветка при прокрутке
+        const sections = navLinks
+            .map(link => document.querySelector(link.getAttribute('href')))
+            .filter(Boolean);
+
+        function updateActiveSection() {
+            const scrollPos = window.scrollY + 180;
+
+            let currentSection = sections[0];
+
+            sections.forEach(section => {
+                if (section.offsetTop <= scrollPos) {
+                    currentSection = section;
+                }
+            });
+
+            if (currentSection) {
+                setActiveLink(currentSection.id);
+            }
+        }
+
+        window.addEventListener('scroll', updateActiveSection, {
+            passive: true
+        });
+
+        updateActiveSection();
+    });
+</script>
+</body>
+</html>

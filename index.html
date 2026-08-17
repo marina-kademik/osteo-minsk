@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Остеопатия и Остеопрактика — Учебные конспекты</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .hub-container {
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        .hub-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .hub-header h1 {
+            font-size: 2.2rem;
+            color: var(--slate-900);
+            margin-bottom: 12px;
+        }
+        .hub-header p {
+            color: var(--slate-600);
+            font-size: 1.1rem;
+        }
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .hub-card {
+            background: var(--bg-card);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.01);
+            transition: transform 0.22s ease, box-shadow 0.22s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-decoration: none;
+        }
+        .hub-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 20px -8px rgba(13, 148, 136, 0.15);
+            border-color: var(--primary-border);
+        }
+        .hub-card h3 {
+            color: var(--slate-900);
+            font-size: 1.25rem;
+            margin-top: 0;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .hub-card p {
+            color: var(--slate-600);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 24px;
+        }
+        .hub-card .btn-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-text);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .hub-icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+            background: var(--primary-light);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="logo">🎓</div>
+        <div>
+            <h1>База знаний</h1>
+            <p>Учебные материалы по остеопатии и остеопрактике</p>
+        </div>
+    </header>
+
+    <div class="hub-container">
+        <div class="hub-header">
+            <h1>Выберите учебный материал</h1>
+            <p>Интерактивные конспекты семинаров с навигацией и защитой контента</p>
+        </div>
+
+        <div class="cards-grid">
+
+            <a href="components/vagus.html" class="hub-card">
+                <div>
+                    <div class="hub-icon">🧠</div>
+                    <h3>Блуждающий нерв</h3>
+                    <p>Анатомия, физиология, поливагальная теория, диагностические тесты и детальный протокол коррекции вагуса.</p>
+                </div>
+                <div class="btn-link">Открыть конспект &rarr;</div>
+            </a>
+
+
+            <a href="components/osteopractica-1.html" class="hub-card">
+                <div>
+                    <div class="hub-icon">🌿</div>
+                    <h3>Остеопрактика. Уровень 1</h3>
+                    <p>История, философия, базовые принципы, пальпация, МФР, коленный сустав, стопа и основы краниосакральной терапии.</p>
+                </div>
+                <div class="btn-link">Открыть конспект &rarr;</div>
+            </a>
+
+
+            <a href="components/osteopractica-2.html" class="hub-card">
+                <div>
+                    <div class="hub-icon">⚡</div>
+                    <h3>Остеопрактика. Уровень 2</h3>
+                    <p>ПДМ, анатомия черепа, черепные нервы, дренаж венозных синусов, внутрикостные дисфункции и большой краниальный протокол.</p>
+                </div>
+                <div class="btn-link">Открыть конспект &rarr;</div>
+            </a>
+
+
+            <a href="components/osteopractica-3.html" class="hub-card">
+                <div>
+                    <div class="hub-icon">⚡</div>
+                    <h3>Остеопрактика. Уровень 3</h3>
+                    <p>Фасции · Лимфа · Вены · Артерии · Нервы · Лицевой череп</p>
+                </div>
+                <div class="btn-link">Открыть конспект &rarr;</div>
+            </a>
+        </div>
+    </div>
+
+    <footer class="global-footer">
+        Учебные конспекты по остеопатии • Защищенный доступ • GitHub Pages
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

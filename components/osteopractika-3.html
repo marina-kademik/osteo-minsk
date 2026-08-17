@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Конспект по Остеопрактике и Остеопатическим Техникам</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --primary: #0d9488;
+        --primary-light: #f0fdfa;
+        --primary-border: #ccfbf1;
+        --primary-text: #115e59;
+        --accent: #10b981;
+        --slate-900: #0f172a;
+        --slate-850: #1e293b;
+        --slate-600: #475569;
+        --slate-400: #94a3b8;
+        --slate-100: #f1f5f9;
+        --bg-main: #f8fafc;
+        --bg-card: #ffffff;
+        --border-color: #f1f5f9;
+        --card-border: #e2e8f0;
+    }
+
+    html {
+        scroll-behavior: smooth;
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        background-color: var(--bg-main);
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        color: var(--slate-850);
+        line-height: 1.4;
+        font-size: 1rem;
+    }
+
+    *, :after, :before {
+        box-sizing: border-box;
+        border: 0 solid #e5e7eb;
+    }
+
+    a, a:visited {
+        color: var(--primary-text);
+    }
+
+    a:hover {
+        color: var(--primary);
+    }
+
+    header.app-header {
+        background: white;
+        border-bottom: 1px solid var(--slate-100);
+        padding: 24px 40px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    header.app-header .logo {
+        background: var(--primary);
+        color: white;
+        border-radius: 12px;
+        padding: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+    }
+
+    header.app-header h1 {
+        margin: 0;
+        font-size: 1.35rem;
+        font-weight: 800;
+        color: var(--slate-900);
+        letter-spacing: -0.02em;
+    }
+
+    header.app-header p {
+        margin: 4px 0 0;
+        font-size: 0.65rem;
+        color: var(--slate-400);
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        font-weight: 700;
+    }
+
+    .layout-container {
+        display: flex;
+        max-width: 1440px;
+        margin: 0 auto;
+        gap: 32px;
+        padding: 30px 40px;
+    }
+
+    .sidebar {
+        width: 320px;
+        flex-shrink: 0;
+        position: sticky;
+        top: 30px;
+        height: calc(100vh - 120px);
+        overflow-y: auto;
+        background: white;
+        border: 1px solid var(--border-color);
+        border-radius: 24px;
+        padding: 24px 20px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+    }
+
+    .sidebar-top-line {
+        margin-bottom: 16px;
+        border-bottom: 2px solid var(--slate-100);
+        padding-bottom: 10px;
+    }
+
+    .sidebar h2 {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--slate-400);
+        margin: 0 0 20px;
+    }
+
+    .sidebar ul.nav-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .sidebar ul.nav-list li {
+        margin-bottom: 14px;
+    }
+
+    .sidebar ul.nav-list a.nav-section-header {
+        display: block;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--slate-900);
+        text-decoration: none;
+        margin-bottom: 8px;
+        padding: 4px 6px;
+    }
+
+    .sidebar ul.nav-list a.nav-section-header:hover {
+        color: var(--primary);
+    }
+
+    .sidebar a.active {
+        color: var(--primary-text) !important;
+        background-color: var(--primary-light);
+        border: 1px solid var(--primary-border);
+        font-weight: 600;
+    }
+
+    .sidebar .nav-section-header.active {
+        color: var(--primary);
+        background-color: var(--primary-light);
+        border-radius: 10px;
+    }
+
+    .sidebar .sub-index {
+        list-style: none;
+        margin-left: 6px;
+        border-left: 1px solid var(--slate-100);
+        padding-left: 6px;
+    }
+
+    .sidebar .sub-index li {
+        margin-bottom: 6px;
+    }
+
+    .sidebar .sub-index a {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 4px;
+        font-size: 11.5px;
+        font-weight: 500;
+        color: var(--slate-600);
+        text-decoration: none;
+        padding: 4px 8px;
+        border-radius: 8px;
+        transition: all 0.15s ease;
+        border: 1px solid transparent;
+    }
+
+    .sidebar .sub-index a:hover {
+        color: var(--primary-text);
+        background-color: var(--primary-light);
+    }
+
+    .sidebar .tc-mini {
+        font-size: 0.6rem;
+        color: var(--slate-600);
+        background: var(--slate-100);
+        font-family: inherit;
+        padding: 2px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--card-border);
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+        margin-left: auto;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .main-content {
+        flex-grow: 1;
+        min-width: 0;
+    }
+
+    .category-divider {
+        margin-top: 40px;
+        margin-bottom: 24px;
+        border-bottom: 1px solid var(--card-border);
+        padding-bottom: 12px;
+    }
+
+    .category-divider:first-of-type {
+        margin-top: 0;
+    }
+
+    .category-divider h2 {
+        font-size: 1.6rem;
+        font-weight: 800;
+        color: var(--slate-900);
+        margin: 0;
+        letter-spacing: -0.02em;
+    }
+
+    .category-description {
+        color: var(--slate-600);
+        margin-top: 8px;
+        line-height: 1.5;
+    }
+
+    blockquote {
+        border-left: 4px solid #f59e0b;
+        background: #fef3c7;
+        padding: 16px 20px;
+        margin: 16px 0;
+        border-radius: 0 16px 16px 0;
+        color: #78350f;
+        line-height: 1.5;
+    }
+
+    .test-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 24px;
+        padding: 30px;
+        margin-bottom: 24px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.01), 0 2px 4px -2px rgba(0, 0, 0, 0.01);
+        transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .test-card:hover {
+        box-shadow: 0 12px 20px -8px rgba(0, 0, 0, 0.03), 0 4px 8px -4px rgba(0, 0, 0, 0.03);
+    }
+
+    .test-card h3 {
+        margin-top: 0;
+        color: var(--slate-900);
+        font-size: 1.15rem;
+        font-weight: 700;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 14px;
+    }
+
+    .timestamp {
+        font-size: 0.75rem;
+        color: var(--slate-600);
+        background: var(--slate-100);
+        font-family: inherit;
+        padding: 4px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--card-border);
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+    }
+
+    .timestamp-sub {
+        font-size: 9px;
+        color: var(--slate-600);
+        background: var(--slate-100);
+        border: 1px solid var(--card-border);
+        padding: 1px 4px;
+        border-radius: 4px;
+        font-family: inherit;
+        margin-right: 4px;
+        font-weight: 600;
+        display: inline-block;
+        white-space: nowrap;
+    }
+
+    .hand-position {
+        background-color: var(--primary-light);
+        border: 1px solid var(--primary-border);
+        color: var(--primary-text);
+        border-radius: 14px;
+        padding: 16px 20px;
+        margin: 16px 0;
+        font-weight: 500;
+        line-height: 1.5;
+    }
+
+    .warning {
+        background-color: #fef2f2;
+        border-left: 4px solid #ef4444;
+        color: #7f1d1d;
+        border-radius: 0 14px 14px 0;
+        padding: 16px 20px;
+        margin: 16px 0;
+        line-height: 1.5;
+    }
+
+    .note {
+        background-color: #fffbeb;
+        border-left: 4px solid #f59e0b;
+        color: #78350f;
+        border-radius: 0 14px 14px 0;
+        padding: 16px 20px;
+        margin: 16px 0;
+        line-height: 1.5;
+    }
+
+    .tip {
+        background-color: #f0fdfa;
+        border-left: 4px solid #0d9488;
+        color: #115e59;
+        border-radius: 0 14px 14px 0;
+        padding: 16px 20px;
+        margin: 16px 0;
+        line-height: 1.5;
+    }
+
+    .key-term {
+        background-color: var(--slate-100);
+        padding: 2px 6px;
+        border-radius: 6px;
+    }
+
+    .split-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        margin-top: 16px;
+    }
+
+    .border-green {
+        border-color: #fecaca;
+    }
+
+    .border-green {
+        border-color: #0d9488;
+    }
+
+    ul.content-list,
+    ul.content-list ul {
+        padding-left: 18px;
+        margin: 12px 0;
+    }
+
+    ul.content-list li {
+        margin-bottom: 8px;
+        color: #334155;
+    }
+
+    ol {
+        padding-left: 18px;
+        margin: 12px 0;
+    }
+
+    ol li {
+        margin-bottom: 8px;
+        line-height: 1.6;
+        color: #334155;
+        font-weight: 500;
+    }
+
+    ol li::marker {
+        color: var(--primary);
+        font-weight: 700;
+    }
+
+    .breath-rhythm-grid {
+        margin-top: 18px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+    }
+
+    .breath-phase {
+        display: grid;
+        gap: 8px;
+        border-radius: 16px;
+        padding: 16px;
+        line-height: 1.5;
+    }
+
+    .breath-in {
+        background-color: #ecfdf5;
+        border: 1px solid #a7f3d0;
+        color: #065f46;
+    }
+
+    .breath-out {
+        background-color: #ecfeff;
+        border: 1px solid #a5f3fc;
+        color: #075985;
+    }
+
+    .phase-title {
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        display: block;
+        margin-bottom: 6px;
+    }
+
+    .scroll-top-btn {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background-color: var(--primary);
+        color: white;
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        box-shadow: 0 10px 15px -3px rgba(13, 148, 136, 0.3), 0 4px 6px -4px rgba(13, 148, 136, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        transition: transform 0.22s ease, background-color 0.22s ease;
+        z-index: 1201;
+        font-size: 1.25rem;
+    }
+
+    .scroll-top-btn:hover {
+        background-color: #0f766e;
+        transform: scale(1.05);
+    }
+
+    .scroll-top-btn:visited {
+        color: white;
+    }
+
+    footer.global-footer {
+        text-align: center;
+        color: var(--slate-400);
+        font-size: 0.75rem;
+        padding: 40px 20px;
+        border-top: 1px solid var(--border-color);
+        background: white;
+        margin-top: 60px;
+    }
+
+    .data-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .data-table th, .data-table td {
+        padding: 5px;
+        border: 1px solid var(--border-color);
+    }
+
+    .menu-toggle-btn {
+        position: fixed;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 46px;
+        height: 46px;
+        background-color: var(--primary);
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 10px 15px -3px rgba(13, 148, 136, 0.3), 0 4px 6px -4px rgba(13, 148, 136, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        transition: all 0.25s ease;
+        backdrop-filter: blur(0px);
+        color: white;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .menu-toggle-btn:hover {
+        background: var(--primary-text);
+        transform: translateY(-50%) scale(1.03);
+    }
+
+    .menu-toggle-btn:active {
+        transform: translateY(-50%) scale(0.96);
+    }
+
+    .hamburger-icon {
+        width: 24px;
+        height: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        pointer-events: none;
+    }
+
+    .hamburger-icon span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background: white;
+        border-radius: 4px;
+        transition: all 0.2s;
+    }
+
+    .close-sidebar-btn {
+        background: #eef3f7;
+        border: none;
+        width: 36px;
+        height: 36px;
+        border-radius: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s;
+        color: var(--primary-text);
+        font-size: 1.6rem;
+        font-weight: 400;
+        line-height: 1;
+    }
+
+    .close-sidebar-btn:hover {
+        background: #e0eaf0;
+        transform: rotate(90deg);
+        color: var(--primary);;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    @media (min-width: 1025px) {
+        .menu-toggle-btn,
+        .close-sidebar-btn {
+            display: none;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .layout-container {
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .sidebar-top-line {
+            display: flex;
+            gap: 16px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 400px;
+            max-width: 90vw;
+            height: 100vh;
+            box-shadow: 8px 0 30px rgba(0, 0, 0, 0.12);
+            z-index: 1100;
+            transform: translateX(-100%);
+            transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            overflow-y: auto;
+            background: var(--bg-card);
+            border-right: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.01), 0 2px 4px -2px rgba(0, 0, 0, 0.01);
+        }
+
+        .sidebar.open {
+            transform: translateX(0);
+        }
+
+        .split-grid, .breath-rhythm-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(2px);
+            z-index: 1050;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.25s ease, visibility 0.25s;
+            pointer-events: none;
+        }
+
+        .sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        body.menu-open {
+            overflow: hidden;
+        }
+    }
+</style>
+<body>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<div class="menu-toggle-btn" id="menuToggleBtn" aria-label="Открыть меню навигации">
+    <div class="hamburger-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+
+<header class="app-header" id="header">
+    <div class="logo">🦴</div>
+    <div>
+        <h1>Конспект семинара по остеопатии</h1>
+        <p>Фасции · Лимфа · Вены · Артерии · Нервы · Череп · Глазница — 4 дня</p>
+    </div>
+</header>
+
+<div class="layout-container">
+    <aside class="sidebar">
+        <h2>Оглавление</h2>
+        <ul class="nav-list">
+            <li>
+                <a href="#intro" class="nav-section-header">Введение и методология</a>
+                <ul class="sub-index">
+                    <li><a href="#fascial-keys">Фасциальные ключи (18 зон)<span class="tc-mini">day_1: 1:09:13</span></a></li>
+                    <li><a href="#little-john">Треугольники Литтл Джона, тест Д4/Л3<span class="tc-mini">day_1: 1:12:53</span></a></li>
+                    <li><a href="#damage-types">Пять видов повреждения ткани<span class="tc-mini">day_1: 1:25:00</span></a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#fascia" class="nav-section-header">Фасциальная система</a>
+                <ul class="sub-index">
+                    <li><a href="#fascia-layers">Три слоя фасций<span class="tc-mini">day_1: 0:01:00</span></a></li>
+                    <li><a href="#visceral-chains">Четыре висцеральные цепочки<span class="tc-mini">day_1: 0:53:03</span></a></li>
+                    <li><a href="#deepest-fascia">Глубочайшие фасции (ТМО)<span class="tc-mini">day_1: 0:02:00</span></a></li>
+                    <li><a href="#tmo-three-layers-intro">3 слоя ТМО — первое упоминание<span class="tc-mini">day_1: 0:51:03</span></a></li>
+                    <li><a href="#superficial-palpation">Прослушивание поверхностных фасций<span class="tc-mini">day_1: 1:49:09</span></a></li>
+                    <li><a href="#deep-tmo-palpation">Пальпация глубоких фасций и ТМО<span class="tc-mini">day_1: 1:56:02</span></a></li>
+                    <li><a href="#bone-layer">Костный слой: внутрикостный вход<span class="tc-mini">day_1: 1:59:39</span></a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#webster-case" class="nav-section-header">Клинический разбор: Вебстер vs shift</a>
+                <ul class="sub-index">
+                    <li><a href="#webster-technique">Диагностика через слои и коррекция shift<span class="tc-mini">day_1: 2:16:08</span></a></li>
+                    <li><a href="#webster-theory">Дисфункция Вебстера — теория<span class="tc-mini">day_1: 2:38:02</span></a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#lymph-fluid" class="nav-section-header">Лимфатическая и жидкостная системы</a>
+                <ul class="sub-index">
+                    <li><a href="#lymph-theory">Теория лимфатического дерева<span class="tc-mini">day_1: 2:51:00</span></a></li>
+                    <li><a href="#lymph-protocol">Протокол коррекции лимфосистемы (помпаж)<span class="tc-mini">day_1: 3:31:00</span></a></li>
+                    <li><a href="#dynamic-lymph-drainage">Динамический сепарационный лимфодренаж<span class="tc-mini">day_1: 3:41:00</span></a></li>
+                    <li><a href="#fluid-protocol">Протокол коррекции жидкостного слоя<span class="tc-mini">day_1: 4:16:03</span></a></li>
+                    <li><a href="#brain-pump">Жидкостная прокачка мозговых тканей и шеи<span class="tc-mini">day_1: 4:23:04</span></a></li>
+                    <li><a href="#core-link">Ядро тела (кор-линк)<span class="tc-mini">day_2: 0:38:17</span></a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#venous" class="nav-section-header">Венозное дерево</a>
+                <ul class="sub-index">
+                    <li><a href="#svc-theory">Теория и бассейн верхней полой вены<span class="tc-mini">day_2: 1:13:06</span></a></li>
+                    <li><a href="#jugular-test">Тестирование яремной/подключичной вены<span class="tc-mini">day_2: 2:08:00</span></a></li>
+                    <li><a href="#clavicle">Тестирование и коррекция ключицы, рёбер<span class="tc-mini">day_2: 3:48:02</span></a></li>
+                    <li><a href="#shoulder">Тестирование и коррекция плечевого сустава<span class="tc-mini">day_2: 4:39:12</span></a></li>
+                    <li><a href="#ivc-protocol">Бассейн нижней полой вены — полный протокол<span class="tc-mini">day_2: 6:35:01</span></a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#hip" class="nav-section-header">Тазобедренный сустав</a>
+                <ul class="sub-index">
+                    <li><a href="#hip-correction">Тестирование и коррекция ТБС, вправление вывихов<span class="tc-mini">day_3: 1:14:01</span></a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#tmj" class="nav-section-header">ВНЧС и зубочелюстная система</a>
+                <ul class="sub-index">
+                    <li><a href="#tmj-testing">Тестирование ВНЧС (взвешивание, связки, мениск)<span class="tc-mini">day_2: 2:22:00</span></a></li>
+                    <li><a href="#tmj-correction">Коррекция ВНЧС и вправление мениска<span class="tc-mini">day_2: 3:02:03</span></a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#neural" class="nav-section-header">Невральная система</a>
+                <ul class="sub-index">
+                    <li><a href="#cervical-neural">Продёргивание нервов шея-плечо-предплечье<span class="tc-mini">day_3: 2:09:00</span></a></li>
+                    <li><a href="#foramen-tmo">Диагностика 3 слоёв ТМО и коррекция межпозвонкового отверстия<span class="tc-mini">day_3: 2:52:05</span></a></li>
+                    <li><a href="#intercostal">Продёргивание межрёберных нервов<span class="tc-mini">day_3: 2:24:01</span></a></li>
+                    <li><a href="#lumbosacral">Пояснично-крестцовое невральное дерево<span class="tc-mini">day_3: 2:41:06</span></a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#arterial" class="nav-section-header">Артериальное дерево и эмоциональные фиксации</a>
+                <ul class="sub-index">
+                    <li><a href="#arterial-theory">Теория и виды повреждения артериального дерева<span class="tc-mini">day_4: 3:59:00</span></a></li>
+                    <li><a href="#emotional-masks">Эмоциональные маски<span class="tc-mini">day_4: 3:59:00</span></a></li>
+                    <li><a href="#cranial-spasm">Краниальный спазм: неспецифическая и специфическая коррекция<span class="tc-mini">day_4: 5:36:07</span></a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#layer-search" class="nav-section-header">Диагностика актуальной дисфункции</a>
+                <ul class="sub-index">
+                    <li><a href="#layer-inhibition">Последовательная ингибиция слоёв<span class="tc-mini">day_4: 6:13:18</span></a></li>
+                    <li><a href="#radial-head-demo">Демо: вправление лучевой кости, тейпирование<span class="tc-mini">day_4: 6:13:18</span></a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#orbit" class="nav-section-header">Протокол коррекции глазницы</a>
+                <ul class="sub-index">
+                    <li><a href="#orbit-intro">Глазница — теория и обоснование<span class="tc-mini">day_3: 4:02:00</span></a></li>
+                    <li><a href="#orbit-testing">Тестирование глазницы<span class="tc-mini">day_3: 4:11:00</span></a></li>
+                    <li><a href="#orbit-correction">Коррекция глазницы, техники Руди<span class="tc-mini">day_3: 4:51:00</span></a></li>
+                    <li><a href="#lens-retina">Хрусталик, сетчатка, завершающая техника<span class="tc-mini">day_4: 1:11:13</span></a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#skull-big" class="nav-section-header">Большой протокол коррекции лицевого черепа</a>
+                <ul class="sub-index">
+                    <li><a href="#protocol1-extra">Клиновидная и скуловая кость (Протокол №1)<span class="tc-mini">только в basic_data</span></a></li>
+                    <li><a href="#ethmoid">Решётчатая кость: тестирование и коррекция<span class="tc-mini">day_4: 6:29:11</span></a></li>
+                    <li><a href="#maxilla">Верхняя челюсть, нёбная и скуловая кости<span class="tc-mini">day_4: 7:10:01</span></a></li>
+                    <li><a href="#vomer-nasal">Сошник, гайморовы пазухи, носовые и слёзные кости<span class="tc-mini">day_3: 5:02:08</span></a></li>
+                    <li><a href="#eustachian">Слуховая труба и кольцо Пирогова<span class="tc-mini">day_4: 6:54:00</span></a></li>
+                    <li><a href="#mandible">Нижняя челюсть: тестирование и глобальное лечение ВНЧС<span class="tc-mini">day_2: 3:00:03</span></a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#extra" class="nav-section-header">Финальная сверка реестра</a>
+                <ul class="sub-index">
+                    <li><a href="#extra-topics">Итоговая сверка Этапа 0</a></li>
+                </ul>
+            </li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+
+        <blockquote>Конспект составлен на основе структурированного справочника курса (<span class="key-term">basic_data.txt</span>) и необработанных аудиозаписей четырёх дней семинара (<span class="key-term">transcription_raw.zip</span>). Разделы расположены в порядке первого появления темы в хронологии лекций; повторные обращения к теме в другие дни интегрированы в соответствующий раздел с указанием всех таймкодов.</blockquote>
+        <div id="intro" class="category-divider">
+            <h2>Введение и методология</h2>
+            <p class="category-description">Базовые ориентиры, с которых преподаватель начинает семинар: система фасциальных ключей для быстрой топической диагностики, диагностический тест на взаимосвязь ВНЧС–позвоночник и классификация типов повреждения тканей.</p>
+        </div>
+
+        <div class="test-card" id="fascial-keys">
+            <h3>Фасциальные ключи (18 зон)<span class="timestamp">day_1: 1:09:13 - 1:12:53</span></h3>
+            <p>Фасциальные ключи — зоны тела, отражающие состояние поверхностной фасциальной системы и позволяющие быстро оценить общий фасциальный тонус без полного обследования.</p>
+            <ul class="content-list">
+                <li>Ладьевидная / таранная кость стопы</li>
+                <li>Головка малоберцовой кости</li>
+                <li>Надколенник</li>
+                <li>Большой вертел бедра</li>
+                <li>Лонное сочленение</li>
+                <li>Крестец</li>
+                <li>Копчик</li>
+                <li>L3 (третий поясничный позвонок)</li>
+                <li>D4 (четвёртый грудной позвонок)</li>
+                <li>Грудина</li>
+                <li>Ключица</li>
+                <li>C7 (седьмой шейный позвонок)</li>
+                <li>Подъязычная кость</li>
+                <li>C2 (второй шейный позвонок)</li>
+                <li>Затылочная кость</li>
+                <li>Нижняя челюсть</li>
+                <li>Решётчатая кость</li>
+                <li>СБС (сфено-базилярный синхондроз)</li>
+            </ul>
+        </div>
+
+        <div class="test-card" id="little-john">
+            <h3>Треугольники Литтл Джона и диагностика Д4/Л3<span class="timestamp">day_1: 1:12:53 - 1:23:01</span></h3>
+            <p><strong>Цель:</strong> экспресс-диагностика биомеханической связи между ВНЧС и позвоночником через нахождение и оценку смещения позвонков Д4 и Л3 при движении нижней челюсти.</p>
+            <p><strong>Пошаговое выполнение:</strong></p>
+            <ol>
+                <li>Найти позвонок Д4 — нетривиальная задача: сначала находят ость лопатки (по надостной и подостной мышце), от неё определяют проекцию Д4, либо считают позвонки от VII шейного.</li>
+                <li>Найти позвонок Л3 — ориентир: уровень крыльев подвздошных костей (на этом уровне также проецируется пупок и расположен «нижний дантян» — центр равновесия тела).</li>
+                <li>Пропальпировать позвонок, попросить пациента открыть/закрыть рот или подвигать челюстью в сторону.</li>
+                <li>Оценить, смещается ли позвонок синхронно с движением челюсти — это указывает на биомеханическую связь ВНЧС и позвоночного столба (треугольники Литтл Джона).</li>
+            </ol>
+            <div class="note"><strong>Клиническое замечание:</strong> тест продемонстрирован на живом примере — у пациентки после удаления зуба и постановки импланта обнаружено чёткое синхронное смещение Д4 при движении челюсти, что подтверждает клиническую значимость связи зубочелюстной системы и позвоночника.</div>
+            <p><strong>Сравнение с другими техниками:</strong> тест на взаимовлияние ВНЧС–ТБС через треугольники Литтл Джона рассмотрен отдельно в блоке ВНЧС (см. раздел «Тестирование ВНЧС»).</p>
+        </div>
+
+        <div class="test-card" id="damage-types">
+            <h3>Пять видов повреждения ткани<span class="timestamp">day_1: 1:25:00 - 1:49:09</span></h3>
+            <p>Базовая классификация типов тканевых повреждений, на которую преподаватель опирается при описании последующих техник коррекции.</p>
+            <ul class="content-list">
+                <li><strong>Уплотнение</strong> — реакция ткани (фасции) на удар или прямую травму.</li>
+                <li><strong>Адгезия</strong> — слипание между листками фасции, ограничивающее их независимое скольжение относительно друг друга (в норме мышца, окружённая фасцией, скользит по соседней мышце, также окружённой фасцией). Частая причина большинства висцеральных дисфункций — следствие перенесённых инфекций или реактивных процессов, а не только прямых травм: например, плевральная адгезия может формироваться после бронхита или гриппа (даже без пневмонии), а адгезия в брюшной полости — после диареи, аппендицита, асептического гепатита.</li>
+                <li><strong>Рубец</strong> — перерождение ткани: травма → разрушение нормальной ткани (некроз) → замещение неспецифической соединительной тканью; либо без выраженного некроза — постепенное замещение более плотной соединительной тканью. Опасен тем, что может прорастать сквозь несколько тканевых слоёв (жёсткая фиксация) и стягивает на себя окружающие ткани, создавая «поле натяжения» даже без прорастания.</li>
+                <li><strong>Торсия</strong> — по сути следствие рубца или адгезии, но с добавленным концентрическим компонентом: ткани не просто натянуты, а скручены, что усугубляет дисфункцию.</li>
+                <li><strong>Импрессия</strong> — попадание фрагмента фасции (капсулы) между суставными поверхностями, где он зажимается; сустав/тело фиксируется в вынужденном положении (подвывихе), любое движение приводит к дополнительной компрессии попавшего фрагмента и внутренней боли. В отличие от обычного подвывиха (который может устраниться простым расслаблением мышц), импрессия мягких тканей самостоятельно не разрешается и требует прицельной коррекции (см. плечевой и тазобедренный сустав).</li>
+            </ul>
+            <div class="tip"><strong>Практический совет:</strong> тип повреждения определяет характер коррекции — при рубце и адгезии требуется более выраженное механическое разделение слоёв, при уплотнении и торсии чаще достаточно непрямых параметров.</div>
+        </div>
+        <div id="fascia" class="category-divider">
+            <h2>Фасциальная система</h2>
+            <p class="category-description">Теория трёх слоёв фасций, четырёх висцеральных цепочек и твёрдой мозговой оболочки (ТМО), а также техники их пальпации и коррекции.</p>
+        </div>
+
+        <div class="test-card" id="fascia-layers">
+            <h3>Три слоя фасций (теория)<span class="timestamp">day_1: 0:01:00 - 0:02:00</span></h3>
+            <p>Тело рассматривается как система из трёх фасциальных слоёв: <span class="key-term">поверхностные фасции</span>, <span class="key-term">глубокие фасции</span> (с висцеральными цепочками) и <span class="key-term">глубочайшие фасции</span> (твёрдая мозговая оболочка — ТМО). Каждый слой имеет собственную биомеханику и собственные точки фиксации, что определяет разную технику пальпации и коррекции для каждого из них.</p>
+        </div>
+
+        <div class="test-card" id="visceral-chains">
+            <h3>Глубокие фасции — четыре висцеральные цепочки<span class="timestamp">day_1: 0:53:03 - 0:56:02, day_1: 2:01:08 - 2:16:08</span></h3>
+            <p><strong>Цель:</strong> оценка натяжения и фиксаций глубокой фасциальной системы через тестирование четырёх основных висцеральных цепочек. Глубокие фасции окружают внутренние органы, формируют плевру, перикард, брюшину.</p>
+            <ul class="content-list">
+                <li><strong>Правая латеральная цепочка</strong> — начинается с височной кости, идёт в контакте с глубокими фасциями шеи, переходит на купол плевры, контактирует с корнями лёгких, переходит на диафрагму, где разделяется на две ветви:
+                    <ul class="content-list">
+                        <li><em>Брюшная ветвь</em> — через часть коронарной связки и правую треугольную связку переходит на печень, затем на восходящую ободочную кишку, идёт до слепой кишки, связками которой уходит сзади к подвздошной кости и крестцу.</li>
+                        <li><em>Забрюшинная ветвь</em> — переходит на связки почечного ложа, на подвздошно-поясничную мышцу, на почку и мочеточник, вместе с ними движется до таза, где может контактировать с маточными трубами, затем поднимается впереди, проходит под паховой связкой малого вертела бедра.</li>
+                    </ul>
+                </li>
+                <li><strong>Левая латеральная висцеральная цепочка</strong> — до диафрагмы ход аналогичен правой; после диафрагмы отличается брюшная ветвь: проходит через левую треугольную связку печени, связки дна желудка, связки нисходящей ободочной кишки, затем идёт до сигмовидной кишки к подвздошной кости и крестцу.</li>
+                <li><strong>Срединная передняя цепочка</strong> — начинается от решётчатой кости и клиновидной кости, движется через кости лицевого черепа к трахее и подъязычной кости, проходит подключично, достигает корней лёгких, контактирует с частью перикарда, вместе со связками которого переходит на диафрагму, затем на серповидную, затем на круглую связку печени, доходит до пупка, где взаимодействует с тонким кишечником, затем через пузырно-пупочную связку движется до мочевого пузыря, затем через пузырно-лонную связку — до лона.</li>
+                <li><strong>Задняя глубокая срединная висцеральная цепочка</strong> — начинается от базилярной части затылочной кости и СБС, проходит на пищевод, контактирует с двумя верхними шейными позвонками, переходит подключично в грудную полость, идёт ретроперикардиально в тесном контакте с пищеводом, аортой, задними частями перикарда, проходит через ножки диафрагмы забрюшинно, контактирует с глубокими фасциями, поджелудочной железой, забрюшинной частью двенадцатиперстной кишки, корнем брыжейки, прямой кишкой, маткой и простатой, доходит до крестца.</li>
+            </ul>
+            <p><strong>Диагностические критерии:</strong> фиксация по одной из цепочек проявляется как асимметричное ограничение подвижности при тестировании натяжения соответствующих анатомических структур.</p>
+        </div>
+
+        <div class="test-card" id="deepest-fascia">
+            <h3>Глубочайшие фасции (ТМО)<span class="timestamp">day_1: 0:02:00 (краткое упоминание) — детально по basic_data.txt</span></h3>
+            <p>Твёрдая мозговая оболочка (ТМО) окружает спинной и головной мозг. <strong>Основные точки прикрепления:</strong> швы черепа, БЗО (большое затылочное отверстие), C2, S3, копчик, межпозвонковые отверстия. Через позвоночник и через ТМО может взаимодействовать с внутренними органами и мышцами. Диагностика и коррекция ТМО требуют отдельной, более деликатной техники пальпации по сравнению с поверхностными и глубокими фасциями.</p>
+            <div class="note">В обзорной части дня 1 ТМО лишь кратко называется «самым глубоким» слоем фасций; подробный список точек прикрепления в транскриптах отдельно не диктуется и воспроизведён здесь по справочнику курса.</div>
+        </div>
+
+        <div class="test-card" id="tmo-three-layers-intro">
+            <h3>Три диагностических слоя ТМО — первое упоминание теории<span class="timestamp">day_1: 0:51:03 - 0:53:03</span></h3>
+            <p>Теория о трёх диагностических слоях ТМО (наружный — реагирует на внутрикостные травмы позвонка; средний/условный — реагирует только на сильную травму, склеивающую оба листка ТМО, например тяжёлую ЧМТ или травму крестца; третий/истинный — прилежит непосредственно к нервной ткани и реагирует на изменение импульсации, в том числе рефлекторной с воспалённых или травмированных внутренних органов) впервые звучит уже в обзорной части дня 1 — до практической демонстрации на day_3.</p>
+            <div class="tip">Полная практическая отработка этой теории (с тестированием и коррекцией межпозвонкового отверстия) дана на day_3 — см. карточку «Диагностика трёх слоёв ТМО и коррекция туннелей на уровне межпозвонковых отверстий».</div>
+        </div>
+
+        <div class="test-card" id="superficial-palpation">
+            <h3>📋 Прослушивание и коррекция поверхностных фасций (групповая практика)<span class="timestamp">day_1: 1:49:09 - 1:55:12</span></h3>
+            <p><strong>Цель:</strong> пальпаторная оценка натяжения поверхностной фасции и дифференциальная диагностика причины ограничения через тест подъёма ноги.</p>
+            <div class="hand-position">Операторы устанавливают руки на поверхностные фасции в различных зонах (обычно фасциальные ключи и отдельные мышцы). Оператор-тестер медленно поднимает выпрямленную ногу пациента, наблюдая три волны растяжения фасции, идущие снизу вверх (последовательно — поверхностные фасции, глубокие фасции, ТМО).</div>
+            <p><strong>Дифференциальная диагностика по характеру ограничения:</strong></p>
+            <ul class="content-list">
+                <li>При мышечно-тоническом синдроме (боль в пояснице с напряжёнными мышцами, без грыжи) — нога «деревенеет», поверхностные фасции с напряжёнными мышцами не пускают её вверх сразу.</li>
+                <li>При проблеме, связанной с висцеральными фасциями (дисфункция внутренних органов) — нога поднимается какое-то время, затем «застревает»; при надавливании на живот (ингибиция) нога продолжает подниматься дальше.</li>
+                <li>При настоящей грыже межпозвонкового диска — используется тест натяжения ТМО: нога сначала сгибается в коленном и тазобедренном суставах, затем разгибается в колене; простреливающая боль по спине и ноге указывает на компрессию сосудисто-нервного пучка с реакцией ТМО.</li>
+                <li>Менингеальные знаки (симптом Кернига) — при попытке разогнуть ногу пациент начинает выгибаться; возникают при поражении ТМО (менингит любой природы, черепно-мозговая травма, сотрясение мозга, у детей — родовая травма).</li>
+            </ul>
+            <p><strong>Коррекция:</strong> оператор растягивает фасции друг относительно друга, определяя места нерастяжимости и уплотнений; операторы, каждый со своей позиции, набирают непрямые параметры. Для глубоких фасций далее ощупываются внутренние органы, диафрагма и урогенитальная диафрагма; для ТМО — отдельный, более глубокий контакт.</p>
+        </div>
+
+        <div class="test-card" id="deep-tmo-palpation">
+            <h3>Пальпация глубоких фасций и ТМО (групповая практика)<span class="timestamp">day_1: 1:56:02 - 1:59:39</span></h3>
+            <p>Практическое занятие на пальпацию глубокого фасциального слоя (висцеральные цепочки) и наиболее глубокого слоя — ТМО, с отработкой различения качества тканевого сопротивления между слоями.</p>
+        </div>
+
+        <div class="test-card" id="bone-layer">
+            <h3>Костный слой: внутрикостный вход и техника сдавливания<span class="timestamp">не найдено отдельного таймкода в day_1 — описание по basic_data.txt</span></h3>
+            <p>Костный слой представляет собой единое анатомическое пространство костей, связанных друг с другом посредством суставов. Костный слой упоминается в общем обзоре курса (<span class="timestamp-sub">day_1: 0:02:00</span>) одной фразой, без отдельной практической демонстрации в day_1; термин «внутрикостно» затем регулярно встречается на day_2–day_4 уже в контексте конкретных техник (ключица, плечо, череп), но отдельного группового занятия именно по «костному слою как таковому» с таймкодом в транскриптах не обнаружено. Содержание техники приведено ниже по справочнику курса.</p>
+            <div class="hand-position">При пальпации костного слоя операторы встают на конечности, крестец, надплечье, кости таза, грудину с рёбрами, позвонки. Осуществляется внутрикостный вход — из давления костей друг относительно друга вплоть до замыкания единого костного пространства.</div>
+            <p><strong>Учебная практика (по справочнику курса):</strong> операторы последовательно сдавливают костный слой друг относительно друга, наблюдая распространение волны напряжения; отмечают места костной непроходимости; для коррекции глобально набирают непрямые параметры.</p>
+        </div>
+
+        <div class="test-card" id="actualization-search">
+            <h3>Поиск актуальной дисфункции методом анализа тканевых слоёв (первое упоминание)<span class="timestamp">day_1: 2:00:01 - 2:01:08</span></h3>
+            <p>Индивидуальная практика: определение, какой из тканевых слоёв (фасциальный, костный, жидкостный и т.д.) содержит на данный момент наиболее актуальную для организма дисфункцию. Полный расширенный алгоритм этой техники — с последовательной ингибицией всех слоёв — рассмотрен на day_4 (см. раздел «Диагностика актуальной дисфункции»).</p>
+        </div>
+        <div id="webster-case" class="category-divider">
+            <h2>Клинический разбор: дисфункция Вебстера vs простое боковое смещение (shift)</h2>
+            <p class="category-description">Полная демонстрация диагностики через нерастяжимость тканевых слоёв. По ходу разбора преподаватель явно уточняет: у пациентки обнаружена НЕ дисфункция Вебстера, а более простое боковое смещение (shift); полная коррекция дисфункции Вебстера объявлена материалом более продвинутого (3–5-го) семинара и на этом уровне не отрабатывается практически — но теоретически описана.</p>
+        </div>
+
+        <div class="test-card" id="webster-technique">
+            <h3>📋 Диагностика через слои и коррекция бокового смещения (shift) — практическая демонстрация<span class="timestamp">day_1: 2:16:08 - 2:41:04</span></h3>
+            <p><strong>Диагностическая логика:</strong> последовательная оценка нерастяжимости («жёсткости») тканевых слоёв по вертикали — поверхностные фасции → глубокие фасции → ТМО → сосудистый/невральный слой — позволяет локализовать уровень актуальной дисфункции. В данном случае оператор погружается через первый шейный позвонок, последовательно проходя кость за костью, обнаруживая провал/реакцию в грудопоясничном переходе.</p>
+            <div class="note"><strong>Важное уточнение преподавателя по ходу демонстрации:</strong> «не самое страшное — это не Вебстер, это просто shift, боковое смещение; дело в том, что Вебстер гораздо хуже, и я бы не рискнул [показывать полную коррекцию] — на третьем-пятом семинаре всё вправляем».</div>
+            <p><strong>Коррекция bыявленного смещения (простая локальная манипуляция):</strong> оператор находит пальцем нужную точку в проекции поражённого позвонка (доступ неудобный) и проводит растяжение — «тянешь-подтягиваешь». Дополнительно отработан костный слой в смежном нерастяжимом участке ингибиторным балансом.</p>
+            <p><strong>Теоретическое обоснование хронической боли в пояснице:</strong> при дисфункции этой зоны грудопоясничного перехода поясница будет болеть всегда, как бы её ни лечили — потому что участок, который в норме должен быть самым подвижным, «вырубается», и чтобы это компенсировать, поясница постоянно перегружается и не может восстановиться. Рекомендация: при боли в пояснице начинать с грудопоясничного перехода и крестца — тогда сама поясница отрабатывается намного легче.</p>
+            <div class="note"><strong>Историческая справка — «зона кровотечения яичника» (термин времён Стилла):</strong> спинной мозг короче позвоночного столба (у эмбриона они равны, затем позвонки растут, а спинной мозг — нет), поэтому зона, управляющая крестцовым парасимпатическим сплетением и тазовыми органами, проецируется на уровень грудопоясничного перехода. Травма этой зоны может существенно влиять на дисфункциональные тазовые кровотечения через нарушение симпатической регуляции сосудистого тонуса матки — старые остеопаты называли это «кровотечением яичника» (устаревшее по современным меркам название). У женщин такие кровотечения часто сильно зависят от эмоционального статуса.</div>
+        </div>
+
+        <div class="test-card" id="webster-theory">
+            <h3>Дисфункция Вебстера — теоретическое описание (материал более продвинутого семинара, не практикуется на этом уровне)<span class="timestamp">day_1: 2:38:02 - 2:44:01</span></h3>
+            <p><strong>Суть дисфункции:</strong> межпозвонковый диск «освобождается» (можно проникнуть до него и сзади, и спереди), становится «слабым», довывешенным. Возникает, когда позвонок уже был заблокирован и тело испытывает боковой удар — позвонок соскальзывает и блокируется ещё сильнее, иногда диск отслаивается от соседних позвонков и застревает в распорке между двумя позвонками. Типичные механизмы травмы: резкое торможение в машине, форсированный подъём тяжестей с нарушением техники, потеря равновесия на льду. Диск смещается кпереди (не разрыв диска, а смещение) — поэтому клиники компрессии спинного мозга обычно не видно. Народное название: «треножник» («трипод»), поскольку одновременно блокируются обе фасетки сегмента и место выпадения диска.</p>
+            <p><strong>Общий принцип коррекции (описан теоретически, как более сложный материал):</strong></p>
+            <ol>
+                <li>Растянуть два смежных позвонка.</li>
+                <li>При выявлении внутрикостной дисфункции — отработать её сначала внутри кости методом размешивания.</li>
+                <li>При выявлении фиксации ТМО — подготовиться, подрастянуть ТМО.</li>
+                <li><em>(более сложный уровень)</em> Вправление диска: одна рука щепоткой встаёт на два поперечных отростка и остистый отросток сегмента, разводя их (рекомпрессируя пространство с той стороны, куда выпал диск); другой рукой оператор через висцеральный доступ пытается подпихнуть выпавшую часть диска обратно назад.</li>
+            </ol>
+            <div class="warning">Этот протокол озвучен преподавателем как концептуальное описание, а не как отрабатываемая на данном семинаре техника — сам он прямо говорит, что не рискнул бы выполнять полное вправление Вебстера на этом уровне подготовки группы.</div>
+        </div>
+        <div id="lymph-fluid" class="category-divider">
+            <h2>Лимфатическая и жидкостная системы</h2>
+            <p class="category-description">Теория лимфообращения, зоны лимфатической фильтрации, протоколы коррекции лимфатической и жидкостной систем, включая противопоказания и клинические рекомендации по частоте сеансов.</p>
+        </div>
+
+        <div class="test-card" id="lymph-theory">
+            <h3>Теория лимфатического дерева<span class="timestamp">day_1: 2:51:00 - 3:16:01</span></h3>
+            <p>Лимфатическая система является незамкнутой сосудистой системой, начинающейся слепыми капиллярами в тканях, фильтрующими межклеточную жидкость, недоокисленные соединения, разрушенные белки, микробные тела и другие тканевые токсины. Из <span class="key-term">20 литров</span> отфильтрованной жидкости <span class="key-term">17 литров</span> возвращается назад в ткани, <span class="key-term">3 литра</span> концентрируются и фильтруются системой лимфоузлов, возвращаясь назад в венозное русло. Удаление из тканей <span class="key-term">1 грамма</span> разрушенных белков за счёт нормализации онкотического давления может вернуть в кровеносное русло до <span class="key-term">10 г воды</span> (феномен лимфотока).</p>
+            <p><strong>Структура — венозные углы:</strong> в правый венозный угол (между яремной и подключичной веной) оттекает лимфа от правой половины головы и шеи, правой руки и правой половины грудной клетки. В левый венозный угол оттекает лимфа от левой половины головы и шеи, левой руки, левой части грудной клетки, а также **всей** брюшной и тазовой полостей и нижних конечностей.</p>
+            <p><strong>Основные зоны лимфатической фильтрации (по иерархии):</strong></p>
+            <ul class="content-list">
+                <li>Околоключичные лимфоузлы.</li>
+                <li>Подмышечные лимфоузлы.</li>
+                <li>Окологрудинные лимфоузлы.</li>
+                <li>Поддиафрагмальные — на уровне купола диафрагмы и забрюшинного пространства; рефлекторное влияние на них оказывает работа с мягкими тканями подрёберья.</li>
+                <li>Цистерна Чили (Пике) — расширение грудного протока в поддиафрагмальной зоне, тесно связана с чревным сплетением и симпатической цепочкой; часть симпатических и чувствительных волокон оплетают и прободают цистерну, формируя на её уровне орган биохимической чувствительности (хеморецепторы). Анализ лимфы на этом уровне позволяет судить о качестве потребляемой пищи и общем состоянии иммунитета; при участии этих данных формируется настроение, мотивация, детоксикация, иммунный ответ и реакции метасимпатической нервной системы.</li>
+                <li>Околопупочные лимфатические узлы, связанные с брыжейкой.</li>
+                <li>Паховые лимфоузлы — имеют прямой доступ к тазовым лимфоузлам.</li>
+                <li>Шейные лимфоузлы по боковым поверхностям — поднижнечелюстные, заушные, подколенные, локтевые.</li>
+            </ul>
+            <div class="note"><strong>Клиническое замечание:</strong> хроническое нарушение лимфооттока при длительной белковой недостаточности или механической обструкции лимфопутей может приводить к выраженному отёку тканей (упоминается слоновость/элефантиаз как крайний клинический пример).</div>
+            <div class="warning"><strong>Важное предупреждение:</strong> если при обследовании обнаружен увеличенный лимфоузел — его самого трогать не нужно, работать вокруг него; у увеличенного узла свои причины (может быть, инфекционные), пусть организм разбирается сам.</div>
+        </div>
+
+        <div class="test-card" id="lymph-protocol">
+            <h3>📋 Протокол коррекции лимфатической системы (помпаж)<span class="timestamp">day_1: 3:31:00 - 3:41:00, day_2: 0:09:02 - 0:33:00</span></h3>
+            <p><strong>Цель:</strong> устранение фиксаций и стимуляция оттока в ключевых зонах лимфатической фильтрации.</p>
+            <div class="warning">
+                <strong>Противопоказания:</strong> онкологические заболевания, декомпенсированный сахарный диабет, острые инфекционные процессы; гипертиреоз — с осторожностью; у пожилых и истощённых пациентов — минимальный объём воздействия.
+            </div>
+            <p><strong>Пошаговое выполнение (3 зоны помпажа):</strong></p>
+            <ol>
+                <li>Помпаж околоключичных лимфоузлов.</li>
+                <li>Помпаж поддиафрагмальных лимфоузлов и цистерны Чили (Пике).</li>
+                <li>Помпаж паховых лимфоузлов.</li>
+            </ol>
+            <div class="hand-position"><strong>Техника помпажа:</strong> одна рука устанавливается на другую в проекции лимфоузлов, оператор настраивается на восприятие жидкостей и медленно сжимает жидкостную подушку тканей в сторону регионарного лимфатического сброса. Наблюдаем, как открывается клапан, ток жидкости ускоряется, подушка постепенно сдувается; затем расслабляем руки, дожидаемся наполнения подушки и ещё больше разводим руки, создавая эффект присасывания лимфы из окружающих тканей. Выполняем три раза, заканчиваем на выжимании. Во время присасывания могут обнаружиться непроходимые участки тканей, откуда жидкость не поступает — такие участки корректируем: сначала раздвигаем лимфатический сосуд от окружающих тканей прямыми техниками, затем осуществляем технику осцилляции.</div>
+            <div class="hand-position"><strong>Техника осцилляции:</strong> пальцы одной руки устанавливаются дистальнее (периферичнее) места блокировки сосуда, кончики пальцев направлены по ходу сосуда; поддавливаем зону блокирования и набираем параметры. Другая рука создаёт быстрые концентрические движения, волна которых распространяется по телу оператора до рабочей руки, создавая малоамплитудные потряхивания, приводящие к перестройке тканей и их расслаблению.</div>
+            <div class="tip"><strong>Клинический протокол частоты сеансов:</strong> для лечебного эффекта достаточно 2 сеансов; для эстетического эффекта — до 8 сеансов; не чаще 2 раз в неделю.</div>
+        </div>
+
+        <div class="test-card" id="dynamic-lymph-drainage">
+            <h3>Динамический сепарационный лимфодренаж (складка Киблера)<span class="timestamp">day_1: 3:41:00 - 4:09:01</span></h3>
+            <p><strong>Техника:</strong> оператор захватывает щипком первого-второго пальца, двумя руками, кожно-подкожную складку Киблера в проекции лимфоузлов; растягиваем и скручиваем складку так, чтобы она проскользнула под пальцами, в различных направлениях, до появления стойкой гиперемии тканей (болезненные ощущения при этом постепенно уменьшаются).</p>
+            <p><strong>Обрабатываемые зоны (11 зон, согласно справочнику курса):</strong></p>
+            <ol class="content-list">
+                <li>Левые и правые подключичные лимфоузлы</li>
+                <li>Подмышечные</li>
+                <li>Окологрудинные</li>
+                <li>Поддиафрагмальные</li>
+                <li>Околопупочные</li>
+                <li>Паховые</li>
+                <li>Жидкостная подушка крестца</li>
+                <li>Паравертебральные зоны</li>
+                <li>Задняя поверхность шеи</li>
+                <li>Поднижнечелюстные и заушные лимфоузлы</li>
+                <li>Подключичные (завершающий проход)</li>
+            </ol>
+            <div class="note"><strong>Дополнения по живой демонстрации (day_1):</strong> помимо перечисленных зон, преподаватель также прорабатывал окологрудинную зону рефлекторно (глубокие узлы средостения пальпаторно недоступны — воздействие через кожу), зону плеч/лопаток (лопаточно-плечевая периартропатия) и завершал сеанс концентрическим выжиманием на конечностях (см. следующий пункт).</div>
+            <div class="hand-position"><strong>Техника выполнения:</strong> накатывание складки на палец в одной плоскости без скручивания и вытягивания; работа всегда начинается с центрального лимфатического коллектора зоны и постепенно смещается к периферии.</div>
+            <p><strong>Концентрическое выжимание жидкости на конечностях</strong> выполняется отдельным приёмом — круговым сдавлением конечности по спирали от дистальных отделов к проксимальным.</p>
+        </div>
+
+        <div class="test-card" id="fluid-protocol">
+            <h3>📋 Протокол коррекции жидкостного слоя (6 шагов)<span class="timestamp">day_1: 4:16:03 - 4:23:04, day_2: 0:34:02 - 1:09:05</span></h3>
+            <p><strong>Назначение:</strong> активирует тканевые обменные процессы, усиливает эффект детоксикации, полученный при лимфодренажных техниках, выявляет наиболее жёсткие висцеральные поражения. В отличие от лимфодренажа, безопасен для всех категорий пациентов без исключения. Пациент лежит на спине.</p>
+            <p><strong>Пошаговое выполнение:</strong></p>
+            <ol>
+                <li>Оператор находится в изголовье, руки охватывают грудную апертуру, как ожерелье. Настраиваемся на восприятие жидкостей, небольшим усилием сдавливаем жидкости по <strong>передней поверхности</strong> тела, упираемся в ограничения, осуществляем лёгкий помпаж, посылая в зону блока жидкостную волну — движемся до таза.</li>
+                <li>Оператор переносит акцент на <strong>заднюю поверхность</strong>, движения выполняются первыми пальцами, получая доступ к околопозвоночным мышцам, плевре, забрюшинным органам — жидкостно прокачиваем ограничения до таза.</li>
+                <li>Оператор переходит на уровень таза, устанавливает пальцы <strong>под паховые связки</strong> — жидкостно проходим переднюю поверхность тела до грудной апертуры.</li>
+                <li>Пальцы устанавливаются <strong>под седалищные бугры</strong> — жидкостно проходим заднюю поверхность до грудной апертуры.</li>
+                <li>Пациент занимает <strong>положение «лягушка»</strong> (используется в травматологии при переломах костей таза — раскрывает и балансирует таз), оператор устанавливает 2–5 пальцы с двух сторон от сухожильного ядра, под лоно, в половинке урогенитальной диафрагмы — проходим сердцевину тела (ядро), глубокие висцеральные структуры и околопозвоночные ткани до грудной апертуры.</li>
+                <li>Оператор в изголовье, руки одна на другой, дугой первого-второго пальца охватывают заднюю и боковую поверхности <strong>шеи на уровне C1-C2</strong> — создаём лёгкую компрессию жидкостей шеи, направляя их к грудной апертуре.</li>
+            </ol>
+            <div class="tip">Далее протокол непосредственно расширяется на более детализированную жидкостную прокачку черепа (демонстрация day_1/day_2) — см. следующую карточку.</div>
+        </div>
+
+        <div class="test-card" id="brain-pump">
+            <h3>Расширенная жидкостная прокачка шеи и черепа (демонстрация)<span class="timestamp">day_1: 4:23:04 - 4:33:00, day_2: 1:09:05 - 1:12:28</span></h3>
+            <p>Живая демонстрация преподавателя расширяет шаг 6 базового протокола (компрессия жидкостей шеи на уровне C1-C2) до более детализированной техники:</p>
+            <p><strong>Положение рук:</strong> дугой первого и второго пальцев кисть оператора широко обхватывает шею пациента по задней и боковой поверхности на уровне атланта.</p>
+            <p><strong>Пошаговое выполнение:</strong></p>
+            <ol>
+                <li><strong>Жидкостная прокачка шеи</strong> — сдавливаем жидкость к грудной апертуре, выполняем прокачку 3 раза.</li>
+                <li><strong>Жидкостная прокачка черепа</strong> — захват на уровне верхнешейного отдела, прокачиваем содержимое черепа под дугой кисти: атлант → ствол мозга → мозжечок → подкорковые ядра → кора. «Заливаем» жидкость движением сзади, «выливаем» движением спереди; фаза «выливания» выполняется примерно в два раза дольше фазы «заливания».</li>
+                <li><strong>Завершение</strong> — повторная прокачка шеи с раскрытием грудной апертуры.</li>
+            </ol>
+        </div>
+
+        <div class="test-card" id="core-link">
+            <h3>Ядро тела (кор-линк) — теория<span class="timestamp">day_2: 0:38:17 - 0:44:07</span></h3>
+            <p>Существует несколько версий трактовки «кор-линка» («ядра тела»). В большей части остеопатической литературы кор-линк описывается исключительно как связочный аппарат позвоночника. Преподаватель с этим не согласен и придерживается иной трактовки, ближе к идеям Томаса Майерса о <strong>глубинной фронтальной линии</strong>: ядро тела — это глубокая висцера, расположенная спереди от позвоночника, вся эта система в целом, а не только связки.</p>
+            <p><strong>Глубинная фронтальная линия</strong> представляет собой каркас, удерживающий полости тела, позвоночник и органы. К ней относятся: диафрагма, подвздошно-поясничная мышца, урогенитальная диафрагма, глубокие связки перикарда, корень брыжейки и глубокие лестничные мышцы — то есть всё, что находится внутри тела вблизи позвоночника.</p>
+            <p>Эта концепция объясняет положение «лягушка» в протоколе жидкостной коррекции — оно даёт доступ именно к структурам ядра тела.</p>
+        </div>
+        <div id="venous" class="category-divider">
+            <h2>Венозное дерево</h2>
+            <p class="category-description">Полный протокол венозной коррекции: бассейн верхней полой вены (яремная, подключичная вены, влияние ВНЧС/ключицы/плечевого сустава) и бассейн нижней полой вены (висцеральные фиксации, влияние тазобедренного сустава).</p>
+        </div>
+
+        <div class="test-card" id="svc-theory">
+            <h3>Теория венозного дерева и бассейн верхней полой вены<span class="timestamp">day_2: 1:13:06 - 1:31:00</span></h3>
+            <p>Венозная система тела делится на три отдела: система верхней полой вены, система нижней полой вены и воротная вена (дренирующая брюшную полость через нижнюю полую вену). В сердце справа, в правое предсердие, вливаются две крупные вены: сверху — верхняя половина (от рук, шеи и головы, включая головной мозг — по системе внутренних ярёмных вен и синусов; лицевой череп и покровы головы — по наружным и внутренним ярёмным венам, наружная сливается в общий стволик), снизу — нижняя половина.</p>
+            <p><strong>Причины дисфункции верхней половины:</strong> сама по себе она страдает редко (крайне редко бывает натянута сама по себе); обычно причина — в рядом лежащих структурах: дисфункции ключицы и плечевых суставов пережимают подключичные вены; для ярёмной вены значение имеют ВНЧС, височная и затылочная кости, атлант, а также подъязычная кость (через лопаточно-подъязычную мышцу, которая может блокировать вену при напряжении).</p>
+            <p><strong>Система нижней полой вены</strong> отводит кровь опосредованно через воротную вену от брюшной полости, таза, спины, ног. Именно поражение НПВ приводит к варикозной болезни, геморрою, полнокровию таза, асциту, нарушению обменных процессов во внутренних органах; блокада НПВ ограничивает и отток по воротной вене. НПВ лежит глубоко забрюшинно, на позвоночнике, правее аорты (не пульсирует, в отличие от артерий); на ней лежат поджелудочная железа, ДПК, корень брыжейки; тесно взаимодействует с диафрагмой. Выше пупка НПВ делится на две ветви (общие подвздошные вены), ниже пупка — всегда только две ветви; каждая из них делится на внутреннюю подвздошную (к органам таза — блокируется, например, при поражении матки после родов или операции) и наружную (к паховой связке, кнутри от бедренной артерии). В паховой связке в глубокую (бедренную) вену впадает большая подкожная вена ноги (v. saphena magna) — именно она, отводя кровь от периферических тканей, при поражении визуально проявляется варикозными узлами; глубокие вены между мышцами не видны глазом и плохо визуализируются даже на УЗИ (допплер хорошо показывает пульсирующие артерии, но плохо — медленный, безфазный ток вен).</p>
+            <div class="warning"><strong>Клиническая позиция преподавателя по хирургическому лечению варикоза:</strong> перевязка/удаление вены или склерозирование устраняют симптом («логика XIX века»), но не причину — общую перегрузку венозной системы из-за блокировки оттока по НПВ и её глубоким ветвям, либо из-за подвывиха тазобедренного сустава (для варикоза он играет большую роль: при подвывихе мощное напряжение нарушает венозный отток от глубоких ветвей). Результат операции непредсказуем: кому-то становится легче (глубокие вены справляются), у кого-то развиваются трофические язвы. Склерозирование — чисто косметическая процедура, не устраняющая проблему глубоких вен. Компрессионный трикотаж и гимнастика — более физиологичный, но временный вспомогательный подход, если наверху (отток) остаётся заблокированным.</div>
+        </div>
+
+        <div class="test-card" id="jugular-test">
+            <h3>📋 Тестирование бассейна верхней полой вены (8 пунктов)<span class="timestamp">day_2: 2:09:00 - 3:01:16</span></h3>
+            <p><strong>Пошаговое выполнение (8 пунктов тестирования, по справочнику курса):</strong></p>
+            <ol>
+                <li>Пальцы устанавливаются в проекции яремного отверстия до контакта с яремной веной; осуществляем растяжение вены из черепа, затем из грудной апертуры, затем из верхней конечности.</li>
+                <li>Находим места фиксации, оцениваем степень нарушения.</li>
+                <li>Продёргиваем вену в подключичной области.</li>
+                <li>Продёргиваем вену в подмышечной области.</li>
+                <li>Продёргиваем вену на верхней конечности (на одну артерию приходится по две вены).</li>
+                <li><strong>Тестирование влияния ВНЧС/нижней челюсти</strong> <span class="timestamp-sub">day_2: 2:11:01-2:19:00</span>: оператор пальпирует подзатылочное пространство, оценивает наличие напряжения мышц и отёчности тканей (обычно асимметрично: справа отёчность, слева норма, либо наоборот). Одна рука тестирует зону отёка, другая захватывает нижнюю челюсть и растягивает её, создавая декомпрессию на уровне ВНЧС — уменьшение отёчности и расслабление мышц указывает на проблему с ВНЧС (если просто продёрнуть вену напрямую без ВНЧС-теста, она продёргивается легко, но при отпускании отёк тут же возвращается). Дополнительные тесты: тест открытия рта (определяем блокированный сустав; косвенно позиция челюсти также смещена в сторону блокировки); тестирование височных костей в классическом захвате (на стороне поражения подвижность височной кости снижена); тестирование внутрикостных дисфункций нижней челюсти (погружаемся в кость, определяем плотность); тестирование прикорневых процессов (плотность и болезненность корней зубов указывают на периодонтит, кисту, последствия удаления зуба, некорректно установленные импланты/коронки).</li>
+                <li><strong>Тестирование влияния ключицы:</strong> ощупываем подключичные зоны, находим отёчность; одна рука на проблемной зоне, другая захватывает ключицу и отводит её вентрально — уменьшение отёка и улучшение оттока указывает на причину в ключице.</li>
+                <li><strong>Тестирование влияния плечевого сустава:</strong> одна рука в отёчной зоне, другая снаружи захватывает плечевой сустав, растягивает его латерокаудально, создавая декомпрессию — улучшение оттока указывает на влияние плечевого сустава.</li>
+            </ol>
+            <p><strong>Причины дисфункции (опрос по тягам обычно выявляет):</strong> внутрикостная дисфункция плеча; фиксация плевры и первых рёбер; фиксации из брюшной полости (например, от печени или желудка); фиксации от локтевого сустава или кисти; механический подвывих плечевого сустава (часто с импрессией мягких тканей).</p>
+            <div class="note"><strong>Диагностика подвывиха плечевого сустава:</strong> различают передне-верхний, передне-нижний и задний варианты подвывиха — каждый определяется по специфической позиции головки плечевой кости и ограничению движения (подробности см. в разделе «Тестирование и коррекция плечевого сустава»).</div>
+            <p><strong>Дополнительно (day_2, устная демонстрация):</strong> влияние подъязычной кости через лопаточно-подъязычную мышцу (m. omohyoideus), которая может механически блокировать яремную вену; тест взвешивания и ингибиции корней зубов для оценки постурального/краниального влияния зубочелюстной системы; тест на взаимовлияние ВНЧС и тазобедренного сустава через треугольники Литтл Джона (тест Патрика в сочетании с компрессией/декомпрессией ВНЧС ватными валиками) — таймкоды и детали см. в разделе «ВНЧС и зубочелюстная система».</p>
+        </div>
+
+        <div class="test-card" id="jugular-correction">
+            <h3>📋 Коррекция яремного отверстия, влияния нижней челюсти и подключичной вены<span class="timestamp">не найдено отдельного таймкода — описание по basic_data.txt</span></h3>
+            <p>Устный протокол day_2 подробно останавливается на диагностике (см. предыдущую карточку), а к моменту перехода непосредственно к коррекции (<span class="timestamp-sub">day_2: 3:01:16</span>) внимание сразу переключается на коррекцию ВНЧС как таковую (см. карточку «Коррекция ВНЧС и вправление мениска»); отдельного места, где диктуются именно приведённые ниже позиции рук для «коррекции яремного отверстия» и «коррекции подключичной вены», в транскриптах не обнаружено. Содержание техники приведено по справочнику курса.</p>
+            <p><strong>Устранение влияния нижней челюсти на яремное отверстие:</strong> опрашиваем ВНЧС по тягам, устраняем внутрикостные дисфункции, декомпрессируем зубочелюстную систему, затем осуществляем вправление ВНЧС — одна рука удерживает височную кость, другая захватывает нижнюю челюсть, растягиваем, ротируем до декомпрессии.</p>
+            <div class="hand-position"><strong>Коррекция яремного отверстия:</strong> одна рука захватывает затылочную кость, другая — височную кость за сосцевидный отросток; классическим захватом растягиваем сосцевидный отросток и пирамиду от затылочной кости, осуществляем продёргивание яремной вены, устанавливаем пальцы в зоны её фиксации, разъединяем вену от окружающих тканей (может потребоваться коррекция шейных позвонков).</div>
+            <div class="hand-position"><strong>Коррекция подключичной вены:</strong> осуществляем внутрикостную коррекцию ключицы, затем вправляем подвывихи ключицы в акромиальном или грудинном суставе — одна рука удерживает лопатку или грудину, другая растягивает и скручивает ключицу.</div>
+        </div>
+
+        <div class="test-card" id="clavicle">
+            <h3>📋 Тестирование и коррекция ключицы, первого/второго рёбер<span class="timestamp">day_2: 3:48:02 - 4:38:04</span></h3>
+            <p><strong>Пошаговое выполнение диагностики:</strong></p>
+            <ol>
+                <li>Тестирование влияния позиции ключицы на верхнюю полую вену.</li>
+                <li>Тестирование позиции ключицы: симптом «клавиши» — признак подвывиха.</li>
+                <li>Тест на разрыв акромиально-ключичной связки.</li>
+                <li>Тест на разрыв клювовидно-ключичной связки.</li>
+                <li>Тестирование позиции 1-го ребра.</li>
+                <li>Тестирование позиции 2-го ребра.</li>
+            </ol>
+            <p><strong>Коррекция:</strong> коррекция ключицы (при подвывихах), коррекция внутренних и наружных подвывихов 1-го и 2-го рёбер, вправление ключицы при выявленном структурном смещении.</p>
+            <div class="note"><strong>Теоретическая база:</strong> линии Томаса Майерса (глубинная и поверхностная линии руки) объясняют функциональную взаимосвязь руки, плеча, шеи и таза — используются для обоснования выбора зоны коррекции при отдалённых симптомах.</div>
+        </div>
+
+        <div class="test-card" id="shoulder">
+            <h3>📋 Тестирование и коррекция плечевого сустава<span class="timestamp">day_2: 4:39:12 - 6:34:21</span></h3>
+            <p><strong>Тестирование:</strong></p>
+            <ul class="content-list">
+                <li>Тест отведения/встряхивания руки.</li>
+                <li>Пальпация триггерных точек: надостная, подостная мышцы, длинная головка бицепса, подлопаточная мышца.</li>
+                <li>Тест силы мышц плечевого пояса.</li>
+                <li>Тестирование импрессии капсулы плечевого сустава.</li>
+                <li>Тестирование подвывиха головки плечевой кости — три варианта: передне-верхний, передне-нижний (рука в супинации, ограничено переднее сгибание, смещённая головка пальпируется под ключицей/в подмышечной области) и задний (рука в пронации, ограничено разгибание, смещённая головка пальпируется в задней части подмышечной впадины, реже под лопаткой).</li>
+            </ul>
+            <p><strong>Коррекция влияния плечевого сустава:</strong> опрашиваем плечевой сустав по тягам, корректируем первопричину, устраняем внутрикостные фиксации верхней трети плеча методом размешивания.</p>
+            <div class="hand-position"><strong>Устранение импрессии мягких тканей:</strong> одна рука захватывает плечо, другая захватывает капсулу плечевого сустава; находим места залипания и внутренней фиксации капсулы, растягиваем их одновременно, создавая максимально лёгкую декомпрессию плечевого сустава.</div>
+            <p><strong>Устранение подвывихов плечевого сустава (три варианта):</strong></p>
+            <ul class="content-list">
+                <li>а) пациент на спине, оператор захватывает плечо и растягивает по оси, другая рука фиксирует надплечье; осуществляем мягкую ротацию, сгибание и разгибание, направляя сустав в нормальную позицию (для дополнительного латерального отведения при переднем подвывихе можно использовать шарф, перекинутый через верхнюю треть плеча);</li>
+                <li>б) одна рука захватывает плечо и растягивает по оси, другая устанавливается в подмышечную впадину и подталкивает головку плеча в нормопозицию (вместо руки можно использовать колено);</li>
+                <li>в) пациент на животе, рука свешена за край кушетки (при передних подвывихах можно положить валик под плечо); оператор растягивает плечо по оси, другой рукой фиксирует надплечье и лопатку, осуществляет ротацию, сгибание и разгибание до вправления.</li>
+            </ul>
+            <p>После коррекции плечевого сустава оператор продёргивает подключичную и подмышечную вену, определяет места её фиксации и проводит разъединение вены от окружающих тканей — устранение туннельного синдрома.</p>
+            <p><strong>Исторические методы вправления вывиха плеча</strong> — метод Джанелидзе и метод Кохера — упомянуты преподавателем с явным предупреждением: <blockquote>эти травматологические методы не применять в остеопатической практике без соответствующей медицинской квалификации.</blockquote></p>
+            <div class="warning"><strong>Красный флаг:</strong> дифференциальная диагностика функционального блока ВНЧС от старого структурного подвывиха мениска ВНЧС требует внимательной клинической оценки — техники для них различаются (см. полную демонстрацию ниже).</div>
+            <p><strong>Полная клиническая демонстрация:</strong> вправление заднего подвывиха плеча у пациентки, включая полную дифференциацию функционального и структурного компонента дисфункции.</p>
+            <p><strong>Дополнительно:</strong> клиническая демонстрация коррекции туннельного синдрома срединного нерва на предплечье через ликвородинамический толчок (техника SV4) по ходу нерва — <span class="timestamp-sub">day_2: 4:51:05-4:59:05</span>.</p>
+        </div>
+
+        <div class="test-card" id="ivc-protocol">
+            <h3>📋 Бассейн нижней полой вены — полный протокол<span class="timestamp">day_2: 6:35:01 - 7:48:14, day_3: 0:02:01 - 0:58:00</span></h3>
+            <p><strong>Тестирование:</strong></p>
+            <ul class="content-list">
+                <li><strong>Продёргивание нижней полой вены:</strong> оператор захватывает нижнюю полую вену забрюшинно правее аорты; продёргиваем вену каудально, просматривая влияние перикарда, плевры, диафрагмы, печени; затем продёргиваем вену краниально, просматривая влияние поджелудочной железы, ДПК, корня брыжейки, тазовых органов.</li>
+                <li><strong>Исследование подвздошных вен:</strong> захватываем наружные подвздошные вены в области паховых связок (бедренные вены) медиальнее артерий, продёргиваем каудально, вытягивая из органов таза и с уровня бифуркации НПВ (зона пупка), затем растягиваем краниально, продёргивая из нижних конечностей.</li>
+                <li><strong>Исследование висцеральных ветвей внутренних подвздошных вен:</strong> каудальная рука захватывает матку (простату), настраивается на венозную пальпацию, растягивает вены в каудальном направлении.</li>
+                <li><strong>Тестирование влияния тазобедренного сустава:</strong> пальпируем ткани в паховой области, определяем более отёчную зону; одна рука на отёчной зоне, другая захватывает бедро за большой вертел, растягиваем ТБС латеро-каудально, создавая декомпрессию — уменьшение отёка указывает на причину в тазобедренном суставе. Доп. диагностика: опрос ТБС по тягам, оценка внутрикостных дисфункций верхней трети бедра, оценка импрессии фасций сустава.</li>
+            </ul>
+            <p><strong>Пошаговое выполнение коррекции (8 шагов):</strong></p>
+            <ol>
+                <li>Декомпрессия фиксаций НПВ внутренними органами: одна рука захватывает НПВ в брюшной полости, другая — перикард через грудину, направляя вену вентро-каудально, а перикард — вентро-краниально.</li>
+                <li>Одна рука на вене, другая захватывает плевру по задней боковой поверхности рёберного каркаса, растягиваем.</li>
+                <li>Одна рука на вене, другая захватывает купол диафрагмы по переднебоковой поверхности с одной, затем с другой стороны, растягиваем диафрагму вентро-краниально, освобождая диафрагмальное отверстие НПВ.</li>
+                <li>Одна рука на вене, другая захватывает печень рёберно-подрёберно, растягиваем печень латеро-каудально, вводя в напряжение три печёночные вены; НПВ тянем каудально.</li>
+                <li>Ноги пациента согнуты в коленях и тазобедренных суставах. Одна рука на НПВ, другая погружается ладонью до поджелудочной железы; достигнув её в забрюшинном пространстве, смещаем вентрально и краниально, затем рука с вены переносится эпигастрально-поддиафрагмально — смещаем поджелудочную железу вентро-каудально (самая частая фиксация).</li>
+                <li>Одна рука захватывает НПВ эпигастрально, другая — ДПК. Направляем вену краниально, кишку — вентро-каудально.</li>
+                <li>Одна рука на вене, другая через пупок захватывает тонкий кишечник и корень брыжейки, растягиваем брыжейку к правой подвздошной кости.</li>
+                <li>Одна рука захватывает НПВ в районе пупка, растягивает краниально; другая захватывает матку или простату за лоно, растягивает вентро-каудально (при необходимости рука с НПВ может переноситься на подвздошные вены).</li>
+            </ol>
+            <p><strong>Коррекция тазобедренного сустава</strong> как источника влияния на отток по нижней полой вене выполняется отдельным блоком техник (см. следующий раздел).</p>
+            <div class="note"><strong>Клинические иллюстрации (обоснование протокола):</strong> панкреатит может вторично проявляться геморроем; хронический дуоденит — хронической кровопотерей; эндометриоз — спаечным процессом, влияющим на венозный отток малого таза.</div>
+            <p><strong>Полная клиническая демонстрация:</strong> разбор пациентки с варикозной болезнью, эндометриозом и спаечной болезнью — полный цикл диагностики и коррекции от НПВ до тазобедренного сустава и копчика, включая демонстрацию метода Барале для коррекции плевры <span class="timestamp-sub">day_3: 0:27:04-0:31:04</span> и техники «непрямых параметров» для поджелудочной железы/ДПК <span class="timestamp-sub">day_3: 0:31:04-0:47:05</span>.</p>
+        </div>
+        <div id="hip" class="category-divider">
+            <h2>Тазобедренный сустав</h2>
+            <p class="category-description">Тестирование, устранение первопричины и импрессии, внутрикостная коррекция и вправление структурных вывихов тазобедренного сустава — включая самый мощный из трёх вариантов вправления.</p>
+        </div>
+
+        <div class="test-card" id="hip-correction">
+            <h3>📋 Тестирование и коррекция тазобедренного сустава, вправление вывихов<span class="timestamp">day_2: 7:33:25 - 7:48:14, day_3: 0:58:00 - 1:20:19</span></h3>
+            <p><strong>Тестирование:</strong> отведение бедра, пружинирование, поколачивание по пятке (осевая нагрузка), пальпация малого вертела, оценка позиции при подозрении на подвывих, тест на импрессию капсулы/фасций сустава.</p>
+            <p><strong>Четыре вида вывиха тазобедренного сустава:</strong></p>
+            <ul class="content-list">
+                <li>Передненижний</li>
+                <li>Передневерхний</li>
+                <li>Задневерхний</li>
+                <li>Задненижний</li>
+            </ul>
+            <p><strong>Коррекция:</strong> опрашиваем по тягам, корректируем первопричину или внутрикостные дисфункции в верхней-средней трети бедра, устраняем импрессию фасций в суставной полости.</p>
+            <p><strong>Вправление тазобедренного сустава (варианты А/Б/В):</strong></p>
+            <ul class="content-list">
+                <li>а) пациент на спине, одна рука захватывает бедро, другая — на подвздошной кости удерживает её; растягиваем бедро по оси, подкручиваем, сгибаем-разгибаем до вправления (можно использовать шарф как рычаг).</li>
+                <li>б) пациент на спине, нога согнута в коленном и тазобедренном суставе, находится на плече оператора; одна рука придерживает ногу, другая — подвздошную кость; растягиваем бедро по оси, во внутреннюю ротацию при переднем вывихе, в наружную — при заднем; дополнительно оператор подводит руки под таз в качестве рычагов.</li>
+                <li>в) пациент на животе, нога свешена за край кушетки, согнута в коленном и тазобедренном суставе; одна рука захватывает голеностоп, другая придерживает таз; согнутое колено оператора устанавливается в подколенную ямку, надавливает, создавая дистракцию, осуществляем ротацию (можно подкладывать валики для дополнительного рычага). В завершение продёргиваем ветви бедренной вены, проводя их локальную коррекцию.</li>
+            </ul>
+            <div class="hand-position"><strong>Живая демонстрация третьей, самой мощной техники:</strong> в транскрипте преподаватель называет её «воспоминание о стиле» <span class="timestamp-sub">day_3: 1:04:00-1:07:00</span>.</div>
+            <div class="note"><strong>Осторожно — неоднозначность распознавания речи:</strong> фраза может быть искажённым распознаванием «воспоминание о Стилле» (в честь основателя остеопатии Э. Т. Стилла), но прямого подтверждения этому в тексте нет — слово «Стилл» как имя нигде в транскриптах не встречается. Ранее в этом документе фигурировала история о падении Стилла с лошади и вправлении сустава лошади — при проверке подтвердить её текстом транскриптов не удалось; она исключена как непроверяемая.</div>
+            <div class="warning"><strong>Клиническое замечание:</strong> дисфункция тазобедренного сустава у женщин репродуктивного возраста может проявляться клинически узким тазом при беременности/родах — учитывать акушерский анамнез.</div>
+        </div>
+        <div id="tmj" class="category-divider">
+            <h2>ВНЧС и зубочелюстная система</h2>
+            <p class="category-description">Диагностика взаимовлияния зубочелюстной системы, ВНЧС, шеи и таза; тестирование связок и мениска ВНЧС; полный протокол коррекции и вправления, включая дифференциацию функционального блока от структурного подвывиха мениска.</p>
+        </div>
+
+        <div class="test-card" id="tmj-testing">
+            <h3>📋 Тестирование ВНЧС и его взаимовлияний<span class="timestamp">day_2: 2:22:00 - 3:01:16</span></h3>
+            <p><strong>Тест взвешивания с ингибицией корней зубов</strong> (постуральный тест): рука подкладывается под спину пациента, оценивается направление смещения тела; затем корни зубов ингибируются по одному — при ингибиции актуального прикорневого процесса тело неожиданно выравнивается. <strong>Тест на краниальный ритм с ингибицией зубов:</strong> одна рука слушает краниальный ритм и степень его наполнения, затем ингибируются зубы — при ингибиции актуального прикорневого процесса амплитуда ритма увеличивается на 20–40% <span class="timestamp-sub">day_2: 2:22:00-2:29:11</span>.</p>
+            <div class="note"><strong>Теоретическое обоснование:</strong> органы, наиболее влияющие на постуру — стопа, зубы и глаза, а также копчик, C2 и решётчатая кость. Прикорневой процесс натягивает связки зуба, что даёт неправильную постуральную информацию, под которую подстраивается тело.</div>
+            <p><strong>Тест взаимовлияния ВНЧС и тазобедренного сустава</strong> (по треугольникам Литтл Джона):</p>
+            <ul class="content-list">
+                <li>а) оператор выполняет тест Патрика, затем тест отведения бедра; устанавливает ватные валики кнаружи от клыков и декомпрессирует ВНЧС — если подвижность бедра при этом увеличивается, причина в зубах (используются также индивидуальные ночные капы для временной разгрузки сустава — не является радикальным решением).</li>
+                <li>б) упрощённый вариант без валиков: надавливаем первым-вторым пальцем в проекции ВНЧС, раздвигая челюсть (пациенту менее комфортно); другой рукой переводим тазобедренный сустав в различные позиции — если подвижность в ВНЧС при этом увеличивается, требуется коррекция тазобедренного сустава, как правило на противоположной (перекрёстной) стороне.</li>
+            </ul>
+            <div class="hand-position"><strong>Тестирование связок ВНЧС:</strong> одна рука захватывает челюсть (можно интраорально первым-вторым пальцем, можно снаружи), другая устанавливается на височную кость; рот слегка приоткрыт; растягиваем по трём векторам. В норме — эластическое сопротивление, стабильно возвращает в исходное положение; при разрыве связки — ощущение нестабильности («отъехало»).</div>
+            <div class="hand-position"><strong>Тестирование мениска ВНЧС:</strong> одна рука пальцем в проекции мениска (проекция сустава), другая раскрывает-закрывает челюсть пациента. В норме мениск остаётся на месте при движении. При дисфункции мениск смещается ещё больше при открытии рта (как правило, кпереди и вбок), начинает выпирать под пальцем, движение ограничивается/застопоривается.</div>
+            <p><strong>Порядок работы (озвучен как общий алгоритм):</strong> сначала устраняем первопричину (тазобедренный сустав, затылочная кость, решётка, атлант — по тягам), отрабатываем внутрикостно и прикорневые процессы зубов, затем освобождаем височную кость, декомпрессируем сустав (техника «ничего не попишешь»), вправляем мениск, и только затем вправляем саму челюсть.</p>
+            <p><strong>Тестирование жевательной мускулатуры и опрос ВНЧС по тягам</strong> <span class="timestamp-sub">day_2: 3:00:03-3:01:16</span>.</p>
+            <div class="note"><strong>Симптоматика дисфункции ВНЧС:</strong> щелчки при открытии рта, спазм жевательных мышц, бруксизм, шум в ушах, головные боли, отражённая боль в шее и поясничном отделе.</div>
+        </div>
+
+        <div class="test-card" id="tmj-correction">
+            <h3>📋 Коррекция ВНЧС и вправление мениска<span class="timestamp">day_2: 3:02:03 - 3:37:01, day_2: 6:02:01 - 6:34:21</span></h3>
+            <p><strong>Пошаговое выполнение:</strong></p>
+            <ol>
+                <li><strong>Устранение первопричины</strong> — устранение внутрикостных дисфункций методом размешивания.</li>
+                <li><strong>Декомпрессия корней зубов:</strong>
+                    <ul class="content-list">
+                        <li>а) оператор захватывает альвеолярный отросток пальцами интраорально и снаружи (двумя руками) вокруг зоны поражения, погружается в кость и растягивает, создавая декомпрессию.</li>
+                        <li>б) одна рука захватывает корень зуба снаружи или с двух сторон через альвеолярный отросток, другая захватывает зуб и осуществляет осевую декомпрессию, расслабляя связочный аппарат.</li>
+                    </ul>
+                </li>
+                <li><strong>Декомпрессия ВНЧС</strong> (техника «ничего не попишешь»): второй палец интрабукально (защёчно), под скулу в сторону ВНЧС; другая рука придерживает череп неподвижно. Пациента просят произносить фразу «ничего не попишешь», постепенно продвигая палец глубже, разъединяя челюсть от височной кости.</li>
+                <li><strong>Вправление мениска:</strong> одна рука захватывает нижнюю челюсть, другая встаёт в проекции мениска; декомпрессируем нижнюю челюсть, совершаем движение открытия-закрытия рта, одновременно подпихивая мениск в нормальную позицию, наблюдаем в ритмической непроходимости. После коррекции мениск не должен выдвигаться при движении челюсти.</li>
+                <li><strong>Вправление ВНЧС</strong> (несколько позиций):
+                    <ul class="content-list">
+                        <li>а) оператор в изголовье, первые пальцы на зубах нижней челюсти — растягиваем челюсть и направляем на вправление.</li>
+                        <li>б) оператор лицом к пациенту, первые пальцы на нижней челюсти (на зубах), другие снаружи — растягиваем нижнюю челюсть, увеличиваем подвывих движением вперёд, затем вправляем движением назад.</li>
+                        <li>Усиленный вариант (техника палочки): толстый фломастер или палочка устанавливается между зубами, продвигается максимально глубоко; захватываем челюсть вместе с фломастером и вправляем как рычагом.</li>
+                    </ul>
+                </li>
+                <li><strong>Взвешивание нижней челюсти</strong> (для баланса и снятия шока из тканей — завершающая техника протокола): оператор в изголовье, основания ладоней на височных костях, вторые пальцы под углом нижней челюсти.</li>
+            </ol>
+            <p><strong>Полная клиническая демонстрация:</strong> дифференциация функционального блока ВНЧС от старого структурного подвывиха мениска на конкретном пациенте — обоснование выбора техники в зависимости от типа дисфункции.</p>
+        </div>
+        <div id="neural" class="category-divider">
+            <h2>Невральная система</h2>
+            <p class="category-description">Теория ЦНС, тестирование и продёргивание невральных путей от шеи до кисти, диагностика туннельных синдромов на уровне межпозвонковых отверстий через оценку трёх слоёв ТМО, коррекция межрёберных нервов и пояснично-крестцового неврального дерева.</p>
+        </div>
+
+        <div class="test-card" id="cns-theory">
+            <h3>Теория центральной нервной системы (иерархия отделов)<span class="timestamp">day_3: 1:21:02 - 1:44:00</span></h3>
+            <p>Краткая иерархия отделов мозга — ствол, лимбическая система, кора — как теоретическая база для последующего протокола специфической коррекции краниального спазма по уровням (см. раздел «Артериальное дерево и эмоциональные фиксации»).</p>
+        </div>
+
+        <div class="test-card" id="cervical-neural">
+            <h3>📋 Тестирование и продёргивание невральных путей шея-плечо-предплечье<span class="timestamp">day_3: 2:09:00 - 2:23:06</span></h3>
+            <div class="hand-position"><strong>Тестирование шейной иннервации</strong> (общее тестирование иннервации верхней конечности): пациент на спине, оператор устанавливает руки по задней поверхности шеи, скользит от остистого отростка наружу, встаёт во вторую ямку между мышцами в проекции выхода шейных соматических нервов. Погружаемся до ощущения оболочек нервов (по характеристикам напоминающих ТМО), захватываем спинальные нервы, растягиваем их в краниальном направлении, отмечая проходимость на уровне плеча и верхней конечности.</div>
+            <div class="hand-position"><strong>Продёргивание невральных путей шея-плечо</strong> (односторонняя техника): одна рука устанавливается сбоку на шейные позвонки ниже 4-го в проекции нервов, другая — на плечевое сплетение в подмышечную впадину; продёргиваем нервы из шеи, из плеча, затем из руки.</div>
+            <div class="hand-position"><strong>Продёргивание нервов на плече и предплечье:</strong> одна рука в подмышечной впадине на плечевом сплетении, другая последовательно устанавливается на предплечье — латерально на лучевой нерв, срединно на срединный, медиально на локтевой; продёргиваем нервы из плеча, из руки (включая локоть) и из кисти.</div>
+            <p><strong>Коррекция туннельных синдромов:</strong> определяем фиксации нервов на периферии. Причины фиксации: межмышечные туннели, уплотнение поперечных фасций-манжет, прямая травма нерва, компрессия из-за смещённых костных структур. Опрашиваем место блокировки, находим участки первичной травмы, освобождаем надкостницу внутрикостно, вправляем суставы; в зоне повреждения нерва — поперечное растяжение фасций и мышц, затем одна рука продёргивает нерв, другая — прилежащие ткани в противоположном направлении, вплоть до освобождения нерва. Особое внимание — фасциям-манжетам (карпальные каналы) и надкостнице дистальнее (растягиваем) <span class="timestamp-sub">day_3: 2:48:18-2:52:05</span>.</p>
+        </div>
+
+        <div class="test-card" id="foramen-tmo">
+            <h3>📋 Диагностика трёх слоёв ТМО и коррекция туннелей на уровне межпозвонковых отверстий<span class="timestamp">day_3: 2:52:05 - 3:13:08</span></h3>
+            <p><strong>Диагностическая логика:</strong> ТМО в проекции межпозвонкового отверстия рассматривается как три различных диагностических слоя:</p>
+            <ul class="content-list">
+                <li><strong>Наружный слой</strong> — реагирует на травму соответствующего позвонка.</li>
+                <li><strong>Средний (виртуальный) слой</strong> — реагирует на тяжёлую травму, гематому или перенесённую операцию.</li>
+                <li><strong>Глубокий (истинный) слой</strong> — реагирует на висцеральную патологию.</li>
+            </ul>
+            <p><strong>Дополнительная диагностика:</strong> жидкостный толчок для уточнения уровня и характера фиксации.</p>
+            <p><strong>Коррекция:</strong> последовательная работа с висцеральными → внутрикостными → оболочечными дисфункциями, растяжение смежных позвонков.</p>
+            <div class="note"><strong>Полная клиническая демонстрация:</strong> пациент с онемением кисти (по ходу локтевого нерва) и блокадой шеи — продёргивание нерва, коррекция туннеля, а также наблюдаемое эмоциональное высвобождение пациента в процессе пальпации (ассоциативное воспоминание о падении на экзамене) <span class="timestamp-sub">day_3: 3:14:02-3:40:05</span>.</div>
+        </div>
+
+        <div class="test-card" id="intercostal">
+            <h3>Коррекция межрёберных нервов<span class="timestamp">day_3: 2:24:01 - 2:40:02</span></h3>
+            <div class="hand-position">Пациент на животе. Захватываем нервы по нижнему краю ребра и вблизи позвоночника паравертебрально, продёргиваем нервы из тела, между рук — из ребра и из позвоночника.</div>
+            <p><strong>Коррекция:</strong> отрабатываем рёбра внутрикостно, устраняем блоки поперечно-рёберных суставов, корректируем позвонки.</p>
+        </div>
+
+        <div class="test-card" id="lumbosacral">
+            <h3>📋 Пояснично-крестцовое невральное дерево<span class="timestamp">day_3: 2:41:06 - 2:48:18, day_3: 3:49:03 - 3:58:02</span></h3>
+            <div class="hand-position"><strong>Тестирование:</strong> пациент на животе; оператор устанавливает пальцы с двух сторон от позвоночника в проекции межпозвонковых отверстий, продёргивает из тела, затем из позвоночника, последовательно исследуя зоны по уровням.</div>
+            <p><strong>Зоны последовательного тестирования по уровням (рабочая карта преподавателя — озвучена на семинаре как преимущественно кожная чувствительность, отражающая также мышечную иннервацию):</strong></p>
+            <ul class="content-list">
+                <li>L1 — паховая область</li>
+                <li>L2–L3 — передняя поверхность бедра и колена</li>
+                <li>L4 — передне-наружная поверхность бедра</li>
+                <li>L5 — передне- и задне-наружная поверхность бедра, далее по наружной поверхности голени выше лодыжки</li>
+                <li>S1 — задняя поверхность бедра, задняя/внутренняя поверхность голени выше лодыжки</li>
+                <li>S2 — зона крестца и промежности</li>
+                <li>S3 — зона копчика</li>
+            </ul>
+            <div class="warning"><strong>Методологическая оговорка преподавателя:</strong> для поясничного отдела он даёт эту прикладную зонную карту (взгляд практика, а не строгая неврологическая дерматомная схема), но прямо говорит, что для руки/плеча аналогичной картой сознательно не пользуется — «там гораздо сложнее все эти дерматомы и миотомы, лучше ориентироваться чисто на натяжение».</div>
+            <div class="note"><strong>Для справки — стандартная анатомическая дерматомная карта L1–S3</strong> (общее анатомическое знание, не привязанное к конкретному источнику курса; полезно для общей ориентации, даже если сам метод основан на оценке натяжения тканей, а не на дерматомах):
+                <ul class="content-list">
+                    <li>L1 — паховая складка, верхнелатеральная область ягодицы</li>
+                    <li>L2 — передняя и медиальная поверхность верхней трети бедра</li>
+                    <li>L3 — передняя и медиальная поверхность нижней трети бедра, область колена</li>
+                    <li>L4 — медиальная поверхность голени, медиальная лодыжка</li>
+                    <li>L5 — латеральная поверхность голени, тыл стопы, большой палец</li>
+                    <li>S1 — латеральный край стопы, мизинец, задняя поверхность голени</li>
+                    <li>S2 — задняя поверхность бедра, подколенная ямка</li>
+                    <li>S3 — область промежности, медиальная поверхность ягодицы</li>
+                </ul>
+            </div>
+            <p>Далее продёргивание ветвей седалищного нерва: из таза, из ноги (техника аналогична руке); продёргивание из нижнепоясничного отдела и из-под ягодицы (седалищный нерв), по задней поверхности выше коленного сустава, ветви по наружной и внутренней поверхности голени выше лодыжек (используется также для оценки длины ног).</p>
+            <div class="hand-position"><strong>Продёргивание при выявленной стороне поражения:</strong> одна рука паравертебрально на зоне выхода нервов из поясничного отдела, другая подъягодично по средней линии бедра (погружаясь между мышцами до контакта с оболочкой седалищного нерва) — продёргиваем невральный путь из поясницы, области таза и грушевидной мышцы, бедра, определяем места фиксации.</div>
+            <div class="hand-position"><strong>Тестирование бедренного нерва:</strong> одна рука на поясничном отделе паравертебрально, другая спереди на наружной части паховой связки на оболочки бедренного нерва — продёргиваем нерв из поясницы, из таза, из передней поверхности бедра.</div>
+            <p><strong>Коррекция туннельных синдромов:</strong> если причина — травма, отрабатываем рядом находящиеся внутрикостные дисфункции (если есть), растягиваем фиброзные уплотнения мышц, затем поперечно растягиваем нерв от окружающих стенок туннеля, устраняя фиброз; локально продёргиваем нерв, представляя его не проводом (который можно тянуть/крутить), а плотным цилиндром, который можно только смещать/прокатывать в разных направлениях. Если причина — рефлекторный спазм мышц, требуется опрос по тягам и предварительная коррекция первичной дисфункции.</p>
+            <p><strong>Коррекция дисфункции межпозвонкового отверстия</strong> (важна при блокировках позвоночника, грыжах, протрузиях): опрашиваем проблемные зоны поясницы по тягам, находим первично поражённые позвонки, проверяем растяжимость спинальных нервов на их уровне, тестируем три слоя ТМО в зоне повреждённых позвонков (см. отдельную карточку выше), отрабатываем первично поражённую висцеру, затем внутрикостно — позвонки; захватываем два смежных позвонка и разъединяем их в прямых параметрах, раскрывая межпозвонковое отверстие (одна рука 1–2 или 2–3 пальцами на поперечных отростках смежных позвонков — растягиваем; другая рука захватывает поражённый спинальный нерв и вытягивает его относительно отверстия). Корректируем в прямых параметрах, перепроверяем, укачиваем пациента.</p>
+            <p><strong>Полная клиническая демонстрация:</strong> пациентка с болью в пояснице — тест подвздошно-поясничной мышцы, оценка илеоцекального клапана, гиперлордоз, эмоциональная провокация (проигрывание сдерживаемой агрессии), синдром грушевидной мышцы — комплексная демонстрация неврального протокола <span class="timestamp-sub">day_3: 3:41:00-4:02:00</span>.</p>
+        </div>
+        <div id="arterial" class="category-divider">
+            <h2>Артериальное дерево и эмоциональные фиксации</h2>
+            <p class="category-description">Теория артериального дерева и типов его повреждения, полная классификация личностных эмоциональных масок с топографией распределения по сосудистым бассейнам, а также неспецифическая и специфическая коррекция краниального спазма.</p>
+        </div>
+
+        <div class="test-card" id="arterial-theory">
+            <h3>Теория артериального дерева и виды его повреждения<span class="timestamp">не найдено отдельного таймкода в day_4 — описание по basic_data.txt</span></h3>
+            <p>Классификация ветвей и трёх видов повреждения приведена по справочнику курса; в устной части day_4 (около <span class="timestamp-sub">5:36-5:40</span>) обсуждается смежная, но не идентичная тема — метод провокации через сосуды (см. карточку «Неспецифическая коррекция») и уровни краниального спазма (см. соответствующую карточку), а не сама классификация ветвей/типов повреждения.</p>
+            <p>Корень дерева — сердце. <strong>Основные ветви:</strong> общая сонная артерия (делится на наружную и внутреннюю), позвоночная артерия (объединяется в базилярную), подключичная артерия (переходит в плечевую), коронарные артерии, корни лёгких, межрёберные артерии, чревный ствол (кровоснабжает верхний этаж брюшной полости — печень, желудок, ДПК, поджелудочную железу, селезёнку), почечные артерии, артерии яичников/яичек, верхняя брыжеечная артерия (тонкая кишка и правая половина толстой), нижняя брыжеечная артерия (левая половина толстой), общие подвздошные артерии (делятся на внутреннюю и наружную ветви), наружные подвздошные артерии (переходят в бедренные).</p>
+            <p><strong>Три варианта повреждения:</strong></p>
+            <ul class="content-list">
+                <li><strong>Механическая фиксация</strong> — формируется как туннельный синдром или адгезия вследствие прямой или непрямой травмы; артерия <em>нерастяжима</em>.</li>
+                <li><strong>Рефлекторный спазм</strong> — связан с повреждением рядом лежащих органов или перевозбуждением управляющих ганглиев; артерия сжата, но <em>растяжима</em>; при пальпации определяется тяга к первично поражённому органу — ингибиция этого органа даёт расслабление артерии.</li>
+                <li><strong>Психоэмоциональный спазм</strong> — связан с деятельностью лимбической системы и коры, без органической причины.</li>
+            </ul>
+            <div class="note"><strong>Диагностический критерий:</strong> артериальное дерево как маркер эмоционального паттерна отличается от структурной/рефлекторной фиксации отсутствием прямых тяг к внутренним органам; для вегетативной нервной системы нет феномена перекрёста — реакция определяется на той же стороне тела, где действовал раздражитель.</div>
+        </div>
+
+        <div class="test-card" id="emotional-masks">
+            <h3>📋 Личностные эмоциональные маски<span class="timestamp">day_4: 3:59:00 - 5:35:00</span></h3>
+            <p><strong>Классификация масок (от поверхностной к глубокой):</strong></p>
+            <ul class="content-list">
+                <li><strong>Социальная маска</strong> — представлена мимикой и динамической мускулатурой, самая поверхностная; активируется в условиях социальной активности, не приводит к тяжёлым повреждениям («маска обмена»); таких масок у человека может быть несколько (для работы, для старых друзей и т.д.).</li>
+                <li><strong>Личностная маска</strong> — проявляется в условиях эмоционального комфорта, когда социальная маска снята; представляет собой представление пациента о самом себе, является следствием юношеских впечатлений; сформирована постуральными мышцами и жевательной мускулатурой.</li>
+                <li><strong>Гравитационная маска (диафрагмальная)</strong> — проявляется в условиях мышечного покоя при отсутствии действия гравитации (лёжа); впечатления, полученные из детства, страхи и переживания, от которых тело защищает внутренние органы; фиксируется на уровне урогенитальной, брюшной и шейной диафрагм.</li>
+                <li><strong>Висцеральная маска</strong> — проявляется в условиях сна; связана с ранним детством, эмбриональным периодом и архетипическими повреждениями; проявляется через спазм сфинктеров висцеральной системы.</li>
+                <li><strong>Сосудистая маска</strong> — спазм глубоких висцеральных артерий; по описанию day_4, вершина всех эмоциональных дисфункций, по сути отражающая саму личность человека.</li>
+            </ul>
+            <p><strong>Паттерны распределения спазмов:</strong> стандартный вариант распределения — корни лёгких через почечную артерию к брыжейке; существуют два односторонних и два перекрёстных паттерна распределения.</p>
+            <p><strong>Топография (посегментно, по стволу тела):</strong> грудная клетка — эго; брюшная полость и таз — бессознательное; шея и голова — сверхсознательное; верхний этаж брюшной полости — позднее детство; средний этаж — детство; нижний этаж — раннее детство; таз — внутриутробный период; ноги/бёдра — архетипические закладки.</p>
+            <p><strong>Дополнительная топография (по демонстрации day_4, конкретные структуры):</strong> грудь — «эго»/настоящее; почки — юность и страх; левая половина брыжейки — подавленный «внутренний ребёнок»; правая половина — «недоподавленный ребёнок».</p>
+            <div class="note"><strong>Полная клиническая демонстрация:</strong> коррекция архетипического паттерна (страх высоты, интерпретированный как наследуемый от предка) с описанием феномена «считывания» тканевой памяти <span class="timestamp-sub">day_4: 5:53:02-6:12:06</span>.</div>
+        </div>
+
+        <div class="test-card" id="nonspecific-correction">
+            <h3>📋 Неспецифическая коррекция эмоциональных фиксаций сосудов<span class="timestamp">day_4: 5:36:07 - 5:40:09 (метод провокации), теория эмоционального спазма — в контексте масок 3:59:00-5:35:00</span></h3>
+            <p><strong>Дифференциальная диагностика типа спазма при пальпации:</strong></p>
+            <ul class="content-list">
+                <li>При <strong>эмоциональном спазме</strong> артерия сжата, расслабляется крайне неохотно и быстро восстанавливает спазм повторно; тяг к органам нет. Пациент при пальпации испытывает вегетативное беспокойство, дискомфорт, страх, сердцебиение, потливость, дрожь. Оператор также может испытывать неприятные субъективные ощущения — отвращение, печаль, чувство жара или холода, спутанность сознания, беспокойство.</li>
+            </ul>
+            <p><strong>Тестирование сосудистого дерева:</strong> руки устанавливаются на сонную артерию в области шеи, продёргивается артериальная система с отметкой возможных участков эмоционального спазма; далее оператор локально исследует сосуды, подтверждая диагноз, и ингибиторным балансом выбирает наиболее спазмированный сосуд.</p>
+            <p><strong>Метод провокации:</strong> захватываются сонные артерии, вводится в напряжение всё артериальное дерево, пациента просят вспомнить неприятную ситуацию или человека — отмечается, в какой зоне сосудов наступает эмоциональный спазм, далее работа ведётся именно в этой зоне.</p>
+            <p><strong>Тест с цветами спектра (неспецифическая провокация):</strong> пациента просят ярко представлять основные цвета спектра — каждый цвет связан с определённым эмоциональным состоянием; выраженная активация сосудистого спазма при представлении цвета является маркером подавленных эмоций и требует коррекции.</p>
+            <p><strong>Коррекция структурных и рефлекторных нарушений</strong> (для сравнения): туннельные синдромы отрабатываются локально устранением первопричины, растяжением тканей, продёргиванием сосудов; рефлекторные причины устраняются коррекцией первично поражённого органа.</p>
+        </div>
+
+        <div class="test-card" id="cranial-spasm">
+            <h3>📋 Краниальный спазм: неспецифическая и специфическая коррекция (5 уровней)<span class="timestamp">day_4: 5:36:07 - 5:52:03</span></h3>
+            <p><strong>Неспецифическая коррекция общего краниального спазма:</strong></p>
+            <div class="hand-position">Оператор устанавливает основание ладоней на теменные кости так, чтобы руки захватывали максимальный объём коры. Последовательно погружаемся в кость, затем в ТМО, уравновешиваем каждый из этих слоёв (жёсткие шовные или внутрикостные дисфункции устраняются локально по ходу).</div>
+            <p>Достигнув головного мозга, оператор оценивает общее напряжение тканей коры, находит участки уплотнения; концентрирует усилия ладоней так, чтобы раскрыть, растянуть напряжённые участки, наблюдая в ритмической непроходимости до исчезновения плотности и появления расслабления. После коррекции может возникнуть ощущение, что мозг «перетекает», заполняя пространство черепной коробки.</p>
+            <p><strong>Специфическая коррекция:</strong> одна рука остаётся на теменных костях/коре, другая рука надавливает на найденный эмоционально спазмированный сосуд, вызывая его раздражение — наблюдаем, как одновременно в головном мозге активируется соответствующий участок краниального спазма.</p>
+            <p><strong>Пять уровней краниального спазма</strong> (в продвинутом варианте работы; в упрощённом варианте работают только с корой):</p>
+            <ol>
+                <li>Кора — самые поверхностные, малозначимые воспоминания и переживания.</li>
+                <li>Подкорка.</li>
+                <li>Лимбическая система и мозжечок — глубокие эмоциональные травмы, в том числе детские.</li>
+                <li>Ствол мозга и мост — ранние детские и эмбриональные переживания.</li>
+                <li>Верхний шейный отдел спинного мозга (ядра) — архетипические переживания (наряду со стволом мозга).</li>
+            </ol>
+            <div class="note">Ряд переживаний может фиксироваться сразу на нескольких уровнях одновременно. Реакция мозга при стимуляции сосуда, как правило, односторонняя и гомолатеральная (соответствует той же стороне, что и спазмированный сосуд) — согласно древним перекрещивающимся вегетативным путям.</div>
+            <div class="tip"><strong>Уточнение по устной демонстрации (day_4):</strong> в живой демонстрации преподаватель кратко перечислял уровни без явного упоминания мозжечка и моста — кора → подкорковые ядра (названы менее значимыми для практики) → лимбика → ствол → верхний шейный отдел спинного мозга. Письменный справочник курса даёт более полную анатомическую версию, приведённую выше.</div>
+            <div class="warning"><strong>Методологическая заметка (важно):</strong> преподаватель описывает механизм лечебного воздействия по «наркозной» модели (возбуждение → истощение → торможение участка мозга) и упоминает метод гипоксии/удушения А.Т. Огулова исключительно в демонстрационных целях, с явной оговоркой: <blockquote>«я не обучаю этому методу» — метод не входит в программу практического освоения на данном семинаре.</blockquote></div>
+        </div>
+        <div id="layer-search" class="category-divider">
+            <h2>Диагностика актуальной дисфункции</h2>
+            <p class="category-description">Расширенный алгоритм последовательной ингибиции тканевых слоёв для определения наиболее клинически значимой на данный момент дисфункции.</p>
+        </div>
+
+        <div class="test-card" id="layer-inhibition">
+            <h3>📋 Техника последовательной ингибиции слоёв<span class="timestamp">day_4: 6:13:18 - 6:21:03</span></h3>
+            <p><strong>Цель:</strong> определить, какой тканевый слой в данный момент содержит наиболее актуальную для организма пациента дисфункцию, чтобы направить туда коррекцию в первую очередь.</p>
+            <div class="hand-position"><strong>Исходное положение:</strong> оператор присаживается в изголовье, устанавливает контакт на область шеи, где представлены все тканевые слои (похожая зона — таз).</div>
+            <p><strong>Тканевые слои (согласно справочнику курса, 10 позиций):</strong></p>
+            <ol>
+                <li>Поверхностные фасции</li>
+                <li>Глубокие висцеральные фасции</li>
+                <li>ТМО</li>
+                <li>Кость</li>
+                <li>Артерии</li>
+                <li>Вены</li>
+                <li>Лимфатика</li>
+                <li>Нервы</li>
+                <li>Жидкости</li>
+                <li>Биоэлектрическое поле-потенциал в жидкостях</li>
+            </ol>
+            <p><strong>Пошаговое выполнение:</strong> оператор попарно захватывает ткани различных слоёв, вводя их в лёгкое напряжение. За счёт конкурентной ингибиции менее значимый слой расслабляется, более значимый остаётся плотным и сравнивается со следующим слоем — так последовательно выбирается наиболее актуальный слой. Найдя слой, продёргиваем его и определяем наиболее проблемные, напряжённые, нерастяжимые участки, выбираем из них ингибиторным балансом.</p>
+            <p><strong>Диагностические маркеры:</strong> при ингибиции актуального слоя ритм становится наиболее мощным; в качестве маркера также может выступать позиция перикарда, пальпируемая через грудину (для эмоциональных дисфункций); дополнительно применяются тест взвешивания и тест брыжеечного манёвра (для оценки состояния органов живота).</p>
+            <p><strong>Вариант — поиск актуального слоя для локальной жалобы пациента:</strong> одна рука пальпирует место жалобы, определяя отёк, напряжение, болезненность; другая рука последовательно ингибирует тканевые слои, оценивая найденный слой и его места напряжения (также проводится их ингибиция). Актуальной и требующей коррекции признаётся та зона, при ингибиции которой состояние области жалобы существенно улучшается, уменьшается отёк и спазм.</p>
+            <div class="tip"><strong>Практический совет:</strong> алгоритм применим как для поиска дисфункции по конкретной жалобе пациента, так и для общей оценки состояния перед выбором стратегии сеанса.</div>
+            <div class="note">Расширенная версия day_4 (фасции → висцера → кость → жидкость → лимфа → артерии → вены → нервы) представляет собой практический, слегка упрощённый вариант той же техники в живой демонстрации; полный список из справочника курса приведён выше.</div>
+        </div>
+
+        <div class="test-card" id="radial-head-demo">
+            <h3>📋 Полная клиническая демонстрация — вправление подвывиха головки лучевой кости, тейпирование<span class="timestamp">day_4: 6:13:18 - 6:29:11</span></h3>
+            <p>Продолжение демонстрации техники последовательной ингибиции слоёв (см. выше) на пациенте с болью в плече: определяется, что беспокоит не само плечо, а старая, недолеченная травма локтя (внутрикостное повреждение, есть повреждение надкостницы). После внутрикостной коррекции локтя (помпаж, размешивание) обнаруживается отдельный, более старый подвывих головки лучевой кости.</p>
+            <div class="warning"><strong>Важная оговорка преподавателя:</strong> вправление подвывиха головки лучевой кости прямо названо материалом более продвинутого (пятого) семинара — «тянем-потянем, мучительно, это пятый семинар, вообще не хочу делать, но надо». Это не базовая техника данного уровня подготовки.</div>
+            <p><strong>Техника тейпирования (новая техника, не входит в справочник курса):</strong> после вправления сустав нельзя полностью разгибать несколько дней. Демонстрируется наложение тейпа как «обманки для тела»: приклеивается якорь тейпа, мышца предварительно переводится в укороченное положение и расслабляется, затем тейп наклеивается с минимальным натяжением через кожу/шерсть — создаёт сопротивление при попытке разогнуть руку, механически напоминая о необходимости беречь сустав. При необходимости добавляется косыночная повязка (временная мера на 2–3 дня, не обязательно носить её постоянно).</p>
+        </div>
+        <div id="orbit" class="category-divider">
+            <h2>Протокол коррекции глазницы</h2>
+            <p class="category-description">Полный диагностический и коррекционный протокол глазницы: от общей оценки диаметра глазницы и внутриглазного давления до специализированных техник Руди для слёзного аппарата, роговицы и глазного яблока.</p>
+        </div>
+
+        <div class="test-card" id="orbit-intro">
+            <h3>Глазница — теория и обоснование протокола<span class="timestamp">day_3: 4:02:00 - 4:11:00</span></h3>
+            <p>Прежде чем работать непосредственно с глазом (отток носослёзного канала, места прикрепления мышц, связка Цинна), необходимо сначала откорректировать весь лицевой череп — все начинается с костей: если был удар в лоб, верхняя челюсть заблокирует носослёзный канал; удар в нос, висок или дисфункция СБС заблокирует верхнюю глазничную щель; проблема скуловой или решётчатой кости нарушит тонус миофасции глазодвигательных мышц.</p>
+            <div class="tip"><strong>Диагностическая подсказка:</strong> пациент часто обращается с жалобой на тяжесть, резь в глазах, конъюнктивит или падение зрения и на прямой вопрос отрицает травму — но при дальнейшем опросе выясняется, что за полгода-год до начала симптомов был удар в лоб или затылок, манипуляции на зубах, простуда с блокировкой гайморовых/решётчатых пазух, или стёртый, незамеченный взрослым отит. Симптоматическое лечение каплями (антимикробными, сосудосуживающими, витаминными, атропином при спазме аккомодации) не устраняет фиксацию костей черепа — это чисто паллиативный подход.</div>
+            <p><strong>Кости, составляющие глазницу:</strong> лобная кость, клиновидная кость (малое и большое крыло), скуловая кость, верхняя челюсть, решётчатая кость (внутри), слёзная кость, лобный отросток верхней челюсти, носовая кость.</p>
+            <div class="note">На ширину глазницы сильно влияет СБС: при торсии СБС глазница всегда будет уменьшена.</div>
+        </div>
+
+        <div class="test-card" id="orbit-testing">
+            <h3>📋 Тестирование глазницы<span class="timestamp">day_3: 4:11:00 - 4:34:11</span></h3>
+            <p><strong>Пошаговое выполнение:</strong></p>
+            <ol>
+                <li><strong>Тест СБС</strong> (сфено-базилярного синхондроза).</li>
+                <li><strong>Оценка диаметра глазницы:</strong> 2–3 пальцы устанавливаются в наружный и внутренний углы глаза, затем оператор соединяет пальцы правой и левой руки, оценивая симметрию глазниц (важно измерять до и после коррекции — так оценивается её эффективность).</li>
+                <li><strong>Тест костей глазницы</strong> (глобальный тест): оператор окружает глазницу пальцами, захватывая лобную, скуловую кость, верхнюю челюсть и проекцию решётчатой кости, оценивает краниальный ритм глазницы, проводит расширение и оценивает степень плотности.</li>
+                <li><strong>Тест внутриглазного давления:</strong> глаза пациента закрыты, оператор надавливает через веко на правое и левое глазное яблоко — высокая плотность и напряжение указывают на дисфункцию.</li>
+                <li><strong>Тестирование верхней глазничной щели:</strong> захватываем лобную и клиновидную кость, разъединяя их с входом на малые и большие крылья клина.</li>
+                <li><strong>Тестирование глазодвигательных нервов:</strong> захватываем глазное яблоко, растягиваем в каудальном направлении, настраиваемся на восприятие оболочек нервов, оцениваем степень напряжения в области верхней глазничной щели.</li>
+                <li><strong>Тестирование глазодвигательных мышц:</strong> оператор захватывает глазное яблоко через веки справа и слева, просит пациента двигать глазами, настраивается на восприятие миофасции глазодвигательных мышц, растягивает и смещает глаз, оценивая его свободу.</li>
+            </ol>
+        </div>
+
+        <div class="test-card" id="ganglia-theory">
+            <h3>Симпатическая иннервация глаза: тестирование верхнего шейного и звёздчатого ганглиев<span class="timestamp">day_3: 4:11:00 - 4:51:00</span></h3>
+            <p>Начало симпатической иннервации, значимой для глаза, локализуется на уровне D1-D2 — там же, где расположены все симпатические ядра (от первого грудного до первого поясничного позвонка). На шее и в пояснице расположены уже не ядра, а выходы нервов с узлами (ганглиями). Повреждение в шейно-грудной зоне может нарушать вегетативную иннервацию глаза, в том числе приводить к близорукости.</p>
+            <div class="hand-position"><strong>Тестирование состояния верхнего шейного ганглия (C2-C3):</strong> захватываем глазное яблоко, одновременно поддерживаем зону C2-C3, оцениваем подвижность позвонков — при улучшении глазное яблоко субъективно становится более «жидкостным», мягким. Эффект тонкий, поэтому проще ориентироваться на сам факт наличия повреждения в этой зоне (оно в любом случае будет влиять на глаз и другие структуры черепа, черепно-мозговые нервы).</div>
+            <p><strong>Значение C2-C3:</strong> это зона прикрепления ТМО (расслабление ТМО распространяется по всему телу) и важной обратной связи с кардиальным и другими сплетениями тела. Упомянуто (со ссылкой на исследования С. В. Новосельцева), что воздействие на этот ганглий вызывает эффект «перезагрузки» вегетативной нервной системы, улучшение кровотока головного мозга и снижение мышечного напряжения по всему телу — вне зависимости от конкретного способа воздействия. Позиция преподавателя: не нужно специально активировать или подавлять ганглий — достаточно нормализовать ткани в этой зоне.</p>
+            <div class="hand-position"><strong>Тестирование звёздчатого (нижнего шейного) ганглия и зоны шейно-грудного перехода:</strong> расположен на передне-боковой поверхности C7-T1, подключично; пальпируется опосредованно. Взаимодействует с верхним шейным ганглием и с кардиальным сплетением.</div>
+            <p><strong>Клиническое значение звёздчатого ганглия:</strong> его стимуляция снимает бронхоспазм (симпатика — антагонист парасимпатики на уровне бронхов; актуально при бронхиальной астме, хроническом бронхите, спазме на холодном воздухе); влияет на сердце (сначала усиливает активность, затем расслабляет); влияет на мозговой кровоток через спазм артерий.</p>
+            <div class="warning"><strong>Важное предупреждение (безопасность):</strong> резкая/сильная стимуляция этого ганглия (не через сонную артерию!) может вызвать спазм сосудов и временное «отключение» мозга от притока крови (тот же физиологический механизм, что и в опасной «игре в удушение» из детства) — сознание не теряется, но эффект непредсказуем. Стимулировать эту зону нужно мягко и постепенно, не форсируя.</div>
+            <p><strong>Обоснование протокола:</strong> блокировка на уровне ключицы, первых рёбер и позвонков шейно-грудного перехода приводит к нарушению симпатической иннервации глаза и других структур — поэтому к зоне шейно-грудного перехода нужно относиться с осторожностью в целом.</p>
+            <div class="warning"><strong>Противопоказание:</strong> работа с зоной D1-D2 противопоказана у беременных в первом триместре — риск выкидыша, связанный с нарушением защитной блокировки симпатической активности в период перестройки гипофизарной регуляции. Преподаватель в целом придерживается позиции избегать глубокой работы с беременными женщинами, если нет уверенности в достаточно тонком контроле техники.</div>
+            <div class="tip"><strong>Практический совет:</strong> перед процедурами в этой зоне у женщин репродуктивного возраста рекомендуется предварительно уточнить возможность беременности.</div>
+        </div>
+
+        <div class="test-card" id="orbit-correction">
+            <h3>📋 Коррекция глазницы, венозный отток, техники Руди<span class="timestamp">day_3: 4:51:00 - 5:30:18, day_4: 0:00:00 - 1:10:00</span></h3>
+            <p><strong>Коррекция венозного возврата от глазниц (полная цепочка декомпрессии):</strong></p>
+            <div class="hand-position">Одна рука пальпирует напряжённость глазного яблока. Другая рука последовательно: 1) расширяет глазницу вместе с сухожильным кольцом Цинна; 2) расширяет клиновидную кость, захватив её щипком за большие крылья и разводя латерально, растягивая тело клина и кавернозного синуса; 3) классически захватывает височную кость на стороне поражения, растягивает её латерально и в наружную ротацию, декомпрессируя верхний и нижний пирамидный синус; 4) переносится в зону иниона, растягивает область иниона с наметом мозжечка в стороны и дорсально, создавая напряжение в поперечном и сигмовидном синусах; 5) второй-третий пальцы обеих рук встают на затылочную кость и сосцевидный отросток вблизи яремного отверстия, растягивая кости друг относительно друга — декомпрессия яремного отверстия.</div>
+            <p>Определяем место, при воздействии на которое внутриглазное давление уменьшается — в этом месте проводим опрос по тягам, внутрикостные и шовные техники, просматриваем венозные синусы до полной коррекции.</p>
+            <p><strong>Декомпрессия связки Цинна:</strong> оператор захватывает кости глазницы одной рукой, другой рукой захватывает клиновидную кость за большие крылья, удерживает клин на месте, одновременно расширяя кости глазницы с акцентом на глубоко лежащую связку Цинна <span class="timestamp-sub">day_4: 1:13:02-1:14:02</span>.</p>
+            <p><strong>Продёргивание глазодвигательных нервов:</strong> оператор захватывает глазные яблоки, настраивается на ощущение от оболочек нервов, продёргивает нервы из верхней глазничной щели, набирает параметры, наблюдает на ритмах.</p>
+            <p><strong>Коррекция глазодвигательных мышц:</strong> оператор удерживает проблемное глазное яблоко одной рукой, просит пациента двигать глазами, получая информацию о состоянии мышц; одна рука растягивает глаз в проекции блокированных мышц, другая встаёт на кости глазницы вблизи поражения, дополняя противорастяжение через фасции — включая расширенный вариант авторской техники самокоррекции зрения <span class="timestamp-sub">day_4: 0:00:00-0:04:01, day_4: 1:19:01-1:24:02</span>.</p>
+            <p><strong>Устранение слёзного аппарата и жидкостная коррекция глазницы (лечение глазного яблока):</strong> опциональная техника — оператор захватывает веки через белки глазные яблоки и направляет их в точку баланса, наблюдает в ритмах до расслабления; используется в самокоррекции зрения, улучшении питания глаза, снятии усталости, лечении лёгких форм глаукомы. После выполнения возможен временный паралич глазодвигательных мышц.</p>
+            <ul class="content-list">
+                <li><strong>Техника коррекции носослёзного канала (техника Руди):</strong> второй палец во внутренний угол глаза на слёзную кость, погружение в носослёзный канал, набор параметров; второй палец другой руки сверху мягко надавливает, создавая динамический помпаж канала <span class="timestamp-sub">day_4: 0:18:02-0:20:01</span>.</li>
+                <li><strong>Дренаж слёзной железы:</strong> второй палец в верхненаружный угол глаза под бровь на слёзную железу; второй палец другой руки сверху динамически надавливает, прокачивая и дренируя железу <span class="timestamp-sub">day_4: 0:21:07-0:22:17</span>.</li>
+                <li><strong>Жидкостный дренаж глазного яблока (при глаукоме):</strong> второй палец одной руки в наружный угол глаза на глазное яблоко, сдавливает его медиально; второй палец другой руки сверху динамически надавливает, создавая сжатие снаружи внутрь <span class="timestamp-sub">day_4: 0:23:04-0:26:05</span>.</li>
+                <li><strong>Техника Руди для роговицы</strong> (в т.ч. при астигматизме): глаза пациента закрыты, взор прямо, второй палец одной руки в проекции роговицы, второй палец другой руки погружается в роговицу — прокачиваем во все стороны <span class="timestamp-sub">day_4: 0:27:10-0:29:10</span>.</li>
+                <li><strong>Техника Руди для глазного яблока:</strong> пациент опускает взор, второй палец одной руки на глазном яблоке проходит внутрь глаза, второй палец другой руки сверху — жидкостная прокачка, устраняющая все плотности глазного яблока до гомогенизации (эписклерит, увеит, ранняя катаракта, зрительные артефакты) <span class="timestamp-sub">day_4: 1:05:06-1:10:00</span>.</li>
+            </ul>
+            <div class="note"><strong>Диагностическая заметка (симптом «кошачьего глаза»):</strong> посмертная деформация зрачка при компрессии глазного яблока формируется примерно через 40 минут после смерти — упомянуто в клиническом контексте техники Руди, не является отдельной техникой.</div>
+            <div class="note"><strong>Четыре стадии нарушения аккомодации:</strong> иннервация → мышечный тонус → форма хрусталика → изменение формы глазного яблока — используется как диагностическая последовательность при оценке зрительных нарушений.</div>
+            <div class="warning"><strong>Дифференциальная диагностика зрительных артефактов:</strong> «мушки» перед глазами (перетекание жидкости стекловидного тела) — доброкачественны; скотома (тёмное пятно, поражение коры) и спирали/звёзды (признак эпилептоидной активности) требуют осторожности и не относятся к безобидным явлениям.</div>
+            <p><strong>Полная клиническая демонстрация:</strong> пациентка с иридоциклитом и снижающимся зрением — полный цикл диагностики (СБС, диаметр глазницы, кости, ВГД, венозный отток, симпатическая иннервация) и коррекции <span class="timestamp-sub">day_4: 1:29:00-3:21:22</span>.</p>
+        </div>
+
+        <div class="test-card" id="lens-retina">
+            <h3>Коррекция хрусталика, сетчатки и зрительного нерва, завершающая техника<span class="timestamp">day_4: 1:11:13 - 1:29:00</span></h3>
+            <p><strong>Коррекция хрусталика:</strong> оператор устанавливает первый и второй пальцы на боковые поверхности глаза, погружается до хрусталика, захватывает его щипком, сжимает и растягивает, восстанавливая эластичность <span class="timestamp-sub">day_4: 1:11:13-1:12:18</span>, включая технику баланса хрусталика по методу БЛТ Сазерленда <span class="timestamp-sub">day_4: 1:25:00-1:26:11</span>.</p>
+            <p><strong>Коррекция зрительного нерва и сетчатки:</strong> одна рука захватывает глазное яблоко, настраивается на восприятие нерва, другая захватывает клиновидную кость; мягко растягиваем глазное яблоко, просматриваем ход нерва через его канал, наблюдаем на ритмах, затем переносим внимание на место входа нерва в глаз, наблюдаем зону сетчатки, отслеживаем места уплотнения или отслойки в ритмической непроходимости <span class="timestamp-sub">day_4: 1:14:02-1:16:22</span>.</p>
+            <p><strong>Завершающая техника:</strong> захватываем глазницу и прослушиваем все её ритмы, наблюдая содержимое глазницы, затем устанавливаем ладони и наблюдаем на ритмах движение всех костей лицевого черепа <span class="timestamp-sub">day_4: 1:27:02-1:29:00</span>.</p>
+        </div>
+        <div id="skull-big" class="category-divider">
+            <h2>Большой протокол коррекции лицевого черепа</h2>
+            <p class="category-description">Развёрнутый протокол коррекции костей лицевого черепа: решётчатая кость, верхняя челюсть, нёбная и скуловая кости, сошник, гайморовы пазухи, носовые и слёзные кости, слуховая труба, нижняя челюсть и ВНЧС.</p>
+        </div>
+
+        <div class="test-card" id="protocol1-extra">
+            <h3>📋 Протокол №1: клиновидная и скуловая кость (пять техник, ранее не встречались в устной лекции)<span class="timestamp">только в basic_data.txt — таймкод отсутствует</span></h3>
+            <p>Эти техники присутствуют исключительно в письменном справочнике курса как часть исходного «Протокола №1» коррекции лицевого черепа; отдельного упоминания в транскриптах не найдено.</p>
+            <ul class="content-list">
+                <li><strong>Коррекция скуловой кости в сочленении с лобной костью:</strong> одна рука щипковый захват лобной кости, другая интрабукально (защёчно) захватывает скуловую кость, растягиваем скуловую от лобной. При сильном напряжении может потребоваться дополнительно разъединить скуловую кость от верхней челюсти и от височной кости.</li>
+                <li><strong>Коррекция клиновидной кости (внутрикостная):</strong> 2–3 пальцы устанавливаются на большие крылья клиновидной кости, погружаемся до тела клина, растягиваем крылья от тела, наблюдаем в ритмах.</li>
+                <li><strong>Клиновидно-височная декомпрессия:</strong> одна рука щипком захватывает клин, другая — классический захват височной кости; удерживаем клин на месте, височную кость направляем латерально, освобождая пирамиду и связку Грубера.</li>
+                <li><strong>Клиновидно-нёбная декомпрессия:</strong> одна рука щипком захватывает клиновидную кость, другая интраорально 2–3 пальцами захватывает нёбную кость позади крестообразного шва, растягиваем каудально нёбную кость от клина.</li>
+                <li><strong>Коррекция нёбной кости, крыловидного отростка и больших крыльев:</strong> одна рука щипковый захват клина, другая углубляется интрабукально мизинцем по направлению к клиновидной кости, захватывает отростки нёбной кости, растягивает их от клиновидной кости до расслабления тканей.</li>
+            </ul>
+        </div>
+
+        <div class="test-card" id="ethmoid">
+            <h3>📋 Решётчатая кость: тестирование и коррекция<span class="timestamp">day_4: 6:29:11 - 6:54:00 (клинический кейс), day_4: 7:04:03 - 7:29:03 (групповая практика)</span></h3>
+            <p>Решётчатая кость является постуральной: от её позиции зависит напряжение фасций, стопы, позиция головы.</p>
+            <p><strong>Тестирование:</strong></p>
+            <ul class="content-list">
+                <li><strong>Перпендикулярная пластинка:</strong> одна рука щипковый захват больших крыльев клиновидной кости, другая рука 2–3 пальцами на глабелле и назионе, проникает до перпендикулярной пластинки решётчатой кости; на вдохе наблюдаем движение «шестерёнки».</li>
+                <li><strong>Боковые массы:</strong> 2–3 пальцы с двух сторон от назиона, проникают вглубь тканей на боковые массы решётчатой кости; на вдохе наблюдаем наружную ротацию, на выдохе — внутреннюю.</li>
+                <li><strong>Интраоральное тестирование:</strong> одна рука щипковый захват клина, другая рука вторым пальцем интраорально на крестообразный шов, проникает через сошник до решётчатой кости и вращает её интраорально в нефизиологические позиции (вправо-влево, вперёд-назад, вглубь-кнаружи, по/против часовой стрелки). Дисфункции решётки могут быть связаны с блоком сошника, нёбной кости, верхней челюсти, лобной кости, СБС.</li>
+                <li><strong>Тест срединных структур черепа:</strong> одна рука щипковый захват лобной кости, другая на крестообразном шве; растягиваем между руками лобную кость вентрокраниально, верхнюю челюсть с нёбной костью вентрокаудально, вводя в напряжение сошник, решётку и клин — оцениваем их подвижность.</li>
+            </ul>
+            <p><strong>Коррекция:</strong></p>
+            <ul class="content-list">
+                <li><strong>Внутрикостная коррекция методом жидкостного толчка:</strong> одна рука захватывает решётчатую кость колоколом или 2–3 пальцами на глабелле/назионе, забирает непрямые параметры; другая рука на инионе совершает жидкостный толчок в сторону решётчатой кости.</li>
+                <li><strong>Лобно-решётчатая декомпрессия (техника колокола) + решётчато-сошниковая декомпрессия:</strong> одна рука захватывает решётку колоколом, другая интраорально через крестообразный шов достигает сошника; направляем решётчатую кость вентро-краниально, сошник — каудально (предварительно проверив нефизиологические движения сошника).</li>
+                <li><strong>Решётчато-клиновидно-сошниковая декомпрессия:</strong> одна рука щипковый захват клина, другая интраорально захватывает сошник, растягивая его через решётчатую кость от клиновидной кости.</li>
+                <li><strong>Глобальная коррекция срединных структур черепа:</strong> одна рука захватывает лобную кость, другая интраорально на крестообразном шве — растягиваем между руками все срединные кости черепа.</li>
+                <li><strong>Дренаж решётчатого лабиринта — парадоксальный (непрямой) помпаж:</strong> одна рука щипковый захват клиновидной кости (отслеживает её движения), другая интраорально (2-й палец спереди от крестообразного шва, 3-й сзади; у детей — только 2-м пальцем, подушечкой плоско спереди и сзади). Оператор отслеживает движения решётчатой кости через сошник и сопровождает её ритм в противофазе: на вдохе давит на переднюю часть сошника (усиливая вдох решётки), на выдохе — на заднюю (усиливая выдох). Приводит к дренажу решётчатых ячеек, может появиться секрет.</li>
+                <li><strong>Коррекция взаимоотношений решётчатой кости и копчика:</strong> одна рука на копчике, другая на решётчатой кости в области глабеллы; пациент на спине; создаём лёгкий импульс от копчика к глабелле, позволяя тканям смещаться в комфортное положение до достижения баланса.</li>
+                <li><strong>Вправление перпендикулярной пластинки (носовой перегородки):</strong>
+                    <ul class="content-list">
+                        <li>а) техника двух карандашей — две палочки в перчатках интраназально захватывают носовую перегородку, другая рука снаружи колоколом удерживает боковые массы решётчатой кости на месте, направляем перегородку в прямые параметры до вправления;</li>
+                        <li>б) одна рука захватывает через хрящи носа глубоко в тканях часть носовой перегородки, другая захватывает массы через назион.</li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="note"><strong>Полная клиническая демонстрация:</strong> пациент с деформацией носа, застарелым переломом решётчатой кости и слабым носовым дыханием <span class="timestamp-sub">day_4: 6:29:11-6:54:00</span>. Групповая практика с ассистентами по всему протоколу решётчатой кости, включая парадоксальный дренаж решётчатого лабиринта, тест боковых масс, наружное вправление перегородки — <span class="timestamp-sub">day_4: 7:04:03-7:29:03</span>.</div>
+            <div class="tip"><strong>Альтернативные позиции рук из «Протокола №1» (более раннее, упрощённое описание тех же декомпрессий в справочнике курса):</strong>
+                <ul class="content-list">
+                    <li><em>Лобно-решётчатая декомпрессия</em> (вариант Протокола №1): одна рука щипковый захват первым-третьим пальцами лобной кости, второй палец на глабелле; другая рука захватывает колокол решётчатой кости, осуществляем декомпрессию.</li>
+                    <li><em>Решётчато-сошниковая декомпрессия</em> (вариант Протокола №1): краниальная рука захват колокола, каудальная рука захватывает верхнюю челюсть, снаружи выходя через рычаг на нёбо и сошник (либо второй палец интраорально на крестообразный шов между нёбом и верхней челюстью). Проходя через нёбо на сошник, направляем решётчатую кость вентрально и краниально, а сошник — дорсально и каудально.</li>
+                    <li><em>Сошниково-клиновидная и решётчато-клиновидная декомпрессия:</em> одна рука щипком захватывает клиновидную кость, другая интраорально захватывает сошник, разъединяя его каудально от клиновидной кости; затем интраоральный палец перемещается кпереди от крестообразного шва и осуществляет каудальное растяжение по оси решётчатой кости. При необходимости — глобальное растяжение от нёбной кости и верхней челюсти до лобной кости.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="test-card" id="maxilla">
+            <h3>📋 Верхняя челюсть, нёбная и скуловая кости<span class="timestamp">day_4: 7:10:01 - 7:12:05, day_4: 7:20:05 - 7:22:00 (групповая практика); остальные под-техники — по basic_data.txt</span></h3>
+            <p><strong>Подъём верхней челюсти</strong> (продемонстрировано в группе, простой вариант): захватываем интраорально, как при подъёме верхней челюсти, приподнимаем её и смотрим, где сохранилась блокировка/напряжение <span class="timestamp-sub">day_4: 7:20:05-7:20:59</span>. Более детальный вариант по справочнику курса: оператор в изголовье, вторые пальцы устанавливаются интраорально с двух сторон на половинки верхней челюсти, первые пальцы снаружи на альвеолярный отросток и тело; направляем верхнюю челюсть вентрокаудально в наружную ротацию и латеральную декомпрессию; забираем параметры и ждём декомпрессию.</p>
+            <p><strong>Коррекция гайморовых пазух (техника выжимания), продемонстрирована дважды в группе:</strong> одна рука интраорально — второй палец на верхней челюсти, первый снаружи на теле; другая рука интрабукально (защёчно) — второй палец на скуло-верхнечелюстном шве, первый снаружи на теле верхней челюсти. Надавливаем первыми пальцами (обязательно именно первыми), слегка приоткрывая челюсть — создаём преднапряжение внутри пазухи, можно слегка жидкостно её качнуть. Односторонняя техника (не с двух сторон одновременно) <span class="timestamp-sub">day_4: 7:10:01-7:12:05, 7:21:00-7:22:00</span>.</p>
+            <div class="tip">Остальные под-техники этого раздела (подходы к верхней челюсти а/б/в, скуло-верхнечелюстная декомпрессия, крюк Канта, коррекция нёбной кости и др.) в транскриптах отдельно не продиктованы — приведены по справочнику курса.</div>
+            <p><strong>Подходы к коррекции верхней челюсти:</strong></p>
+            <ul class="content-list">
+                <li>а) <em>наружный подход</em> — 2–4 пальцы снаружи на альвеолярные отростки и тело верхней челюсти, наблюдаем наружную и внутреннюю ротацию;</li>
+                <li>б) <em>интраоральный подход</em> — вторые пальцы интраорально, первые снаружи, смещаем челюсть в различных направлениях, прослушиваем её ритмы;</li>
+                <li>в) <em>клиновидно-челюстной подход</em> — одна рука щипковый захват клина, отслеживает его краниальный ритм; другая рука 2–3 пальцами интраорально захватывает половинки верхней челюсти, отслеживает их подвижность.</li>
+            </ul>
+            <p><strong>Дополнительные техники верхней челюсти:</strong> нефизиологическое смещение половин верхней челюсти; коррекция нёбно-верхнечелюстного сочленения (интраорально); коррекция скуло-верхнечелюстного сочленения (интрабукально); коррекция лобно-верхнечелюстного сочленения — техника крюка Канта.</p>
+            <p><strong>Коррекция лобной кости:</strong> оператор осуществляет лифт лобной кости. При фиксации лобной кости — коррекция коронарного шва, клиновидно-лобного сочленения, переносицы, лобно-скулового сочленения.</p>
+            <p><strong>Скуло-верхнечелюстная декомпрессия:</strong></p>
+            <ul class="content-list">
+                <li>а) скула захватывается интрабукально, верхняя челюсть — снаружи за тело и альвеолярный отросток;</li>
+                <li>б) интрабукальный захват верхней челюсти со скуловым отростком;</li>
+                <li>в) одна рука захватывает верхнюю челюсть интрабукально, другая — скуловую кость снаружи щипком первого-второго пальца.</li>
+            </ul>
+            <p><strong>Лобно-верхнечелюстная коррекция (крюк Канта):</strong> одна рука щипковый захват лобной кости, второй палец на глабелле; другая рука первым пальцем интраорально на половинке верхней челюсти использует его как крючок, второй палец на лобном отростке верхней челюсти вблизи глабеллы — растягиваем верхнюю челюсть от лобной кости через рычаг первого пальца.</p>
+            <p><strong>Коррекция зубочелюстной системы:</strong> прикорневые процессы определяются по плотности, болезненности и тягам. Оператор устанавливает пальцы с двух сторон от участка с прикорневым процессом (2-е пальцы интраорально, 1-е снаружи), погружается в кость, растягивает ткани альвеолярного отростка, ждёт расслабления и уменьшения отёка; затем одна рука снаружи на альвеолярном отростке/теле поражённой области, другая интраорально и снаружи 1–2 пальцами захватывает корень проблемного зуба (или сам зуб) — декомпрессируем корень зуба.</p>
+            <p><strong>Коррекция нефизиологических движений верхней челюсти:</strong> одна рука тестирует клиновидную кость, другая 2–3 пальцами интраорально на половинках верхней челюсти, 1-й палец снаружи на межносовом шве: а) смещаем половинки друг относительно друга; б) захватываем челюсть как единое целое, смещая вправо-влево, вперёд-назад, вглубь-кнаружи, по/против часовой стрелки. Найденные зоны ограничения растягиваем и корректируем.</p>
+            <p><strong>Нёбная кость:</strong></p>
+            <ul class="content-list">
+                <li><em>Коррекция нефизиологических движений нёбной кости</em> (односторонне): одна рука щипковый захват клина, второй палец другой руки на половинке нёбной кости, смещает в различных направлениях.</li>
+                <li><em>Межнёбная коррекция:</em> 2–3 пальцы на половинках нёбной кости, растягивают её в стороны.</li>
+                <li><em>Нёбно-верхнечелюстная коррекция:</em> второй палец на верхней челюсти, третий на нёбной кости, интраорально.</li>
+                <li><em>Нёбно-клиновидная коррекция:</em> а) одна рука щипком захватывает большие крылья клина, вторая — интраорально на половинках нёбной кости, растягиваем нёбную от клина; б) нёбная кость захватывается интрабукально вблизи крыловидных отростков и крылонёбного ганглия.</li>
+            </ul>
+            <p><strong>Раскрытие верхней глазничной щели.</strong> Причины нарушения остроты зрения: блокирование глазодвигательного нерва в кривизну и фокусировку, изменение длины глазного яблока с нарушением фокусного расстояния.</p>
+            <div class="hand-position">Одна рука осуществляет щипковый захват больших крыльев клиновидной кости. Другая рука устанавливается на надбровные дуги лобной кости, внутрикостно погружается до малых крыльев, захватывает их и направляет вентрально.</div>
+        </div>
+
+        <div class="test-card" id="vomer-nasal">
+            <h3>📋 Сошник, гайморовы пазухи, носовые и слёзные кости<span class="timestamp">day_3: 5:02:08 - 5:30:18</span></h3>
+            <p><strong>Коррекция сошника:</strong> проверяем нефизиологические движения сошника, захватывая его через крестообразный шов, вторая рука — на клиновидной кости; затем разъединяем сошник относительно решётчатой кости (захват колоколом); также можно провести сопровождение сошника в ритмах до его баланса.</p>
+            <p><strong>Коррекция гайморовых пазух (техника выжимания):</strong> одна рука интрабукально — второй палец на скуловой отросток верхней челюсти, первый палец снаружи на теле верхней челюсти в проекции гайморовых пазух; другая рука вторым пальцем интраорально, первый снаружи на теле верхней челюсти; надавливаем на первые пальцы, вторые разводим в наружную ротацию — выдавливаем содержимое гайморовых пазух в полость носа, осуществляем жидкостный помпаж.</p>
+            <p><strong>Коррекция носовых костей:</strong> одна рука щипком захватывает лобную кость, второй палец на глабелле; другая щипком захватывает носовые кости в районе назиона; растягиваем вентрально-каудально в наружную ротацию и латеральную декомпрессию.</p>
+            <p><strong>Коррекция слёзных костей:</strong> одна рука щипковый захват клиновидной кости, другая вторым пальцем на слёзной кости, проверяем движение слёзной кости, ведём к балансу; затем с двух сторон захватываем обе слёзные кости вторыми пальцами и направляем к точке баланса — два подхода в зависимости от возраста пациента (демонстрация младенца и взрослого на day_4).</p>
+        </div>
+
+        <div class="test-card" id="eustachian">
+            <h3>📋 Коррекция слуховой трубы (Евстахиевой) и дренаж кольца Пирогова<span class="timestamp">day_4: 6:54:00 - 7:02:16 (теория и техника), day_4: 7:12:05 - 7:14:05 и 7:30:00 - 7:32:06 (групповая практика)</span></h3>
+            <p>Техника коррекции слуховой (Евстахиевой) трубы и техника дренажа лимфоидного кольца Пирогова (6 миндалин: глоточные, язычная, трубные и нёбные, включая аденоиды) — полностью новые техники семинара, не отражённые в справочном материале курса. Работа с решётчатой костью также способствует уменьшению аденоидов и профилактике их разрастания.</p>
+            <p><strong>Теория:</strong> слуховая труба объединяет полость среднего уха с носоглоткой; в покое замкнута, при глотании растягивается и открывается, позволяя воздуху циркулировать (выравнивание давления при перепадах — например, в самолёте). Блокировка трубы (часто из-за дисфункции височной кости) нарушает отток слизи из среднего уха в нос — жидкость скапливается, инфицируется, воспаление усиливается и может пробить барабанную перепонку.</p>
+            <div class="hand-position"><strong>Коррекция слуховой трубы:</strong> одна рука захватывает область слуховой трубы (снаружи, у виска), другая — дно полости рта интраорально, выходя на гортаноглоточную фасцию; отслеживаем ритм. На вдохе переводим трубу на компрессию/сжатие, расширение в переднюю ротацию, поддавливая дно полости рта; на выдохе ведём в обратном направлении (растягиваем). Труба то уменьшается-раскрывается, то удлиняется-сжимается («выжимаем» её попеременно с рукой на дне рта) — создаётся дренаж, жидкость внутри трубы начинает циркулировать наружу через нос.</div>
+            <div class="hand-position"><strong>Дренаж кольца Пирогова (миндалины):</strong> одна рука интраорально захватывает нёбо (глоточную фасцию), другая снаружи — на дне полости рта; растягиваем обе зоны, как если бы это был единый «шарфик», связывающий фасции глотки и дна полости рта. Прямого доступа к самим миндалинам нет (сильный рвотный рефлекс) — задача техники: стимулировать кровоток и создать дренаж зоны миндалин через растяжение окружающих фасций.</div>
+            <p><strong>Расширенный вариант (кольцо Пирогова, парный контакт):</strong> краниальная рука интраорально 2–3 пальцами на нёбной кости, каудальная рука — в дне полости рта; растягиваем дно полости рта на себя, проходя вверх до нёба, затем растягиваем нёбо, ощущая единый «поясок», идущий от нёба до дна полости рта, на котором расположены миндалины. Настраиваемся на жидкости и ритм: на вдохе поясок сжимается, на выдохе растягивается (биомеханика противоположна обычному краниальному ритму — на вдохе челюсть сокращается, на выдохе расслабляется); сопровождаем это движение, выявляя блокированные миндалины.</p>
+        </div>
+
+        <div class="test-card" id="mandible">
+            <h3>📋 Нижняя челюсть: тестирование и глобальное лечение ВНЧС<span class="timestamp">day_2: 3:00:03 - 3:37:01</span></h3>
+            <p><strong>Тестирование ритмической подвижности:</strong> основания ладоней на височных костях, пальцы на теле нижней челюсти; на вдохе тело совершает расширение и наружную ротацию, суставные отростки сжимаются.</p>
+            <p><strong>Тест ВНЧС открытия рта / интраоральные тесты</strong> (могут применяться и для лечения):</p>
+            <ul class="content-list">
+                <li>а) оператор в изголовье, основание ладони на височных костях, первые пальцы на зубах интраорально — растягиваем нижнюю челюсть по оси ВНЧС, можно совершать латеральное смещение;</li>
+                <li>б) оператор сбоку от пациента лицом к его голове, первые пальцы интраорально на зубы, другие снаружи — растягиваем по оси ВНЧС;</li>
+                <li>в) оператор сбоку на здоровой стороне: одна рука на височной кости в проекции ВНЧС, вторая — первый палец интраорально на зубы, другие пальцы захватывают нижнюю челюсть; растягиваем проблемный ВНЧС, можно вправлять и подталкивать до нормопозиции межсуставного диска (оптимальный вариант для вправления);</li>
+                <li>г) аналогично варианту «в», но захват нижней челюсти осуществляется снаружи.</li>
+            </ul>
+            <p><strong>Тестирование жевательной мускулатуры:</strong> второй палец одной руки интрабукально прощупывает жевательную мускулатуру, другая рука ощупывает её снаружи, определяем места напряжения, плотности, болезненности.</p>
+            <p><strong>Коррекция:</strong></p>
+            <ul class="content-list">
+                <li><strong>Опрос по тягам ВНЧС</strong> — устранение дисфункций височной кости, коррекция зубочелюстных дисфункций.</li>
+                <li><strong>Глобальное лечение ВНЧС:</strong> основание ладоней на височных костях, 2–3 пальцы на угле нижней челюсти, приподнимаем нижнюю челюсть вентрально.</li>
+                <li><strong>Глубокая декомпрессия ВНЧС:</strong> второй палец или мизинец интрабукально по оси ВНЧС продвигается вглубь; пациент произносит артикуляционную фразу «ничего не попишешь», мобилизующую ВНЧС (у детей заменяется компрессией-декомпрессией).</li>
+                <li><strong>Вправление челюсти:</strong> используется одна из четырёх техник тестирования (оптимальна техника №3, где вторая рука может подталкивать суставной мениск в полость сустава). При тяжёлых дисфункциях — техника с палочкой: палочка между зубами продвигается вглубь, раздвигая челюсти; захватываем нижнюю челюсть, используя палочку как рычаг для вправления.</li>
+                <li><strong>Уравновешивание ВНЧС</strong> — завершающий этап протокола.</li>
+            </ul>
+            <div class="tip">Подробный протокол тестирования связок и мениска ВНЧС, а также полная коррекция ВНЧС с клинической демонстрацией вынесены в отдельный раздел «ВНЧС и зубочелюстная система» выше — здесь приведены пункты, специфичные для нижней челюсти как отдельной кости, по справочнику курса.</div>
+        </div>
+        <div id="extra" class="category-divider">
+            <h2>Финальная сверка реестра Этапа 0</h2>
+            <p class="category-description">Итоговая проверка полноты документа относительно исходного реестра тем/техник/тестов, построенного в начале работы по <span class="key-term">basic_data.txt</span> (раздел 6 методологии). Пять техник, встретившихся только в письменном справочнике курса без устного соответствия («Протокол №1: клиновидная и скуловая кость»), вынесены отдельной карточкой внутри раздела «Большой протокол коррекции лицевого черепа» — см. выше.</p>
+        </div>
+
+        <div class="test-card" id="extra-topics">
+            <h3>Итоговая сверка реестра Этапа 0</h3>
+            <p>После трёх волн детальной сверки все пункты исходного реестра (119 позиций, построенного по <span class="key-term">basic_data.txt</span>) нашли отражение в документе — либо с таймкодом из транскрипций (если техника была продемонстрирована/продиктована устно), либо как отдельные карточки, взятые непосредственно из справочника курса с пометкой «только в basic_data.txt», когда устного соответствия не нашлось.</p>
+            <div class="note">Отдельно отмечены и разведены случаи, где письменный справочник и устная лекция расходились в деталях (например, состав уровней краниального спазма, название «гравитационной маски», структура протокола жидкостного слоя) — в каждом таком случае в тексте явно указано, какой источник использован и как выглядит расхождение.</div>
+        </div>
+
+        <div class="test-card" style="margin-bottom:0;padding:24px;background-color:var(--primary-light);border:1px solid var(--primary-border);border-radius:16px;box-shadow:none;">
+            <h3 style="border-bottom:none;padding-bottom:0;margin-bottom:8px;">О документе</h3>
+            <p>Конспект составлен на основе полного разбора справочника курса (<span class="key-term">basic_data.txt</span>) и всех четырёх файлов необработанных транскрипций (<span class="key-term">day-1.txt – day-4.txt</span>) из архива <span class="key-term">transcription_raw.zip</span>. Таймкоды указаны в формате <span class="key-term">day_N: чч:мм:сс</span> в точном соответствии с именем исходного файла записи.</p>
+        </div>
+
+    </main>
+</div>
+
+<a href="#header" class="scroll-top-btn">↑</a>
+
+<footer class="global-footer">
+    Учебный конспект составлен на основе материалов 4-дневного семинара по остеопатии · basic_data.txt + transcription_raw.zip
+</footer>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const sidebar = document.querySelector('.sidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+        const menuBtn = document.getElementById('menuToggleBtn');
+        const closeBtn = document.getElementById('closeSidebarBtn');
+
+        function openMenu() {
+            sidebar.classList.add('open');
+            overlay.classList.add('active');
+            document.body.classList.add('menu-open');
+        }
+
+        function closeMenu() {
+            sidebar.classList.remove('open');
+            overlay.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
+
+        ['click', 'touchstart'].forEach(eventType => {
+            menuBtn?.addEventListener(eventType, (e) => {
+                e.preventDefault();
+                openMenu();
+            });
+        });
+        closeBtn?.addEventListener('click', closeMenu);
+
+        overlay?.addEventListener('click', closeMenu);
+
+        // Закрытие меню при клике по ссылке навигации
+        sidebar?.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 1024) {
+                    closeMenu();
+                }
+            });
+        });
+
+        // Закрытие по Esc
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeMenu();
+            }
+        });
+
+        // Set active menu link
+        const navLinks = [...sidebar.querySelectorAll('a[href^="#"]')];
+
+        function setActiveLink(id) {
+            navLinks.forEach(link => {
+                const isActive = link.getAttribute('href') === `#${id}`;
+                link.classList.toggle('active', isActive);
+            });
+        }
+
+        // Подсветка при клике по пункту меню
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                const id = link.getAttribute('href').slice(1);
+                setActiveLink(id);
+            });
+        });
+
+        // Подсветка при прокрутке
+        const sections = navLinks
+            .map(link => document.querySelector(link.getAttribute('href')))
+            .filter(Boolean);
+
+        function updateActiveSection() {
+            const scrollPos = window.scrollY + 180;
+
+            let currentSection = sections[0];
+
+            sections.forEach(section => {
+                if (section.offsetTop <= scrollPos) {
+                    currentSection = section;
+                }
+            });
+
+            if (currentSection) {
+                setActiveLink(currentSection.id);
+            }
+        }
+
+        window.addEventListener('scroll', updateActiveSection, {
+            passive: true
+        });
+
+        updateActiveSection();
+    });
+</script>
+</body>
+</html>
