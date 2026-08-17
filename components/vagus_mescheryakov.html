@@ -1,0 +1,1899 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Блуждающий нерв в остеопатии — учебный конспект</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --primary: #0d9488;
+        --primary-light: #f0fdfa;
+        --primary-border: #ccfbf1;
+        --primary-text: #115e59;
+        --accent: #10b981;
+        --slate-900: #0f172a;
+        --slate-850: #1e293b;
+        --slate-600: #475569;
+        --slate-400: #94a3b8;
+        --slate-100: #f1f5f9;
+        --bg-main: #f8fafc;
+        --bg-card: #ffffff;
+        --border-color: #f1f5f9;
+        --card-border: #e2e8f0;
+    }
+
+    html {
+        scroll-behavior: smooth;
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        background-color: var(--bg-main);
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        color: var(--slate-850);
+        line-height: 1.4;
+        font-size: 1rem;
+    }
+
+    *, :after, :before {
+        box-sizing: border-box;
+        border: 0 solid #e5e7eb;
+    }
+
+    a, a:visited {
+        color: var(--primary-text);
+    }
+
+    a:hover {
+        color: var(--primary);
+    }
+
+    header.app-header {
+        background: white;
+        border-bottom: 1px solid var(--slate-100);
+        padding: 24px 40px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    header.app-header .logo {
+        background: var(--primary);
+        color: white;
+        border-radius: 12px;
+        padding: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+    }
+
+    header.app-header h1 {
+        margin: 0;
+        font-size: 1.35rem;
+        font-weight: 800;
+        color: var(--slate-900);
+        letter-spacing: -0.02em;
+    }
+
+    header.app-header p {
+        margin: 4px 0 0;
+        font-size: 0.65rem;
+        color: var(--slate-400);
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        font-weight: 700;
+    }
+
+    .layout-container {
+        display: flex;
+        max-width: 1440px;
+        margin: 0 auto;
+        gap: 32px;
+        padding: 30px 40px;
+    }
+
+    .sidebar {
+        width: 320px;
+        flex-shrink: 0;
+        position: sticky;
+        top: 30px;
+        height: calc(100vh - 120px);
+        overflow-y: auto;
+        background: white;
+        border: 1px solid var(--border-color);
+        border-radius: 24px;
+        padding: 24px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+    }
+
+    .sidebar-top-line {
+        margin-bottom: 16px;
+        border-bottom: 2px solid var(--slate-100);
+        padding-bottom: 10px;
+    }
+
+    .sidebar h2 {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--slate-400);
+        margin: 0;
+    }
+
+    .sidebar ul.nav-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .sidebar ul.nav-list li {
+        margin-bottom: 14px;
+    }
+
+    .sidebar ul.nav-list a.nav-section-header {
+        display: block;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--slate-900);
+        text-decoration: none;
+        margin-bottom: 8px;
+        padding: 4px 6px;
+    }
+
+    .sidebar ul.nav-list a.nav-section-header:hover {
+        color: var(--primary);
+    }
+
+    .sidebar a.active {
+        color: var(--primary-text) !important;
+        background-color: var(--primary-light);
+        border: 1px solid var(--primary-border);
+        font-weight: 600;
+    }
+
+    .sidebar .nav-section-header.active {
+        color: var(--primary);
+        background-color: var(--primary-light);
+        border-radius: 10px;
+    }
+
+    .sidebar .sub-index {
+        list-style: none;
+        margin-left: 12px;
+        border-left: 1px solid var(--slate-100);
+        padding-left: 12px;
+    }
+
+    .sidebar .sub-index li {
+        margin-bottom: 6px;
+    }
+
+    .sidebar .sub-index a {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 8px;
+        font-size: 11.5px;
+        font-weight: 500;
+        color: var(--slate-600);
+        text-decoration: none;
+        padding: 4px 8px;
+        border-radius: 8px;
+        transition: all 0.15s ease;
+        border: 1px solid transparent;
+    }
+
+    .sidebar .sub-index a:hover {
+        color: var(--primary-text);
+        background-color: var(--primary-light);
+    }
+
+    .sidebar .tc-mini {
+        font-size: 0.75rem;
+        color: var(--slate-600);
+        background: var(--slate-100);
+        font-family: inherit;
+        padding: 4px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--card-border);
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+    }
+
+    .main-content {
+        flex-grow: 1;
+        min-width: 0;
+    }
+
+    .category-divider {
+        margin-top: 40px;
+        margin-bottom: 24px;
+        border-bottom: 1px solid var(--card-border);
+        padding-bottom: 12px;
+    }
+
+    .category-divider:first-of-type {
+        margin-top: 0;
+    }
+
+    .category-divider h2 {
+        font-size: 1.6rem;
+        font-weight: 800;
+        color: var(--slate-900);
+        margin: 0;
+        letter-spacing: -0.02em;
+    }
+
+    .category-description {
+        color: var(--slate-600);
+        margin-top: 8px;
+        line-height: 1.5;
+    }
+
+    blockquote {
+        border-left: 4px solid #f59e0b;
+        background: #fef3c7;
+        padding: 16px 20px;
+        margin: 16px 0;
+        border-radius: 0 16px 16px 0;
+        color: #78350f;
+        line-height: 1.5;
+    }
+
+    .test-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 24px;
+        padding: 30px;
+        margin-bottom: 24px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.01), 0 2px 4px -2px rgba(0, 0, 0, 0.01);
+        transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .test-card:hover {
+        box-shadow: 0 12px 20px -8px rgba(0, 0, 0, 0.03), 0 4px 8px -4px rgba(0, 0, 0, 0.03);
+    }
+
+    .test-card h3 {
+        margin-top: 0;
+        color: var(--slate-900);
+        font-size: 1.15rem;
+        font-weight: 700;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 14px;
+    }
+
+    .timestamp {
+        font-size: 0.75rem;
+        color: var(--slate-600);
+        background: var(--slate-100);
+        font-family: inherit;
+        padding: 4px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--card-border);
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+    }
+
+    .timestamp-sub {
+        font-size: 9px;
+        color: var(--slate-600);
+        background: var(--slate-100);
+        border: 1px solid var(--card-border);
+        padding: 1px 4px;
+        border-radius: 4px;
+        font-family: inherit;
+        margin-right: 4px;
+        font-weight: 600;
+        display: inline-block;
+        white-space: nowrap;
+    }
+
+    .hand-position {
+        background-color: var(--primary-light);
+        border: 1px solid var(--primary-border);
+        color: var(--primary-text);
+        border-radius: 14px;
+        padding: 16px 20px;
+        margin: 16px 0;
+        font-weight: 500;
+        line-height: 1.5;
+    }
+
+    .warning {
+        background-color: #fef2f2;
+        border-left: 4px solid #ef4444;
+        color: #7f1d1d;
+        border-radius: 0 14px 14px 0;
+        padding: 16px 20px;
+        margin: 16px 0;
+        line-height: 1.5;
+    }
+
+    .note {
+        background-color: #fffbeb;
+        border-left: 4px solid #f59e0b;
+        color: #78350f;
+        border-radius: 0 14px 14px 0;
+        padding: 16px 20px;
+        margin: 16px 0;
+        line-height: 1.5;
+    }
+
+    .tip {
+        background-color: #f0fdfa;
+        border-left: 4px solid #0d9488;
+        color: #115e59;
+        border-radius: 0 14px 14px 0;
+        padding: 16px 20px;
+        margin: 16px 0;
+        line-height: 1.5;
+    }
+
+    .key-term {
+        background-color: var(--slate-100);
+        padding: 2px 6px;
+        border-radius: 6px;
+    }
+
+    .split-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        margin-top: 16px;
+    }
+
+    .border-green {
+        border-color: #fecaca;
+    }
+
+    .border-green {
+        border-color: #0d9488;
+    }
+
+    ul.content-list,
+    ul.content-list ul {
+        padding-left: 18px;
+        margin: 12px 0;
+    }
+
+    ul.content-list li {
+        margin-bottom: 8px;
+        color: #334155;
+    }
+
+    ol {
+        padding-left: 18px;
+        margin: 12px 0;
+    }
+
+    ol li {
+        margin-bottom: 8px;
+        line-height: 1.6;
+        color: #334155;
+        font-weight: 500;
+    }
+
+    ol li::marker {
+        color: var(--primary);
+        font-weight: 700;
+    }
+
+    .breath-rhythm-grid {
+        margin-top: 18px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+    }
+
+    .breath-phase {
+        display: grid;
+        gap: 8px;
+        border-radius: 16px;
+        padding: 16px;
+        line-height: 1.5;
+    }
+
+    .breath-in {
+        background-color: #ecfdf5;
+        border: 1px solid #a7f3d0;
+        color: #065f46;
+    }
+
+    .breath-out {
+        background-color: #ecfeff;
+        border: 1px solid #a5f3fc;
+        color: #075985;
+    }
+
+    .phase-title {
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        display: block;
+        margin-bottom: 6px;
+    }
+
+    .scroll-top-btn {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background-color: var(--primary);
+        color: white;
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        box-shadow: 0 10px 15px -3px rgba(13, 148, 136, 0.3), 0 4px 6px -4px rgba(13, 148, 136, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        transition: transform 0.22s ease, background-color 0.22s ease;
+        z-index: 1201;
+        font-size: 1.25rem;
+    }
+
+    .scroll-top-btn:hover {
+        background-color: #0f766e;
+        transform: scale(1.05);
+    }
+
+    .scroll-top-btn:visited {
+        color: white;
+    }
+
+    footer.global-footer {
+        text-align: center;
+        color: var(--slate-400);
+        font-size: 0.75rem;
+        padding: 40px 20px;
+        border-top: 1px solid var(--border-color);
+        background: white;
+        margin-top: 60px;
+    }
+
+    .data-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .data-table th, .data-table td {
+        padding: 5px;
+        border: 1px solid var(--border-color);
+    }
+
+    .menu-toggle-btn {
+        position: fixed;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 46px;
+        height: 46px;
+        background-color: var(--primary);
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 10px 15px -3px rgba(13, 148, 136, 0.3), 0 4px 6px -4px rgba(13, 148, 136, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        transition: all 0.25s ease;
+        backdrop-filter: blur(0px);
+        color: white;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .menu-toggle-btn:hover {
+        background: var(--primary-text);
+        transform: translateY(-50%) scale(1.03);
+    }
+
+    .menu-toggle-btn:active {
+        transform: translateY(-50%) scale(0.96);
+    }
+
+    .hamburger-icon {
+        width: 24px;
+        height: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        pointer-events: none;
+    }
+
+    .hamburger-icon span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background: white;
+        border-radius: 4px;
+        transition: all 0.2s;
+    }
+
+    .close-sidebar-btn {
+        background: #eef3f7;
+        border: none;
+        width: 36px;
+        height: 36px;
+        border-radius: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s;
+        color: var(--primary-text);
+        font-size: 1.6rem;
+        font-weight: 400;
+        line-height: 1;
+    }
+
+    .close-sidebar-btn:hover {
+        background: #e0eaf0;
+        transform: rotate(90deg);
+        color: var(--primary);;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    @media (min-width: 1025px) {
+        .menu-toggle-btn,
+        .close-sidebar-btn {
+            display: none;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .layout-container {
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .sidebar-top-line {
+            display: flex;
+            gap: 16px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 400px;
+            max-width: 90vw;
+            height: 100vh;
+            box-shadow: 8px 0 30px rgba(0, 0, 0, 0.12);
+            z-index: 1100;
+            transform: translateX(-100%);
+            transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            overflow-y: auto;
+            background: var(--bg-card);
+            border-right: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.01), 0 2px 4px -2px rgba(0, 0, 0, 0.01);
+        }
+
+        .sidebar.open {
+            transform: translateX(0);
+        }
+
+        .split-grid, .breath-rhythm-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(2px);
+            z-index: 1050;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.25s ease, visibility 0.25s;
+            pointer-events: none;
+        }
+
+        .sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        body.menu-open {
+            overflow: hidden;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="menu-toggle-btn" id="menuToggleBtn" aria-label="Открыть меню навигации">
+        <div class="hamburger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <header class="app-header" id="header">
+        <div class="logo">🎓</div>
+        <div>
+            <h1>Блуждающий нерв</h1>
+            <p>Учебный конспект семинара Мещерякова А.В.</p>
+            <p><a href="https://www.youtube.com/playlist?list=PLf-wX8Mw0Yjo" target="_blank">Видео семинара на YouTube</a></p>
+        </div>
+    </header>
+
+<div class="layout-container">
+    <aside class="sidebar">
+        <h2>Оглавление</h2>
+        <ul class="nav-list">
+
+            <li>
+              <a href="#ch1" class="nav-section-header">Гл. 1. Анатомия и физиология вагуса</a>
+              <ul class="sub-index">
+                <li><a href="#ch1-general">Общая характеристика и функции<span class="tc-mini">video_1: 3:27</span></a></li>
+                <li><a href="#ch1-homeostasis">Гомеостаз и уровни ВНС<span class="tc-mini">video_1: 11:00</span></a></li>
+                <li><a href="#ch1-interoception">Интероцепция<span class="tc-mini">video_1: 16:24</span></a></li>
+                <li><a href="#ch1-factors">Факторы активности вагуса<span class="tc-mini">video_1: 23:26</span></a></li>
+                <li><a href="#ch1-course">Ход и ветви нерва (топография)<span class="tc-mini">video_3: 2:12</span></a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#ch2" class="nav-section-header">Гл. 2. Поливагальная теория</a>
+              <ul class="sub-index">
+                <li><a href="#ch2-theory">Три уровня реагирования<span class="tc-mini">video_1: 26:39</span></a></li>
+                <li><a href="#ch2-ventral">Вентральный вагус</a></li>
+                <li><a href="#ch2-sympathetic">Симпатический уровень<span class="tc-mini">video_1: 44:53</span></a></li>
+                <li><a href="#ch2-dorsal">Дорзальный вагус<span class="tc-mini">video_1: 29:20</span></a></li>
+                <li><a href="#ch2-heart">Влияние на сердце<span class="tc-mini">video_1: 1:13:07</span></a></li>
+                <li><a href="#ch2-structure">Особенности строения<span class="tc-mini">video_1: 1:19:04</span></a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#ch4" class="nav-section-header">Гл. 3. Принципы и протокол коррекции</a>
+              <ul class="sub-index">
+                <li><a href="#ch4-principles">Принципы выполнения техник</a></li>
+                <li><a href="#ch4-neurofascial">Нейрофасциальная техника</a></li>
+                <li><a href="#ch4-direct-indirect">Прямая и непрямая техника</a></li>
+                <li><a href="#ch4-protocol">Общий протокол сеанса<span class="tc-mini">video_1: 1:35:22</span></a></li>
+                <li><a href="#ch4-contra">Противопоказания</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#ch3" class="nav-section-header">Гл. 4. Дисфункция и диагностика</a>
+              <ul class="sub-index">
+                <li><a href="#ch3-clinic">Клинические проявления</a></li>
+                <li><a href="#ch3-goals">Цели первичного обследования</a></li>
+                <li><a href="#ch3-mu">Сигнальные (Му-) точки</a></li>
+                <li><a href="#test-listening">Тест: глобальное прослушивание<span class="tc-mini">video_1: 1:46:29</span></a></li>
+                <li><a href="#test-hr">Тест: ЧСС<span class="tc-mini">video_1: 1:13:07</span></a></li>
+                <li><a href="#test-rsa">РСА и дыхательная самокоррекция<span class="tc-mini">video_2: 28:50</span></a></li>
+                <li><a href="#test-oculocardiac">Тест: окулокардиальный рефлекс<span class="tc-mini">video_2: 45:10</span></a></li>
+                <li><a href="#test-dermographism">Тест: дермографизм<span class="tc-mini">video_2: 56:41</span></a></li>
+                <li><a href="#test-uvula">Тест: отклонение язычка<span class="tc-mini">video_2: 1:10:30</span></a></li>
+                <li><a href="#test-rosenberg">Тест Стенли Розенберга<span class="tc-mini">video_2: 1:22:20</span></a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#ch-neck-techniques" class="nav-section-header">Гл. 5. Яремное отверстие, ушная ветвь, сонный треугольник, гортанный нерв, желудок</a>
+              <ul class="sub-index">
+                <li><a href="#card-occipitomastoid-suture">Освобождение затылочно-сосцевидного шва<span class="tc-mini">video_3: 33:05</span></a></li>
+                <li><a href="#card-jugular-foramen-detailed">Коррекция яремного отверстия<span class="tc-mini">video_3: 30:17</span></a></li>
+                <li><a href="#card-ear">Точки ушной раковины<span class="tc-mini">video_3: 1:24:04</span></a></li>
+                <li><a href="#card-carotid">Вагус в сонном треугольнике<span class="tc-mini">video_4: 2:14</span></a></li>
+                <li><a href="#card-laryngeal">Щитоподъязычная мембрана и гортанный нерв<span class="tc-mini">video_4: 1:40:43</span></a></li>
+                <li><a href="#card-stomach">Коррекция блуждающего нерва на уровне желудка <span class="tc-mini">video_4: 2:00:30</span></a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#ch-additional-techniques" class="nav-section-header">Гл. 6. Доп. техники: апертура, левый вагус, каротидный синус</a>
+              <ul class="sub-index">
+                <li><a href="#card-thoracic-aperture">Верхняя апертура грудной клетки<span class="tc-mini">презентация</span></a></li>
+                <li><a href="#card-left-vagus">Коррекция левого блуждающего нерва<span class="tc-mini">презентация</span></a></li>
+                <li><a href="#card-carotid-sinus">Коррекция каротидного синуса<span class="tc-mini">презентация</span></a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#ch5" class="nav-section-header">Гл. 7. Тимус и сплетения средостения</a>
+              <ul class="sub-index">
+                <li><a href="#card-thymus">Мотильность тимуса<span class="tc-mini">video_6: 2:21</span></a></li>
+                <li><a href="#card-plexus">Мотильность аортального и сердечного сплетений<span class="tc-mini">video_6: 11:34</span></a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#ch6" class="nav-section-header">Гл. 8. Передняя поверхность тела и Му-точки</a>
+              <ul class="sub-index">
+                <li><a href="#ch6-technique">Коррекция передних точек</a></li>
+                <li><a href="#ch6-zones">Основные сигнальные зоны</a></li>
+                <li><a href="#card-acupoints">Принципы работы с акупунктурными точками<span class="tc-mini">video_6: 1:40:47</span></a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#ch11" class="nav-section-header">Гл. 9. Точки задней поверхности тела</a>
+              <ul class="sub-index">
+                <li><a href="#ch11-back">Коррекция точек на спине<span class="tc-mini">video_6: 2:22:29</span></a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#ch7" class="nav-section-header">Гл. 10. Коррекция шеи</a>
+              <ul class="sub-index">
+                <li><a href="#ch7-general">Ключевые ориентиры и порядок</a></li>
+                <li><a href="#ch7-scm">ГКСМ и зона Эрба</a></li>
+                <li><a href="#ch7-points">Точки шеи (меридианная сеть)<span class="tc-mini">video_6: 2:29:46</span></a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#ch8" class="nav-section-header">Гл. 11. Подзатылочная область</a>
+              <ul class="sub-index">
+                <li><a href="#ch8-suboccipital">Точки затылка и подзатылочной области<span class="tc-mini">video_6: 2:28:10</span></a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#ch10" class="nav-section-header">Гл. 12. Лицо и нижние конечности</a>
+              <ul class="sub-index">
+                <li><a href="#ch10-face">Точки лица, тройничного и лицевого нервов<span class="tc-mini">video_6: 2:33:12</span></a></li>
+                <li><a href="#ch10-legs">Точки на ноге (нижние конечности)<span class="tc-mini">video_6: 2:38:48</span></a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#ch9" class="nav-section-header">Гл. 13. Центральные краниальные техники</a>
+              <ul class="sub-index">
+                <li><a href="#card-cv4">Компрессия IV желудочка (CV4)</a></li>
+                <li><a href="#card-temporal">Перекат височных костей<span class="tc-mini">video_6: 46:04</span></a></li>
+                <li><a href="#card-corpus">Работа с мозолистым телом<span class="tc-mini">video_6: 1:13:00</span></a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#ch12" class="nav-section-header">Гл. 14. Комплексный алгоритм работы</a>
+              <ul class="sub-index">
+                <li><a href="#ch12-reception">Приём и осмотр пациента</a></li>
+                <li><a href="#ch12-sequence">Итоговая последовательность коррекции</a></li>
+                <li><a href="#ch12-reactions">Реакции и рекомендации</a></li>
+                <li><a href="#ch12-checklist">Памятка специалисту</a></li>
+              </ul>
+            </li>
+
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <div class="note">
+            <p>Настоящий конспект составлен с использованием технологии искусственного интеллекта на основе материалов презентации и видеозаписи семинара <strong>А.В. Мещерякова "Блуждающий нерв"</strong>. Документ создан в личных учебных целях как вспомогательный материал для повторения пройденного и не является официальной стенограммой, официальным учебным пособием или самостоятельной публикацией.</p>
+
+            <p>При автоматизированной обработке и обобщении материалов возможны неточности, пропуски, ошибки интерпретации и искажения смысла исходных материалов. В случае любых сомнений, расхождений или необходимости уточнения — обращайтесь к оригинальной видеозаписи семинара и презентации как к единственному достоверному источнику.</p>
+
+            <p>Все права на методику, содержание семинара, презентацию и видеоматериалы принадлежат автору семинара — А.В. Мещерякову. Настоящий конспект не претендует на авторство в отношении описанной методики, техник и теоретических положений и не может рассматриваться как самостоятельное произведение, независимое от исходных материалов.</p>
+
+            <p>Распространение, копирование и передача данного конспекта разрешены исключительно в кругу участников семинара для личного использования. Публикация в открытом доступе, передача третьим лицам, не проходившим обучение, а также любое коммерческое использование без письменного согласия автора — запрещены.</p>
+
+            <p>Материал носит исключительно учебно-справочный характер, не является медицинской рекомендацией и не заменяет очного обучения под руководством квалифицированного преподавателя.</p>
+
+            <p>Если правообладатель считает, что распространение данного конспекта каким-либо образом нарушает его права, просьба сообщить об этом составителю для незамедлительного удаления или ограничения доступа к материалу.</p>
+        </div>
+
+
+        <div id="ch1" class="category-divider">
+            <h2>Глава 1. Анатомия и физиология блуждающего нерва</h2>
+            <p class="category-description">Общая роль вагуса в организме, его место в системе гомеостаза и подробная топография хода нерва — от ромбовидной ямки до органов брюшной полости.</p>
+        </div>
+        <div class="test-card" id="ch1-general">
+            <h3>Что такое блуждающий нерв <span class="timestamp">video_1: 3:27 - 9:24</span></h3>
+            <p><span class="key-term">Блуждающий нерв</span> (nervus vagus, X пара черепных нервов) — самый длинный и наиболее функционально значимый нерв парасимпатической нервной системы. Название связано с чрезвычайно широким распространением его ветвей: начинаясь в продолговатом мозге, нерв проходит через шею, грудную клетку и брюшную полость, связывая ЦНС практически со всеми жизненно важными внутренними органами. Именно поэтому вагус называют главной магистралью взаимодействия мозга и внутренних органов.</p>
+            <p>В отличие от большинства периферических нервов, вагус не ограничивается передачей двигательных импульсов. Он одновременно:</p>
+            <ul class="content-list">
+                <li>регулирует работу сердца;</li>
+                <li>участвует в контроле дыхания;</li>
+                <li>обеспечивает двигательную активность желудочно-кишечного тракта и контролирует пищеварение;</li>
+                <li>влияет на иммунные реакции и участвует в регуляции воспаления;</li>
+                <li>оказывает выраженное влияние на эмоциональное состояние человека.</li>
+            </ul>
+            <p>Таким образом, блуждающий нерв — не отдельная анатомическая структура, а центральное звено сложной системы адаптации организма.</p>
+            <div class="tip"><strong>Интересный факт (из презентации):</strong> блуждающий нерв имеет анастомозы с лицевым нервом и глазничным ганглием. Поэтому состояние внутренних органов отражается на лице в виде болезненной мимики и выражения глаз.</div>
+            <div class="tip">
+                <strong>Клиническая логика курса:</strong> любая висцеральная патология в итоге требует работы с вагусом, поскольку это главный нерв интероцепции — вся висцеральная сфера иннервируется преимущественно через него как основной нерв парасимпатической системы. К показаниям относят аритмии и другие нарушения работы сердца, гастриты, рефлюксы, проблемы печени и желудка (нозологии из раздела висцеральной патологии МКБ-10), депрессии и эмоциональные расстройства, головные боли при нарушении венозного оттока, а также хронические болевые синдромы и фибромиалгию — состояния, где боль существует более полугода и формирует феномен центральной сенситизации, «прописываясь» на уровне головного мозга без физической подоплёки на уровне ткани.</p>
+            </div>
+        </div>
+        <div class="test-card" id="ch1-homeostasis">
+            <h3>Роль вагуса в поддержании гомеостаза <span class="timestamp">video_1: 11:00 - 15:10</span></h3>
+            <p><span class="key-term">Гомеостаз</span> — способность организма поддерживать постоянство внутренней среды независимо от изменения внешних условий. В его поддержании участвуют три тесно связанные системы: вегетативная нервная система, эндокринная система и иммунная система. Блуждающий нерв объединяет деятельность всех трёх в единую функциональную сеть: изменения в работе внутренних органов быстро передаются в ЦНС, а ответные регулирующие сигналы возвращаются обратно к органам.</p>
+            <p>Три системы гомеостаза различаются по скорости реагирования: вегетативная нервная система — самая быстрая (доли секунды, секунды, минуты); эндокринная система работает на масштабе минут и часов; иммунная система — самая медленная часть гомеостаза, поскольку для ответа требуется вырастить специальные клетки.</p>
+            <h4>Четыре уровня организации вегетативной нервной системы</h4>
+            <table class="data-table">
+                <tr><th>Уровень</th><th>Основная функция</th></tr>
+                <tr><td>Локальный</td><td>Регуляция отдельных тканей и органов, внутриклеточная работа</td></tr>
+                <tr><td>Сегментарный (ганглионарный)</td><td>Замыкается на уровне спинного мозга — боковые рога серого вещества, переключение афферентных путей на эфферентные</td></tr>
+                <tr><td>Стволовой</td><td>Продолговатый мозг, ромбовидная ямка с вегетативными ядрами, таламус, над- и подталамические ядра — координация жизненно важных центров</td></tr>
+                <tr><td>Уровень невральных сетей</td><td>Подкорковые ядра (чёрное вещество, полосатое тело, бледный шар), поясная и островковая извилины — формирование поведения, эмоций, адаптации, социальных реакций</td></tr>
+            </table>
+            <div class="tip"><strong>Практический вывод:</strong> на каком бы уровне ни было поражение, клиническая картина будет схожей. Задача специалиста — определить конкретный уровень поражения, чтобы работать прицельно, а не «по площадям»: неизбирательное воздействие может создать перегрузку и загнать пациента в жёсткий вегетативный дисбаланс.</div>
+        </div>
+        <div class="test-card" id="ch1-interoception">
+            <h3>Интероцепция <span class="timestamp">video_1: 16:24 - 17:39</span></h3>
+            <p><span class="key-term">Интероцепция</span> — способность мозга постоянно получать информацию о состоянии внутренних органов. Блуждающий нерв выступает своеобразным буфером: информация от рецепторов внутренних органов поступает в спинной и головной мозг, вагус служит переключателем, после чего на уровне коры формируется осознанная жалоба («тянет желудок», «неприятно в печени»). Вагус тесно связан с неокортексом, что позволяет интерпретировать сигналы из полостей тела в готовую словесную жалобу.</p>
+            <p>Мозг анализирует частоту сердечных сокращений, дыхание, состояние желудка, работу кишечника, уровень воспаления и гормональные изменения. Полученные сигналы влияют не только на физиологию, но и на психическое состояние:</p>
+            <ol>
+                <li>Учащённое сердцебиение может восприниматься мозгом как тревога;</li>
+                <li>Нарушение работы кишечника способно усиливать чувство беспокойства;</li>
+                <li>Хроническое воспаление нередко сопровождается снижением настроения;</li>
+                <li>Нарушение активности вагуса может приводить к социальной изоляции и эмоциональному истощению.</li>
+            </ol>
+            <p>Связь между внутренними органами и эмоциональной сферой является двусторонней: вагус оказывает влияние на поведение, социальную вовлечённость и эмоциональный фон, а эмоции, поведение и социальные отношения, в свою очередь, оказывают прямое воздействие на сам нерв и через него — на работу внутренних органов.</p>
+        </div>
+        <div class="test-card" id="ch1-factors">
+            <h3>Из чего складывается активность вагуса <span class="timestamp">video_1: 23:26</span></h3>
+            <p>Функциональное состояние вагуса определяется взаимодействием трёх групп факторов.</p>
+            <div class="split-grid">
+                <div class="test-card" style="margin-bottom:0;">
+                    <h3 style="border-bottom:none;padding-bottom:0;">Биологические факторы</h3>
+                    <ul class="content-list">
+                        <li>наследственность;</li>
+                        <li>хронические заболевания, воспалительные процессы;</li>
+                        <li>качество сна, питание, физическая активность;</li>
+                        <li>гормональный фон;</li>
+                        <li>рецепторный ответ от внутренних органов о качестве внутренней среды и уровне гормонов.</li>
+                    </ul>
+                </div>
+                <div class="test-card" style="margin-bottom:0;">
+                    <h3 style="border-bottom:none;padding-bottom:0;">Психологические факторы</h3>
+                    <ul class="content-list">
+                        <li>хронический стресс, тревожность, депрессия;</li>
+                        <li>эмоциональные травмы;</li>
+                        <li>чувство безопасности, способность к расслаблению;</li>
+                        <li>интерпретация реальности (оценка ситуации как хорошей или плохой).</li>
+                    </ul>
+                </div>
+            </div>
+            <h4>Социальные факторы</h4>
+            <p>Качество общения, чувство принадлежности к обществу, поддержка семьи, доверительные отношения, возможность безопасного взаимодействия с окружающими, позиционирование и поведение в обществе. Современные исследования показывают, что именно сочетание всех трёх групп факторов определяет уровень активности блуждающего нерва и способность организма адаптироваться к стрессу.</p>
+            <h4>Основные функции блуждающего нерва по системам</h4>
+            <ul class="content-list">
+                <li><strong>Сердечно-сосудистая система:</strong> снижение ЧСС, поддержание вариабельности сердечного ритма, адаптация к изменению нагрузки.</li>
+                <li><strong>Дыхательная система:</strong> регуляция частоты дыхания, участие в дыхательных рефлексах, влияние на бронхиальный тонус.</li>
+                <li><strong>ЖКТ:</strong> усиление перистальтики, стимуляция пищеварения, регуляция секреции желудка, контроль моторики пищевода.</li>
+                <li><strong>Иммунная система:</strong> ограничение воспалительных реакций, участие в противовоспалительном рефлексе, взаимодействие с лимфатической системой.</li>
+                <li><strong>Эмоциональная сфера:</strong> чувство безопасности, социальная вовлечённость, эмоциональная устойчивость, способность к восстановлению после стресса.</li>
+            </ul>
+        </div>
+        <div class="test-card" id="ch1-course">
+            <h3>Топография хода нерва и его ветвей <span class="timestamp">video_3: 2:12 - 22:01, video_4: 2:12 - 22:01</span></h3>
+            <p>Вагус — десятая пара черепно-мозговых нервов. Начинается на дне ромбовидной ямки: вентральный вагус берёт начало из двойного ядра (nucleus ambiguus), дорзальный вагус — из дорзального (заднего) ядра (nucleus dorsalis nervi vagi). Спереди от него из ромбовидной ямки выходит языкоглоточный нерв, сзади — добавочный. При выходе все три нерва окружены одной паутинной оболочкой, образуя тесные анастомозы.</p>
+            <div class="hand-position"><strong>Клинический ориентир:</strong> блуждающий нерв почти целиком образован волокнами для гладкой мускулатуры и желёз, поэтому для иннервации поперечнополосатой мускулатуры к нему «пристёгнут» добавочный нерв — отсюда и название («добавочный» к вагусу): он даёт моторные ветви для грудино-ключично-сосцевидной и трапециевидной мышц <span class="timestamp-sub">video_3: 4:16 - 4:58</span> — их напряжение служит индикатором проблем с блуждающим нервом.</div>
+            <h4>Яремное отверстие и твёрдая мозговая оболочка</h4>
+            <p>Яремное отверстие содержит два узла блуждающего нерва (верхний — в полости черепа, нижний — снаружи); их основная задача — образование анастомозов с внутри- и внечерепными нервами <span class="timestamp-sub">video_3: 6:37 - 6:45</span>. Они образуют анастомозы с тройничным и подъязычным нервами и участвуют в иннервации твёрдой мозговой оболочки задней черепной ямки, расположенной под намётом мозжечка. Намёт мозжечка делит заднюю черепную ямку на этажи: сверху мозжечок, снизу — продолговатый мозг; область под намётом иннервируется блуждающим и подъязычным нервами, поэтому нарушение речи и положения языка может указывать на патологию вагуса.</p>
+            <p>Иннервация твёрдой мозговой оболочки тремя ветвями тройничного нерва распределена по этажам: передняя ямка — I ветвь, средняя ямка — II ветвь, задняя ямка (над намётом) — III (мандибулярная) ветвь. Второй (нижний) узел даёт ветви к языкоглоточному, подъязычному, лицевому нервам и верхним шейным нервам (шейное сплетение, иннервация подзатылочных мышц) — с этим связаны боли в основании черепа при цервикогенных мигренях.</p>
+            <h4>Ушная ветвь и область височной кости</h4>
+            <p>Ушная ветвь вагуса проходит через височную кость в наружный слуховой проход и иннервирует его задне-нижнюю часть. Раздражение этой зоны (например, серной пробкой) может вызывать рефлекторный кашель за счёт связи с ветвями к трахее и бронхам. Далее вагус проходит внутри шиловидного отростка височной кости, вблизи шилососцевидного отверстия, где может анастомозировать с лицевым нервом.</p>
+            <h4>Шея</h4>
+            <p>В области сонной артерии вагус отдаёт ветви к корню языка, а также каротидную ветвь к каротидному синусу (хемо- и барорецепторы), после чего идёт по внутренней поверхности сонной артерии в грудную клетку. Глоточные ветви иннервируют констрикторы глотки (верхний и средний констрикторы образуют глоточную сеть, отвечающую за акт глотания). Гортанные нервы (верхний и нижний) иннервируют слизистую и мышцы голосовых связок — патология вагуса может проявляться афонией или дисфонией (охриплостью). В грудной клетке нерв лежит рядом с долями щитовидной железы, поэтому операции по резекции щитовидной железы могут привести к повреждению нерва и изменению голоса.</p>
+            <h4>Грудная клетка и брюшная полость</h4>
+            <p>В грудной клетке правый вагус смещается кзади (становится задним), левый — на переднюю поверхность пищевода (становится передним). На уровне пищевода между правым и левым вагусом формируется большое количество анастомозов <span class="timestamp-sub">video_3: 20:02 - 20:44</span> — поэтому, хотя вентральный вагус анатомически представлен преимущественно в правом блуждающем нерве (см. «Латерализация» в Главе 2), за счёт этих анастомозов его влияние распространяется и на левый нерв. В области аорты и сердца формируются аортальное и сердечное сплетения, отвечающие за регуляцию ЧСС и сердечного выброса. В брюшной полости левый вагус фактически является главным нервом желудка (иннервирует его переднюю поверхность и ворота печени через чревное сплетение), правый лежит по задней поверхности желудка и иннервирует все паренхиматозные органы: печень, селезёнку, поджелудочную железу, почки, кишечник — до середины нисходящей ободочной кишки <span class="timestamp-sub">video_3: 23:15 - 24:13, 26:57 - 27:18</span>. Эта граница в литературе называется точкой Кэннона–Бёма (Cannon–Böhm point): дистальнее неё иннервацию берут на себя тазовые парасимпатические нервы (S2–S4), не связанные с вагусом.</p>
+            <div class="tip"><strong>Вагус или диафрагмальный нерв? <span class="timestamp-sub">video_3: 26:30 - 26:53</span></strong> Блуждающий нерв иннервирует то, что расположено внутри оболочек органов; сами капсулы и серозные оболочки — плевра, капсула печени, серозная оболочка желудка, капсула селезёнки и почек — иннервируются преимущественно диафрагмальным нервом. Это важно для дифференциальной диагностики источника боли: висцеральная боль изнутри органа скорее указывает на вагус, боль от капсулы/оболочки — скорее на диафрагмальный нерв.</div>
+            <div class="note"><strong>Клинически значимая деталь:</strong> связочный аппарат желудка (желудочно-диафрагмальная связка) и печени (коронарная, левая треугольная связки) при спазме вызывают компрессию пищеводно-вагусного комплекса. Поэтому работа с пищеводным отверстием диафрагмы важна для коррекции вагуса ниже диафрагмы.</div>
+        </div>
+        <div id="ch2" class="category-divider">
+            <h2>Глава 2. Поливагальная теория и клиническое значение блуждающего нерва</h2>
+            <p class="category-description">Иерархическая модель Стивена Порджеса: три уровня реагирования автономной нервной системы и их клинические проявления.</p>
+        </div>
+        <div class="test-card" id="ch2-theory">
+            <h3>Поливагальная теория <span class="timestamp">video_1: 26:39 - 28:18</span></h3>
+            <p>Одна из наиболее современных концепций работы автономной нервной системы — поливагальная теория, разработанная американским нейрофизиологом Стивеном Порджесом. Согласно ей, автономная нервная система представляет собой не просто баланс симпатического и парасимпатического отделов, а сложную многоуровневую систему адаптации организма к окружающей среде. Реакции человека зависят не только от внешних обстоятельств, но и от того, насколько безопасной мозг воспринимает текущую ситуацию, и именно вагус играет ключевую роль в этой оценке.</p>
+            <p>Теория выделяет три уровня реагирования, включающихся не одновременно, а последовательно, в соответствии с эволюционной иерархией:</p>
+            <ol>
+                <li><strong>Вентральный вагальный комплекс</strong> — состояние безопасности и социальной вовлечённости, самый молодой в эволюционном отношении отдел.</li>
+                <li><strong>Симпатическая нервная система</strong> — мобилизация организма, реакция «бей или беги».</li>
+                <li><strong>Дорсальный вагальный комплекс</strong> — торможение, экономия энергии, «замирание»; древнейший защитный механизм.</li>
+            </ol>
+            <p>В стволе мозга дорзальное (заднее) ядро даёт начало волокнам дорзального вагуса; двойное ядро (nucleus ambiguus), расположенное кпереди, — волокнам вентрального вагуса.</p>
+        </div>
+        <div class="test-card" id="ch2-ventral">
+            <h3>Вентральный вагус — первый уровень реагирования</h3>
+            <p>Это наиболее молодой в эволюционном отношении отдел блуждающего нерва. Его главная задача — обеспечить чувство безопасности и возможность эффективного взаимодействия с окружающими. Вентральный вагус — миелинизированный нерв; появился он для организации в социальные группы, что даёт преимущество млекопитающим (совместное выживание и выращивание потомства).</p>
+            <p>При его нормальной активности наблюдаются:</p>
+            <ul class="content-list">
+                <li>спокойное и ровное дыхание, оптимальная ЧСС, высокая вариабельность сердечного ритма;</li>
+                <li>расслабленная мимика, естественная речь;</li>
+                <li>хорошая концентрация внимания, способность к обучению;</li>
+                <li>эмоциональная устойчивость, желание общаться с людьми;</li>
+                <li>быстрое восстановление после стрессовых ситуаций.</li>
+            </ul>
+            <p><strong>Зона иннервации <span class="timestamp-sub">video_1: 1:09:54 - 1:11:41</span>:</strong> вентральный вагус распространяется на всё, что расположено выше нижних рёбер, — шею, голову, грудную клетку, включая сердце, лёгкие и верхнюю треть пищевода. Руки и ноги вагусом не иннервируются вообще: там работает только симпатическая нервная система, парасимпатических волокон в конечностях нет. Отсюда простое клиническое правило локализации: если пациент жалуется на область шеи, головы или грудной клетки — в первую очередь стоит заподозрить дисфункцию вентрального вагуса; если жалобы касаются живота — дорзального (см. ниже, «Дорсальный вагус»).</p>
+            <div class="tip"><strong>Динамика развития </strong><span class="timestamp">video_1: 1:20:07</span>: из всех волокон вагуса около 20% являются эфферентными, и лишь около 2% от общего числа волокон — это эфферентные волокна вентрального вагуса, несущие сигнал от центра к периферии. Их формирование начинается с 5-го месяца внутриутробного развития и достигает пика к 5 годам жизни. Чем лучше миелиновая оболочка, тем быстрее передача сигнала — для этого важно нормальное питание и достаточный уровень витаминов группы B (B12, фолиевая кислота) <span class="timestamp-sub">video_1: 1:22:48</span>.</div>
+            <p><strong>Сеть черепных нервов социального взаимодействия <span class="timestamp-sub">video_1: 1:04:11 - 1:05:27</span>:</strong> становление вентрального вагуса анатомически сопровождается формированием связей с другими черепными нервами, обеспечивающими элементы социального общения — глазодвигательным и зрительным (зрительный контакт), тройничным (мимическая мускулатура), лицевым (мимика; иннервация наружной части барабанной перепонки), языкоглоточным (иннервация внутренней части барабанной перепонки, глотание, задняя треть языка) и подъязычным. Язык при этом иннервационно разделён V-образной бороздой: часть языка позади борозды (ближе к корню) связана с языкоглоточным и блуждающим нервами, часть впереди борозды — с лицевым и подъязычным нервами.</p>
+            <p><strong>Клиническая заметка:</strong> у человека, как и у животных, есть рудиментарный вомероназальный орган (в области нижней носовой раковины), связанный с восприятием феромонов и социальным поведением. Расстройства социального взаимодействия в ряде случаев можно корректировать через воздействие на сошник и структуры носа, влияющие на этот орган.</p>
+        </div>
+        <div class="test-card" id="ch2-sympathetic">
+            <h3>Симпатическая нервная система — второй уровень <span class="timestamp">video_1: 44:53 - 48:43</span></h3>
+            <p>Если мозг начинает воспринимать окружающую среду как потенциально опасную, активируется симпатическая нервная система. Согласно транскрипции, этот уровень появляется в эволюции, когда развиваются ткани для локомоции (перемещения в пространстве); реакция «бей — беги» определяется гормонами: адреналин запускает реакцию «бежать», норадреналин — «биться».</p>
+            <p>Основные задачи симпатической активации:</p>
+            <ul class="content-list">
+                <li>увеличение ЧСС, повышение артериального давления;</li>
+                <li>усиление дыхания, перераспределение кровотока к мышцам;</li>
+                <li>мобилизация энергетических ресурсов, повышение скорости реакции.</li>
+            </ul>
+            <p>Такая реакция необходима для кратковременного преодоления опасности и физиологически нормальна, однако длительное пребывание в состоянии симпатической активации приводит к хроническому стрессу и истощению организма. Клинически второй уровень проявляется агрессией, конфликтностью, провокаторством; громкая и быстрая речь тоже относится к симпатическим реакциям, поскольку связана с работой мышц гортани и языка.
+
+<p><strong>Диагностика по анамнезу и поведению <span class="timestamp-sub">video_1: 48:53 - 55:39</span>:</strong> помимо прямого наблюдения, ценный диагностический материал даёт опрос родственников (особенно родителей о поведении ребёнка). Признак симпатического уровня — избыточная двигательная активность: неусидчивость, потребность постоянно вставать, ходить, что-то трогать. Такое поведение не обязательно означает синдром дефицита внимания и гиперактивности (СДВГ), однако сам СДВГ также рассматривается как одно из проявлений симпатической организации. Противоположный поведенческий паттерн — уход в себя, отказ от общения, стремление закрыться в комнате (например, при травле в школе) — указывает не на симпатический, а на дорзальный уровень (см. ниже).</p></p>
+        </div>
+        <div class="test-card" id="ch2-dorsal">
+            <h3>Дорсальный вагус — третий уровень <span class="timestamp">video_1: 29:20 - 42:38, video_3: 0:00</span></h3>
+            <p>Если организм оценивает ситуацию как безвыходную и не имеет возможности бороться или убежать, активируется древнейший защитный механизм — дорсальный вагальный комплекс, простейшие зачатки нервной системы для сохранения энергии. В случае угрозы животное, у которого нет ресурсов для защиты или бега, замирает («притворяется мёртвым») — это реакция на стресс, сопровождающаяся уменьшением двигательной активности, «автономным» состоянием и снижением импульсации в болевую систему.</p>
+            <p><strong>Зона иннервации <span class="timestamp-sub">video_1: 1:10:32 - 1:10:49, video_3: 26:57 - 27:18</span>:</strong> дорзальный вагус представлен ниже рёберной дуги и иннервирует органы брюшной полости — пищеварение и мочевыделение, — доходя примерно до середины нисходящей ободочной кишки (точка Кэннона–Бёма, см. Главу 1, «Топография хода нерва»); дальше, в дистальных отделах толстой кишки и в малом тазу, иннервацию берут на себя уже тазовые парасимпатические нервы (S2–S4), а не вагус. Клиническое правило локализации симметрично вентральному: жалобы на область живота с большей вероятностью указывают на дорзальный вагус.</p>
+            <p>Для дорсального вагуса характерно:</p>
+            <ul class="content-list">
+                <li>снижение обмена веществ, замедление сердечного ритма, снижение мышечного тонуса;</li>
+                <li>уменьшение двигательной и социальной активности;</li>
+                <li>ограничение эмоциональных реакций.</li>
+            </ul>
+            <p>Клинические проявления хронической активации дорсального вагуса: нежелание с чем-либо взаимодействовать, желание закрыться, забиться, «ничего не делать», потеря энергии, депрессия, патологическая анорексия (как способ сохранения энергии), зависимости (замена социальной вовлечённости), синкопальные состояния (обмороки на ровном месте). Синдром хронической усталости также рассматривается как проявление дорзального вагуса <span class="timestamp-sub">video_1: 42:38</span>.</p>
+            <div class="warning"><strong>Важно для практики:</strong> задача коррекции — не «активизировать или подавлять» вагус напрямую, а активизировать вентральный вагус: он сам восстанавливает баланс без внешнего вмешательства, причём лучше, чем при попытках прямого силового воздействия. Дорзальный вагус — самый низкий уровень организации, режим выживания «замирания», путь к саморазрушению.</div>
+            <p><strong>Практический вопрос для работы с пациентом в дорзальном вагусе <span class="timestamp-sub">video_2: 30:29 - 45:10</span>:</strong> раз дорзальный вагус активируется, когда ситуация воспринимается как угроза существованию (экзистенциальная угроза), а не просто как небезопасная, полезно в разговоре с таким пациентом выяснить, что именно он воспринимает как критическую, угрожающую жизни ситуацию — это помогает понять психологический контекст дисфункции, а не только её физическое проявление.</p>
+            <table class="data-table">
+                <tr><th>Вентральный вагус</th><th>Дорсальный вагус</th></tr>
+                <tr><td>чувство безопасности</td><td>реакция замирания</td></tr>
+                <tr><td>высокая энергия</td><td>снижение энергии</td></tr>
+                <tr><td>социальная активность</td><td>социальная изоляция</td></tr>
+                <tr><td>адаптация</td><td>консервация ресурсов</td></tr>
+                <tr><td>нормальный обмен веществ</td><td>снижение метаболизма</td></tr>
+                <tr><td>эмоциональная устойчивость</td><td>эмоциональное истощение</td></tr>
+            </table>
+            <p>В норме симпатическая и парасимпатическая системы должны находиться в балансе, за это отвечает вентральный вагус. Если пациент находится в симпатикотонии либо в дорзальном вагусе, это говорит о том, что вентральный вагус не работает или «стоит на стопе» — и результат для пациента в обоих случаях схожий: избыток симпатической активности и недостаток парасимпатической дают одинаковую клиническую картину <span class="timestamp-sub">video_1: 40:38 - 41:37</span>.</p>
+        </div>
+        <div class="test-card" id="ch2-structure">
+            <h3>Особенности строения и клиническое значение</h3>
+            <p>Важная анатомическая особенность: около 80% волокон блуждающего нерва являются афферентными (передают информацию от органов к мозгу), и лишь около 20% — эфферентными (несут сигналы от мозга к органам). Это означает, что мозг постоянно получает сведения о состоянии внутренних органов и уже на их основании формирует ответные реакции — следовательно, здоровье внутренних органов напрямую влияет на эмоциональное состояние человека.</p>
+            <p>При заболеваниях ЖКТ, хроническом воспалении, нарушениях дыхания или сердечно-сосудистой патологии могут возникать тревожность, снижение настроения, повышенная раздражительность, хроническая усталость, нарушения сна, эмоциональная лабильность.</p>
+            <div class="hand-position" id="ch2-heart"><strong>Влияние на сердце <span class="timestamp-sub">video_1: 1:13:07</span>:</strong> синоатриальный узел сердца самостоятельно задаёт частоту 100–130 ударов в минуту; вентральный вагус подавляет эту активность, снижая ЧСС в норме до 60–80 уд/мин (использование ЧСС как диагностического теста — см. блок диагностических тестов). Парасимпатика активизируется в положении лёжа, что можно использовать для снятия повышенной психоэмоциональной возбудимости при тахикардии <span class="timestamp-sub">video_1: 1:17:10</span>. Повышенное артериальное давление связано со снижением активности вентрального вагуса, гипотония — с активацией дорзального вагуса <span class="timestamp-sub">video_1: 1:18:00</span>.</div>
+            <p id="ch2-structure-lat"><strong>Латерализация </strong><span class="timestamp-sub">video_1: 1:19:04</span>: вентральный вагус развивается из двух ядер, однако его волокна сливаются и переходят преимущественно в правый блуждающий нерв — то есть вентральный вагус представлен главным образом в правом блуждающем нерве. Это имеет значение при латерализованном выборе стороны коррекции. При этом за счёт множества анастомозов с левым вагусом на уровне глотки и особенно пищевода (см. Главу 1, «Топография хода нерва») влияние вентрального вагуса всё же распространяется и на левую сторону — строго одностороннюю работу это не отменяет.</p>
+            <h4>Клинические проявления хронической активации дорсального вагуса (систематизация)</h4>
+            <div class="split-grid">
+                <div>
+                    <p><strong>Физические:</strong> постоянная усталость, ощущение отсутствия сил, замедленность, снижение температуры конечностей, ухудшение пищеварения, снижение физической выносливости.</p>
+                    <p><strong>Эмоциональные:</strong> апатия, эмоциональное «онемение», потеря интереса к окружающему, отсутствие мотивации, чувство безысходности.</p>
+                </div>
+                <div>
+                    <p><strong>Социальные:</strong> избегание общения, стремление к одиночеству, снижение зрительного контакта, ухудшение коммуникативных навыков.</p>
+                    <p>Подобные состояния не всегда связаны исключительно с психологическими причинами — в ряде случаев они отражают нарушения регуляции автономной нервной системы.</p>
+                </div>
+            </div>
+            <div class="tip"><strong>Практическое значение теории:</strong> активность вагуса определяется не только анатомией или наличием заболеваний, но и уровнем хронического стресса, качеством сна, питанием, эмоциональными переживаниями, отношениями с окружающими и ощущением безопасности. Эффективная коррекция должна учитывать все эти факторы, а не ограничиваться локальным воздействием на нерв. Поливагальная теория позволяет рассматривать пациента как единую биопсихосоциальную систему.</div>
+        </div>
+        <div id="ch4" class="category-divider">
+            <h2>Глава 3. Общие принципы и протокол коррекции блуждающего нерва</h2>
+            <p class="category-description">Задачи терапии, принципы выполнения мягких нейрофасциальных техник, общий протокол сеанса и противопоказания.</p>
+        </div>
+        <div class="test-card" id="ch4-principles">
+            <h3>Цель коррекции и основные принципы выполнения техник</h3>
+            <p>Основная задача коррекции — не механическое воздействие на сам блуждающий нерв, а восстановление нормальной регуляции автономной нервной системы: создать условия, при которых организм самостоятельно переключается из состояния хронического стресса в состояние физиологического покоя и адаптации. Это достигается за счёт воздействия на кожные рецепторы, фасции, мышцы, места выхода периферических нервов, акупунктурные точки, краниальные структуры и рефлекторные зоны внутренних органов.</p>
+            <div class="tip"><strong>Как отличить адаптацию от дисфункции <span class="timestamp-sub">video_4: 40:36 - 41:37</span>:</strong> прежде чем корректировать найденную зону, важно определить её природу. Адаптация сохраняет способность к движению во всех направлениях — просто в одних направлениях подвижность лучше, в других хуже. Дисфункция отличается принципиально: движение полностью отсутствует хотя бы в одном направлении. Практическая проверка (на примере желудка): сместить ткань влево — двигается; вправо — двигается хуже, но двигается; вверх — двигается неплохо; вниз — не двигается совсем. Отсутствие движения именно во фронтальной плоскости вниз и есть признак дисфункции, требующей коррекции, а не просто асимметрии адаптации.</div>
+            <h4>Основные задачи терапии</h4>
+            <ul class="content-list">
+                <li><strong>Активировать вентральный вагальный комплекс</strong> — признаки успеха: расслабление пациента, углубление дыхания, снижение мышечного тонуса, уменьшение тревожности, улучшение цвета лица, ощущение тепла в конечностях, снижение ЧСС.</li>
+                <li><strong>Уменьшить симпатическую гиперактивность</strong> — у большинства пациентов наблюдается её хроническое преобладание; практически все техники направлены на её постепенное снижение.</li>
+                <li><strong>Улучшить афферентную информацию</strong> — поскольку около 80% волокон вагуса чувствительные, качество поступающей информации напрямую влияет на процессы регуляции.</li>
+            </ul>
+            <div class="split-grid">
+                <div class="test-card" style="margin-bottom:0;">
+                    <h3 style="border-bottom:none;padding-bottom:0;">Принцип №1–2</h3>
+                    <p><strong>Минимальное усилие:</strong> коррекция никогда не должна быть грубой — избыточное давление вызывает усиление боли, защитное мышечное напряжение и активацию симпатики.</p>
+                    <p><strong>Работа через комфорт:</strong> пациент должен ощущать безопасность, спокойствие, доверие и отсутствие выраженной боли.</p>
+                </div>
+                <div class="test-card" style="margin-bottom:0;">
+                    <h3 style="border-bottom:none;padding-bottom:0;">Принцип №3–4</h3>
+                    <p><strong>Медленное выполнение:</strong> активирует рецепторы медленно проводящих нервных волокон, снижает вероятность защитной реакции.</p>
+                    <p><strong>Работа с дыханием:</strong> воздействие синхронизируют с дыханием — расслабление тканей на вдохе, воздействие на выдохе.</p>
+                </div>
+            </div>
+            <p>Большинство техник представляют собой медленное смещение кожи, лёгкое натяжение фасции, мягкое удержание тканей и плавную компрессию — задача в активации рецепторов кожи и поверхностных фасциальных структур, связанных с медленно проводящими C-волокнами.</p>
+        </div>
+        <div class="test-card" id="ch4-neurofascial">
+            <h3 id="ch4-direct-indirect">Нейрофасциальная, прямая и непрямая техники</h3>
+            <p>Нейрофасциальная техника основана на взаимодействии нервной системы и фасциальной сети организма.</p>
+            <ol>
+                <li>Определить наиболее чувствительную зону;</li>
+                <li>Выполнить лёгкое смещение кожи;</li>
+                <li>Найти направление наименьшего сопротивления тканей;</li>
+                <li>Зафиксировать ткани в этом положении;</li>
+                <li>Дождаться ощущения расслабления тканей;</li>
+                <li>Медленно вернуть ткани в нейтральное положение.</li>
+            </ol>
+            <div class="warning">Нельзя форсировать движение — ткани должны расслабляться самостоятельно.</div>
+            <div class="split-grid">
+                <div>
+                    <h4>Прямая техника</h4>
+                    <p>Ткани смещаются в сторону ограничения движения. Используется при умеренной болезненности, после предварительного расслабления тканей и при хорошей переносимости процедуры.</p>
+                </div>
+                <div>
+                    <h4>Непрямая техника</h4>
+                    <p>Ткани смещаются в сторону наименьшего сопротивления. Применяется значительно чаще — показания: выраженная болезненность, повышенный мышечный тонус, высокая тревожность, работа с детьми или пожилыми пациентами, первые сеансы лечения.</p>
+                </div>
+            </div>
+            <h4>Как понять, что техника работает</h4>
+            <p>Признаки нормализации активности автономной нервной системы: глубокий вдох, зевота, сглатывание, урчание в животе, расслабление плечевого пояса, покраснение кожи, ощущение тепла; чувство спокойствия, сонливость, желание закрыть глаза, эмоциональное облегчение. Все перечисленные реакции считаются физиологическими.</p>
+        </div>
+        <div class="test-card" id="ch4-protocol">
+            <h3>Общий протокол сеанса и последовательность работы <span class="timestamp">video_1: 1:35:22</span></h3>
+            <p>Коррекция выполняется в строго определённой последовательности, обеспечивающей постепенное вовлечение различных уровней регуляции без чрезмерной нагрузки на пациента.</p>
+            <ol>
+                <li>Диагностика (опросник, пальпаторное прослушивание);</li>
+                <li>Коррекция тимуса — техника, объединяющая эмоциональный, вегетативный и иммунный факторы; при хроническом стрессе тимус теряет массу;</li>
+                <li>Работа с акупунктурными точками передней поверхности тела (грудь, живот);</li>
+                <li>Задняя поверхность тела (спина, шея);</li>
+                <li>Череп и лицо;</li>
+                <li>Ноги.</li>
+            </ol>
+            <div class="tip"><strong>Правило переднего-заднего баланса:</strong> если передние точки болезненны, следует пролечить задние и затем вернуться к передним.</div>
+            <div class="warning"><strong>Дозирование:</strong> продолжительность сеанса — не более 40–50 минут, чтобы не создать «передозировку» воздействия и не увести пациента в симпатикотонию. Интервал между сеансами — 2–3 недели.</div>
+            <p><strong>Количество сеансов и их различие <span class="timestamp-sub">video_1: 1:41:57 - 1:44:27</span>:</strong> коррекция стойких вегетативных нарушений обычно требует 2–3 сеансов, в редких случаях — 4–5. Первый сеанс строится по описанной выше последовательности (работа только с акупунктурными точками). Начиная со второго сеанса в протокол добавляется работа с «активными точками» (см. Главу 8, «Метод индикаторных точек») и уже привычные специалисту техники — висцеральные, структуральные, работа с нервами. Между сеансами необходимо выдерживать интервал, чтобы вегетативная нервная система успела «перестроиться» и закрепить новое состояние: вносить изменения в ещё не стабилизировавшуюся систему нецелесообразно.</p>
+        </div>
+        <div class="test-card" id="ch4-contra">
+            <h3>Противопоказания и практические рекомендации</h3>
+            <p>Мануальное воздействие может быть небезопасным при следующих состояниях: острые инфекционные заболевания, выраженная лихорадка, острые воспалительные процессы, свежие травмы, злокачественные новообразования в зоне воздействия, декомпенсированные заболевания сердечно-сосудистой системы, тяжёлое общее состояние пациента. При наличии сомнений необходимо провести дополнительное обследование или направить пациента к профильному специалисту.</p>
+            <p><strong>Для достижения максимального эффекта рекомендуется:</strong> работать в спокойной обстановке, обеспечить комфортную температуру помещения, исключить резкие движения, постоянно поддерживать контакт с пациентом, отслеживать изменения дыхания, цвета кожи и мышечного тонуса, начинать работу с наиболее чувствительных зон.</p>
+        </div>
+        <div id="ch3" class="category-divider">
+            <h2>Глава 4. Дисфункция блуждающего нерва: клиника и диагностика пациента</h2>
+            <p class="category-description">Клинические проявления снижения активности вентрального вагуса, задачи первичного обследования, сигнальные точки и объективные диагностические тесты, применяемые на семинаре.</p>
+        </div>
+        <div class="test-card" id="ch3-clinic">
+            <h3>Дисфункция блуждающего нерва: клинические проявления</h3>
+            <p>Под дисфункцией блуждающего нерва понимают нарушение его способности адекватно регулировать работу внутренних органов и обеспечивать эффективную адаптацию организма к изменяющимся условиям среды. Речь идёт не о повреждении самого нерва, а о нарушении его регуляторной функции: нерв анатомически может быть сохранён, однако его активность оказывается недостаточной либо чрезмерной.</p>
+            <p>Наиболее часто подобные нарушения возникают при хроническом стрессе, эмоциональном перенапряжении, воспалительных процессах, последствиях инфекционных заболеваний, хронической боли, нарушениях сна, заболеваниях ЖКТ, травмах головы и шеи, хроническом переутомлении. В результате организм постепенно теряет способность быстро возвращаться к состоянию физиологического равновесия после стрессовых воздействий — это состояние лежит в основе многих хронических заболеваний.</p>
+            <h4>Основные признаки снижения активности вентрального вагуса</h4>
+            <div class="split-grid">
+                <div>
+                    <p><strong>Эмоциональные:</strong> тревожность, внутреннее напряжение, раздражительность, эмоциональная нестабильность, повышенная чувствительность к стрессу, чувство небезопасности, трудности расслабления.</p>
+                    <p><strong>Поведенческие:</strong> избегание общения, снижение социальной активности, уменьшение зрительного контакта, тихая или напряжённая речь, ощущение постоянной настороженности.</p>
+                    <p><strong>Нарушения сна:</strong> трудности засыпания, поверхностный сон, частые пробуждения, отсутствие чувства отдыха после сна.</p>
+                </div>
+                <div>
+                    <p><strong>Вегетативные:</strong> ощущение сердцебиения, тахикардия, повышенная потливость, нестабильное АД, холодные кисти и стопы, головокружение, ухудшение переносимости нагрузок.</p>
+                    <p><strong>Со стороны пищеварения:</strong> тяжесть после еды, вздутие живота, замедленное пищеварение, запоры, функциональные расстройства кишечника, гастроэзофагеальный рефлюкс, нарушения моторики пищевода, функциональный хронический гастрит.</p>
+                </div>
+            </div>
+            <p>Взаимосвязь между нарушением активности вагуса и заболеваниями органов грудной клетки, желудка, печени, кишечника и желчного пузыря подчёркивает важность использования проекций соответствующих органов и сигнальных (Му-) точек при коррекции. Причина столь разнообразной клиники — в чрезвычайно широком распространении ветвей вагуса: он одновременно регулирует сердце, бронхи, пищевод, желудок, кишечную моторику, взаимодействует с печенью, влияет на иммунную систему и участвует в формировании эмоциональных реакций. Поэтому пациенты с нарушением функции вагуса редко предъявляют одну жалобу — чаще наблюдается сочетание симптомов из нескольких систем организма одновременно.</p>
+        </div>
+        <div class="test-card" id="ch3-goals">
+            <h3>Цель и содержание первичного обследования</h3>
+            <p>Перед началом коррекции специалист должен определить, насколько выражено нарушение автономной регуляции, какие зоны наиболее значимы, какие органы вовлечены в патологический процесс, есть ли ограничения со стороны опорно-двигательного аппарата и какие техники будут наиболее эффективны для конкретного пациента. Обследование должно быть комплексным.</p>
+            <h4>Что оценивают при осмотре</h4>
+            <ul class="content-list">
+                <li><strong>Внешний вид:</strong> выражение лица, цвет кожи, степень расслабленности, поза, характер дыхания.</li>
+                <li><strong>Речь:</strong> громкость голоса, тембр, скорость речи, напряжение голосовых связок — поскольку вагус иннервирует мышцы гортани, изменение голоса может служить косвенным признаком дисфункции.</li>
+                <li><strong>Дыхание:</strong> глубина, симметрия экскурсии грудной клетки, участие вспомогательной мускулатуры, наличие задержек дыхания.</li>
+                <li><strong>Двигательная активность:</strong> скорость движений, мышечный тонус, качество походки, наличие защитных мышечных напряжений.</li>
+                <li><strong>Пальпация:</strong> болезненность, плотность тканей, локальная температура, подвижность фасций, отёк, выраженность мышечного напряжения — особое внимание уделяется поиску болезненных участков в проекциях сигнальных точек внутренних органов. Повышенная чувствительность конкретной зоны может указывать на функциональные нарушения соответствующего органа.</li>
+            </ul>
+            <p>После оценки передней поверхности тела исследуются также боковая поверхность шеи, область грудины, позвоночник, паравертебральные зоны, затылочная область, лицо, ушная раковина и нижние конечности — эти зоны содержат проекции нервных структур или рефлекторных зон, связанных с регуляцией активности вагуса.</p>
+            <div class="tip"><strong>Как понять, что нужно работать именно с блуждающим нервом</strong> (по материалам презентации): есть несколько способов определить, что первично нужна работа с вагусом — хронические, долго существующие болевые синдромы; затянувшиеся психологические проблемы; данные тестирования сердечно-сосудистой системы; и, самый главный способ — данные глобального прослушивания.</div>
+            <div class="tip"><strong>Показания к коррекции вагуса:</strong> хронический стресс, тревожные состояния, эмоциональное истощение, нарушения сна, хроническая усталость, функциональные заболевания ЖКТ, функциональные нарушения сердечного ритма, хроническая боль, головные боли, головокружение, нарушения постурального баланса, снижение социальной вовлечённости, последствия длительных воспалительных процессов.</div>
+        </div>
+        <div class="test-card" id="ch3-mu">
+            <h3>Сигнальные (Му-) точки</h3>
+            <p>Одним из наиболее важных диагностических элементов являются так называемые точки тревоги (Му-точки): при нарушении функции соответствующего органа они становятся болезненными даже при лёгком надавливании. Му-точки обладают двумя важными свойствами: во-первых, помогают выявить наиболее значимые функциональные нарушения; во-вторых, эти же зоны используются в дальнейшем лечении — диагностика переходит в терапию.</p>
+            <div class="tip"><strong>Му-точки (или сигнальные точки)</strong> &ndash; это специальные биологически активные точки на передней поверхности туловища (груди и животе), где концентрируется энергия Ци внутренних органов. Всего их 12, по числу основных плотных (Цзан) и полых (Фу) органов.<br/><i>(определение из Интернета)</i></div>
+            <table class="data-table">
+                <tr><th>Точка</th><th>Орган</th><th>Клиническое значение</th></tr>
+                <tr><td>CV17</td><td>сердце</td><td>сердечно-сосудистая система, эмоциональное напряжение</td></tr>
+                <tr><td>CV12</td><td>желудок</td><td>заболевания желудка и пищеварения</td></tr>
+                <tr><td>LU1</td><td>лёгкие</td><td>дыхательная система</td></tr>
+                <tr><td>LR14</td><td>печень</td><td>нарушения функции печени, эмоциональная раздражительность</td></tr>
+                <tr><td>GB24</td><td>желчный пузырь</td><td>заболевания желчного пузыря, рефлюкс</td></tr>
+                <tr><td>K27</td><td>почки</td><td>страх, тревога, снижение жизненной энергии</td></tr>
+                <tr><td>CV22</td><td>горло, гортань, щитовидная железа</td><td>проблемы с голосом, глотанием, заболевания щитовидной железы, пищевода</td></tr>
+            </table>
+            <p>Правила пальпации: перед началом воздействия необходимо провести последовательную пальпацию всех основных зон, оценивая наличие болезненности, локальное повышение плотности тканей, изменение температуры кожи, снижение подвижности фасций и выраженность защитного мышечного напряжения. Важно использовать минимальное давление — цель обследования состоит в определении наиболее значимых зон, а не в вызывании выраженной болевой реакции.</p>
+        </div>
+        <div class="category-divider" style="margin-top:24px;">
+            <h2 style="font-size:1.15rem;">Диагностические тесты семинара</h2>
+            <p class="category-description">Объективные функциональные пробы для оценки активности вентрального вагуса, используемые в дополнение к пальпации Му-точек.</p>
+        </div>
+        <div class="test-card" id="test-questionnaire">
+            <h3>Опросник активности вагуса (самооценка пациента) <span class="timestamp">video_1: 1:36:57 - 1:39:42</span></h3>
+            <p><strong>Цель:</strong> быстрая объективная оценка процентного соотношения активности трёх уровней автономной регуляции (вентральный вагус, дорзальный вагус, симпатическая нервная система) со слов пациента — дополняет объективные тесты и пальпацию Му-точек.</p>
+            <p><strong>Формат:</strong> опросник в таблице Excel (встречается в открытых источниках под названиями типа «опросник/самоопросник для определения активности вагуса»); пациент оценивает выраженность каждого симптома по шкале от 0 до 4, после чего таблица автоматически рассчитывает процентное соотношение активности вентрального вагуса, дорзального вагуса и симпатической нервной системы.</p>
+            <p><strong>Интерпретация результатов:</strong> в норме на долю вентрального вагуса должно приходиться около 55–70% активности; чем выше доля дорзального вагуса, тем ближе пациент к критическому состоянию дисрегуляции.</p>
+            <p><strong>Практическое применение:</strong> удобнее заполнять в электронном виде (планшет, ноутбук) — так пациент тратит меньше времени, а результат не требует ручного подсчёта и снижает субъективизм интерпретации. Метод также позволяет отслеживать динамику лечения, сравнивая процентное соотношение до начала терапии, в середине и по завершении курса. Опросник и пальпаторное прослушивание рекомендуется проводить перед остальными объективными тестами <span class="timestamp-sub">video_1: 1:45:58</span>.</p>
+        </div>
+        <div class="test-card" id="test-listening">
+            <h3>Глобальное пальпаторное «прослушивание» <span class="timestamp">video_1: 1:46:29 - 1:55:20, video_2: 0:01 - 12:55</span></h3>
+            <p><strong>Цель:</strong> определить уровень (краниальный, дуральный, черепно-мозговые нервы основания черепа и т.д.), на котором расположено функциональное нарушение, до начала опроса пациента, чтобы не подвергаться влиянию его субъективных жалоб.</p>
+            <div class="hand-position"><strong>Положение рук:</strong> основание ладони ведущей руки укладывается на вертекс (самую высокую точку черепа), средний палец лежит вдоль сагиттального шва. Предплечье должно находиться в одной линии с позвоночником, локоть согнут не под 90°, а под углом примерно 110–120°; давление формируется корпусом, а не напряжением кисти. Вторая рука может лежать на плече или спине пациента для улучшения ориентации в пространстве. Пациент стоит спокойно, расслабленно, специалист располагается немного сбоку.</div>
+            <p><strong>Выполнение:</strong> вес руки мягко нагружает ткани, затем отпускается; специалист ориентируется, тянет ли ткани вперёд/назад, влево/вправо.</p>
+            <p><strong>Интерпретация результатов:</strong></p>
+            <ul class="content-list">
+                <li><strong>Линейное (структуральное) прослушивание</strong> — рука идёт в определённую зону и останавливается там.</li>
+                <li><strong>Эмоциональное прослушивание</strong> — руку «водит», теряется равновесие; это указывает на преобладание психоэмоционального фактора. В этом случае нужно чуть сильнее нагрузить ткани весом руки, чтобы найти орган или зону, от которой отталкиваться для коррекции.</li>
+                <li><strong>Отсутствие прослушивания (нулевое прослушивание)</strong> — рука не двигается. Возможные причины: проблема непосредственно в черепе либо состояние «имитации мёртвой ткани» (замирание, признак дорсального вагуса). В этом случае необходимо прослушать краниоцервикальный переход — зайти на заднюю дугу атланта (середина расстояния между остистым отростком C2 и черепом), погрузиться до контакта с твёрдой мозговой оболочкой, активировать рецепторы лёгким давлением корпуса (отклониться назад — отпустить) и слушать тягу: вверх — краниальная проблема; вниз — проблема дуральной трубы; вправо/влево — вовлечены черепно-мозговые нервы основания черепа.</li>
+            </ul>
+            <p><strong>Расширенная интерпретация направления тяги <span class="timestamp-sub">video_2: 12:55 - 28:50</span>:</strong> при глобальном прослушивании (не только на краниоцервикальном переходе) уровень, на который указывает тяга, может соответствовать не только черепу, но и периферической нервной системе — в зависимости от того, на какой высоте тела возникает боковое смещение: тяга вбок на уровне плеча указывает на плечевое сплетение; тяга вбок на уровне грудной клетки — на симпатический ствол; тяга вниз в проекции поясницы/таза — на поясничное или крестцовое сплетение.</p>
+            <div class="tip"><strong>Пример коррекции по результату прослушивания:</strong> если тяга идёт, например, к височно-затылочному шву — выполняется освобождение этого шва и яремного синхондроза, с сохранением того же положения рук и угла в предплечье.</div>
+            <div class="note"><strong>Обучение навыку:</strong> количество прослушиваний переходит в качество. 10 000 прослушаваний и Вы станете отличным "слухачем". Это не так много, как кажется на первый взгляд. Если мы слушаем пациента минимум пять раз за сеанс (до лечения, после и в конце), тогда через 2–3 года регулярной практики навык становится устойчивым. Технически важно стоять удобно, правильно укладывать руку и правильно ориентироваться относительно пациента — при неправильной позе в руке возникает излом, создающий ложное ощущение тяги.</div>
+        </div>
+        <div class="test-card" id="test-hr">
+            <h3>Частота сердечных сокращений (ЧСС) <span class="timestamp">video_1: 1:13:07 - 1:18:00</span></h3>
+            <p><strong>Цель:</strong> базовый и наиболее простой тест для оценки активности вентрального блуждающего нерва — измерение ЧСС покоя.</p>
+            <p><strong>Выполнение:</strong> измерить пульс пациента в спокойном состоянии, сидя или лёжа.</p>
+            <p><strong>Интерпретация результатов:</strong></p>
+            <ul class="content-list">
+                <li>Норма — 60–80 ударов в минуту.</li>
+                <li>Выше 80 уд/мин — признак недостаточной активации вентрального блуждающего нерва (нет достаточного торможения синоатриального узла, который сам по себе задаёт частоту 100–130 уд/мин).</li>
+                <li>Ниже 60 уд/мин (без учёта профессиональных спортсменов) — признак активации дорзального блуждающего нерва.</li>
+            </ul>
+            <div class="tip">Тест не требует специального оборудования и может использоваться пациентом самостоятельно между сеансами для отслеживания динамики.</div>
+        </div>
+
+
+        <div class="test-card" id="test-rsa">
+            <h3>Респираторная синусовая аритмия и дыхательная самокоррекция <span class="timestamp">video_2: 28:50 - 30:29</span></h3>
+            <p><strong>Диагностический признак:</strong> в норме на вдохе ЧСС увеличивается, на выдохе — уменьшается (респираторная синусовая аритмия). Это один из показателей вариабельности сердечного ритма. Если такого колебания не наблюдается — вентральный вагус неактивен.</p>
+            <div class="breath-rhythm-grid">
+                <div class="breath-phase breath-in"><span class="phase-title">Вдох</span>4 секунды</div>
+                <div class="breath-phase breath-out"><span class="phase-title">Пауза</span>2 секунды</div>
+                <div class="breath-phase breath-out"><span class="phase-title">Выдох</span>6 секунд</div>
+                <div class="breath-phase breath-in"><span class="phase-title">Пауза</span>1 секунда</div>
+            </div>
+            <p style="margin-top:12px;"><strong>Практическая рекомендация:</strong> выполнять упражнение 3–5 минут 3 раза в день. Принципиально, чтобы выдох был примерно в 1,5 раза длиннее вдоха. Дополнительно активирует вагус звук (вибрация) на выдохе.</p>
+        </div>
+        <div class="test-card" id="test-oculocardiac">
+            <h3>Окулокардиальный рефлекс <span class="timestamp">video_1: 1:44:46, video_2: 45:10</span></h3>
+            <p><strong>Выполнение:</strong> исследуют пульс пациента в состоянии покоя, затем плавно, без резкого давления, надавливают на глазные яблоки.</p>
+            <p><strong>Интерпретация результатов:</strong></p>
+            <ul class="content-list">
+                <li>Норма — через 1–4 секунды ЧСС снижается на 4–12 ударов в минуту.</li>
+                <li>Если ЧСС не снижается — вентральный вагус недостаточно активен.</li>
+                <li>Если снижение ЧСС наступает с задержкой в 20–40 секунд — признак дисрегуляции.</li>
+            </ul>
+            <div class="tip"><strong>Применение как способа самокоррекции:</strong> несильное давление на глаза можно сочетать с выполнением дыхательного упражнения для дополнительной активации вагуса.</div>
+            <div class="tip"><strong>Почему тест отражает именно вентральный вагус <span class="timestamp-sub">video_2: 46:15 - 46:58</span>:</strong> рефлекторная дуга идёт от глаз в стволовые ядра и далее эфферентно по вентральному вагусу к синоатриальному узлу сердца, снижая ЧСС, — а сердце находится в зоне иннервации именно вентрального вагуса (всё, что выше нижних рёбер, см. Главу 2, «Вентральный вагус»). Поэтому отсутствие снижения ЧСС в этом тесте указывает на недостаточную активность именно вентральной, а не дорзальной ветви.</div>
+        </div>
+        <div class="test-card" id="test-dermographism">
+            <h3>Дермографизм <span class="timestamp">video_2: 56:41 - 1:07:34</span></h3>
+            <p><strong>Выполнение:</strong> двумя пальцами паравертебрально проводят две полосы по коже.</p>
+            <p><strong>Интерпретация результатов:</strong></p>
+            <ul class="content-list">
+                <li>Норма — появляются белые полосы, исчезающие через 3–4 секунды (реакция связана с активацией холинергических рецепторов).</li>
+                <li>Полосы сохраняются дольше 4 секунд — признак слабости симпатической системы.</li>
+                <li>Красные полосы — признак симпатической активности в состоянии дисрегуляции (медиатор — гистамин).</li>
+                <li>Пятно растёт по площади и долго не исчезает — признак повышенной активации симпатической системы.</li>
+                <li>Изменение цвета (белое переходит в красное или наоборот) — признак дисрегуляции: нервная система «не знает», какой медиатор использовать.</li>
+            </ul>
+            <div class="warning"><strong>Клиническое продолжение:</strong> при выявленной симпатической дисрегуляции важно дополнительно работать с вегетативными ганглиями (крылонёбный, звёздчатый, шейные, ганглионарная цепочка грудного отдела) и проверять состояние позвонков (ротация поперечных отростков) и рёбер, так как головки рёбер могут механически давить на ганглии.</div>
+        </div>
+        <div class="test-card" id="test-uvula">
+            <h3>Тест отклонения язычка <span class="timestamp">video_2: 1:10:30</span></h3>
+            <p><strong>Выполнение:</strong> пациента просят протяжно произнести звук «а».</p>
+            <p><strong>Интерпретация:</strong> в норме язычок остаётся по средней линии, мягкое нёбо симметрично подтягивается вверх (активация вагуса и языкоглоточного нерва). Если язычок отклоняется в сторону — мышцы на поражённой стороне ослаблены, и здоровые мышцы противоположной стороны «перетягивают» язычок на себя.</p>
+        </div>
+        <div class="test-card" id="test-rosenberg">
+            <h3>Тест Стенли Розенберга <span class="timestamp">video_2: 1:22:20</span></h3>
+            <p><strong>Цель:</strong> диагностика и одновременно самокоррекция активности вентрального вагуса через изолированное движение глаз без поворота головы.</p>
+            <div class="hand-position"><strong>Исходное положение:</strong> Необходимо сплести пальцы рук, завести их за голову и стабилизировать шейный отдел позвоночника.</div>
+            <ol>
+                <li>Перевести взгляд вправо и удерживать 20-30 секунд, не поворачивая головы;</li>
+                <li>Перевести взгляд влево и удерживать ещё 20-30 секунд;</li>
+                <li>После необходимо опустить руки и сделать поворот головы сначала вправо, а затем – влево.</li>                
+            </ol>
+            <p><strong>Интерпретация результатов:</strong> В норме, за 20-30 секунд или меньше наступают признаки активизации вентрального вагуса, такие как глубокие вдох-выдох, зевота, снятие напряжения в теле, более спокойное и глубокое дыхание. Если эти признаки не наступают, или наоборот усиливается напряжение в шее, невозможно удержать взгляд, дыхание становится более частым и поверхностным – это признаки глубокой дезрегуляции вагуса.</p>
+            <div class="tip"><strong>Физиологическое обоснование <span class="timestamp-sub">video_2: 1:22:20 - 1:34:56</span>:</strong> зевота в этом тесте — не случайная реакция, а стратегический механизм тела: во время зевка происходит переключение (перестройка) автономной нервной системы в сторону вентрального вагуса и ослабление симпатической активности, поэтому зевоту можно сознательно вызывать у себя как приём саморегуляции в стрессовой ситуации. Улучшение дыхания в ходе теста особенно показательно, поскольку исходная поза (руки подняты и сцеплены за головой) сама по себе физиологически затруднена для дыхания — поднятые плечи и сведённая грудная клетка уменьшают дыхательный объём («поза распятия»); если, несмотря на это, дыхание в процессе теста становится легче, это надёжный признак активации вентрального вагуса.</div>
+            <p>Тест можно использовать как быстрое коррекционное воздействие.</p>
+        </div>
+        <div id="ch-neck-techniques" class="category-divider">
+            <h2>Глава 5. Коррекция яремного отверстия, ушной ветви, сонного треугольника, гортанного нерва и желудка</h2>
+            <p class="category-description">Группа техник прямого воздействия на блуждающий нерв и его ветви на уровне черепа, шеи и желудка — в презентации семинара представлены единым блоком сразу после диагностических тестов, вслед за подробной топографией хода нерва.</p>
+        </div>
+
+        <div class="test-card" id="card-occipitomastoid-suture">
+    <h3>Освобождение затылочно-сосцевидного шва <span class="timestamp">video_3: 33:05 - 35:27, 38:22 - 46:57, 56:17 - 1:00:48, 1:09:01 - 1:09:54</span></h3>
+
+    <p><strong>Место в протоколе:</strong> это третий из четырёх обязательных последовательных этапов работы с яремным отверстием — без освобождения шва раскрыть само отверстие невозможно («как пытаться зайти в аудиторию, не открыв входную дверь») <span class="timestamp-sub">video_3: 33:27 - 33:43</span>:</p>
+    <ol>
+        <li>Фасциальная техника на верхнюю апертуру грудной клетки — освобождение венозного угла, куда впадает внутренняя ярёмная вена. Обязательно выполняется первой: если раскрыть череп, не освободив апертуру, отток крови по ярёмным венам не наладится, а приток артериальной крови увеличится (эффект сообщающихся сосудов), что грозит синдромом повышения внутричерепного давления <span class="timestamp-sub">video_3: 34:14 - 35:27</span>;</li>
+        <li>Освобождение подзатылочных мышц — их гипертонус вызывает локальный тканевой отёк, блокирующий яремный отросток затылочной кости <span class="timestamp-sub">video_3: 35:37 - 38:10</span>;</li>
+        <li>Освобождение затылочно-сосцевидного шва (данная техника);</li>
+        <li>Коррекция самого яремного отверстия (см. отдельную карточку).</li>
+    </ol>
+
+    <p><strong>Анатомическое обоснование:</strong> шов расположен приблизительно в сагиттальной плоскости, с небольшим углом, не влияющим на технику. Именно такое расположение при хлыстовой травме позволяет затылочной кости легко «вколачиваться» между височными костями, вызывая краниосакральный асинхронизм <span class="timestamp-sub">video_3: 40:57 - 41:32</span>.</p>
+
+    <div class="hand-position"><strong>Положение рук:</strong> кожа над затылочной и височной костью берётся в складку (убирается избыточный кожный люфт), чтобы работать прицельно с костью, а не просто растягивать кожу <span class="timestamp-sub">video_3: 59:46, 1:07:44</span>.</div>
+
+    <p><strong>Пошаговое выполнение:</strong></p>
+    <ol>
+        <li>Взять кожу в складку над затылочной и височной костью;</li>
+        <li>Задать вектор: затылочную кость увести контралатерально (в сторону, противоположную стороне коррекции), височную кость — вентрально (вперёд, к лицу) <span class="timestamp-sub">video_3: 41:40 - 42:14, 51:11 - 51:30</span>;</li>
+        <li>Прижаться грудной клеткой, грудиной или плечом с противоположной стороны так, чтобы вектор давления пришёлся точно в промежуток между пальцами — в проекцию шва. Руками развести кости невозможно: нужно локально повысить внутричерепное давление именно в этой зоне <span class="timestamp-sub">video_3: 42:22 - 43:12</span>;</li>
+        <li>«Прослушать», куда пришло давление; если не туда — менять положение и вектор, пока давление не придётся точно в нужную зону (проекция «пивота», см. предупреждение ниже) <span class="timestamp-sub">video_3: 49:37 - 50:21</span>;</li>
+        <li>Удерживать вектор, постепенно усиливая воздействие грудной клеткой (не руками) до ощущения расхождения костей, часто с характерным хрустом <span class="timestamp-sub">video_3: 59:57 - 1:00:48</span>;</li>
+        <li>Повторить технику 2–3 раза для более выраженного разведения шва <span class="timestamp-sub">video_3: 1:00:48 - 1:01:15</span>.</li>
+    </ol>
+
+    <p><strong>Механизм воздействия:</strong> локальное повышение внутричерепного давления активирует рецепторы внутри шва — волокна Шарпи, отвечающие за тонус твёрдой мозговой оболочки. За счёт этого зона, которую организм воспринимал как «немую» (исключённую из общей схемы тела), возвращается в неё: улучшаются локальные гемо- и лимфодинамика, восстанавливается рецепторный ответ тканей, что стимулирует нормальную работу ЦНС <span class="timestamp-sub">video_3: 43:57 - 46:10</span>.</p>
+
+    <div class="warning"><strong>Важно не перепутать зоны:</strong> вектор давления для коррекции шва целится в проекцию «пивота» — зоны, где чешуя височной кости меняет характер перекрытия с затылочной костью (выше пивота височная кость прикрывает затылочную, ниже — наоборот). Это другая точка приложения вектора, чем при коррекции самого яремного отверстия — несмотря на анатомическую близость, векторы спутывать нельзя <span class="timestamp-sub">video_3: 48:29 - 49:57</span>.</div>
+
+    <div class="tip">Учитывайте краниальный ритм: эффект коррекции колеблется по фазам — усиливается на флексии, немного стихает на экстензии, но заданное положение и вектор нужно удерживать на протяжении всего цикла <span class="timestamp-sub">video_3: 58:15 - 58:55</span>. Если техника «идёт вяло» — не тяните кости руками сильнее, а увеличивайте давление грудной клеткой <span class="timestamp-sub">video_3: 1:09:32 - 1:09:47</span>.</div>
+</div>
+
+<div class="test-card" id="card-jugular-foramen-detailed">
+    <h3>Коррекция яремного отверстия <span class="timestamp">video_3: 30:17 - 32:56, 46:40 - 53:47, 1:04:31 - 1:08:55</span></h3>
+
+    <p><strong>Анатомическое обоснование:</strong> яремное отверстие образовано височной и затылочной костями; связка внутри делит его на два отдела — передний (языкоглоточный нерв) и задний (блуждающий нерв, добавочный нерв, менингеальная ветвь и внутренняя ярёмная вена, обеспечивающая отток 70–90% венозной крови от головного мозга) <span class="timestamp-sub">video_3: 30:35 - 31:29</span>.</p>
+
+    <p><strong>Клиническое значение:</strong> в этой зоне также крепится подзатылочная мускулатура — её спазм вместе с дисфункцией проходящих через отверстие нервов может вызывать отёк надкостницы и препятствовать венозному оттоку из полости черепа <span class="timestamp-sub">video_3: 31:35 - 32:18</span>.</p>
+
+    <div class="warning"><strong>Ограничение метода:</strong> прицельно проработать отдельно передний или задний отдел отверстия невозможно — врач работает с отверстием как единым целым, раскрывая его и снимая имеющееся напряжение, что улучшает венозный отток и скольжение нервов внутри отверстия <span class="timestamp-sub">video_3: 32:25 - 32:56</span>. Технике обязательно должны предшествовать освобождение верхней апертуры грудной клетки, подзатылочных мышц и затылочно-сосцевидного шва (см. предыдущую карточку) — без этого коррекция самого отверстия невозможна или может спровоцировать повышение внутричерепного давления.</div>
+
+    <h4>Вариант 1 — простой захват</h4>
+    <div class="hand-position">Пальцы скользят с задней поверхности черепа на боковую до упора в височную кость и зацепляются за неё подушечками <span class="timestamp-sub">video_3: 52:16 - 52:40</span>.</div>
+    <ol>
+        <li>Взять кожу в складку между пальцами обеих рук;</li>
+        <li>Задать вектор: затылочную кость — краниально (вверх, «на себя»); височную кость — вентрально (вперёд, к лицу) — тот же вектор для височной кости, что и при коррекции шва <span class="timestamp-sub">video_3: 47:03 - 47:23</span>;</li>
+        <li>Найти положение, при котором давление приходится точно в проекцию яремного отверстия — это отдельная зона, отличная от «пивота», несмотря на близость <span class="timestamp-sub">video_3: 49:37 - 50:53</span>;</li>
+        <li>Оказать давление грудной клеткой/грудиной, удерживая вектор до ответа тканей.</li>
+    </ol>
+
+    <h4>Вариант 2 — классический захват</h4>
+    <div class="hand-position">Одна рука укладывается вдоль затылочной кости; вторая рука проходит поверх (либо под) первой и упирается в заднюю часть чешуи височной кости <span class="timestamp-sub">video_3: 52:45 - 52:59, 1:04:31 - 1:04:50</span>.</div>
+    <ol>
+        <li>Взять кожу в складку;</li>
+        <li>Височную кость толкать вперёд (к лицу); затылочную кость тянуть вверх, на себя (краниально) <span class="timestamp-sub">video_3: 53:08 - 53:18, 1:04:52 - 1:05:01</span>;</li>
+        <li>Прислушаться к ответу тканей поочерёдно на каждой кости, затем найти вектор, усиливающий разведение;</li>
+        <li>Усиливать давление грудной клеткой до релиза — височная кость при этом смещается не строго вперёд, а примерно под 45° по ходу ярёмного отростка затылочной кости <span class="timestamp-sub">video_3: 1:06:30 - 1:07:37</span>.</li>
+    </ol>
+    <p><strong>Диагностический критерий релиза:</strong> ощущение расхождения костей, часто с характерным хрустом. Технику рекомендуется повторить 2–3 раза, так как шов в этой зоне бывает достаточно плотным <span class="timestamp-sub">video_3: 1:08:43 - 1:08:55</span>.</p>
+
+    <div class="tip"><strong>Клиническое замечание преподавателя:</strong> сам преподаватель предпочитает вариант 1 — классический захват (вариант 2) даёт меньше контроля из-за люфта кожи и волос и вынуждает сильнее «впиваться» пальцами в череп, что менее комфортно для пациента; чёткий и уверенный контакт, наоборот, помогает пациенту расслабить шею <span class="timestamp-sub">video_3: 1:05:01 - 1:05:48</span>.</div>
+
+    <p><strong>Практический совет:</strong> прежде чем давить, «прослушайте», куда приходится вектор давления, и корректируйте положение рук, пока он не придётся точно в нужную проекцию — так техника сработает быстрее и не перегрузит нервную систему пациента избыточной информацией <span class="timestamp-sub">video_3: 50:06 - 50:52</span>.</p>
+</div>
+
+        
+        <div class="test-card" id="card-ear">
+            <h3>Коррекция точек ушной раковины (ушная ветвь блуждающего нерва, ветвь Арнольда) <span class="timestamp">video_3: 1:24:04 - 1:41:01</span></h3>
+            <p><strong>Обоснование:</strong> наружное ухо получает чувствительную иннервацию от ушной ветви блуждающего нерва (ветви Арнольда), а также от других черепных нервов, поэтому мягкая стимуляция определённых участков ушной раковины рассматривается как один из способов воздействия на автономную нервную систему.</p>
+            <p><strong>Принципы работы:</strong> перед началом воздействия оценивают температуру кожи, болезненность, плотность тканей и подвижность кожи. Затем выполняют последовательную коррекцию различных отделов ушной раковины: козелок, противокозелок, завиток, противозавиток, мочка уха, область ладьевидной ямки — во всех случаях используется минимальное давление.</p>
+            <div class="hand-position"><strong>Техника входа к нерву:</strong> палочку (зонд) вводят в наружный слуховой проход глубоко, вращая её между пальцами, как саморез; вектор движения — сзади наперёд и чуть вверх. Почувствовав сопротивление, палочку переводят в горизонтальную плоскость и погружают до остановки.</div>
+            <p><strong>Реакции пациента на стимуляцию ушной раковины:</strong> ощущение тепла, расслабление, глубокое дыхание, сонливость, снижение тревожности — все подобные реакции считаются физиологичными.</p>
+            <p><strong>Именованные точки ушной раковины (по материалам презентации):</strong></p>
+            <ul>
+                <li><strong>Точка «ноль»</strong> — располагается в области корня завитка (искать от корня завитка вверх, изнутри наружу, спереди назад). Отвечает за блуждающий нерв.</li>
+                <li><strong>«Потрясающая» точка</strong> — лежит сзади и чуть ниже точки «ноль», в области задней части завитка ушной раковины. Отвечает за хронический стресс и повышение артериального давления при нём.</li>
+                <li><strong>Точка брюшной полости</strong> — располагается в центре противозавитка, балансирует органы брюшной полости.</li>
+                <li><strong>Точка органов грудной клетки</strong> — располагается в центре нижней полураковины.</li>
+            </ul>
+            <p><strong>Почему именно ухо так эффективно <span class="timestamp-sub">video_3: 1:31:19 - 1:31:49</span>:</strong> общий принцип — чем тоньше нервное волокно, тем оно более рефлексогенно; воздействие на крупный ствол нерва обычно даёт меньший эффект, чем прицельная работа с тонкой периферической веточкой. Ушная ветвь блуждающего нерва — как раз такая тонкая, легко достижимая «ниточка», через которую можно получить выраженный рефлекторный эффект на весь нерв.</p>
+            <p><strong>Клиническое наблюдение <span class="timestamp-sub">video_3: 1:30:52</span>:</strong> нередко при первичном тестировании одно ухо оказывается явно проблемным, а другое — без особенностей; после коррекции проблемного уха в «здоровом» ухе неожиданно обнаруживаются зоны, которых не было при первом тестировании. Это не ошибка первичной диагностики, а результат компенсаторного перераспределения — стоит перепроверять противоположную сторону уже после лечения первой.</p>
+        </div>
+        <div class="test-card" id="card-carotid">
+            <h3>Коррекция блуждающего нерва в сонном треугольнике <span class="timestamp">video_4: 2:14 - 15:48</span></h3>
+            <p><strong>Цель:</strong> прямая работа с самим стволом блуждающего нерва в шейном отделе — прицельная тракция нерва в сонном треугольнике.</p>
+            <p><strong>Анатомические границы сонного треугольника:</strong> сзади — грудино-ключично-сосцевидная мышца, спереди — лопаточно-подъязычная мышца, сверху — двубрюшная мышца.</p>
+            <div class="hand-position"><strong>Поиск ориентиров:</strong> найти верхнюю границу щитовидного хряща, «скатиться» с неё на щитоподъязычную мембрану и подняться по ней до подъязычной кости. Работа проводится ниже подъязычной кости, так как там расположена общая сонная артерия, на которой проще найти блуждающий нерв (выше артерия делится на наружную и внутреннюю). Позиция специалиста — встать на внутренний край ГКСМ.</div>
+            <p><strong>Пошаговое выполнение:</strong></p>
+            <ol>
+                <li>Проникновение к нерву осуществляется за счёт мягких поворотов головы пациента;</li>
+                <li>При нахождении нерва возникает ощущение «тонкой лески», может появиться першение в горле или кашель;</li>
+                <li>Работа с нервом — смещение (тракция) в каудальном направлении (к ногам);</li>
+                <li>Для облегчения скольжения нерва можно наклонить голову пациента в противоположную сторону;</li>
+                <li>Работа проводится с одной стороны; если техника прошла успешно, переходят на вторую сторону.</li>
+            </ol>
+            <p><strong>Диагностические критерии правильного входа в контакт с нервом:</strong> першение в горле, кашель, внезапное урчание в желудке или усиление перистальтики.</p>
+        </div>
+        <div class="test-card" id="card-laryngeal">
+            <h3>Работа со щитоподъязычной мембраной, верхним гортанным нервом и хрящами гортани <span class="timestamp">video_4: 56:19 - 1:44:46</span></h3>
+            <p><strong>Показания:</strong> проблемы с голосом (сиплость, потеря голоса у лекторов и певцов), состояния после операций на щитовидной железе, ларингиты.</p>
+            <h4>Ушная ветвь вагуса — вход к нерву через наружный слуховой проход</h4>
+            <p>Наружный слуховой проход разделён по проекции трёх нервов: задне-нижняя часть — вагус, задне-верхняя — лицевой нерв, передняя — тройничный нерв. Вектор захода палочкой (зондом): сзади наперёд и чуть вверх; при встрече препятствия палочку разворачивают горизонтально и погружают до остановки. Поиск дисфункции — прослушивание (надавить/отпустить и слушать смещение палочки) или вращательные движения палочкой по окружности до нахождения зоны «прилипания». Коррекция: погружение, латеральная тракция (натяжение нерва), ожидание релиза (усиление пульса); если болезненно — оттянуть мочку уха вниз; после релиза выполняется тракция по направлению к ногам.</p>
+            <h4>Коррекция щитоподъязычной мембраны (техника фиксации-разведения)</h4>
+            <div class="hand-position"><strong>Положение:</strong> пальцы стоят на верхнем крае щитовидного хряща и нижнем крае подъязычной кости.</div>
+            <p>Фиксация щитовидного хряща (смещение вниз) и подъязычной кости (смещение вверх) с последующим разведением до появления релиза. Сторона для работы выбирается по качеству кожной складки в проекции щитоподъязычной мембраны: приоритетна та сторона, где складка толще и ригиднее.</p>
+            <h4>Работа с фиброзно-фасциальным кольцом и тракция сосудисто-нервного пучка</h4>
+            <p>В области подъязычной кости, на расстоянии двух поперечных пальцев от средней линии, находят фиброзное кольцо (проекция нерва) по пульсу артерии. Ротация пальца («циркульный» режим) выполняется в сторону худшей подвижности до усиления пульса — определяется направление ригидности (ротация по/против часовой стрелки), вектор коррекции идёт в сторону наибольшего сопротивления. После релиза кольца выполняется тракция всего сосудисто-нервного пучка вниз, к ногам (третий этап техники).</p>
+            <h4>Двойная индукция (дополнительный, четвёртый этап)</h4>
+            <p>При зафиксированном верхнем кольце (щитоподъязычная мембрана) выполняется тракция нижнего кольца — на линии косой линии щитовидного хряща. Тракция нижнего кольца выполняется до ощущения её прохождения через верхнее; сила тракции от нижнего кольца передаётся на верхнее, что позволяет сбалансировать весь комплекс гортанных нервов.</p>
+            <h4>Работа с хрящами гортани</h4>
+            <p>Помимо самого нерва проводится работа с комплексом хрящей гортани (щитовидный, перстневидный хрящи, подъязычная кость) путём их взаимного смещения и уравновешивания. Техника: пальцы стоят на верхнем крае щитовидного хряща и нижнем крае подъязычной кости, проводится разведение.</p>
+            <div class="tip"><strong>Домашнее задание для пациента:</strong> пациент может самостоятельно создавать кожную складку в проекции нервов на шее/лице и мягко тянуть её вниз для поддержания эффекта между сеансами.</div>
+        </div>
+        <div class="test-card" id="card-stomach">
+            <h3>Коррекция блуждающего нерва на уровне желудка <span class="timestamp">video_4: 2:00:30 - 2:33:01</span></h3>
+            <p><strong>Цель:</strong> коррекция блуждающего нерва на уровне желудка через переднюю брюшную стенку (дополняет коррекцию сигнальной точки CV12).</p>
+            <p><strong>Диагностика (поиск проблемных зон):</strong> свести пальцы, захватывающие малую и большую кривизну желудка. Зоны с плохой сжимаемостью тканей («отёчные» зоны) требуют коррекции.</p>
+            <p><strong>Пошаговое выполнение:</strong></p>
+            <ol>
+                <li>Свести пальцы, создавая компрессию, чтобы вызвать релиз тканей;</li>
+                <li>Погрузиться пальцами в образовавшуюся складку;</li>
+                <li>Развести пальцы и выполнить «вычёрпывающее» движение от малой кривизны к большой.</li>
+            </ol>
+            <div class="hand-position"><strong>Коррекция блуждающего нерва в зоне желудка под реберной дугой:</strong><span class="timestamp">video_4: 2:24:29</span> фиксируем желудок через ребра, другой рукой погружаемся в складку и выполняем вычерпывающие движения. Основная рабочая рука та, что под ребрами. А другая (на ребрах) фиксирует желудок и следует за движением рабочем руки. Следим за контактом между руками. Если не будет контакта, то будет просто скольжение по коже.</div>
+            <div class="tip"><strong>Практические рекомендации:</strong> пациенту рекомендуется лёгкий перекус перед сеансом (чай, печенье). Для нахождения большой кривизны желудка можно использовать стетоскоп: при переходе с кишечника на мышечную ткань желудка звук меняется, становится более глухим.</div>
+            <p><strong>Как отличить дисфункцию от пищевого комка <span class="timestamp-sub">video_4: 2:24:29 - 2:29:12</span>:</strong> найденное уплотнение легко спутать с остатками пищи в желудке. Признак именно тканевой дисфункции — чёткий, воспроизводимый релиз: плотность не поддаётся сжатию, затем наступает ощутимое расслабление, и ткань начинает легко сжиматься. Пищевой комок, напротив, распределён неравномерно («здесь плотно, здесь мягко») и не даёт такого чёткого линейного релиза при работе.</p>
+            <div class="warning"><strong>Важно для безопасности:</strong> если при компрессии в области желудка пациент испытывает выраженную боль (а не просто дискомфорт или чувствительность) — это повод заподозрить органическую патологию (например, предъязвенное состояние) и направить пациента на эзофагогастродуоденоскопию (ЭГДС), прежде чем продолжать мануальную коррекцию.</div>
+        </div>
+        <div id="ch-additional-techniques" class="category-divider">
+            <h2>Глава 6. Дополнительные техники: верхняя апертура грудной клетки, левый блуждающий нерв и каротидный синус</h2>            
+        </div>
+
+
+        <div class="test-card" id="card-thoracic-aperture">
+            <h3>Коррекция блуждающего нерва на уровне верхней апертуры грудной клетки <span class="timestamp">по материалам презентации</span></h3>
+            <p><strong>Цель:</strong> опосредованное воздействие на диафрагмальный и блуждающий нервы, проходящие позади ключицы. Освобождение ключицы улучшает функцию обоих нервов. Техника хорошо активирует вентральный вагус, что способствует повышению концентрации внимания, жизненных сил, достижению целей и улучшению способности к социализации; также оказывает благоприятное влияние на дыхательную систему, поэтому показана при различных её нарушениях. Зона воздействия называется «центр дыхания жизни».</p>
+            <p><strong>Показания:</strong> нарушения дыхания, снижение концентрации внимания и жизненного тонуса, трудности социализации; дисфункция вентрального вагуса, приводящая к напряжению верхней трети пищевода и ограничивающая его движение вниз во время вдоха.</p>
+            <p><strong>Локализация зоны:</strong> нижний край ключицы, в области её медиальной трети.</p>
+            <div class="hand-position"><strong>Положение пациента и оператора:</strong> пациент сидит на кушетке, оператор — на стуле перед ним. Оператор помещает ладони на плечи пациента, большие пальцы устанавливает на зону коррекции в контакте с нижним краем ключицы.</div>
+            <p><strong>Пошаговое выполнение:</strong></p>
+            <ol>
+                <li>Выполнить небольшую латеральную тракцию ключицы;</li>
+                <li>Следовать за движением ткани до появления ощущения «парения» ключицы;</li>
+                <li>На протяжении всей техники пациент должен быть расслаблен и опираться всем весом на оператора.</li>
+            </ol>
+            <div class="tip">Коррекция этой зоны также помогает усилить ориентацию пациента в пространстве и развить «эффект присутствия».</div>
+            
+        </div>
+
+
+        <div class="test-card" id="card-left-vagus">
+            <h3>Коррекция левого блуждающего нерва <span class="timestamp">по материалам презентации</span></h3>
+            <p><strong>Цель:</strong> левый и правый блуждающие нервы анастомозируют на уровне пищевода, поэтому, несмотря на то что техника направлена именно на левый нерв, за счёт множества анастомозов коррекция передаётся и на правый. Техника оказывает благоприятное воздействие на вентральный вагус.</p>
+            <p><strong>Клиническое обоснование:</strong> при дисфункции вентрального вагуса сокращается верхняя треть пищевода. В результате желудок на каждом вдохе «ударяется» о диафрагму вместо того, чтобы скользить вниз. Со временем это приводит к рефлюксу и формированию грыжи пищеводного отверстия диафрагмы.</p>
+            <div class="hand-position"><strong>Положение рук:</strong> левую руку оператор устанавливает за наружную ножку грудино-ключично-сосцевидной мышцы, над ключицей, заходя пальцами под неё. Правой рукой оператор контактирует с желудком.</div>
+            <p><strong>Пошаговое выполнение:</strong></p>
+            <ol>
+                <li>Выполнить пробную тракцию желудка вниз правой рукой;</li>
+                <li>Дождаться «ответа» на левой руке;</li>
+                <li>Перейти к балансировке между руками.</li>
+            </ol>
+            <p><strong>Контроль результата:</strong> после окончания техники оператор проверяет движение желудка вниз на вдохе. При необходимости технику дополняют коррекцией верхней трети пищевода (см. предыдущую карточку — «центр дыхания жизни»).</p>
+            
+        </div>
+
+
+        <div class="test-card" id="card-carotid-sinus">
+            <h3>Коррекция каротидного синуса <span class="timestamp">по материалам презентации</span></h3>
+            <p><strong>Анатомическое обоснование:</strong> в области разделения общей сонной артерии на наружную и внутреннюю располагается каротидный синус, связанный с внутренней сонной артерией. Там находятся хеморецепторы, в первую очередь отслеживающие концентрацию углекислого газа в крови (её рост при гипервентиляции лёгких), и барорецепторы, отвечающие за уровень артериального давления и пульса — при их раздражении уменьшаются ЧСС и АД.</p>
+            <p><strong>Показания:</strong> заболевания дыхательной системы, сопровождающиеся гипервентиляцией; состояния, связанные с повышенным пульсом и артериальным давлением.</p>
+            <p><strong>Иннервация зоны:</strong> осуществляется волокнами блуждающего и языкоглоточного нервов. Языкоглоточный нерв также иннервирует заднюю треть языка, различные отделы глотки и верхний констриктор глотки, где сливается с волокнами блуждающего нерва, образуя глоточное сплетение. Активизация зоны происходит за счёт диафрагмального нерва. Техника двусторонняя.</p>
+            <div class="hand-position"><strong>Положение рук:</strong> одной рукой оператор двумя пальцами скользит вниз от височно-нижнечелюстного сустава, спереди от козелка, до уровня щитоподъязычной мембраны, где входит в контакт с синусами с обеих сторон. Второй рукой оператор контактирует с диафрагмальными нервами в проекции передних треугольников шеи.</div>
+            <p><strong>Выполнение:</strong> после установки рук оператор проводит уравновешивание, добиваясь устойчивой связи между руками.</p>
+            
+        </div>
+
+
+        <div id="ch5" class="category-divider">
+            <h2>Глава 7. Коррекция тимуса, аортального и сердечного сплетений</h2>
+            <p class="category-description">Открывающий этап протокола (после диагностики) — работа с областью средостения, объединяющая эмоциональный, вегетативный и иммунный факторы.</p>
+        </div>
+        <div class="test-card" id="card-thymus">
+            <h3>Мотильность тимуса (техника коррекции) <span class="timestamp">video_1: 1:35:22, video_6: 2:21 - 6:36</span></h3>
+            <p><strong>Цель:</strong> активация парасимпатического звена регуляции; техника объединяет эмоциональный, вегетативный и иммунный факторы, поэтому именно с неё начинается протокол коррекции. При остром стрессе тимус способен потерять до 50% своего объёма за сутки <span class="timestamp-sub">video_1: 1:40:20</span> — этим объясняется, в частности, ослабление иммунитета у детей, растущих в хронически конфликтной семейной обстановке (снижается пул Т-лимфоцитов, включая Т-хелперы и Т-супрессоры, что отражается и на гуморальном иммунитете через B-лимфоциты).</p>
+            <div class="hand-position"><strong>Положение специалиста и рук:</strong> встать на уровне рукоятки грудины. Руки располагаются так, чтобы основания ладоней контактировали друг с другом (не ладонь на ладони), чтобы можно было отслеживать мотильность тимуса.</div>
+            <p><strong>Пошаговое выполнение:</strong></p>
+            <ol>
+                <li>Погрузить руки в зону тимуса весом рук (руки расслаблены, «проваливаются» под собственным весом — техника не структуральная, а работа с движением ткани);</li>
+                <li>Дождаться балансировки, не вмешиваясь активно в процесс, отслеживая движение ткани от средней линии влево, вправо и каудально;</li>
+                <li>Как только почувствовали движение — выйти из контакта, не отрывая рук, и снова погрузиться;</li>
+                <li>Если при повторном погружении движение снова ощущается — зона считается отработанной.</li>
+            </ol>
+            <p><strong>Диагностические критерии / интерпретация:</strong> нормальная мотильность тимуса — движение изнутри наружу и каудально. Оценивается тенденция движения ткани капсулы тимуса (мотильность), а не структуральное смещение.</p>
+            <div class="tip"><strong>Практический совет:</strong> во время работы специалист даёт нагрузку, проваливаясь весом, и оставляет её, позволяя ткани уходить по собственной «правильной» траектории.</div>
+        </div>
+        <div class="test-card" id="card-plexus">
+            <h3>Мотильность аортального и сердечного сплетений <span class="timestamp">video_6: 11:34 - 26:37</span></h3>
+            <p><strong>Цель:</strong> уравновесить аортальное и сердечное сплетения — глобальная техника, оказывающая благоприятное воздействие на психоэмоциональные нарушения и стимулирующая вентральный вагус.</p>
+            <p><strong>Анатомическое обоснование:</strong> блуждающие нервы проходят в области подключичной артерии и дуги аорты. В области дуги аорты расположены аортальное сплетение и каротидные тельца, информирующие ЦНС о состоянии тонуса аорты (хеморецепторы на CO₂ и барорецепторы; нормализация их работы ведёт к глобальному релизу системы). На уровне сердца находится сердечное сплетение.</p>
+            <div class="tip"><strong>Подготовительный этап:</strong> перед лечением аортального сплетения желательно провести коррекцию дуги аорты, работая с адвентицией сосуда — это влияет на нервы сосудов (nervi vasorum).</div>
+            <div class="hand-position"><strong>Положение рук:</strong> левая рука — на грудине (уровень угла грудины); правая рука — под спиной, в проекции 3–4-го грудных позвонков. Для поиска позвонков находят первое ребро, идут по его плоскости к первому грудному позвонку, затем считают остистые отростки до третьего-четвёртого.</div>
+            <p><strong>Выполнение и диагностические критерии:</strong> после установки рук специалист входит в контакт, «проваливается» и слушает пространство между руками.</p>
+            <ul class="content-list">
+                <li>Сплетения рассматриваются как электромагнитная структура, где нервные клетки передают электрический потенциал;</li>
+                <li>Критерий нормальной работы: верхняя и нижняя руки вращаются против часовой стрелки, верхняя рука ощущается «отдающей»;</li>
+                <li>При нормальной работе между руками ощущается упругая, эластичная структура, «как отталкивающиеся магниты»;</li>
+                <li>Если между руками ощущается пустота — сплетение работает некорректно;</li>
+                <li>Руки вращаются в разные, противонаправленные стороны, так как «циферблат» на грудине и на спине ориентирован по-разному.</li>
+            </ul>
+            <p><strong>Коррекция:</strong> если вращения нет, специалист продолжает работать с пространством между руками, пока оно не сбалансируется.</p>
+        </div>
+        <div id="ch6" class="category-divider">
+            <h2>Глава 8. Коррекция передней поверхности тела и сигнальных (Му-) точек внутренних органов</h2>
+            <p class="category-description">Первый крупный блок работы с туловищем: снижение симпатической активности и висцеральной регуляции через сигнальные зоны внутренних органов.</p>
+        </div>
+        <div class="test-card" id="ch6-technique">
+            <h3>Коррекция передних точек (сигнальные Му-точки)</h3>
+            <p>Работа с передней поверхностью тела начинается первой, поскольку здесь расположены сигнальные (Му-) точки внутренних органов, обладающие высокой диагностической и терапевтической значимостью. Работа с этими зонами позволяет снизить общий уровень симпатической активности, улучшить висцеральную регуляцию, уменьшить мышечно-фасциальное напряжение и подготовить организм к последующим этапам коррекции.</p>
+            <p>Для большинства Му-точек применяется единый алгоритм:</p>
+            <ol>
+                <li><strong>Контакт</strong> — кисть мягко укладывается на область коррекции, давление минимальное;</li>
+                <li><strong>Поиск ограничения</strong> — определяется направление, в котором ткани смещаются хуже всего;</li>
+                <li><strong>Смещение тканей</strong> — кожа и поверхностные фасции медленно смещаются в выбранном направлении, резкие движения недопустимы;</li>
+                <li><strong>Удержание</strong> — ткани удерживаются до появления признаков расслабления: уменьшение сопротивления, снижение болезненности, ощущение «плавления» тканей, изменение дыхания пациента, глубокий вдох или зевота;</li>
+                <li><strong>Возврат</strong> — после расслабления ткани плавно возвращаются в нейтральное положение.</li>
+            </ol>
+        </div>
+        <div class="test-card" id="ch6-zones">
+            <h3>Основные сигнальные зоны и порядок работы</h3>
+            <p><strong>Сердце (CV17):</strong> зона в области грудины на уровне четвёртого межреберья, дополнительно оцениваются мягкие ткани передней поверхности грудной клетки. Показания — ощущение сердцебиения, функциональная тахикардия, эмоциональное напряжение, тревожность, поверхностное дыхание, ощущение сдавления грудной клетки.</p>
+            <p><strong>Лёгкие (LU1):</strong> под ключицами, в верхних отделах грудной клетки. Показания — поверхностное дыхание, ощущение нехватки воздуха, хронический кашель, повышенное напряжение дыхательной мускулатуры.</p>
+            <p><strong>Желудок (CV12):</strong> по средней линии живота между мечевидным отростком и пупком. Показания — гастрит, функциональная диспепсия, чувство переполнения желудка, тяжесть после еды, замедленная эвакуация пищи, стрессовые нарушения пищеварения.</p>
+            <p><strong>Печень (LR14):</strong> область правой рёберной дуги. Показания — функциональные нарушения печени, хроническое эмоциональное напряжение, раздражительность, тяжесть в правом подреберье.</p>
+            <p><strong>Желчный пузырь (GB24):</strong> под правой рёберной дугой. Показания — нарушения желчеотделения, функциональные дискинезии, горечь во рту, тяжесть после жирной пищи. Пальпация выполняется особенно осторожно.</p>
+            <p><strong>Кишечник:</strong> несколько зон, отражающих его состояние. Показания — синдром раздражённого кишечника, хронические запоры, функциональная диарея, повышенное газообразование, хроническое воспаление пищеварительного тракта.</p>
+            <p><strong>Почки (K27):</strong> область K27. Показания — хроническая усталость, снижение жизненного тонуса, тревожность, ощущение постоянного истощения.</p>
+            <div class="tip"><strong>Рекомендуемый порядок работы:</strong> сердце → лёгкие → желудок → печень → желчный пузырь → кишечник → почки. Если выявлена выраженная болезненность одной из точек, целесообразно начать именно с неё.</div>
+            <p><strong>Реакции пациента во время процедуры (нормальны):</strong> глубокий вдох, зевота, сглатывание, расслабление живота, урчание кишечника, уменьшение болезненности при повторной пальпации, чувство тепла, ощущение спокойствия.</p>
+            <div class="warning"><strong>Типичные ошибки:</strong> чрезмерное давление, слишком быстрое выполнение техник, воздействие через выраженную боль, игнорирование дыхания пациента, хаотичный выбор зон без предварительной диагностики.</div>
+        </div>
+        <div class="test-card" id="card-acupoints">
+            <h3>Принципы работы с акупунктурными точками (метод индикаторных точек) <span class="timestamp">video_6: 1:40:47 - 2:04:43</span></h3>
+            <p><strong>Теоретическое обоснование:</strong> на уровне поверхностной фасции расположено фиброзное кольцо, через которое наружу выходит сосудисто-нервный пучок — капилляр, вена и очень тонкое нервное волокно. При постановке иглы (с пулевидным наконечником) или при ручном воздействии это фиброзное кольцо разрушается, что улучшает работу пучка. Воздействие идёт на C-волокна — медленные немиелинизированные волокна, идущие в спинной мозг, поясную извилину и островковую кору (высший центр интероцепции).</p>
+            <div class="hand-position"><strong>Подготовка зоны:</strong> перед началом работы с точкой выполняются лёгкие поглаживающие движения от центра к периферии (3 раза) — это активирует C-волокна и предотвращает защитную реакцию организма. Кожа должна смещаться под пальцами — это не поглаживание, а работа с фасцией.</div>
+            <p><strong>Пошаговое выполнение (цикл из трёх шагов):</strong></p>
+            <ol>
+                <li><strong>Поиск ригидности:</strong> расположиться в проекции точки, выполнять круговые вращательные движения (радиус — примерно ширина пальца); если палец упирается в сопротивление — это наиболее ригидная часть фасциальной ткани;</li>
+                <li><strong>Штриховое воздействие:</strong> от противоположного края найденной ригидной зоны выполнить резкое скользящее штриховое движение;</li>
+                <li><strong>Фасциальное уравновешивание:</strong> прослушивание и следование за балансировкой ткани.</li>
+            </ol>
+            <p><strong>Диагностические критерии активности точки:</strong> характерная колющая/режущая боль и краснота (признак гиперсимпатикотонии, напоминающий картину дермографизма).</p>
+            <div class="tip"><strong>Правило повторов:</strong> если точка активна — цикл из трёх шагов повторяют трижды; если точка неактивна — переходят к следующей. На первом сеансе прорабатываются все точки; на повторных сеансах — только те, что были активны на предыдущем. Вся работа по этому методу начинается с техники на тимусе.</div>
+            <h4>Локализация индикаторных точек туловища</h4>
+            <ul class="content-list">
+                <li>Меридиан почек — по парастернальной линии; меридиан желудка — по среднеключичной линии; точки локализуются в межрёберных промежутках.</li>
+                <li>Точка между 4-м и 5-м рёбрами по центральной линии — индикатор сердца.</li>
+                <li>Точка лёгких — на один-полтора пальца ниже клювовидного отростка.</li>
+                <li>Точка на вершине 11-го ребра — работа с тонким и толстым кишечником.</li>
+                <li>Точка на вершине 12-го ребра — работа с почками и мочеполовой системой.</li>
+                <li>Точки на грудине — для сердца и лёгких; точки на животе (от рёбер до лобка) — для пищеварительной системы.</li>
+                <li>Индикаторная точка желудка — пересечение края нижних рёбер со средней линией живота.</li>
+                <li><strong>Нейро-лимфатическая точка</strong> (по материалам презентации) — между 2-м и 3-м рёбрами, снаружи от меридиана почек. Используется для балансировки лимфатической системы.</li>
+            </ul>
+        </div>
+        <div id="ch11" class="category-divider">
+            <h2>Глава 9. Точки задней поверхности тела</h2>
+            <p class="category-description">Работа со спиной (меридиан мочевого пузыря) выполняется в рамках второй, «задней» группы протокола — после передней поверхности тела и перед переходом к черепу.</p>
+        </div>
+        <div class="test-card" id="ch11-back">
+            <h3>Коррекция точек на спине (меридиан мочевого пузыря) <span class="timestamp">video_6: 2:22:29 - 2:24:17</span></h3>
+            <p>Меридиан мочевого пузыря имеет два пути: медиальный проходит посередине паравертебральных мышц, наружный — по их наружному краю; проекция точек соответствует уровню остистых отростков.</p>
+            <table class="data-table">
+                <tr><th>Уровень (остистый отросток)</th><th>Представительство</th></tr>
+                <tr><td>TH3</td><td>лёгкие</td></tr>
+                <tr><td>TH4</td><td>перикард</td></tr>
+                <tr><td>TH5</td><td>сердце</td></tr>
+                <tr><td>TH7</td><td>диафрагма</td></tr>
+                <tr><td>TH9</td><td>печень</td></tr>
+                <tr><td>TH10</td><td>желчный пузырь</td></tr>
+                <tr><td>TH11</td><td>селезёнка</td></tr>
+                <tr><td>TH12</td><td>желудок</td></tr>
+                <tr><td>L2</td><td>почки</td></tr>
+            </table>
+            
+            <div class="hand-position"><strong>Дополнительная техника:</strong> штрихование межостистых связок раздражает нерв Люшка, способствуя «обнулению» мышц-стабилизаторов и коррекции позвоночника.</div>
+        </div>
+        <div id="ch7" class="category-divider">
+            <h2>Глава 10. Коррекция шеи</h2>
+            <p class="category-description">Шея как «узел управления» сосудисто-нервными структурами: последовательная работа с передней и боковой поверхностью шеи, ГКСМ, зоной Эрба и точками меридианной сети шеи.</p>
+        </div>
+        <div class="test-card" id="ch7-general">
+            <h3>Почему шея — ключевая зона, и порядок работы</h3>
+            <p>Шейный отдел представляет собой своеобразный «узел управления», через который проходят основные сосудисто-нервные структуры, соединяющие головной мозг с внутренними органами: блуждающий нерв, симпатический ствол, добавочный нерв, подъязычный нерв, сонные артерии, внутренняя ярёмная вена и многочисленные фасциальные пространства. Даже небольшое повышение тонуса мышц шеи может ухудшать подвижность тканей и усиливать раздражение нервных структур.</p>
+            <p>Работа с шеей направлена на снижение мышечного напряжения, улучшение скольжения фасциальных слоёв, уменьшение компрессии сосудисто-нервного пучка, нормализацию афферентной импульсации и активацию вентрального вагального комплекса. Главная цель — не прямое «воздействие на нерв», а создание оптимальных условий для его нормальной работы.</p>
+            <p><strong>Последовательность работы в области шеи:</strong></p>
+            <ol>
+                <li>Передняя поверхность шеи;</li>
+                <li>Область гортани;</li>
+                <li>Грудино-ключично-сосцевидная мышца;</li>
+                <li>Боковая поверхность шеи;</li>
+                <li>Зона Эрба;</li>
+                <li>Область выхода добавочного нерва;</li>
+                <li>Нижний отдел шеи.</li>
+            </ol>
+            <p>Работу начинают с мягкого контакта на передней поверхности шеи, без давления на трахею, оценивая подвижность кожи, состояние поверхностной фасции, локальную болезненность и симметрию тканей — любое движение выполняется исключительно через смещение кожи, без давления на глубоко расположенные структуры. Рекомендуется начинать воздействие лёгкими движениями от передней поверхности шеи к задней, постепенно увеличивая площадь контакта.</p>
+            <h4>Область гортани</h4>
+            <p>Определённые точки на уровне гортани используются при функциональных нарушениях голоса, речи и некоторых воспалительных заболеваниях. Показания: осиплость голоса, повышенное напряжение голосовых связок, чувство «кома» в горле, затруднение речи после стресса, хроническое напряжение мышц передней поверхности шеи. Движения при воздействии остаются минимальными и безболезненными.</p>
+            <p><strong>Реакции пациента:</strong> глубокий вдох, расслабление мышц шеи, уменьшение болезненности при повторной пальпации, ощущение тепла, снижение напряжения в плечевом поясе, изменение тембра голоса, чувство спокойствия.</p>
+            <div class="warning"><strong>Частые ошибки:</strong> чрезмерное давление на сосудисто-нервный пучок, воздействие непосредственно на сонную артерию, быстрые или рывковые движения, попытка глубокой пальпации в начале процедуры, игнорирование выраженной болезненности тканей. Безопасность пациента всегда имеет приоритет перед интенсивностью воздействия.</div>
+        </div>
+        <div class="test-card" id="ch7-scm">
+            <h3>ГКСМ, грудино-ключичный сустав, добавочный нерв и зона Эрба</h3>
+            <h4>Грудино-ключично-сосцевидная мышца (ГКСМ)</h4>
+            <p>ГКСМ является одним из основных ориентиров при работе с блуждающим нервом: позади неё проходит сосудисто-нервный пучок, содержащий внутреннюю сонную артерию, внутреннюю ярёмную вену и блуждающий нерв. Избыточное напряжение мышцы может изменять биомеханику окружающих тканей и ограничивать их подвижность. При пальпации оценивают напряжение мышцы, наличие триггерных точек, симметрию и болезненность мест прикрепления; работу начинают с поверхностного расслабления, затем переходят к фасциальной коррекции.</p>
+            <h4>Область грудино-ключичного сустава</h4>
+            <p>Точка на наружном крае грудинной ножки ГКСМ соответствует области грудино-ключичного сустава, используется при ограничении подвижности сустава.</p>
+            <ol>
+                <li>Определить чувствительность зоны;</li>
+                <li>Выполнить мягкое смещение тканей;</li>
+                <li>Удерживать до расслабления;</li>
+                <li>Повторно оценить подвижность.</li>
+            </ol>
+            <h4>Зона выхода добавочного нерва</h4>
+            <p>Область располагается примерно на середине расстояния между боковой поверхностью шеи и акромиально-ключичным суставом, кзади от переднего края трапециевидной мышцы — это место выхода перфорантной ветви добавочного нерва. Добавочный нерв иннервирует ГКСМ и трапециевидную мышцу, поэтому расслабление этой зоны способствует уменьшению напряжения всего плечевого пояса. Показания: хроническое напряжение шеи, боли в плечевом поясе, ограничение поворотов головы, стрессовые мышечные спазмы.</p>
+            <h4 id="ch7-erb">Зона Эрба («центр спокойствия»)</h4>
+            <p>Одна из ключевых зон всей методики. Располагается позади затылочного края ГКСМ на уровне подъязычной кости. Здесь предпочтительно использовать нейрофасциальную технику, чтобы избежать нежелательного раздражения вегетативной нервной системы. Воздействие способствует снижению общего уровня тревожности, уменьшению симпатической активности, улучшению эмоциональной устойчивости и подготовке пациента к дальнейшей коррекции. Из-за высокой чувствительности тканей грубое давление в этой зоне недопустимо.</p>
+            <div class="tip"><strong>Практический алгоритм работы с шеей:</strong> визуальный осмотр → оценка подвижности кожи и фасций → коррекция передней поверхности → расслабление ГКСМ → область грудино-ключичного сустава → зона выхода добавочного нерва → зона Эрба → повторная оценка состояния тканей и субъективных ощущений пациента.</div>
+        </div>
+        <div class="test-card" id="ch7-points">
+            <h3>Точки шеи (меридианная сеть) <span class="timestamp">video_6: 2:29:46 - 2:33:12</span></h3>
+            <ul class="content-list">
+                <li><strong>Точки блуждающего нерва:</strong> по бокам от остистого отростка C2, на один поперечный палец в сторону.</li>
+                <li><strong>Зона угла нижней челюсти</strong> — проекция добавочного нерва.</li>
+                <li><strong>Точки боковой поверхности шеи:</strong> уровень подъязычной кости, щитовидного и перстневидного хрящей, наружный край ключичной ножки.</li>
+            </ul>
+        </div>
+        <div id="ch8" class="category-divider">
+            <h2>Глава 11. Подзатылочная область</h2>
+            <p class="category-description">Работа с подзатылочными структурами, богатыми проприорецепторами и тесно связанными с верхними шейными нервами и активностью блуждающего нерва.</p>
+        </div>
+        <div class="test-card" id="ch8-suboccipital">
+            <h3>Коррекция точек на затылке и подзатылочной области <span class="timestamp">video_6: 2:28:10 - 2:29:07</span></h3>
+            <p>После коррекции передней и боковой поверхности шеи работа продолжается с подзатылочной областью, поскольку здесь расположены структуры, влияющие на регуляцию положения головы, кровоснабжение головного мозга и взаимодействие между верхними шейными нервами и блуждающим нервом. Показания: головная боль, головокружение, обморочные состояния, нарушения постурального баланса, ощущение нарушения связи между движениями головы и тела.</p>
+            <p>Подзатылочные мышцы — одни из самых богатых проприорецепторами мышц организма: они постоянно передают информацию о положении головы, направлении взгляда, напряжении мышц и равновесии тела. Даже небольшое увеличение их тонуса способно приводить к хроническим головным болям, нарушению координации, ощущению неустойчивости, головокружению и хроническому напряжению шеи.</p>
+            <h4>Анатомические ориентиры и последовательность поиска точек</h4>
+            <p><strong>Инион</strong> — наружный затылочный выступ, наиболее выступающая точка затылочной кости, легко определяется пальпаторно; от него начинается поиск большинства зон. <strong>Остистый отросток C2</strong> — наиболее выступающий остистый отросток верхнего отдела шейного позвоночника; между инионом и C2 располагаются основные точки воздействия.</p>
+            <ol>
+                <li>Найти инион;</li>
+                <li>Определить первую зону непосредственно над ним;</li>
+                <li>Перейти к зоне под инионом по средней линии;</li>
+                <li>Обследовать симметричные латеральные участки;</li>
+                <li>Найти остистый отросток C2;</li>
+                <li>Исследовать область над ним;</li>
+                <li>Перейти к зоне ниже остистого отростка по средней линии;</li>
+                <li>Определить проекцию выхода затылочной артерии.</li>
+            </ol>
+            <div class="warning"><strong>Проекция затылочной артерии:</strong> область выхода затылочной артерии из-под сухожильной дуги, образованной местами прикрепления трапециевидной и грудино-ключично-сосцевидной мышц. Коррекция рекомендуется при мигрени, сосудистых головных болях, головокружении, функциональном нарушении мозгового кровообращения. Воздействие должно быть мягким и направленным преимущественно на поверхностные ткани.</div>
+            <h4>Техника работы с подзатылочной областью</h4>
+            <ol>
+                <li><strong>Контакт</strong> — кисти располагают под затылочной костью, подушечки пальцев соприкасаются с подзатылочными мышцами, давление минимальное;</li>
+                <li><strong>Оценка тканей</strong> — определяют напряжение, симметрию, болезненность и ограничение подвижности;</li>
+                <li><strong>Нейрофасциальная коррекция</strong> — ткани слегка смещают в направлении наименьшего сопротивления, положение удерживают до появления признаков расслабления;</li>
+                <li><strong>Контроль результата</strong> — повторно оценивают болезненность, эластичность тканей, объём движений головы и субъективные ощущения пациента.</li>
+            </ol>
+            <p><strong>Реакции пациента:</strong> глубокое расслабление, ощущение тепла в голове, уменьшение головной боли, улучшение ясности мышления, свободные повороты головы, ощущение лёгкости в шее.</p>
+            <h4>Точки затылка (меридианная сеть)</h4>
+            <ul class="content-list">
+                <li>Первая точка — над большим затылочным бугром (инион), вторая — сразу под ним.</li>
+                <li>Точки большого затылочного нерва — на один палец ниже иниона и на полтора пальца в сторону.</li>
+            </ul>
+        </div>
+        <div id="ch10" class="category-divider">
+            <h2>Глава 12. Коррекция лица и нижних конечностей</h2>
+            <p class="category-description">Периферические зоны в завершающей части работы с точками тела: несмотря на удалённость от ствола вагуса, содержат большое количество рецепторов и рефлекторных связей, влияющих на автономную регуляцию.</p>
+        </div>
+        <div class="test-card" id="ch10-face">
+            <h3>Коррекция точек лица, тройничного и лицевого нервов <span class="timestamp">video_6: 2:33:12 - 2:37:21</span></h3>
+            <p>Лицо — одна из наиболее чувствительных зон организма: здесь располагаются ветви тройничного нерва, лицевой нерв, большое количество механорецепторов, сосудистые сплетения и мимические мышцы. Состояние этих структур влияет не только на двигательную активность лица, но и на эмоциональную экспрессию, речь и чувство безопасности — поэтому расслабление лицевых тканей часто сопровождается выраженным снижением уровня тревожности.</p>
+            <p><strong>Цели работы с лицом:</strong> уменьшить гипертонус мимической мускулатуры, восстановить подвижность поверхностной фасции, улучшить микроциркуляцию, уменьшить компрессию нервных ветвей, нормализовать сенсорную афферентацию.</p>
+            <p><strong>Рекомендуемая последовательность:</strong> лоб → надбровные дуги → височные области → скуловые зоны → область жевательных мышц → подбородок → нижняя челюсть.</p>
+            <p><strong>Височная область:</strong> хроническое напряжение височных мышц часто сопровождает стресс, тревожность, бруксизм, хронические головные боли и нарушения ВНЧС. Ткани смещают медленно, удерживая до появления ощущения расслабления.</p>
+            <p><strong>Жевательные мышцы:</strong> одна из наиболее сильных мышц организма; у пациентов с хроническим стрессом часто находится в состоянии постоянного гипертонуса, что проявляется скрежетом зубов, стискиванием челюстей, болью в области ВНЧС, головной болью, ограничением открывания рта. После расслабления мышцы пациенты нередко отмечают ощущение лёгкости в лице.</p>
+            <p><strong>Височно-нижнечелюстной сустав:</strong> коррекция выполняется исключительно мягко. Оцениваются амплитуда открывания рта, симметрия движений, болезненность, наличие щелчков и напряжение окружающих тканей; работа направлена не на насильственное изменение положения сустава, а на уменьшение мышечно-фасциального напряжения.</p>
+            <div class="hand-position"><strong>Метод невральных манипуляций для точек лица:</strong> придерживание кожи вокруг места выхода нерва (тройничный, лицевой нерв) с последующим смещением в сторону ригидности. Точки лица требуют особой осторожности — нужно придерживать кожу либо использовать технику «звёздочки» (смещение тканей в сторону ригидности с последующим прямым воздействием).</div>
+            <h4>Точки лица (меридианная сеть)</h4>
+            <ul class="content-list">
+                <li><strong>Точки лицевого нерва:</strong> под скуловой дугой (ST7); между сосцевидным отростком и углом челюсти (в проекции шилососцевидного отверстия); на сосцевидном отростке (верхняя часть).</li>
+                <li><strong>Точка выше уха</strong> (GB8, на два поперечных пальца выше уха, на височной мышце) — эффективна при мигренях, головных болях, головокружениях, а также при проблемах ВНЧС.</li>
+                <li><strong>Точка кпереди от козелка</strong> (точка F) — «зона активного слуха» / «зона анализа слуха», улучшает восприятие звука.</li>
+                <li><strong>Точка под скуловой дугой</strong> (ST7) — для височно-нижнечелюстного сустава.</li>
+                <li><strong>Точка на внутреннем углу брови</strong> (по материалам презентации) — вектор коррекции вверх и внутрь.</li>
+                <li><strong>Точка в проекции подбородочного отверстия</strong> (по материалам презентации).</li>
+                <li><strong>Точка жевательной мышцы</strong> на уровне угла нижней челюсти (по материалам презентации).</li>
+                <li><strong>Наружный угол глаза</strong> (по материалам презентации) — отдельная зона коррекции.</li>
+                <li><strong>Зона надглазничного отверстия</strong> (по материалам презентации) — отдельно от точки на внутреннем углу брови.</li>
+                <li><strong>Зона подглазничного отверстия</strong> (по материалам презентации).</li>
+                <li><strong>Зона проекции большого ушного нерва</strong> (по материалам презентации) — располагается за ухом.</li>
+                <li><strong>Зона между сосцевидным отростком и нижней челюстью</strong> (по материалам презентации).</li>
+            </ul>
+        </div>
+        <div class="test-card" id="ch10-legs">
+            <h3>Коррекция точек на ноге (нижние конечности) <span class="timestamp">video_6: 2:38:48 - 2:40:43</span></h3>
+            <p>После завершения работы с головой и шеей протокол предусматривает переход к нижним конечностям. Несмотря на кажущуюся удалённость от блуждающего нерва, мышцы и фасции ног содержат большое количество проприорецепторов, участвующих в поддержании постурального баланса; нормализация подвижности нижних конечностей способствует улучшению общей координации и уменьшению компенсаторного мышечного напряжения.</p>
+            <p><strong>Обследование:</strong> перед началом коррекции оценивают положение таза, ось нижних конечностей, объём движений, симметрию мышечного тонуса и наличие болезненных зон.</p>
+            <h4>Основные области воздействия</h4>
+            <ul class="content-list">
+                <li><strong>Передняя поверхность бедра</strong> — при повышенном тонусе сгибателей, ограничении походки и хроническом напряжении таза.</li>
+                <li><strong>Задняя поверхность бедра</strong> — при укорочении задней мышечной цепи, болях в пояснице, снижении гибкости.</li>
+                <li><strong>Голень</strong> — прорабатываются икроножная и камбаловидная мышцы, а также фасциальные перегородки.</li>
+                <li><strong>Стопа</strong> — особое внимание уделяется своду стопы, подошвенной фасции и пяточной области; стопа играет важную роль в поддержании постуральной устойчивости благодаря большому количеству механорецепторов.</li>
+            </ul>
+            <p>Общие принципы те же, что и на предыдущих этапах: воздействие медленное, безболезненное, симметричное, направленное преимущественно на фасциальные структуры.</p>
+            <h4>Точки ног (меридианная сеть)</h4>
+            <ul class="content-list">
+                <li><strong>Точки меридиана желудка:</strong> от суставной щели колена вниз по голени, с интервалом в четыре пальца между малоберцовой и большеберцовой костями.
+                    <ul class="content-list">
+                        <li><strong>St36</strong> — контроль желудка, все расстройства пищеварения, усталость, анемия; основная точка в акупунктуре, 3 цуня ниже бедренно-большеберцового сустава.</li>
+                        <li><strong>St37</strong> — контроль толстого кишечника и многие расстройства пищеварения; 3 цуня (9-10 см) ниже St36.</li>
+                        <li><strong>St39</strong> — контроль тонкого кишечника, хронические и инфекционные расстройства пищеварения; 9-10 см ниже St37.</li>
+                    </ul>
+                </li>
+                <li><strong>Точки меридиана селезёнки</strong> (по материалам презентации) — по внутренней поверхности ноги, скользя вниз до окончания мыщелка и начала тела кости, кпереди от линии икроножной мышцы; вторая зона — на три пальца выше внутренней лодыжки.
+                    <ul class="content-list">
+                        <li><strong>SP10</strong> — менструация, матка, анемия; медиальный край медиальной широкой мышцы бедра, 2 цуня (6 см) выше надколенника.</li>
+                        <li><strong>SP9</strong> — проблемы с кишечником, инфекции пищеварительной и мочевыделительной систем; небольшое углубление перед икроножной мышцей, нижний край внутреннего мыщелка большеберцовой кости.</li>
+                    </ul>
+                </li>
+                <li><strong>Точка мочеполовой системы:</strong> три поперечных пальца от края медиальной лодыжки на большеберцовой кости.</li>
+            </ul>
+        </div>
+        <div id="ch9" class="category-divider">
+            <h2>Глава 13. Центральные краниальные техники</h2>
+            <p class="category-description">Завершающий блок работы с черепом: улучшение подвижности костей черепа и нормализация механизмов центральной регуляции после проработки периферических зон.</p>
+        </div>
+        <div class="test-card" id="card-cv4">
+            <h3>Компрессия четвёртого желудочка (CV4)</h3>
+            <p>После коррекции периферических зон рекомендуется переходить к центральным краниальным техникам. В методике описаны два варианта выполнения:</p>
+            <ol>
+                <li>Классический вариант;</li>
+                <li>Синхронизированный с дыханием пациента — на выдохе выполняют мягкую компрессию затылочной кости, а на вдохе частично ослабляют давление, сохраняя контакт.</li>
+            </ol>
+            <p><strong>Предполагаемые эффекты:</strong> глубокое расслабление, снижение симпатической активности, улучшение качества сна, уменьшение головной боли, нормализация дыхания.</p>
+            <p>Для коррекции центральных ядер вегетативной нервной системы в методике используются: компрессия четвёртого желудочка, техники на височные кости (перекаты) и работа с мозолистым телом <span class="timestamp-sub">video_6: 45:14</span>.</p>
+        </div>
+        <div class="test-card" id="card-temporal">
+            <h3>Перекат височных костей <span class="timestamp">video_6: 46:04 - 59:36</span></h3>
+            <p>Поскольку через височную кость проходит лицевой нерв и располагаются структуры внутреннего уха, эту технику используют при головокружении, нарушении равновесия, шуме в ушах, повышенном напряжении височной области. Движения выполняются медленно и симметрично.</p>
+            <p><strong>Виды переката и их действие:</strong> продольный перекат височных костей активирует симпатическую часть нервной системы; поперечный перекат активирует парасимпатическую часть (вагус), воздействуя на вегетативные ядра ромбовидной ямки.</p>
+            <div class="hand-position"><strong>Положение рук для переката:</strong> первый межфаланговый сустав большого пальца лежит на верхушке сосцевидных отростков, основания первых пальцев — на пирамидной части и чешуе височной кости.</div>
+            <p><strong>Диагностика:</strong> давят на сосцевидные отростки внутрь; с той стороны, где давление ощущается легче, кость находится в наружной ротации.</p>
+            <p><strong>Выполнение поперечного переката:</strong> дождаться фазы флексии, начать переваливаться корпусом с одного седалищного бугра на другой — движение совершается за счёт корпуса, а не рук.</p>
+            <p><strong>Симметричный перекат:</strong> сидя ровно, перекатываться на седалищных буграх вперёд-назад (усиливая лордоз или кифоз), при этом давить основанием ладони на чешую височной кости.</p>
+            <p><strong>Жидкостной перекат:</strong> во время работы нужно стремиться к ощущению перетока жидкости между ладонями.</p>
+            <div class="note"><strong>Важное правило:</strong> если выполняется продольный перекат, его всегда нужно завершать поперечным, чтобы пациент не ушёл в симпатикотонию.</div>
+            <p>По окончании техники височные кости балансируются, возвращаясь к симметричному движению флексии-экстензии.</p>
+        </div>
+        <div class="test-card" id="card-corpus">
+            <h3>Работа с мозолистым телом <span class="timestamp">video_6: 1:13:00 - 1:25:23</span></h3>
+            <p><strong>Обоснование:</strong> мозолистое тело связывает левое и правое полушария. Работа с ним улучшает межполушарное взаимодействие и активность зеркальных нейронов, ответственных за эмпатию и активацию вентрального вагуса.</p>
+            <h4>Техника 1 (структурная)</h4>
+            <p>Руки лежат с двух сторон от сагиттального шва. За счёт давления грудиной (не руками!) специалист «проникает» в полость черепа, локти прижаты к себе. Возникает ощущение «разламывания» черепа вдоль сагиттального шва.</p>
+            <div class="note"><strong>Важно:</strong> давить нужно грудиной — если давить руками, возникает компрессия шейного отдела позвоночника специалиста.</div>
+            <h4>Техника 2 (балансировочная)</h4>
+            <p>Специалист «проваливается» на мозговую ткань, сжимает ладони и сводит полушария друг к другу («техника половинки яблок»), дожидаясь балансировки, пока полушария не разойдутся самостоятельно.</p>
+            <p><strong>Ощущения при работе с мозговой тканью:</strong> ток, покалывание или прохлада.</p>
+            <div class="tip">Дополняем технику образным представлением двух полушарий как двух сфер, соединённых между собой, направляя внимание на мысленное «уравновешивание» этих сфер и свободную циркуляцию между ними.</div>
+            <div class="warning"><strong>Дозирование силы у детей <span class="timestamp-sub">video_6: 1:25:23 - 1:40:47</span>:</strong> сила давления при работе с черепом и мозолистым телом должна соответствовать возрасту пациента. Детям младше 2–2,5 лет достаточно минимального воздействия — веса предплечья, без дополнительного «наваливания» корпусом. Начиная примерно с 5–6 лет допустимо более выраженное давление корпусом, аналогичное работе со взрослым пациентом. Чем старше ребёнок, тем больше силы можно и нужно применять — важно оценивать это индивидуально, а не действовать по шаблону.</div>
+        </div>
+        <div id="ch12" class="category-divider">
+            <h2>Глава 14. Комплексный алгоритм работы с блуждающим нервом</h2>
+            <p class="category-description">Итоговый протокол обследования и коррекции, объединяющий теоретическую модель курса и последовательность практических шагов сеанса.</p>
+        </div>
+        <div class="test-card" id="ch12-reception">
+            <h3>Этапы 1–3. Приём пациента, осмотр и пальпация</h3>
+            <p>Коррекция блуждающего нерва представляет собой последовательную работу с различными анатомическими областями, участвующими в регуляции автономной нервной системы. Основная задача — восстановить способность организма поддерживать гомеостаз и эффективно адаптироваться к физическим и психоэмоциональным нагрузкам. В основе методики лежит принцип постепенного перехода от диагностики к коррекции, при котором каждое последующее воздействие дополняет эффект предыдущего.</p>
+            <h4>Этап 1. Первичный приём</h4>
+            <p>Необходимо уточнить основные жалобы, длительность заболевания, наличие хронических заболеваний, перенесённые операции и травмы, уровень физической активности, качество сна, наличие хронического стресса, особенности питания, принимаемые лекарственные препараты. Особое внимание уделяется симптомам, которые могут свидетельствовать о нарушении автономной регуляции: хронической усталости, тревожности, нарушениям сна, функциональным расстройствам пищеварения, сердцебиению, головокружению и снижению переносимости физических нагрузок.</p>
+            <h4>Этап 2. Общий осмотр</h4>
+            <p><strong>Положение тела:</strong> осанка, положение головы, симметрия плечевого пояса, положение таза. <strong>Дыхание:</strong> частота, глубина вдоха, участие вспомогательной мускулатуры, подвижность грудной клетки. <strong>Эмоциональное состояние:</strong> уровень тревожности, особенности речи, выраженность мимики, скорость движений, способность поддерживать зрительный контакт — эти признаки позволяют косвенно оценить активность автономной нервной системы.</p>
+            <h4>Этап 3. Пальпация</h4>
+            <p>Обследуются Му-точки, ткани передней поверхности туловища, шея, подзатылочная область, лицо, ушная раковина, нижние конечности. Определяются болезненность, локальное напряжение, ограничение подвижности и изменение температуры тканей.</p>
+            <h4>Этап 4. Определение ведущей проблемы</h4>
+            <ul class="content-list">
+                <li><strong>При преобладании тревожности:</strong> приоритет — грудная клетка, область сердца, передняя поверхность шеи, зона Эрба.</li>
+                <li><strong>При нарушении пищеварения:</strong> основное внимание — желудку, печени, желчному пузырю и кишечнику.</li>
+                <li><strong>При хронической головной боли:</strong> коррекция начинается с шеи, подзатылочной области и височных костей.</li>
+            </ul>
+        </div>
+        <div class="test-card" id="ch12-sequence">
+            <h3>Этап 5. Итоговая последовательность коррекции</h3>
+            <p>Объединяя теоретическую модель (Глава 9 базового текста) и практический протокол сеанса <span class="timestamp">video_1: 1:35:22</span>, полная последовательность работы выглядит так:</p>
+            <ol>
+                <li>Диагностика: опрос, осмотр, пальпаторное прослушивание;</li>
+                <li>Коррекция тимуса;</li>
+                <li>Передняя поверхность тела: сигнальные (Му-) точки внутренних органов, аортальное и сердечное сплетения, висцеральная техника желудка;</li>
+                <li>Шея: передняя поверхность, ГКСМ, зона Эрба, область выхода добавочного нерва, вагус в сонном треугольнике, щитоподъязычная мембрана;</li>
+                <li>Задняя поверхность тела: точки меридиана мочевого пузыря, паравертебральные зоны;</li>
+                <li>Подзатылочная область: нейрофасциальные техники, затылочная артерия, коррекция яремного отверстия;</li>
+                <li>Краниальные техники: компрессия IV желудочка, перекат височных костей, работа с мозолистым телом;</li>
+                <li>Лицо: жевательные мышцы, височная мышца, мимическая мускулатура, точки тройничного и лицевого нервов;</li>
+                <li>Ушная раковина: ушная ветвь вагуса, рефлекторные зоны;</li>
+                <li>Нижние конечности: завершение общего протокола;</li>
+                <li>Повторная оценка состояния пациента.</li>
+            </ol>
+            <div class="tip"><strong>Правило приоритета:</strong> если выявлена выраженная болезненность одной из точек или зон, целесообразно начать именно с неё; если передние точки болезненны — сначала пролечить задние и вернуться к передним.</div>
+            <table class="data-table">
+                <tr><th>Этап</th><th>Содержание</th></tr>
+                <tr><td>1</td><td>Сбор жалоб и анамнеза</td></tr>
+                <tr><td>2</td><td>Общий осмотр</td></tr>
+                <tr><td>3</td><td>Оценка дыхания и эмоционального состояния</td></tr>
+                <tr><td>4</td><td>Пальпация Му-точек</td></tr>
+                <tr><td>5</td><td>Коррекция тимуса и передней поверхности туловища</td></tr>
+                <tr><td>6</td><td>Работа с шеей</td></tr>
+                <tr><td>7</td><td>Коррекция задней поверхности тела</td></tr>
+                <tr><td>8</td><td>Коррекция подзатылочной области и яремного отверстия</td></tr>
+                <tr><td>9</td><td>Краниальные техники</td></tr>
+                <tr><td>10</td><td>Работа с лицом</td></tr>
+                <tr><td>11</td><td>Коррекция ушной раковины</td></tr>
+                <tr><td>12</td><td>Работа с нижними конечностями</td></tr>
+                <tr><td>13</td><td>Повторная оценка состояния пациента</td></tr>
+            </table>
+        </div>
+        <div class="test-card" id="ch12-reactions">
+            <h3>Контроль эффективности, реакции и рекомендации пациенту</h3>
+            <h4>Контроль эффективности</h4>
+            <p>После завершения лечения проводится повторная оценка: уменьшилась ли болезненность Му-точек, изменилось ли дыхание, снизился ли мышечный тонус, улучшилась ли подвижность тканей, уменьшились ли жалобы пациента.</p>
+            <div class="split-grid">
+                <div>
+                    <h4>Признаки успешной коррекции</h4>
+                    <p><strong>Вегетативные:</strong> глубокий вдох, зевота, сглатывание, урчание кишечника, ощущение тепла, расслабление мышц.</p>
+                    <p><strong>Эмоциональные:</strong> чувство спокойствия, уменьшение тревожности, улучшение настроения, ощущение внутреннего комфорта.</p>
+                    <p><strong>Физические:</strong> свободное дыхание, уменьшение боли, увеличение объёма движений, улучшение осанки, ощущение лёгкости в теле.</p>
+                </div>
+                <div>
+                    <h4>Рекомендации пациенту после процедуры</h4>
+                    <ul class="content-list">
+                        <li>избегать интенсивных физических нагрузок в день процедуры;</li>
+                        <li>поддерживать достаточный питьевой режим;</li>
+                        <li>обеспечить полноценный ночной сон;</li>
+                        <li>выполнять спокойные прогулки;</li>
+                        <li>уделять внимание дыхательным упражнениям (см. дыхательную самокоррекцию РСА);</li>
+                        <li>наблюдать за изменением самочувствия в течение ближайших суток.</li>
+                    </ul>
+                </div>
+            </div>
+            <p>У некоторых пациентов положительные изменения проявляются сразу, у других — постепенно, в течение нескольких дней.</p>
+            <div class="note"><strong>Возможные реакции после коррекции:</strong> в первые часы после процедуры могут наблюдаться сонливость, чувство расслабленности, учащённое мочеиспускание, усиление кишечной перистальтики, кратковременная эмоциональная чувствительность и умеренная мышечная болезненность в зонах воздействия. Как правило, эти реакции носят временный характер и проходят самостоятельно.</div>
+        </div>
+        <div class="test-card" id="ch12-checklist">
+            <h3>Краткая памятка специалисту</h3>
+            <div class="split-grid">
+                <div>
+                    <h4>Перед началом процедуры</h4>
+                    <ul class="content-list">
+                        <li>провести опрос пациента;</li>
+                        <li>исключить противопоказания;</li>
+                        <li>оценить дыхание и осанку;</li>
+                        <li>определить наиболее чувствительные зоны (пальпация, пальпаторное прослушивание).</li>
+                    </ul>
+                    <h4>Во время процедуры</h4>
+                    <ul class="content-list">
+                        <li>работать медленно;</li>
+                        <li>избегать грубого давления;</li>
+                        <li>контролировать реакцию пациента;</li>
+                        <li>соблюдать последовательность техник;</li>
+                        <li>не превышать 40–50 минут на сеанс.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>После процедуры</h4>
+                    <ul class="content-list">
+                        <li>повторно оценить состояние тканей;</li>
+                        <li>сравнить выраженность симптомов;</li>
+                        <li>дать рекомендации по режиму и наблюдению;</li>
+                        <li>планировать следующий сеанс через 2–3 недели.</li>
+                    </ul>                    
+                </div>
+            </div>
+            <div class="tip" style="margin-top:16px;"><strong>Заключение:</strong> блуждающий нерв играет центральную роль в поддержании функций сердечно-сосудистой, дыхательной, пищеварительной и иммунной систем, а также участвует в регуляции эмоционального состояния и адаптации. Представленная методика предлагает последовательный протокол обследования и мануальной коррекции, основанный на работе с рефлекторными зонами, мягкими нейрофасциальными техниками, прицельными техниками на самом стволе нерва и его ветвях, а также краниальными подходами — с целью улучшения автономной регуляции и снижения выраженности функциональных нарушений.</div>
+        </div>
+
+    </main>
+</div>
+
+
+<footer class="global-footer">
+    Учебный конспект составлен на основе базового текстового материала курса и транскрипций лекций (video_1–video_6) семинара по остеопатической коррекции блуждающего нерва. Визуализационные и энергетические описания (мотильность, «электромагнитная структура сплетений», работа с мозолистым телом как образное упражнение) относятся к авторской методике курса и приведены так, как они были изложены преподавателем, без добавления сторонних медицинских трактовок.
+</footer>
+<a href="#header" class="scroll-top-btn" title="Наверх">&uarr;</a>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const sidebar = document.querySelector('.sidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+        const menuBtn = document.getElementById('menuToggleBtn');
+        const closeBtn = document.getElementById('closeSidebarBtn');
+
+        function openMenu() {
+            sidebar.classList.add('open');
+            overlay.classList.add('active');
+            document.body.classList.add('menu-open');
+        }
+
+        function closeMenu() {
+            sidebar.classList.remove('open');
+            overlay.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
+
+        ['click', 'touchstart'].forEach(eventType => {
+            menuBtn?.addEventListener(eventType, (e) => {
+                e.preventDefault();
+                openMenu();
+            });
+        });
+        closeBtn?.addEventListener('click', closeMenu);
+
+        overlay?.addEventListener('click', closeMenu);
+
+        // Закрытие меню при клике по ссылке навигации
+        sidebar?.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 1024) {
+                    closeMenu();
+                }
+            });
+        });
+
+        // Закрытие по Esc
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeMenu();
+            }
+        });
+
+        // Set active menu link
+        const navLinks = [...sidebar.querySelectorAll('a[href^="#"]')];
+
+        function setActiveLink(id) {
+            navLinks.forEach(link => {
+                const isActive = link.getAttribute('href') === `#${id}`;
+                link.classList.toggle('active', isActive);
+            });
+        }
+
+        // Подсветка при клике по пункту меню
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                const id = link.getAttribute('href').slice(1);
+                setActiveLink(id);
+            });
+        });
+
+        // Подсветка при прокрутке
+        const sections = navLinks
+            .map(link => document.querySelector(link.getAttribute('href')))
+            .filter(Boolean);
+
+        function updateActiveSection() {
+            const scrollPos = window.scrollY + 180;
+
+            let currentSection = sections[0];
+
+            sections.forEach(section => {
+                if (section.offsetTop <= scrollPos) {
+                    currentSection = section;
+                }
+            });
+
+            if (currentSection) {
+                setActiveLink(currentSection.id);
+            }
+        }
+
+        window.addEventListener('scroll', updateActiveSection, {
+            passive: true
+        });
+
+        updateActiveSection();
+    });
+</script>
+</body>
+</html>
