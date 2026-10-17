@@ -197,7 +197,6 @@ header.app-header p {
     border: 1px solid var(--card-border);
     font-weight: 600;
     letter-spacing: 0.02em;
-    white-space: nowrap;
     margin-left: auto;
 }
 
@@ -280,7 +279,17 @@ blockquote {
     border: 1px solid var(--card-border);
     font-weight: 600;
     letter-spacing: 0.02em;
-    white-space: nowrap;
+}
+.timestamp-sub {
+    font-size: 0.75rem;
+    color: var(--slate-600);
+    background: var(--slate-100);
+    font-family: inherit;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--card-border);
+    font-weight: 600;
+    letter-spacing: 0.02em;
 }
 
 .hand-position {
