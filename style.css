@@ -198,6 +198,13 @@ header.app-header p {
     font-weight: 600;
     letter-spacing: 0.02em;
     margin-left: auto;
+    white-space: nowrap;
+}
+
+.sidebar a.nav-section-header .tc-mini {
+    display: inline-block;
+    margin: 4px 0 0 8px;
+    vertical-align: middle;
 }
 
 .main-content {
@@ -418,6 +425,23 @@ footer.global-footer {
     justify-content: center;
     z-index: 1000;
     color: white;
+}
+
+.hamburger-icon {
+    width: 24px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    pointer-events: none;
+}
+
+.hamburger-icon span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: white;
+    border-radius: 4px;
 }
 
 .close-sidebar-btn {

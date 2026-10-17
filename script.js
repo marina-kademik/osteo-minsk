@@ -84,6 +84,23 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', updateActiveSection, { passive: true });
     updateActiveSection();
 
+    // Личный хаб: страница с data-private-hub запоминает себя в браузере,
+    // и логотип на всех конспектах ведёт в неё вместо публичной главной
+    try {
+        const HUB_KEY = 'osteoPrivateHub';
+        if ('privateHub' in document.body.dataset) {
+            localStorage.setItem(HUB_KEY, location.pathname);
+        }
+        const privateHub = localStorage.getItem(HUB_KEY);
+        if (privateHub) {
+            document.querySelectorAll('a.logo').forEach(logo => {
+                logo.href = privateHub;
+            });
+        }
+    } catch (e) {
+        // localStorage недоступен — логотип ведёт на публичную главную
+    }
+
     // ==========================================
     // ЗАЩИТА КОНТЕНТА ОТ КОПИРОВАНИЯ И СКАЧИВАНИЯ
     // ==========================================
