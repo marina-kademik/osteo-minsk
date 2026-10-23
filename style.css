@@ -202,7 +202,7 @@ header.app-header p {
     border-radius: 999px;
     line-height: inherit;
     white-space: nowrap;
-    margin: 4px 0 0 8px;
+    margin: 0 0 0 auto;
     vertical-align: middle;
 }
 
