@@ -16,14 +16,18 @@
 }
 
 html {
+    min-height: 100%;
     scroll-behavior: smooth;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     background-color: var(--bg-main);
 }
 
 body {
+    min-height: 100vh;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
     color: var(--slate-850);
     line-height: 1.4;
     font-size: 1rem;
@@ -63,6 +67,10 @@ header.app-header .logo {
     justify-content: center;
 }
 
+header.app-header .logo img {
+    display: block;
+}
+
 header.app-header h1 {
     margin: 0;
     font-size: 1.35rem;
@@ -82,6 +90,8 @@ header.app-header p {
 
 .layout-container {
     display: flex;
+    width: 100%;
+    flex: 1 0 auto;
     max-width: 1440px;
     margin: 0 auto;
     gap: 32px;
@@ -97,7 +107,6 @@ header.app-header p {
     overflow-y: auto;
     background: white;
     border: 1px solid var(--border-color);
-    border-radius: 24px;
     padding: 24px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
 }
@@ -158,9 +167,9 @@ header.app-header p {
 
 .sidebar .sub-index {
     list-style: none;
-    margin-left: 12px;
+    margin-left: 6px;
     border-left: 1px solid var(--slate-100);
-    padding-left: 12px;
+    padding-left: 6px;
 }
 
 .sidebar .sub-index li {
@@ -344,6 +353,14 @@ blockquote {
     margin-top: 16px;
 }
 
+.border-red {
+    border-color: #fecaca;
+}
+
+.border-green {
+    border-color: #0d9488;
+}
+
 ul.content-list, ol {
     padding-left: 18px;
     margin: 12px 0;
@@ -378,7 +395,12 @@ ul.content-list li, ol li {
     transform: scale(1.05);
 }
 
+.scroll-top-btn:visited {
+    color: white;
+}
+
 footer.global-footer {
+    flex-shrink: 0;
     text-align: center;
     color: var(--slate-400);
     font-size: 0.75rem;
@@ -416,6 +438,12 @@ footer.global-footer {
     justify-content: center;
     z-index: 1000;
     color: white;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.menu-toggle-btn:hover {
+    background: var(--primary-text);
 }
 
 .hamburger-icon {
@@ -433,6 +461,7 @@ footer.global-footer {
     width: 100%;
     background: white;
     border-radius: 4px;
+    transition: all 0.2s;
 }
 
 .close-sidebar-btn {
@@ -447,6 +476,11 @@ footer.global-footer {
     cursor: pointer;
     color: var(--primary-text);
     font-size: 1.4rem;
+}
+
+.close-sidebar-btn:hover {
+    background: #e0eaf0;
+    color: var(--primary);
 }
 
 @media (min-width: 1025px) {
@@ -471,6 +505,8 @@ footer.global-footer {
 
 
 .hub-container {
+    width: 100%;
+    flex: 1 0 auto;
     max-width: 1000px;
     margin: 60px auto;
     padding: 0 20px;
