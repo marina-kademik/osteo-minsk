@@ -61,7 +61,6 @@ header.app-header {
 }
 
 header.app-header .logo {
-    padding: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -585,4 +584,11 @@ footer.global-footer {
     align-items: center;
     justify-content: center;
     border-radius: 14px;
+}
+@media print {
+    .sidebar-overlay,
+    .menu-toggle-btn,
+    .scroll-top-btn {
+        display: none;
+    }
 }
