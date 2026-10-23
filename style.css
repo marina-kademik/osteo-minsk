@@ -189,20 +189,10 @@ header.app-header p {
 
 .sidebar .tc-mini {
     font-size: 0.6rem;
-    color: var(--slate-600);
-    background: var(--slate-100);
-    font-family: inherit;
     padding: 2px 8px;
     border-radius: 999px;
-    border: 1px solid var(--card-border);
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    margin-left: auto;
+    line-height: inherit;
     white-space: nowrap;
-}
-
-.sidebar a.nav-section-header .tc-mini {
-    display: inline-block;
     margin: 4px 0 0 8px;
     vertical-align: middle;
 }
@@ -277,27 +267,28 @@ blockquote {
 }
 
 .timestamp {
+    display: inline-block;
+    box-sizing: border-box;
+    max-width: 100%;
+    min-width: 0;
     font-size: 0.75rem;
     color: var(--slate-600);
     background: var(--slate-100);
     font-family: inherit;
     padding: 4px 10px;
-    border-radius: 999px;
+    border-radius: 12px;
     border: 1px solid var(--card-border);
     font-weight: 600;
     letter-spacing: 0.02em;
+    line-height: 1.45;
+    text-align: left;
+    white-space: normal;
+    overflow-wrap: normal;
 }
 .timestamp-sub {
-    font-size: 0.75rem;
-    color: var(--slate-600);
-    background: var(--slate-100);
-    font-family: inherit;
-    padding: 4px 10px;
     border-radius: 999px;
-    border: 1px solid var(--card-border);
-    font-weight: 600;
-    letter-spacing: 0.02em;
 }
+.tc { white-space: nowrap; }
 
 .hand-position {
     background-color: var(--primary-light);

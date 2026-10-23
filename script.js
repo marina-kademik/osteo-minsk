@@ -100,32 +100,4 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (e) {
         // localStorage недоступен — логотип ведёт на публичную главную
     }
-
-    // ==========================================
-    // ЗАЩИТА КОНТЕНТА ОТ КОПИРОВАНИЯ И СКАЧИВАНИЯ
-    // ==========================================
-
-    // 1. Отключение правого клика мыши
-    document.addEventListener('contextmenu', (e) => {
-        e.preventDefault();
-    });
-
-    // 2. Блокировка горячих клавиш (Ctrl+C, Ctrl+U, F12 и т.д.)
-    document.addEventListener('keydown', (e) => {
-        if (
-            e.key === 'F12' ||
-            (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || // DevTools
-            (e.ctrlKey && (e.key === 'u' || e.key === 'U')) || // Просмотр кода (Ctrl+U)
-            (e.ctrlKey && (e.key === 'c' || e.key === 'C')) || // Копировать (Ctrl+C)
-            (e.ctrlKey && (e.key === 'a' || e.key === 'A'))    // Выделить всё (Ctrl+A)
-        ) {
-            e.preventDefault();
-            return false;
-        }
-    });
-
-    // 3. Запрет на перетаскивание картинок и текста
-    document.addEventListener('dragstart', (e) => {
-        e.preventDefault();
-    });
 });
