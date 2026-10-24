@@ -138,7 +138,8 @@ header.app-header p {
 }
 
 .sidebar ul.nav-list a.nav-section-header {
-    display: block;
+    display: flex;
+    align-items: flex-start;
     font-size: 13px;
     font-weight: 700;
     color: var(--slate-900);
@@ -588,7 +589,34 @@ footer.global-footer {
 @media print {
     .sidebar-overlay,
     .menu-toggle-btn,
+    .close-sidebar-btn,
     .scroll-top-btn {
         display: none;
+    }
+    .sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        transform: none;
+        box-shadow: none;
+        background: none;
+        border: none;
+        border-radius: 0;
+        padding: 0;
+    }
+
+    .sidebar .nav-section-header.active,
+    .sidebar a.active {
+        color: var(--slate-600)!important;
+        background-color: unset;
+        border: none;
+    }
+
+    .test-card {
+        box-shadow: none;
+        background: none;
+        border: none;
+        border-radius: 0;
+        padding: 0;
     }
 }
